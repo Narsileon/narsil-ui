@@ -1,6 +1,6 @@
 import { Check, ChevronsUpDown } from 'lucide-react';
 import { isString } from 'lodash';
-import { useTranslationsStore } from 'vendor/narsil/localization/resources/js/Stores/translationStore';
+import { useTranslationsStore } from '@narsil-localization/Stores/translationStore';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as React from 'react';
 

@@ -8,8 +8,8 @@
 		"moduleResolution": "node",
 		"noEmit": false,
 		"paths": {
-			"@narsil-ui/*": ["./resources/js/*"],
-			"vendor/*": ["./vendor/*"]
+			"@narsil-localization/*": ["./vendor/narsil/localization/resources/js/*"],
+			"@narsil-ui/*": ["./resources/js/*"]
 		},
 		"resolveJsonModule": true,
 		"skipLibCheck": false,

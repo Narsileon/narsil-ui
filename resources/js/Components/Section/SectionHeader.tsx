@@ -1,7 +1,7 @@
 import { cn, Separator, Toggle, TooltipWrapper } from '@narsil-ui/Components';
 import { Maximize, Minimize } from 'lucide-react';
 import { SectionContext } from './Section';
-import { useTranslationsStore } from 'vendor/narsil/localization/resources/js/Stores/translationStore';
+import { useTranslationsStore } from '@narsil-localization/Stores/translationStore';
 import * as React from 'react';
 
 const SectionHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
