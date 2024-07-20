@@ -1,6 +1,6 @@
 <?php
 
-namespace Narsil\NarsilFramework;
+namespace Narsil\UI;
 
 #region USE
 
