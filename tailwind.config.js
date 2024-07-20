@@ -1,6 +1,6 @@
 module.exports = {
 	darkMode: 'class',
-	content: ['./resources/**/*.{blade.php,ts,tsx}', './vendor/narsil/framework/resources/**/*.{blade.php,ts,tsx}'],
+	content: ['./resources/js/**/*.{ts,tsx}'],
 	theme: {
 		container: {
 			center: true,
