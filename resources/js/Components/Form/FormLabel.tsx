@@ -1,4 +1,4 @@
-import { cn, Label } from 'ui/Components';
+import { cn, Label } from '@narsil-ui/Components';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import * as React from 'react';
 import useFormField from './use-form-field';

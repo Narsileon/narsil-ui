@@ -1,5 +1,5 @@
-import { Button } from 'ui/Components';
-import { ButtonProps } from 'ui/Components/Button/Button';
+import { Button } from '@narsil-ui/Components';
+import { ButtonProps } from '@narsil-ui/Components/Button/Button';
 import { router } from '@inertiajs/react';
 import { useTranslationsStore } from 'vendor/narsil/localization/resources/js/Stores/translationStore';
 import * as React from 'react';

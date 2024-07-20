@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { ToggleGroupContext } from './ToggleGroup';
 import { toggleVariants } from './Toggle';
 import { VariantProps } from 'class-variance-authority';

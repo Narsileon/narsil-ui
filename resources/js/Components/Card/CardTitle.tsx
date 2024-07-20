@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as React from 'react';
 
 const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(

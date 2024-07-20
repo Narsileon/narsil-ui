@@ -1,5 +1,5 @@
 import { ChevronRight } from 'lucide-react';
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as React from 'react';
 
 const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, React.HTMLAttributes<HTMLLIElement>>(

@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import * as React from 'react';
 

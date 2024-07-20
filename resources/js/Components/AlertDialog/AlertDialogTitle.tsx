@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import * as React from 'react';
 

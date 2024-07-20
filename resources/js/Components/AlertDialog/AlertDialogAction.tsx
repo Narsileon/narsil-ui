@@ -1,5 +1,5 @@
-import { buttonVariants } from 'ui/Components/Button/Button';
-import { cn } from 'ui/Components';
+import { buttonVariants } from '@narsil-ui/Components/Button/Button';
+import { cn } from '@narsil-ui/Components';
 import * as AlertDialogPrimitive from '@radix-ui/react-alert-dialog';
 import * as React from 'react';
 

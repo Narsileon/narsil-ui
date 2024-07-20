@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as SelectPrimitive from '@radix-ui/react-select';
 
-import { cn, SelectScrollDownButton, SelectScrollUpButton } from 'ui/Components';
+import { cn, SelectScrollDownButton, SelectScrollUpButton } from '@narsil-ui/Components';
 
 const SelectContent = React.forwardRef<
 	React.ElementRef<typeof SelectPrimitive.Content>,

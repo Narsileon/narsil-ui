@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as React from 'react';
 
 const Card = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(({ className, ...props }, ref) => (

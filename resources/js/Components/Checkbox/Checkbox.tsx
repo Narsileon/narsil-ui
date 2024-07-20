@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react';
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import * as React from 'react';
 

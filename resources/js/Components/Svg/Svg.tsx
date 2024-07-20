@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components/utils';
+import { cn } from '@narsil-ui/Components/utils';
 import { ReactSVG } from 'react-svg';
 
 interface Props {

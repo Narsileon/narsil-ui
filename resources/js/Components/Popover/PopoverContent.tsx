@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as React from 'react';
 

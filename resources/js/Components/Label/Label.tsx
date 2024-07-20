@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { cva, type VariantProps } from 'class-variance-authority';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import * as React from 'react';

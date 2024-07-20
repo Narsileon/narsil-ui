@@ -1,6 +1,6 @@
-import { buttonVariants } from 'ui/Components/Button/Button';
+import { buttonVariants } from '@narsil-ui/Components/Button/Button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { DayPicker } from 'react-day-picker';
 import * as React from 'react';
 

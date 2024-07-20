@@ -1,4 +1,4 @@
-import { cn, useFullscreenable } from 'ui/Components/utils';
+import { cn, useFullscreenable } from '@narsil-ui/Components/utils';
 import * as React from 'react';
 
 type SectionContextValue = {

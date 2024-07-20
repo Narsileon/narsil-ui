@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { Slot } from '@radix-ui/react-slot';
 import * as React from 'react';
 

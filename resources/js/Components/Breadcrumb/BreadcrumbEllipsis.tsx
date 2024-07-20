@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
 

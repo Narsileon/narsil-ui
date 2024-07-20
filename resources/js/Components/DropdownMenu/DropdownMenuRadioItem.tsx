@@ -1,5 +1,5 @@
 import { Circle } from 'lucide-react';
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import * as React from 'react';
 

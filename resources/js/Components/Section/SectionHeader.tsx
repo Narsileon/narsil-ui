@@ -1,4 +1,4 @@
-import { cn, Separator, Toggle, TooltipWrapper } from 'ui/Components';
+import { cn, Separator, Toggle, TooltipWrapper } from '@narsil-ui/Components';
 import { Maximize, Minimize } from 'lucide-react';
 import { SectionContext } from './Section';
 import { useTranslationsStore } from 'vendor/narsil/localization/resources/js/Stores/translationStore';

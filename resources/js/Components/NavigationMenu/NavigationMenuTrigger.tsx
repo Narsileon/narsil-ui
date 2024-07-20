@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { cva } from 'class-variance-authority';
 import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
 import * as React from 'react';

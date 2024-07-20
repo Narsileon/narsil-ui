@@ -1,5 +1,5 @@
 import { BubbleMenu, EditorContent, FloatingMenu, useEditor } from '@tiptap/react';
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import * as React from 'react';
 import Color from '@tiptap/extension-color';
 import Highlight from '@tiptap/extension-highlight';

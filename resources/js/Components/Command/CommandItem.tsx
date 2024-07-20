@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { Command as CommandPrimitive } from 'cmdk';
 import * as React from 'react';
 

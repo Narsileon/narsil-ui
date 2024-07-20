@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { useCarousel } from './Carousel';
 import * as React from 'react';
 

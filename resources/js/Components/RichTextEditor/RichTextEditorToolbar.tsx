@@ -39,7 +39,7 @@ import {
 	PopoverTrigger,
 	Separator,
 	Toggle,
-} from 'ui/Components';
+} from '@narsil-ui/Components';
 
 interface RichTextEditorToolbarProps {
 	editor: Editor | null;

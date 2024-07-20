@@ -1,4 +1,4 @@
-import { cn, Separator } from 'ui/Components';
+import { cn, Separator } from '@narsil-ui/Components';
 import * as React from 'react';
 
 const CardHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(

@@ -16,7 +16,7 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from 'ui/Components';
+} from '@narsil-ui/Components';
 
 export type SelectOption = {
 	label?: string;

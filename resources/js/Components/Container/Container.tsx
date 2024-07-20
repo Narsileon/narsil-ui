@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import React from 'react';
 
 const Container = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(

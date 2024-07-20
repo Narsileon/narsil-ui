@@ -1,5 +1,5 @@
 import { ArrowLeft } from 'lucide-react';
-import { Button, cn } from 'ui/Components';
+import { Button, cn } from '@narsil-ui/Components';
 import { useCarousel } from './Carousel';
 import * as React from 'react';
 

@@ -1,4 +1,4 @@
-import { cn } from 'ui/Components';
+import { cn } from '@narsil-ui/Components';
 import { FormProvider, FormProviderProps } from 'react-hook-form';
 import { router } from '@inertiajs/react';
 import * as React from 'react';
