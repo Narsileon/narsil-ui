@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 222 84% 5%;
+
+		--card: 0 0% 100%;
+		--card-foreground: 222 84% 5%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 222 84% 5%;
+
+		--primary: 222 47% 11%;
+		--primary-foreground: 210 40% 98%;
+
+		--secondary: 210 40% 96%;
+		--secondary-foreground: 222 47% 11%;
+
+		--muted: 210 40% 96%;
+		--muted-foreground: 215 16% 47%;
+
+		--accent: 210 40% 96%;
+		--accent-foreground: 222 47% 11%;
+
+		--constructive: 142 71% 45%;
+		--constructive-foreground: 210 40% 98%;
+
+		--destructive: 0 84% 60%;
+		--destructive-foreground: 210 40% 98%;
+
+		--border: 214 32% 91%;
+		--input: 214 32% 91%;
+		--ring: 222 84% 5%;
+
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		--background: 222 84% 5%;
+		--foreground: 210 40% 98%;
+
+		--card: 222 84% 5%;
+		--card-foreground: 210 40% 98%;
+
+		--popover: 222 84% 5%;
+		--popover-foreground: 210 40% 98%;
+
+		--primary: 210 40% 98%;
+		--primary-foreground: 222 47% 11%;
+
+		--secondary: 217 33% 17%;
+		--secondary-foreground: 210 40% 98%;
+
+		--muted: 217 33% 17%;
+		--muted-foreground: 215 20% 65%;
+
+		--accent: 217 33% 17%;
+		--accent-foreground: 210 40% 98%;
+
+		--constructive: 144 61% 20%;
+		--constructive-foreground: 210 40% 98%;
+
+		--destructive: 0 63% 31%;
+		--destructive-foreground: 210 40% 98%;
+
+		--border: 217 33% 17%;
+		--input: 217 33% 17%;
+		--ring: 213 27% 84%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+	h1 {
+		@apply scroll-m-20 text-4xl font-extrabold tracking-tight;
+	}
+	h2 {
+		@apply scroll-m-20 text-3xl font-semibold tracking-tight;
+	}
+	h3 {
+		@apply scroll-m-20 text-2xl font-semibold tracking-tight;
+	}
+	h4 {
+		@apply scroll-m-20 text-xl font-semibold tracking-tight;
+	}
+	h5 {
+		@apply scroll-m-20 text-4xl font-extrabold tracking-tight;
+	}
+	h6 {
+		@apply scroll-m-20 text-4xl font-extrabold tracking-tight;
+	}
+	p {
+		@apply text-sm leading-7 [&:not(:first-child)]:mt-6;
+	}
+	small {
+		@apply text-sm leading-none;
+	}
+	span {
+		@apply text-sm;
+	}
+}
+
+@layer components {
+	.gap-default {
+		@apply gap-2 md:gap-4;
+	}
+	.m-default {
+		@apply m-2 md:m-4;
+	}
+	.p-default {
+		@apply p-2 md:p-4;
+	}
+	.space-x-default {
+		@apply space-x-2 md:space-x-4;
+	}
+	.space-y-default {
+		@apply space-y-2 md:space-y-4;
+	}
+}
