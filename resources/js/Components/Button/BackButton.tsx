@@ -1,7 +1,7 @@
 import { Button } from '@narsil-ui/Components';
 import { ButtonProps } from '@narsil-ui/Components/Button/Button';
 import { router } from '@inertiajs/react';
-import { useTranslationsStore } from '@narsil-localization/Stores/translationStore';
+import { useTranslationsStore } from '@narsil-ui/Stores/translationStore';
 import * as React from 'react';
 
 interface BackButtonProps extends ButtonProps {
