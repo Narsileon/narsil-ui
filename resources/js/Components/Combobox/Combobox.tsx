@@ -1,5 +1,5 @@
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { isString, upperFirst } from 'lodash';
+import { isString, sortBy, upperFirst } from 'lodash';
 import { useTranslationsStore } from '@narsil-ui/Stores/translationStore';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as React from 'react';
@@ -28,6 +28,7 @@ export type SelectOption = {
 interface ComboboxProps {
 	labelKey?: string;
 	options?: SelectOption[];
+	sort?: boolean;
 	ucFirst?: boolean;
 	value: string | number;
 	valueKey?: string;
@@ -37,10 +38,12 @@ interface ComboboxProps {
 const Combobox = React.forwardRef<
 	React.ElementRef<typeof PopoverPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & ComboboxProps
->(({ labelKey = 'label', ucFirst = true, value, valueKey = 'value', options, onChange }, ref) => {
+>(({ labelKey = 'label', sort = true, ucFirst = true, value, valueKey = 'value', options, onChange }, ref) => {
 	const { trans } = useTranslationsStore();
 
 	const [open, setOpen] = React.useState(false);
+
+	const sortedOptions = sortBy(options, (option) => (isString(option) ? option : option[labelKey]));
 
 	const getValueOption = (value: string | number) => {
 		return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
@@ -74,7 +77,7 @@ const Combobox = React.forwardRef<
 					<CommandList>
 						<CommandEmpty>{trans('No options.')}</CommandEmpty>
 						<CommandGroup>
-							{options?.map((option, index) => {
+							{(sort ? sortedOptions : options)?.map((option, index) => {
 								const optionLabel = isString(option) ? option : option[labelKey];
 								const optionValue = isString(option) ? option : option[valueKey];
 
