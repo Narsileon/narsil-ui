@@ -1,5 +1,5 @@
 import { Check, ChevronsUpDown } from 'lucide-react';
-import { isString } from 'lodash';
+import { isString, upperFirst } from 'lodash';
 import { useTranslationsStore } from '@narsil-ui/Stores/translationStore';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
 import * as React from 'react';
@@ -28,6 +28,7 @@ export type SelectOption = {
 interface ComboboxProps {
 	labelKey?: string;
 	options?: SelectOption[];
+	ucFirst?: boolean;
 	value: string | number;
 	valueKey?: string;
 	onChange: (value: number | string) => void;
@@ -36,7 +37,7 @@ interface ComboboxProps {
 const Combobox = React.forwardRef<
 	React.ElementRef<typeof PopoverPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & ComboboxProps
->(({ labelKey = 'label', value, valueKey = 'value', options, onChange }, ref) => {
+>(({ labelKey = 'label', ucFirst = true, value, valueKey = 'value', options, onChange }, ref) => {
 	const { trans } = useTranslationsStore();
 
 	const [open, setOpen] = React.useState(false);
@@ -57,7 +58,7 @@ const Combobox = React.forwardRef<
 					role='combobox'
 					variant='outline'
 				>
-					{value ? getValueOption(value) : trans('Select...')}
+					{value ? (ucFirst ? upperFirst(getValueOption(value)) : getValueOption(value)) : trans('Select...')}
 					<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 				</Button>
 			</PopoverTrigger>
@@ -86,7 +87,7 @@ const Combobox = React.forwardRef<
 										}}
 										key={index}
 									>
-										{optionLabel}
+										{ucFirst ? upperFirst(optionLabel) : optionLabel}
 										<Check className={cn('ml-auto h-4 w-4', value === optionValue ? 'opacity-100' : 'opacity-0')} />
 									</CommandItem>
 								);
