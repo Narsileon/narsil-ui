@@ -43,7 +43,9 @@ const Combobox = React.forwardRef<
 
 	const [open, setOpen] = React.useState(false);
 
-	const sortedOptions = sortBy(options, (option) => (isString(option) ? option : option[labelKey]));
+	if (sort) {
+		options = sortBy(options, (option) => option[labelKey]);
+	}
 
 	const getValueOption = (value: string | number) => {
 		return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
@@ -77,7 +79,7 @@ const Combobox = React.forwardRef<
 					<CommandList>
 						<CommandEmpty>{trans('No options.')}</CommandEmpty>
 						<CommandGroup>
-							{(sort ? sortedOptions : options)?.map((option, index) => {
+							{options?.map((option, index) => {
 								const optionLabel = isString(option) ? option : option[labelKey];
 								const optionValue = isString(option) ? option : option[valueKey];
 
