@@ -44,7 +44,7 @@ const Combobox = React.forwardRef<
 	const [open, setOpen] = React.useState(false);
 
 	if (sort) {
-		options = sortBy(options, (option) => option[labelKey]);
+		options = sortBy(options, (option) => option[labelKey].toLowerCase());
 	}
 
 	const getValueOption = (value: string | number) => {
