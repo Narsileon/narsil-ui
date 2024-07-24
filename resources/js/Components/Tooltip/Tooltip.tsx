@@ -1,4 +1,4 @@
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 const Tooltip = TooltipPrimitive.Root;
 

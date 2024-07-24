@@ -1,4 +1,4 @@
-import * as ToastPrimitives from '@radix-ui/react-toast';
+import * as ToastPrimitives from "@radix-ui/react-toast";
 
 const ToastProvider = ToastPrimitives.Provider;
 

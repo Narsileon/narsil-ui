@@ -1,5 +1,5 @@
-import { cn, useFullscreenable } from '@narsil-ui/Components/utils';
-import * as React from 'react';
+import { cn, useFullscreenable } from "@narsil-ui/Components/utils";
+import * as React from "react";
 
 type SectionContextValue = {
 	isFullscreen: boolean;
@@ -12,7 +12,7 @@ const Section = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEle
 	({ className, ...props }, ref) => {
 		const defaultRef = React.useRef<HTMLDivElement>(null);
 
-		const sectionRef = ref && typeof ref === 'object' ? ref : defaultRef;
+		const sectionRef = ref && typeof ref === "object" ? ref : defaultRef;
 
 		const { isFullscreen, toggleFullscreen } = useFullscreenable(sectionRef);
 
@@ -25,7 +25,7 @@ const Section = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEle
 			>
 				<div
 					ref={sectionRef}
-					className={cn('bg-background text-foreground p-4', className)}
+					className={cn("bg-background text-foreground p-4", className)}
 					{...props}
 				/>
 			</SectionContext.Provider>

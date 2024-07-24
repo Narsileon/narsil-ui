@@ -1,11 +1,11 @@
-import { cn } from '@narsil-ui/Components';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as React from "react";
 
-const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<'span'>>(
+const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<"span">>(
 	({ className, ...props }, ref) => (
 		<span
 			ref={ref}
-			className={cn('font-normal text-foreground', className)}
+			className={cn("font-normal text-foreground", className)}
 			aria-current='page'
 			aria-disabled='true'
 			role='link'

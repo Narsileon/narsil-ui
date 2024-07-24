@@ -1,11 +1,11 @@
-import { cn } from '@narsil-ui/Components';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as React from "react";
 
 const AlertDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
 	({ className, ...props }, ref) => (
 		<div
 			ref={ref}
-			className={cn('text-sm [&_p]:leading-relaxed', className)}
+			className={cn("text-sm [&_p]:leading-relaxed", className)}
 			{...props}
 		/>
 	)

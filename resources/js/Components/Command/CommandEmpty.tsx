@@ -1,5 +1,5 @@
-import { Command as CommandPrimitive } from 'cmdk';
-import * as React from 'react';
+import { Command as CommandPrimitive } from "cmdk";
+import * as React from "react";
 
 const CommandEmpty = React.forwardRef<
 	React.ElementRef<typeof CommandPrimitive.Empty>,

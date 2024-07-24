@@ -1,7 +1,7 @@
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import * as React from 'react';
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import * as React from "react";
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@narsil-ui/Components';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@narsil-ui/Components";
 
 interface TooltipWrapperProps {
 	tooltip: string | React.ReactNode;

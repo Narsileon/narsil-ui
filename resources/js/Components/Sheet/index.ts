@@ -10,14 +10,14 @@ import SheetTitle from "./SheetTitle";
 import SheetTrigger from "./SheetTrigger";
 
 export {
-    Sheet,
-    SheetContent,
-    SheetClose,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetOverlay,
-    SheetPortal,
-    SheetTitle,
-    SheetTrigger
-}
+	Sheet,
+	SheetContent,
+	SheetClose,
+	SheetDescription,
+	SheetFooter,
+	SheetHeader,
+	SheetOverlay,
+	SheetPortal,
+	SheetTitle,
+	SheetTrigger,
+};

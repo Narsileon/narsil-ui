@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import { upperFirst } from 'lodash';
+import { create } from "zustand";
+import { upperFirst } from "lodash";
 
 type Translation = {
 	id: number;
@@ -24,14 +24,14 @@ type Actions = {
 };
 
 const initialState: State = {
-	locale: '',
+	locale: "",
 	translations: {},
 };
 
 export const useTranslationsStore = create<State & Actions>((set, get) => ({
 	...initialState,
 	trans: (key, options) => {
-		let text = get().translations[key]?.value ?? key.split('.').pop();
+		let text = get().translations[key]?.value ?? key.split(".").pop();
 
 		if (options?.replacements) {
 			Object.entries(options?.replacements).map(([replacementKey, replacementValue]) => {

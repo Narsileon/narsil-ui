@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as React from 'react';
-import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react';
+import { cn } from "@narsil-ui/Components";
+import * as React from "react";
+import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -9,7 +9,7 @@ type CarouselPlugin = UseCarouselParameters[1];
 
 type CarouselProps = {
 	opts?: CarouselOptions;
-	orientation?: 'horizontal' | 'vertical';
+	orientation?: "horizontal" | "vertical";
 	plugins?: CarouselPlugin;
 	setApi?: (api: CarouselApi) => void;
 };
@@ -29,18 +29,18 @@ export function useCarousel() {
 	const context = React.useContext(CarouselContext);
 
 	if (!context) {
-		throw new Error('useCarousel must be used within a <Carousel />');
+		throw new Error("useCarousel must be used within a <Carousel />");
 	}
 
 	return context;
 }
 
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
-	({ orientation = 'horizontal', opts, setApi, plugins, className, children, ...props }, ref) => {
+	({ orientation = "horizontal", opts, setApi, plugins, className, children, ...props }, ref) => {
 		const [carouselRef, api] = useEmblaCarousel(
 			{
 				...opts,
-				axis: orientation === 'horizontal' ? 'x' : 'y',
+				axis: orientation === "horizontal" ? "x" : "y",
 			},
 			plugins
 		);
@@ -66,10 +66,10 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 
 		const handleKeyDown = React.useCallback(
 			(event: React.KeyboardEvent<HTMLDivElement>) => {
-				if (event.key === 'ArrowLeft') {
+				if (event.key === "ArrowLeft") {
 					event.preventDefault();
 					scrollPrev();
-				} else if (event.key === 'ArrowRight') {
+				} else if (event.key === "ArrowRight") {
 					event.preventDefault();
 					scrollNext();
 				}
@@ -91,11 +91,11 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 			}
 
 			onSelect(api);
-			api.on('reInit', onSelect);
-			api.on('select', onSelect);
+			api.on("reInit", onSelect);
+			api.on("select", onSelect);
 
 			return () => {
-				api?.off('select', onSelect);
+				api?.off("select", onSelect);
 			};
 		}, [api, onSelect]);
 
@@ -105,7 +105,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 					carouselRef,
 					api: api,
 					opts,
-					orientation: orientation || (opts?.axis === 'y' ? 'vertical' : 'horizontal'),
+					orientation: orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
 					scrollPrev,
 					scrollNext,
 					canScrollPrev,
@@ -115,7 +115,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 				<div
 					ref={ref}
 					onKeyDownCapture={handleKeyDown}
-					className={cn('relative', className)}
+					className={cn("relative", className)}
 					role='region'
 					aria-roledescription='carousel'
 					{...props}

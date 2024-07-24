@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import * as React from "react";
 
 const NavigationMenuIndicator = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
@@ -9,9 +9,9 @@ const NavigationMenuIndicator = React.forwardRef<
 	<NavigationMenuPrimitive.Indicator
 		ref={ref}
 		className={cn(
-			'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',
-			'data-[state=visible]:animate-in data-[state=visible]:fade-in',
-			'data-[state=hidden]:animate-out data-[state=hidden]:fade-out',
+			"top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+			"data-[state=visible]:animate-in data-[state=visible]:fade-in",
+			"data-[state=hidden]:animate-out data-[state=hidden]:fade-out",
 			className
 		)}
 		{...props}

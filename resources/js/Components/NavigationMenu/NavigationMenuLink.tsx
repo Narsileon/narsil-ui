@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
+import * as React from "react";
 
 const NavigationMenuLink = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Link>,
@@ -8,7 +8,7 @@ const NavigationMenuLink = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<NavigationMenuPrimitive.Link
 		ref={ref}
-		className={cn('grow truncate', className)}
+		className={cn("grow truncate", className)}
 		{...props}
 	/>
 ));

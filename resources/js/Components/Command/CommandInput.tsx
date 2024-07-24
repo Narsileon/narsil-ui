@@ -1,7 +1,7 @@
-import { cn } from '@narsil-ui/Components';
-import { Command as CommandPrimitive } from 'cmdk';
-import { Search } from 'lucide-react';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import { Command as CommandPrimitive } from "cmdk";
+import { Search } from "lucide-react";
+import * as React from "react";
 
 const CommandInput = React.forwardRef<
 	React.ElementRef<typeof CommandPrimitive.Input>,
@@ -15,9 +15,9 @@ const CommandInput = React.forwardRef<
 		<CommandPrimitive.Input
 			ref={ref}
 			className={cn(
-				'flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none',
-				'placeholder:text-muted-foreground',
-				'disabled:cursor-not-allowed disabled:opacity-50',
+				"flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none",
+				"placeholder:text-muted-foreground",
+				"disabled:cursor-not-allowed disabled:opacity-50",
 				className
 			)}
 			{...props}

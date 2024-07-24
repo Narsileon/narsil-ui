@@ -1,8 +1,8 @@
-import { Check, ChevronsUpDown } from 'lucide-react';
-import { isString, sortBy, upperFirst } from 'lodash';
-import { useTranslationsStore } from '@narsil-ui/Stores/translationStore';
-import * as PopoverPrimitive from '@radix-ui/react-popover';
-import * as React from 'react';
+import { Check, ChevronsUpDown } from "lucide-react";
+import { isString, sortBy, upperFirst } from "lodash";
+import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import * as React from "react";
 
 import {
 	Button,
@@ -16,7 +16,7 @@ import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from '@narsil-ui/Components';
+} from "@narsil-ui/Components";
 
 export type SelectOption = {
 	label?: string;
@@ -38,7 +38,7 @@ interface ComboboxProps {
 const Combobox = React.forwardRef<
 	React.ElementRef<typeof PopoverPrimitive.Content>,
 	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & ComboboxProps
->(({ labelKey = 'label', sort = true, ucFirst = true, value, valueKey = 'value', options, onChange }, ref) => {
+>(({ labelKey = "label", sort = true, ucFirst = true, value, valueKey = "value", options, onChange }, ref) => {
 	const { trans } = useTranslationsStore();
 
 	const [open, setOpen] = React.useState(false);
@@ -63,7 +63,7 @@ const Combobox = React.forwardRef<
 					role='combobox'
 					variant='outline'
 				>
-					{value ? (ucFirst ? upperFirst(getValueOption(value)) : getValueOption(value)) : trans('Select...')}
+					{value ? (ucFirst ? upperFirst(getValueOption(value)) : getValueOption(value)) : trans("Select...")}
 					<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 				</Button>
 			</PopoverTrigger>
@@ -73,11 +73,11 @@ const Combobox = React.forwardRef<
 			>
 				<Command>
 					<CommandInput
-						placeholder={trans('Search...')}
+						placeholder={trans("Search...")}
 						className='h-9'
 					/>
 					<CommandList>
-						<CommandEmpty>{trans('No options.')}</CommandEmpty>
+						<CommandEmpty>{trans("No options.")}</CommandEmpty>
 						<CommandGroup>
 							{options?.map((option, index) => {
 								const optionLabel = isString(option) ? option : option[labelKey];
@@ -93,7 +93,7 @@ const Combobox = React.forwardRef<
 										key={index}
 									>
 										{ucFirst ? upperFirst(optionLabel) : optionLabel}
-										<Check className={cn('ml-auto h-4 w-4', value === optionValue ? 'opacity-100' : 'opacity-0')} />
+										<Check className={cn("ml-auto h-4 w-4", value === optionValue ? "opacity-100" : "opacity-0")} />
 									</CommandItem>
 								);
 							})}

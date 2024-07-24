@@ -1,7 +1,7 @@
-import { ChevronRight } from 'lucide-react';
-import { cn } from '@narsil-ui/Components';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import * as React from 'react';
+import { ChevronRight } from "lucide-react";
+import { cn } from "@narsil-ui/Components";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import * as React from "react";
 
 const DropdownMenuSubTrigger = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
@@ -12,10 +12,10 @@ const DropdownMenuSubTrigger = React.forwardRef<
 	<DropdownMenuPrimitive.SubTrigger
 		ref={ref}
 		className={cn(
-			'flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none',
-			'focus:bg-accent',
-			'data-[state=open]:bg-accent',
-			inset && 'pl-8',
+			"flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none",
+			"focus:bg-accent",
+			"data-[state=open]:bg-accent",
+			inset && "pl-8",
 			className
 		)}
 		{...props}

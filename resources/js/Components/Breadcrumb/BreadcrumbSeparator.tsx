@@ -1,12 +1,12 @@
-import { ChevronRight } from 'lucide-react';
-import { cn } from '@narsil-ui/Components';
-import * as React from 'react';
+import { ChevronRight } from "lucide-react";
+import { cn } from "@narsil-ui/Components";
+import * as React from "react";
 
 const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, React.HTMLAttributes<HTMLLIElement>>(
 	({ children, className, ...props }, ref) => (
 		<li
 			ref={ref}
-			className={cn('[&>svg]:size-3.5', className)}
+			className={cn("[&>svg]:size-3.5", className)}
 			aria-hidden='true'
 			role='presentation'
 			{...props}

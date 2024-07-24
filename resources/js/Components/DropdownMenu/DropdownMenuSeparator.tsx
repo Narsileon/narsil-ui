@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import * as React from "react";
 
 const DropdownMenuSeparator = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
@@ -8,7 +8,7 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<DropdownMenuPrimitive.Separator
 		ref={ref}
-		className={cn('-mx-1 my-1 h-px bg-muted', className)}
+		className={cn("-mx-1 my-1 h-px bg-muted", className)}
 		{...props}
 	/>
 ));

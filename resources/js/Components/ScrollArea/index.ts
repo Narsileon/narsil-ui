@@ -1,4 +1,4 @@
-import ScrollArea from './ScrollArea';
-import ScrollBar from './ScrollBar';
+import ScrollArea from "./ScrollArea";
+import ScrollBar from "./ScrollBar";
 
 export { ScrollArea, ScrollBar };

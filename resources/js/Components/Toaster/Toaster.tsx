@@ -6,7 +6,7 @@ import {
 	ToastTitle,
 	ToastViewport,
 	useToast,
-} from '@narsil-ui/Components';
+} from "@narsil-ui/Components";
 
 export function Toaster() {
 	const { toasts } = useToast();

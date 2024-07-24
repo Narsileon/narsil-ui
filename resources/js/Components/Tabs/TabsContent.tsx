@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as React from 'react';
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import { cn } from "@narsil-ui/Components";
+import * as React from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
 
 const TabsContent = React.forwardRef<
 	React.ElementRef<typeof TabsPrimitive.Content>,
@@ -9,8 +9,8 @@ const TabsContent = React.forwardRef<
 	<TabsPrimitive.Content
 		ref={ref}
 		className={cn(
-			'mt-2 ring-offset-background space-y-4',
-			'focus-visible:outline-none focus-visible:border-primary',
+			"mt-2 ring-offset-background space-y-4",
+			"focus-visible:outline-none focus-visible:border-primary",
 			className
 		)}
 		{...props}

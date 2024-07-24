@@ -1,5 +1,5 @@
-import { cn } from '@narsil-ui/Components/utils';
-import { ReactSVG } from 'react-svg';
+import { cn } from "@narsil-ui/Components/utils";
+import { ReactSVG } from "react-svg";
 
 interface Props {
 	className?: string;
@@ -8,7 +8,7 @@ interface Props {
 
 const Svg = ({ className, src, ...props }: Props) => {
 	const beforeInjection = (svg: any) => {
-		const classNames: string[] = cn('w-5 h-5', className).split(' ');
+		const classNames: string[] = cn("w-5 h-5", className).split(" ");
 
 		classNames.map((className) => {
 			svg.classList.add(className);

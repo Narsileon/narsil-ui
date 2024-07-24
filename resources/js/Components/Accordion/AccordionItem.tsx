@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
+import * as React from "react";
 
 const AccordionItem = React.forwardRef<
 	React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -8,7 +8,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<AccordionPrimitive.Item
 		ref={ref}
-		className={cn('border-b', className)}
+		className={cn("border-b", className)}
 		{...props}
 	/>
 ));

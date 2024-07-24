@@ -1,6 +1,6 @@
-import { cn } from '@narsil-ui/Components';
-import * as AvatarPrimitive from '@radix-ui/react-avatar';
-import * as React from 'react';
+import { cn } from "@narsil-ui/Components";
+import * as AvatarPrimitive from "@radix-ui/react-avatar";
+import * as React from "react";
 
 const AvatarImage = React.forwardRef<
 	React.ElementRef<typeof AvatarPrimitive.Image>,
@@ -8,7 +8,7 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
 	<AvatarPrimitive.Image
 		ref={ref}
-		className={cn('aspect-square h-full w-full', className)}
+		className={cn("aspect-square h-full w-full", className)}
 		{...props}
 	/>
 ));

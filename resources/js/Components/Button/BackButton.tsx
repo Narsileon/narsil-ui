@@ -1,8 +1,8 @@
-import { Button } from '@narsil-ui/Components';
-import { ButtonProps } from '@narsil-ui/Components/Button/Button';
-import { router } from '@inertiajs/react';
-import { useTranslationsStore } from '@narsil-ui/Stores/translationStore';
-import * as React from 'react';
+import { Button } from "@narsil-ui/Components";
+import { ButtonProps } from "@narsil-ui/Components/Button/Button";
+import { router } from "@inertiajs/react";
+import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import * as React from "react";
 
 interface BackButtonProps extends ButtonProps {
 	isDirty?: boolean;
@@ -12,7 +12,7 @@ interface BackButtonProps extends ButtonProps {
 const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(({ href, isDirty = false, ...props }, ref) => {
 	const { trans } = useTranslationsStore();
 
-	const message = trans('Do you really want to leave this page? Unsaved data has been detected.');
+	const message = trans("Do you really want to leave this page? Unsaved data has been detected.");
 
 	const onClick = () => {
 		if (isDirty) {
@@ -32,7 +32,7 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(({ href,
 			onClick={onClick}
 			{...props}
 		>
-			{trans('common.back')}
+			{trans("common.back")}
 		</Button>
 	) : null;
 });

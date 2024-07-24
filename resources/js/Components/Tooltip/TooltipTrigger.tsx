@@ -1,4 +1,4 @@
-import * as TooltipPrimitive from '@radix-ui/react-tooltip';
+import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 const TooltipTrigger = TooltipPrimitive.Trigger;
 
