@@ -1,11 +1,14 @@
-import { cn } from "@narsil-ui/Components";
+import { cn, Heading } from "@narsil-ui/Components";
+import { HeadingProps } from "@narsil-ui/Components/Heading/Heading";
 import * as React from "react";
 
-const CardTitle = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLHeadingElement>>(
-	({ className, ...props }, ref) => (
-		<h3
+const CardTitle = React.forwardRef<HTMLParagraphElement, HeadingProps>(
+	({ className, level = "h3", variant = "h4", ...props }, ref) => (
+		<Heading
 			ref={ref}
-			className={cn("flex items-center text-2xl font-semibold leading-none tracking-tight", className)}
+			className={cn("flex items-center leading-none", className)}
+			level={level}
+			variant={variant}
 			{...props}
 		/>
 	)

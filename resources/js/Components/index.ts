@@ -18,6 +18,7 @@ export * from "./Container";
 export * from "./ContextMenu";
 export * from "./Dialog";
 export * from "./DropdownMenu";
+export * from "./Heading";
 export * from "./NavigationMenu";
 export * from "./Pagination";
 export * from "./Popover";

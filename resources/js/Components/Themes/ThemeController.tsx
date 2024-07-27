@@ -6,7 +6,7 @@ import {
 	Button,
 	Card,
 	CardContent,
-	CardTitle,
+	Heading,
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
@@ -50,7 +50,12 @@ const ThemeController = () => {
 			>
 				<Card variant='inline'>
 					<CardContent>
-						<div>{trans("Mode")}</div>
+						<Heading
+							level='h2'
+							variant='h5'
+						>
+							{trans("Mode")}
+						</Heading>
 						<div className='grid grid-cols-3 w-full gap-2'>
 							<Button
 								className={"flex items-center justify-start gap-2 text-xs"}
@@ -84,7 +89,12 @@ const ThemeController = () => {
 							</Button>
 						</div>
 
-						<div>{trans("Color")}</div>
+						<Heading
+							level='h2'
+							variant='h5'
+						>
+							{trans("Color")}
+						</Heading>
 						<div className='grid grid-cols-3 w-full gap-2'>
 							{Object.entries(themes).map(([theme, backgroundColor], index) => {
 								return (
@@ -108,7 +118,12 @@ const ThemeController = () => {
 							})}
 						</div>
 
-						<div>{trans("Radius")}</div>
+						<Heading
+							level='h2'
+							variant='h5'
+						>
+							{trans("Radius")}
+						</Heading>
 						<Slider
 							defaultValue={[radius]}
 							min={0}
@@ -117,7 +132,12 @@ const ThemeController = () => {
 							onValueChange={(value) => setRadius(value[0])}
 						/>
 
-						<div>{trans("Size")}</div>
+						<Heading
+							level='h2'
+							variant='h5'
+						>
+							{trans("Size")}
+						</Heading>
 						<Slider
 							defaultValue={[size]}
 							min={0.75}

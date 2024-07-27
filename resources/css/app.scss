@@ -79,24 +79,6 @@
 	body {
 		@apply bg-background text-foreground;
 	}
-	h1 {
-		@apply scroll-m-20 text-xl font-semibold tracking-tight;
-	}
-	h2 {
-		@apply scroll-m-20 text-xl font-semibold tracking-tight;
-	}
-	h3 {
-		@apply scroll-m-20 text-xl font-semibold tracking-tight;
-	}
-	h4 {
-		@apply scroll-m-20 text-xl font-semibold tracking-tight;
-	}
-	h5 {
-		@apply scroll-m-20 text-xl font-semibold tracking-tight;
-	}
-	h6 {
-		@apply scroll-m-20 text-xl font-semibold tracking-tight;
-	}
 	p {
 		@apply text-sm leading-7 [&:not(:first-child)]:mt-6;
 	}
