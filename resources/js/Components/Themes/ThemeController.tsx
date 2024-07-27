@@ -50,7 +50,7 @@ const ThemeController = () => {
 			>
 				<Card variant='inline'>
 					<CardContent>
-						<CardTitle>{trans("Mode")}</CardTitle>
+						<div>{trans("Mode")}</div>
 						<div className='grid grid-cols-3 w-full gap-2'>
 							<Button
 								className={"flex items-center justify-start gap-2 text-xs"}
@@ -84,7 +84,7 @@ const ThemeController = () => {
 							</Button>
 						</div>
 
-						<CardTitle>{trans("Color")}</CardTitle>
+						<div>{trans("Color")}</div>
 						<div className='grid grid-cols-3 w-full gap-2'>
 							{Object.entries(themes).map(([theme, backgroundColor], index) => {
 								return (
@@ -108,7 +108,7 @@ const ThemeController = () => {
 							})}
 						</div>
 
-						<CardTitle>{trans("Color")}</CardTitle>
+						<div>{trans("Color")}</div>
 						<Slider
 							defaultValue={[radius]}
 							min={0}
@@ -117,7 +117,7 @@ const ThemeController = () => {
 							onValueChange={(value) => setRadius(value[0])}
 						/>
 
-						<CardTitle>{trans("Size")}</CardTitle>
+						<div>{trans("Size")}</div>
 						<Slider
 							defaultValue={[size]}
 							min={0.75}
