@@ -1,7 +1,24 @@
 {
+	"Blue": "Blue",
+	"Color": "Color",
+	"Dark": "Dark",
 	"Enter full screen mode": "Enter full screen mode",
 	"Exit full screen mode": "Exit full screen mode",
+	"Gray": "Gray",
+	"Green": "Green",
+	"Light": "Light",
+	"Mode": "Mode",
+	"Neutral": "Neutral",
 	"No options.": "No options.",
+	"Orange": "Orange",
+	"Pink": "Pink",
+	"Radius": "Radius",
+	"Red": "Red",
 	"Search...": "Search...",
-	"Select...": "Select..."
+	"Select...": "Select...",
+	"Size": "Size",
+	"System": "System",
+	"Theme": "Theme",
+	"Violet": "Violet",
+	"Yellow": "Yellow"
 }

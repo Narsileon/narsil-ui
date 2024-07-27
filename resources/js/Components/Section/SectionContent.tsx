@@ -1,14 +1,5 @@
-import { cn } from "@narsil-ui/Components";
-import * as React from "react";
+import { CardContent } from "@narsil-ui/Components";
 
-const SectionContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-	({ className, ...props }, ref) => (
-		<div
-			ref={ref}
-			className={cn("pt-0 space-y-4", className)}
-			{...props}
-		/>
-	)
-);
+const SectionContent = CardContent;
 
 export default SectionContent;

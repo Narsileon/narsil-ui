@@ -33,6 +33,7 @@ export * from "./Svg";
 export * from "./Switch";
 export * from "./Table";
 export * from "./Tabs";
+export * from "./Themes";
 export * from "./Toaster";
 export * from "./Toggle";
 export * from "./Tooltip";

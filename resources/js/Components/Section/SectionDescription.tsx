@@ -1,14 +1,5 @@
-import { cn } from "@narsil-ui/Components";
-import * as React from "react";
+import { CardDescription } from "@narsil-ui/Components";
 
-const SectionDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
-	({ className, ...props }, ref) => (
-		<p
-			ref={ref}
-			className={cn("text-sm text-muted-foreground", className)}
-			{...props}
-		/>
-	)
-);
+const SectionDescription = CardDescription;
 
 export default SectionDescription;
