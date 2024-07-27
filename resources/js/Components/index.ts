@@ -3,6 +3,7 @@ import { cn } from "./utils";
 export * from "./Accordion";
 export * from "./Alert";
 export * from "./AlertDialog";
+export * from "./App";
 export * from "./Avatar";
 export * from "./Badge";
 export * from "./Breadcrumb";

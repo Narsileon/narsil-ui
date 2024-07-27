@@ -6,6 +6,7 @@
 	"Exit full screen mode": "Exit full screen mode",
 	"Gray": "Gray",
 	"Green": "Green",
+	"Language": "Language",
 	"Light": "Light",
 	"Mode": "Mode",
 	"Neutral": "Neutral",
@@ -19,6 +20,7 @@
 	"Size": "Size",
 	"System": "System",
 	"Theme": "Theme",
+	"Version": "Version",
 	"Violet": "Violet",
 	"Yellow": "Yellow"
 }
