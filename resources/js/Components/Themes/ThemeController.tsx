@@ -52,7 +52,7 @@ const ThemeController = () => {
 					<CardContent>
 						<Heading
 							level='h2'
-							variant='h5'
+							variant='h6'
 						>
 							{trans("Mode")}
 						</Heading>
@@ -91,7 +91,7 @@ const ThemeController = () => {
 
 						<Heading
 							level='h2'
-							variant='h5'
+							variant='h6'
 						>
 							{trans("Color")}
 						</Heading>
@@ -120,7 +120,7 @@ const ThemeController = () => {
 
 						<Heading
 							level='h2'
-							variant='h5'
+							variant='h6'
 						>
 							{trans("Radius")}
 						</Heading>
@@ -134,7 +134,7 @@ const ThemeController = () => {
 
 						<Heading
 							level='h2'
-							variant='h5'
+							variant='h6'
 						>
 							{trans("Size")}
 						</Heading>
