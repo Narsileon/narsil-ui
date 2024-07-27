@@ -1,3 +1,4 @@
 import { ThemeProvider, useTheme } from "./ThemeProvider";
+import ThemeController from "./ThemeController";
 
-export { ThemeProvider, useTheme };
+export { ThemeController, ThemeProvider, useTheme };
