@@ -108,7 +108,7 @@ const ThemeController = () => {
 							})}
 						</div>
 
-						<div>{trans("Color")}</div>
+						<div>{trans("Radius")}</div>
 						<Slider
 							defaultValue={[radius]}
 							min={0}
