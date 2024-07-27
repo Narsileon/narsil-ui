@@ -6,7 +6,7 @@ export const cardVariants = cva(cn("text-card-foreground"), {
 	variants: {
 		variant: {
 			outline: "rounded-lg border bg-card p-4 shadow-md",
-			inline: "bg-destructive font-medium text-destructive-foreground hover:bg-destructive/90",
+			inline: "",
 		},
 	},
 	defaultVariants: {

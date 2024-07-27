@@ -49,68 +49,66 @@ const ThemeController = () => {
 				collisionPadding={8}
 			>
 				<Card variant='inline'>
-					<CardTitle>{trans("Mode")}</CardTitle>
-
-					<CardContent className='grid grid-cols-3 w-full gap-2'>
-						<Button
-							className={"flex items-center justify-start gap-2 text-xs"}
-							isActive={mode === "light"}
-							size='sm'
-							variant='outline'
-							onClick={() => setMode("light")}
-						>
-							<Sun className='w-5 h-5' />
-							{trans("Light")}
-						</Button>
-						<Button
-							className={"flex items-center justify-start gap-2 text-xs"}
-							isActive={mode === "dark"}
-							size='sm'
-							variant='outline'
-							onClick={() => setMode("dark")}
-						>
-							<Moon className='w-5 h-5' />
-							{trans("Dark")}
-						</Button>
-						<Button
-							className={"flex items-center justify-start gap-2 text-xs"}
-							isActive={mode === "system"}
-							size='sm'
-							variant='outline'
-							onClick={() => setMode("system")}
-						>
-							<SunMoon />
-							{trans("System")}
-						</Button>
-					</CardContent>
-
-					<CardTitle>{trans("Color")}</CardTitle>
-
-					<CardContent className='grid grid-cols-3 w-full gap-2'>
-						{Object.entries(themes).map(([theme, backgroundColor], index) => {
-							return (
-								<Button
-									className={"flex items-center justify-start gap-2 text-xs"}
-									isActive={theme === color}
-									size='sm'
-									variant='outline'
-									onClick={() => setColor(theme as Color)}
-									key={index}
-								>
-									<span
-										className='min-w-5 w-5 h-5 rounded-full'
-										style={{
-											backgroundColor: backgroundColor,
-										}}
-									/>
-									{trans(upperFirst(theme))}
-								</Button>
-							);
-						})}
-					</CardContent>
-
-					<CardTitle>{trans("Radius")}</CardTitle>
 					<CardContent>
+						<CardTitle>{trans("Mode")}</CardTitle>
+						<div className='grid grid-cols-3 w-full gap-2'>
+							<Button
+								className={"flex items-center justify-start gap-2 text-xs"}
+								isActive={mode === "light"}
+								size='sm'
+								variant='outline'
+								onClick={() => setMode("light")}
+							>
+								<Sun className='w-5 h-5' />
+								{trans("Light")}
+							</Button>
+							<Button
+								className={"flex items-center justify-start gap-2 text-xs"}
+								isActive={mode === "dark"}
+								size='sm'
+								variant='outline'
+								onClick={() => setMode("dark")}
+							>
+								<Moon className='w-5 h-5' />
+								{trans("Dark")}
+							</Button>
+							<Button
+								className={"flex items-center justify-start gap-2 text-xs"}
+								isActive={mode === "system"}
+								size='sm'
+								variant='outline'
+								onClick={() => setMode("system")}
+							>
+								<SunMoon />
+								{trans("System")}
+							</Button>
+						</div>
+
+						<CardTitle>{trans("Color")}</CardTitle>
+						<div className='grid grid-cols-3 w-full gap-2'>
+							{Object.entries(themes).map(([theme, backgroundColor], index) => {
+								return (
+									<Button
+										className={"flex items-center justify-start gap-2 text-xs"}
+										isActive={theme === color}
+										size='sm'
+										variant='outline'
+										onClick={() => setColor(theme as Color)}
+										key={index}
+									>
+										<span
+											className='min-w-5 w-5 h-5 rounded-full'
+											style={{
+												backgroundColor: backgroundColor,
+											}}
+										/>
+										{trans(upperFirst(theme))}
+									</Button>
+								);
+							})}
+						</div>
+
+						<CardTitle>{trans("Color")}</CardTitle>
 						<Slider
 							defaultValue={[radius]}
 							min={0}
@@ -118,10 +116,8 @@ const ThemeController = () => {
 							step={0.05}
 							onValueChange={(value) => setRadius(value[0])}
 						/>
-					</CardContent>
 
-					<CardTitle>{trans("Size")}</CardTitle>
-					<CardContent>
+						<CardTitle>{trans("Size")}</CardTitle>
 						<Slider
 							defaultValue={[size]}
 							min={0.75}
