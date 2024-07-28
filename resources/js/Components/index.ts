@@ -36,7 +36,7 @@ export * from "./Switch";
 export * from "./Table";
 export * from "./Tabs";
 export * from "./Themes";
-export * from "./Toaster";
+export * from "./Toast";
 export * from "./Toggle";
 export * from "./Tooltip";
 export * from "./utils";
