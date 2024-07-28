@@ -5,6 +5,7 @@ import CommandGroup from "./CommandGroup";
 import CommandInput from "./CommandInput";
 import CommandItem from "./CommandItem";
 import CommandList from "./CommandList";
+import CommandLoading from "./CommandLoading";
 import CommandSeparator from "./CommandSeparator";
 import CommandShortcut from "./CommandShortcut";
 
@@ -16,6 +17,7 @@ export {
 	CommandInput,
 	CommandItem,
 	CommandList,
+	CommandLoading,
 	CommandSeparator,
 	CommandShortcut,
 };
