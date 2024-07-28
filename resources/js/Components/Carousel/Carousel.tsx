@@ -36,7 +36,7 @@ export function useCarousel() {
 }
 
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
-	({ orientation = "horizontal", opts, setApi, plugins, className, children, ...props }, ref) => {
+	({ children, className, opts, orientation = "horizontal", plugins, setApi, ...props }, ref) => {
 		const [carouselRef, api] = useEmblaCarousel(
 			{
 				...opts,
@@ -104,20 +104,20 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 				value={{
 					carouselRef,
 					api: api,
-					opts,
+					canScrollNext: canScrollNext,
+					canScrollPrev: canScrollPrev,
+					opts: opts,
 					orientation: orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
-					scrollPrev,
-					scrollNext,
-					canScrollPrev,
-					canScrollNext,
+					scrollNext: scrollNext,
+					scrollPrev: scrollPrev,
 				}}
 			>
 				<div
 					ref={ref}
-					onKeyDownCapture={handleKeyDown}
 					className={cn("relative", className)}
 					role='region'
 					aria-roledescription='carousel'
+					onKeyDownCapture={handleKeyDown}
 					{...props}
 				>
 					{children}
