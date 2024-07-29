@@ -44,7 +44,11 @@ const Combobox = React.forwardRef<
 	const [open, setOpen] = React.useState(false);
 
 	if (sort) {
-		options = sortBy(options, (option) => option[labelKey].toLowerCase());
+		options = sortBy(options, (option) => {
+			const label = option[labelKey];
+
+			return isString(label) ? label.toLowerCase : label;
+		});
 	}
 
 	const getValueOption = (value: string | number) => {
@@ -92,7 +96,7 @@ const Combobox = React.forwardRef<
 										}}
 										key={index}
 									>
-										{ucFirst ? upperFirst(optionLabel) : optionLabel}
+										{ucFirst && isString(optionLabel) ? upperFirst(optionLabel) : optionLabel}
 										<Check className={cn("ml-auto h-4 w-4", value === optionValue ? "opacity-100" : "opacity-0")} />
 									</CommandItem>
 								);
