@@ -1,5 +1,4 @@
 import { Button } from "@narsil-ui/Components";
-import { ButtonProps } from "@narsil-ui/Components/Button/Button";
 import * as React from "react";
 
 const PaginationButton = React.forwardRef<HTMLButtonElement, ButtonProps>(({ isActive, ...props }, ref) => (

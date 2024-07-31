@@ -4,26 +4,6 @@ import { PaginationButton, PaginationList, PaginationItem, PaginationNav } from 
 import { useEffect } from "react";
 import * as React from "react";
 
-type PaginationLink = {
-	active: boolean;
-	label: string;
-	url: string | null;
-};
-
-type SimpleLinks = {
-	first: string | null;
-	last: string | null;
-	next: string | null;
-	prev: string | null;
-};
-
-interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
-	currentPage: number;
-	lastPage: number;
-	links: PaginationLink[];
-	simpleLinks: SimpleLinks;
-}
-
 const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 	({ currentPage, lastPage, links, simpleLinks, ...props }, ref) => {
 		useEffect(() => {

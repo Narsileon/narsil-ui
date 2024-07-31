@@ -12,12 +12,6 @@ import {
 	TooltipWrapper,
 } from "@narsil-ui/Components";
 
-interface AppLanguageProps {
-	languages: LanguageType[];
-	locale: string;
-	variant?: "long" | "short";
-}
-
 const AppLanguage = ({ languages, locale, variant = "short" }: AppLanguageProps) => {
 	const { trans } = useTranslationsStore();
 
