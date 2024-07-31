@@ -4,8 +4,6 @@ import { cn } from "@narsil-ui/Components";
 import { DayPicker } from "react-day-picker";
 import * as React from "react";
 
-export type CalendarProps = React.ComponentProps<typeof DayPicker>;
-
 const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => {
 	return (
 		<DayPicker
@@ -46,8 +44,8 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 				...classNames,
 			}}
 			components={{
-				IconLeft: () => <ChevronLeft className='h-4 w-4' />,
-				IconRight: () => <ChevronRight className='h-4 w-4' />,
+				Chevron: (props) =>
+					props.orientation === "left" ? <ChevronLeft className='h-4 w-4' /> : <ChevronRight className='h-4 w-4' />,
 			}}
 			showOutsideDays={showOutsideDays}
 			{...props}

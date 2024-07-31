@@ -1,0 +1,1 @@
+interface CardTitleProps extends HeadingProps {}

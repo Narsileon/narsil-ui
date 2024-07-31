@@ -2,7 +2,7 @@ import { cn } from "@narsil-ui/Components";
 import { MoreHorizontal } from "lucide-react";
 import * as React from "react";
 
-const BreadcrumbEllipsis = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
+const BreadcrumbEllipsis = React.forwardRef<HTMLSpanElement, BreadcrumbEllipsisProps>(
 	({ className, ...props }, ref) => (
 		<span
 			ref={ref}

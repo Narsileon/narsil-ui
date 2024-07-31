@@ -3,11 +3,6 @@ import { router } from "@inertiajs/react";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
 
-interface BackButtonProps extends ButtonProps {
-	isDirty?: boolean;
-	href: string;
-}
-
 const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(({ href, isDirty = false, ...props }, ref) => {
 	const { trans } = useTranslationsStore();
 

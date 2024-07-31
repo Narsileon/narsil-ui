@@ -1,7 +1,7 @@
 import { Button } from "@narsil-ui/Components";
 import * as React from "react";
 
-const PaginationButton = React.forwardRef<HTMLButtonElement, ButtonProps>(({ isActive, ...props }, ref) => (
+const PaginationButton = React.forwardRef<HTMLButtonElement, PaginationButtonProps>(({ isActive, ...props }, ref) => (
 	<Button
 		ref={ref}
 		aria-current={isActive ? "page" : undefined}

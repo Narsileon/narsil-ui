@@ -2,12 +2,6 @@ import { cn, Select, SelectContent, SelectTrigger, SelectValue, SelectItem } fro
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
 
-interface PaginationSelectProps extends React.HTMLAttributes<HTMLDivElement> {
-	options?: number[];
-	value?: number | string;
-	onValueChange?: (value: string) => void;
-}
-
 const defaultOptions = [10, 25, 50, 100];
 
 const PaginationSelect = React.forwardRef<HTMLDivElement, PaginationSelectProps>(

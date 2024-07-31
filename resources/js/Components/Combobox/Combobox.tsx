@@ -18,95 +18,77 @@ import {
 	PopoverTrigger,
 } from "@narsil-ui/Components";
 
-export type SelectOption = {
-	label?: string;
-	value?: string | number;
-	options?: SelectOption[];
-	[key: string]: any;
-};
+const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Content>, ComboboxProps>(
+	({ labelKey = "label", sort = true, ucFirst = true, value, valueKey = "value", options, onChange }, ref) => {
+		const { trans } = useTranslationsStore();
 
-interface ComboboxProps {
-	labelKey?: string;
-	options?: SelectOption[];
-	sort?: boolean;
-	ucFirst?: boolean;
-	value: string | number;
-	valueKey?: string;
-	onChange: (value: number | string) => void;
-}
+		const [open, setOpen] = React.useState(false);
 
-const Combobox = React.forwardRef<
-	React.ElementRef<typeof PopoverPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & ComboboxProps
->(({ labelKey = "label", sort = true, ucFirst = true, value, valueKey = "value", options, onChange }, ref) => {
-	const { trans } = useTranslationsStore();
+		if (sort) {
+			options = sortBy(options, (option) => {
+				const label = option[labelKey];
 
-	const [open, setOpen] = React.useState(false);
+				return isString(label) ? label.toLowerCase : label;
+			});
+		}
 
-	if (sort) {
-		options = sortBy(options, (option) => {
-			const label = option[labelKey];
+		const getValueOption = (value: string | number) => {
+			return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
+		};
 
-			return isString(label) ? label.toLowerCase : label;
-		});
-	}
-
-	const getValueOption = (value: string | number) => {
-		return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
-	};
-
-	return (
-		<Popover
-			open={open}
-			onOpenChange={setOpen}
-		>
-			<PopoverTrigger asChild={true}>
-				<Button
-					aria-expanded={open}
-					className='w-full justify-between'
-					role='combobox'
-					variant='outline'
-				>
-					{value ? (ucFirst ? upperFirst(getValueOption(value)) : getValueOption(value)) : trans("Select...")}
-					<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
-				</Button>
-			</PopoverTrigger>
-			<PopoverContent
-				className='p-0'
-				align='start'
+		return (
+			<Popover
+				open={open}
+				onOpenChange={setOpen}
 			>
-				<Command>
-					<CommandInput
-						placeholder={trans("Search...")}
-						className='h-9'
-					/>
-					<CommandList>
-						<CommandEmpty>{trans("No options.")}</CommandEmpty>
-						<CommandGroup>
-							{options?.map((option, index) => {
-								const optionLabel = isString(option) ? option : option[labelKey];
-								const optionValue = isString(option) ? option : option[valueKey];
+				<PopoverTrigger asChild={true}>
+					<Button
+						aria-expanded={open}
+						className='w-full justify-between'
+						role='combobox'
+						variant='outline'
+					>
+						{value ? (ucFirst ? upperFirst(getValueOption(value)) : getValueOption(value)) : trans("Select...")}
+						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+					</Button>
+				</PopoverTrigger>
+				<PopoverContent
+					className='p-0'
+					align='start'
+				>
+					<Command>
+						<CommandInput
+							placeholder={trans("Search...")}
+							className='h-9'
+						/>
+						<CommandList>
+							<CommandEmpty>{trans("No options.")}</CommandEmpty>
+							<CommandGroup>
+								{options?.map((option, index) => {
+									const optionLabel = isString(option) ? option : option[labelKey];
+									const optionValue = isString(option) ? option : option[valueKey];
 
-								return (
-									<CommandItem
-										value={optionValue}
-										onSelect={() => {
-											onChange(optionValue);
-											setOpen(false);
-										}}
-										key={index}
-									>
-										{ucFirst && isString(optionLabel) ? upperFirst(optionLabel) : optionLabel}
-										<Check className={cn("ml-auto h-4 w-4", value === optionValue ? "opacity-100" : "opacity-0")} />
-									</CommandItem>
-								);
-							})}
-						</CommandGroup>
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
-	);
-});
+									return (
+										<CommandItem
+											value={optionValue}
+											onSelect={() => {
+												onChange(optionValue);
+												setOpen(false);
+											}}
+											key={index}
+										>
+											{ucFirst && isString(optionLabel) ? upperFirst(optionLabel) : optionLabel}
+											<Check className={cn("ml-auto h-4 w-4", value === optionValue ? "opacity-100" : "opacity-0")} />
+										</CommandItem>
+									);
+								})}
+							</CommandGroup>
+						</CommandList>
+					</Command>
+				</PopoverContent>
+			</Popover>
+		);
+	}
+);
 
 export default Combobox;
