@@ -1,27 +1,6 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
-import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-react";
-
-type CarouselApi = UseEmblaCarouselType[1];
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
-type CarouselOptions = UseCarouselParameters[0];
-type CarouselPlugin = UseCarouselParameters[1];
-
-type CarouselProps = {
-	opts?: CarouselOptions;
-	orientation?: "horizontal" | "vertical";
-	plugins?: CarouselPlugin;
-	setApi?: (api: CarouselApi) => void;
-};
-
-type CarouselContextProps = {
-	api: ReturnType<typeof useEmblaCarousel>[1];
-	canScrollPrev: boolean;
-	canScrollNext: boolean;
-	carouselRef: ReturnType<typeof useEmblaCarousel>[0];
-	scrollPrev: () => void;
-	scrollNext: () => void;
-} & CarouselProps;
+import useEmblaCarousel from "embla-carousel-react";
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 

@@ -1,0 +1,1 @@
+interface CarouselNextProps extends ButtonProps {}

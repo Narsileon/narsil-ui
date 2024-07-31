@@ -3,7 +3,7 @@ import { Button, cn } from "@narsil-ui/Components";
 import { useCarousel } from "./Carousel";
 import * as React from "react";
 
-const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProps<typeof Button>>(
+const CarouselPrevious = React.forwardRef<HTMLButtonElement, CarouselPreviousProps>(
 	({ className, variant = "outline", size = "icon", ...props }, ref) => {
 		const { canScrollPrev, orientation, scrollPrev } = useCarousel();
 
