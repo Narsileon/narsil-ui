@@ -4,7 +4,7 @@ import * as React from "react";
 
 const DialogDescription = React.forwardRef<
 	React.ElementRef<typeof DialogPrimitive.Description>,
-	React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
+	DialogDescriptionProps
 >(({ className, ...props }, ref) => (
 	<DialogPrimitive.Description
 		ref={ref}
