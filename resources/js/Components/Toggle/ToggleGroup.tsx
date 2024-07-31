@@ -4,7 +4,7 @@ import { VariantProps } from "class-variance-authority";
 import * as React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 
-export const ToggleGroupContext = React.createContext<VariantProps<typeof toggleVariants>>({
+const ToggleGroupContext = React.createContext<VariantProps<typeof toggleVariants>>({
 	size: "default",
 	variant: "default",
 });
@@ -21,5 +21,15 @@ const ToggleGroup = React.forwardRef<
 		<ToggleGroupContext.Provider value={{ variant, size }}>{children}</ToggleGroupContext.Provider>
 	</ToggleGroupPrimitive.Root>
 ));
+
+export function useToggleGroup() {
+	const context = React.useContext(ToggleGroupContext);
+
+	if (!context) {
+		throw new Error("useToggleGroup must be used within a <ToggleGroup />");
+	}
+
+	return context;
+}
 
 export default ToggleGroup;

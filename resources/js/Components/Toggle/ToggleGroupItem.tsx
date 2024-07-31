@@ -1,5 +1,4 @@
-import { cn } from "@narsil-ui/Components";
-import { ToggleGroupContext } from "./ToggleGroup";
+import { cn, useToggleGroup } from "@narsil-ui/Components";
 import { toggleVariants } from "./Toggle";
 import { VariantProps } from "class-variance-authority";
 import * as React from "react";
@@ -9,7 +8,7 @@ const ToggleGroupItem = React.forwardRef<
 	React.ElementRef<typeof ToggleGroupPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>
 >(({ className, children, variant, size, ...props }, ref) => {
-	const context = React.useContext(ToggleGroupContext);
+	const context = useToggleGroup();
 
 	return (
 		<ToggleGroupPrimitive.Item

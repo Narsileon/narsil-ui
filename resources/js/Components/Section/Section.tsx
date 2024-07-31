@@ -6,7 +6,7 @@ type SectionContextValue = {
 	toggleFullscreen: () => void;
 };
 
-export const SectionContext = React.createContext<SectionContextValue>({} as SectionContextValue);
+const SectionContext = React.createContext<SectionContextValue>({} as SectionContextValue);
 
 const Section = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
 	({ className, ...props }, ref) => {
@@ -32,5 +32,15 @@ const Section = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEle
 		);
 	}
 );
+
+export function useSection() {
+	const context = React.useContext(SectionContext);
+
+	if (!context) {
+		throw new Error("useToggleGroup must be used within a <Section />");
+	}
+
+	return context;
+}
 
 export default Section;

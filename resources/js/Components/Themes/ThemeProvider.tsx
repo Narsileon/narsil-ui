@@ -36,7 +36,7 @@ const initialState: ThemeProviderState = {
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
 
-export const ThemeProvider = ({
+const ThemeProvider = ({
 	children,
 	defaultColor = "gray",
 	defaultMode = "system",
@@ -169,8 +169,10 @@ export const useTheme = () => {
 	const context = useContext(ThemeProviderContext);
 
 	if (context === undefined) {
-		throw new Error("useTheme must be used within a ThemeProvider");
+		throw new Error("useTheme must be used within a <ThemeProvider />");
 	}
 
 	return context;
 };
+
+export default ThemeProvider;

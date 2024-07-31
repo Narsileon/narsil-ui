@@ -19,14 +19,14 @@ const PaginationResult = React.forwardRef<HTMLSpanElement, PaginationResultProps
 				{...props}
 			>
 				{total > 0
-					? trans("pagination.results", {
+					? trans("Showing :from to :to of :total results", {
 							replacements: {
 								from: from,
 								to: to,
 								total: total,
 							},
 					  })
-					: trans("pagination.empty")}
+					: trans("No results.")}
 			</span>
 		);
 	}

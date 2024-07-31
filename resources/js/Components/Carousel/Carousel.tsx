@@ -25,16 +25,6 @@ type CarouselContextProps = {
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
-export function useCarousel() {
-	const context = React.useContext(CarouselContext);
-
-	if (!context) {
-		throw new Error("useCarousel must be used within a <Carousel />");
-	}
-
-	return context;
-}
-
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
 	({ children, className, opts, orientation = "horizontal", plugins, setApi, ...props }, ref) => {
 		const [carouselRef, api] = useEmblaCarousel(
@@ -126,5 +116,15 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 		);
 	}
 );
+
+export function useCarousel() {
+	const context = React.useContext(CarouselContext);
+
+	if (!context) {
+		throw new Error("useCarousel must be used within a <Carousel />");
+	}
+
+	return context;
+}
 
 export default Carousel;

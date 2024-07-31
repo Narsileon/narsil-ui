@@ -1,5 +1,5 @@
 import Toggle from "./Toggle";
-import ToggleGroup from "./ToggleGroup";
+import ToggleGroup, { useToggleGroup } from "./ToggleGroup";
 import ToggleGroupItem from "./ToggleGroupItem";
 
-export { Toggle, ToggleGroup, ToggleGroupItem };
+export { Toggle, ToggleGroup, ToggleGroupItem, useToggleGroup };

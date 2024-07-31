@@ -1,6 +1,5 @@
-import { cn, Separator, Toggle, TooltipWrapper } from "@narsil-ui/Components";
+import { cn, Separator, Toggle, TooltipWrapper, useSection } from "@narsil-ui/Components";
 import { Maximize, Minimize } from "lucide-react";
-import { SectionContext } from "./Section";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
 
@@ -8,7 +7,7 @@ const SectionHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
 	({ children, className, ...props }, ref) => {
 		const { trans } = useTranslationsStore();
 
-		const sectionContext = React.useContext(SectionContext);
+		const context = useSection();
 
 		return (
 			<>
@@ -19,11 +18,9 @@ const SectionHeader = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTML
 				>
 					{children}
 
-					<TooltipWrapper
-						tooltip={trans(sectionContext?.isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}
-					>
-						<Toggle onClick={() => sectionContext?.toggleFullscreen()}>
-							{sectionContext?.isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+					<TooltipWrapper tooltip={trans(context?.isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
+						<Toggle onClick={() => context?.toggleFullscreen()}>
+							{context?.isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
 						</Toggle>
 					</TooltipWrapper>
 				</div>
