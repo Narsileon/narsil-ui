@@ -50,7 +50,7 @@
 		"date-fns": "^3.6",
 		"embla-carousel-autoplay": "^8.1.7",
 		"embla-carousel-react": "^8.1",
-		"lucide-react": "^0.414",
+		"lucide-react": "^0.418",
 		"react-day-picker": "^9.0",
 		"react-hook-form": "^7.52",
 		"react-resizable-panels": "^2.0",
