@@ -13,6 +13,7 @@ type SimpleLinks = {
 
 interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
 	currentPage: number;
+	data?: Pick<import("@inertiajs/react").InertiaLinkProps, "data">;
 	lastPage: number;
 	links: PaginationLink[];
 	simpleLinks: SimpleLinks;

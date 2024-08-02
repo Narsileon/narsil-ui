@@ -5,10 +5,10 @@ import { useEffect } from "react";
 import * as React from "react";
 
 const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
-	({ currentPage, lastPage, links, simpleLinks, ...props }, ref) => {
+	({ currentPage, data, lastPage, links, simpleLinks, ...props }, ref) => {
 		useEffect(() => {
 			if (simpleLinks.first && currentPage > lastPage) {
-				router.visit(simpleLinks.first, {
+				router.get(simpleLinks.first, data, {
 					preserveScroll: true,
 					preserveState: true,
 				});
@@ -28,6 +28,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 						>
 							<Link
 								as='button'
+								data={data}
 								href={simpleLinks.first ?? ""}
 								preserveScroll={true}
 								preserveState={true}
@@ -43,6 +44,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 						>
 							<Link
 								as='button'
+								data={data}
 								href={simpleLinks.prev ?? ""}
 								preserveScroll={true}
 								preserveState={true}
@@ -60,6 +62,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								>
 									<Link
 										as='button'
+										data={data}
 										href={link.url ?? ""}
 										preserveScroll={true}
 										preserveState={true}
@@ -77,6 +80,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 						>
 							<Link
 								as='button'
+								data={data}
 								href={simpleLinks.next ?? ""}
 								preserveScroll={true}
 								preserveState={true}
@@ -92,6 +96,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 						>
 							<Link
 								as='button'
+								data={data}
 								href={simpleLinks.last ?? ""}
 								preserveScroll={true}
 								preserveState={true}
