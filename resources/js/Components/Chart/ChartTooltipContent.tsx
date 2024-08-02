@@ -2,19 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import { getPayloadConfigFromPayload } from "./chart";
 import { useChart } from "./ChartContainer";
 import * as React from "react";
-import * as RechartsPrimitive from "recharts";
 
-const ChartTooltipContent = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-		React.ComponentProps<"div"> & {
-			hideLabel?: boolean;
-			hideIndicator?: boolean;
-			indicator?: "line" | "dot" | "dashed";
-			nameKey?: string;
-			labelKey?: string;
-		}
->(
+const ChartTooltipContent = React.forwardRef<HTMLDivElement, ChartTooltipContentProps>(
 	(
 		{
 			active,

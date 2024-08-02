@@ -1,5 +1,5 @@
-import { ChartConfig, THEMES } from "./chart";
 import { cn } from "@narsil-ui/Components";
+import { THEMES } from "./chart";
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 

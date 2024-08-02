@@ -17,7 +17,7 @@ export const collapsibleTriggerStyle = cva(
 
 const CollapsibleTrigger = React.forwardRef<
 	React.ElementRef<typeof CollapsiblePrimitive.CollapsibleTrigger>,
-	React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.CollapsibleTrigger>
+	CollapsibleTriggerProps
 >(({ className, children, ...props }, ref) => (
 	<CollapsiblePrimitive.CollapsibleTrigger
 		ref={ref}
