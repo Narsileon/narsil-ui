@@ -5,9 +5,7 @@ import * as React from "react";
 
 const ContextMenuSubTrigger = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>,
-	React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubTrigger> & {
-		inset?: boolean;
-	}
+	ContextMenuSubTriggerProps
 >(({ className, inset, children, ...props }, ref) => (
 	<ContextMenuPrimitive.SubTrigger
 		ref={ref}

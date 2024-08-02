@@ -5,7 +5,7 @@ import * as React from "react";
 
 const ContextMenuRadioItem = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.RadioItem>,
-	React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioItem>
+	ContextMenuRadioItemProps
 >(({ className, children, ...props }, ref) => (
 	<ContextMenuPrimitive.RadioItem
 		ref={ref}

@@ -4,7 +4,7 @@ import * as React from "react";
 
 const ContextMenuContent = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content>
+	ContextMenuContentProps
 >(({ className, ...props }, ref) => (
 	<ContextMenuPrimitive.Portal>
 		<ContextMenuPrimitive.Content

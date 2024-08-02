@@ -25,6 +25,7 @@ export * from "./NavigationMenu";
 export * from "./Pagination";
 export * from "./Popover";
 export * from "./RadioGroup";
+export * from "./Resizable";
 export * from "./ScrollArea";
 export * from "./Section";
 export * from "./Select";

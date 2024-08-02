@@ -5,7 +5,7 @@ import * as React from "react";
 
 const ContextMenuCheckboxItem = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
-	React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem>
+	ContextMenuCheckboxItemProps
 >(({ className, children, checked, ...props }, ref) => (
 	<ContextMenuPrimitive.CheckboxItem
 		ref={ref}

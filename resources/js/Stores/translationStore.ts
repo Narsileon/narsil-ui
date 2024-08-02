@@ -1,34 +1,12 @@
 import { create } from "zustand";
 import { upperFirst } from "lodash";
 
-type Translation = {
-	id: number;
-	key: string | null;
-	value: string;
-};
-
-type TransOptions = {
-	replacements?: Record<string, string | number>;
-	upperfirst?: boolean;
-};
-
-type State = {
-	locale: string;
-	translations: { [key: string]: Translation };
-};
-
-type Actions = {
-	trans: (key: string, options?: TransOptions) => string;
-	setLocale: (locale: string) => void;
-	setTranslations: (translations: { [key: string]: Translation }) => void;
-};
-
-const initialState: State = {
+const initialState: TranslationStoreState = {
 	locale: "",
 	translations: {},
 };
 
-export const useTranslationsStore = create<State & Actions>((set, get) => ({
+export const useTranslationsStore = create<TranslationStoreType>((set, get) => ({
 	...initialState,
 	trans: (key, options) => {
 		let text = get().translations[key]?.value ?? key.split(".").pop();

@@ -2,13 +2,7 @@ import { cn } from "@narsil-ui/Components";
 import { GripVertical } from "lucide-react";
 import * as ResizablePrimitive from "react-resizable-panels";
 
-const ResizableHandle = ({
-	withHandle,
-	className,
-	...props
-}: React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> & {
-	withHandle?: boolean;
-}) => (
+const ResizableHandle = ({ withHandle, className, ...props }: ResizableHandleProps) => (
 	<ResizablePrimitive.PanelResizeHandle
 		className={cn(
 			"relative flex w-px items-center justify-center bg-border",

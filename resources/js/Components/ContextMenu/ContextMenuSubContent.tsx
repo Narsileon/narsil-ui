@@ -4,7 +4,7 @@ import * as React from "react";
 
 const ContextMenuSubContent = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.SubContent>,
-	React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent>
+	ContextMenuSubContentProps
 >(({ className, ...props }, ref) => (
 	<ContextMenuPrimitive.SubContent
 		ref={ref}

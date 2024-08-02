@@ -4,7 +4,7 @@ import * as React from "react";
 
 const NavigationMenuList = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.List>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
+	NavigationMenuListProps
 >(({ className, ...props }, ref) => (
 	<NavigationMenuPrimitive.List
 		ref={ref}

@@ -4,7 +4,7 @@ import * as React from "react";
 
 const NavigationMenuViewport = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
+	NavigationMenuViewportProps
 >(({ className, ...props }, ref) => (
 	<div className={cn("absolute left-0 top-full flex justify-center")}>
 		<NavigationMenuPrimitive.Viewport

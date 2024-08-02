@@ -4,7 +4,7 @@ import * as React from "react";
 
 const ContextMenuSeparator = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.Separator>,
-	React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Separator>
+	ContextMenuSeparatorProps
 >(({ className, ...props }, ref) => (
 	<ContextMenuPrimitive.Separator
 		ref={ref}
