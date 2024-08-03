@@ -1,5 +1,5 @@
 interface AppLanguageProps {
-	languages: LanguageType[];
+	languages: LanguageModel[];
 	locale: string;
 	variant?: "long" | "short";
 }

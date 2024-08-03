@@ -1,17 +1,9 @@
 import * as React from "react";
-import { ToastActionElement } from "./ToastAction";
-import { ToastProps } from "./Toast";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
 
-type ToasterToast = ToastProps & {
-	id: string;
-	description?: React.ReactNode;
-	action?: ToastActionElement;
-};
-
-const actionTypes = {
+export const actionTypes = {
 	ADD_TOAST: "ADD_TOAST",
 	UPDATE_TOAST: "UPDATE_TOAST",
 	DISMISS_TOAST: "DISMISS_TOAST",
@@ -25,28 +17,8 @@ function genId() {
 	return count.toString();
 }
 
-type ActionType = typeof actionTypes;
-
-type Action =
-	| {
-			type: ActionType["ADD_TOAST"];
-			toast: ToasterToast;
-	  }
-	| {
-			type: ActionType["UPDATE_TOAST"];
-			toast: Partial<ToasterToast>;
-	  }
-	| {
-			type: ActionType["DISMISS_TOAST"];
-			toastId?: ToasterToast["id"];
-	  }
-	| {
-			type: ActionType["REMOVE_TOAST"];
-			toastId?: ToasterToast["id"];
-	  };
-
 interface State {
-	toasts: ToasterToast[];
+	toasts: ToastType[];
 }
 
 const toastTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
@@ -67,7 +39,7 @@ const addToRemoveQueue = (toastId: string) => {
 	toastTimeouts.set(toastId, timeout);
 };
 
-export const reducer = (state: State, action: Action): State => {
+export const reducer = (state: State, action: ToastAction): State => {
 	switch (action.type) {
 		case "ADD_TOAST":
 			return {
@@ -124,19 +96,19 @@ const listeners: Array<(state: State) => void> = [];
 
 let memoryState: State = { toasts: [] };
 
-function dispatch(action: Action) {
+function dispatch(action: ToastAction) {
 	memoryState = reducer(memoryState, action);
 	listeners.forEach((listener) => {
 		listener(memoryState);
 	});
 }
 
-type Toast = Omit<ToasterToast, "id">;
+type Toast = Omit<ToastType, "id">;
 
 function toast({ ...props }: Toast) {
 	const id = genId();
 
-	const update = (props: ToasterToast) =>
+	const update = (props: ToastType) =>
 		dispatch({
 			type: "UPDATE_TOAST",
 			toast: { ...props, id },
@@ -182,4 +154,4 @@ function useToast() {
 	};
 }
 
-export { useToast, toast };
+export { toast, useToast };

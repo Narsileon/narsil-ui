@@ -14,10 +14,10 @@ type TranslationStoreState = {
 	translations: { [key: string]: Translation };
 };
 
-type TranslationStoreActions = {
+type TranslationStoreAction = {
 	trans: (key: string, options?: TransOptions) => string;
 	setLocale: (locale: string) => void;
 	setTranslations: (translations: { [key: string]: Translation }) => void;
 };
 
-type TranslationStoreType = TranslationStoreState & TranslationStoreActions;
+type TranslationStoreType = TranslationStoreState & TranslationStoreAction;

@@ -1,28 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import * as colors from "./Colors";
 
-type ThemeProviderProps = {
-	children: React.ReactNode;
-	defaultColor?: Color;
-	defaultMode?: Mode;
-	defaultRadius?: number;
-	defaultSize?: number;
-	storageKey?: string;
-};
-
-type ThemeProviderState = {
-	color: Color;
-	dark: boolean;
-	mode: Mode;
-	radius: number;
-	size: number;
-	setColor: (color: Color) => void;
-	setMode: (mode: Mode) => void;
-	setRadius: (radius: number) => void;
-	setSize: (size: number) => void;
-};
-
-const initialState: ThemeProviderState = {
+const initialState: ThemeProviderType = {
 	color: "gray",
 	dark: false,
 	mode: "system",
@@ -34,7 +13,7 @@ const initialState: ThemeProviderState = {
 	setSize: () => null,
 };
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+const ThemeProviderContext = createContext<ThemeProviderType>(initialState);
 
 const ThemeProvider = ({
 	children,

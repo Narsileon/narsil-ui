@@ -15,7 +15,7 @@ import {
 	useTheme,
 } from "@narsil-ui/Components";
 
-const ThemeController = () => {
+const ThemeController = ({}: ThemeControllerProps) => {
 	const { trans } = useTranslationsStore();
 
 	const { color, mode, radius, size, setColor, setMode, setRadius, setSize } = useTheme();

@@ -1,0 +1,1 @@
+interface SectionDescriptionProps extends CardDescriptionProps {}
