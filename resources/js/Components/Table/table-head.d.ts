@@ -1,1 +1,1 @@
-interface TableHeadProps extends React.HTMLAttributes<HTMLTableCellElement> {}
+interface TableHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {}

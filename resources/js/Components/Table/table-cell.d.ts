@@ -1,1 +1,1 @@
-interface TableCellProps extends React.HTMLAttributes<HTMLTableCellElement> {}
+interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {}
