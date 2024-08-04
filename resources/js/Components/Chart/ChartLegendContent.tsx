@@ -14,7 +14,11 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
 		return (
 			<div
 				ref={ref}
-				className={cn("flex items-center justify-center gap-4", verticalAlign === "top" ? "pb-3" : "pt-3", className)}
+				className={cn(
+					"flex items-center justify-center gap-4",
+					verticalAlign === "top" ? "pb-3" : "pt-3",
+					className
+				)}
 			>
 				{payload.map((item) => {
 					const key = `${nameKey || item.dataKey || "value"}`;
@@ -23,7 +27,10 @@ const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentPr
 					return (
 						<div
 							key={item.value}
-							className={cn("flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground")}
+							className={cn(
+								"flex items-center gap-1.5",
+								"[&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground"
+							)}
 						>
 							{itemConfig?.icon && !hideIcon ? (
 								<itemConfig.icon />

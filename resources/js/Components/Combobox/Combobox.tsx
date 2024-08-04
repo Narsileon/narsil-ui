@@ -48,7 +48,11 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Conte
 						role='combobox'
 						variant='outline'
 					>
-						{value ? (ucFirst ? upperFirst(getValueOption(value)) : getValueOption(value)) : trans("Select...")}
+						{value
+							? ucFirst
+								? upperFirst(getValueOption(value))
+								: getValueOption(value)
+							: trans("Select...")}
 						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
 					</Button>
 				</PopoverTrigger>
@@ -78,7 +82,12 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Conte
 											key={index}
 										>
 											{ucFirst && isString(optionLabel) ? upperFirst(optionLabel) : optionLabel}
-											<Check className={cn("ml-auto h-4 w-4", value === optionValue ? "opacity-100" : "opacity-0")} />
+											<Check
+												className={cn(
+													"ml-auto h-4 w-4",
+													value === optionValue ? "opacity-100" : "opacity-0"
+												)}
+											/>
 										</CommandItem>
 									);
 								})}

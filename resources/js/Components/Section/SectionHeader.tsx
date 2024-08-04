@@ -17,7 +17,9 @@ const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(({ ch
 			>
 				{children}
 
-				<TooltipWrapper tooltip={trans(context?.isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
+				<TooltipWrapper
+					tooltip={trans(context?.isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}
+				>
 					<Toggle onClick={() => context?.toggleFullscreen()}>
 						{context?.isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
 					</Toggle>

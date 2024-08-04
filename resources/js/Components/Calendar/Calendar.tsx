@@ -45,7 +45,11 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 			}}
 			components={{
 				Chevron: (props) =>
-					props.orientation === "left" ? <ChevronLeft className='h-4 w-4' /> : <ChevronRight className='h-4 w-4' />,
+					props.orientation === "left" ? (
+						<ChevronLeft className='h-4 w-4' />
+					) : (
+						<ChevronRight className='h-4 w-4' />
+					),
 			}}
 			showOutsideDays={showOutsideDays}
 			{...props}

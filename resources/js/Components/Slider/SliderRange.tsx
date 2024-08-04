@@ -29,7 +29,9 @@ const SliderRange = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Roo
 							)}
 							key={index}
 						>
-							<span className={cn("absolute top-7 text-center", index === 0 ? "left-0" : "right-0")}>{value}</span>
+							<span className={cn("absolute top-7 text-center", index === 0 ? "left-0" : "right-0")}>
+								{value}
+							</span>
 						</SliderPrimitive.Thumb>
 					))}
 				</SliderPrimitive.Root>

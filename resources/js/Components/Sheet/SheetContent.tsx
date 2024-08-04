@@ -1,5 +1,5 @@
 import { cn, SheetOverlay, SheetPortal } from "@narsil-ui/Components";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 import { X } from "lucide-react";
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
@@ -9,7 +9,10 @@ export const sheetVariants = cva(
 	{
 		variants: {
 			side: {
-				top: cn("inset-x-0 top-0 border-b", "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top"),
+				top: cn(
+					"inset-x-0 top-0 border-b",
+					"data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top"
+				),
 				bottom: cn(
 					"inset-x-0 bottom-0 border-t",
 					"data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom"
