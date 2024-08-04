@@ -2,7 +2,7 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
-const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, SliderRangeProps>(
+const SliderRange = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, SliderRangeProps>(
 	({ className, ...props }, ref) => {
 		const values = props.value ?? [props.min, props.max];
 
@@ -30,4 +30,4 @@ const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, S
 	}
 );
 
-export default Slider;
+export default SliderRange;
