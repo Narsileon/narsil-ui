@@ -9,7 +9,7 @@ const PaginationResult = React.forwardRef<HTMLSpanElement, PaginationResultProps
 		return (
 			<span
 				ref={ref}
-				className={cn("min-w-fit text-sm truncate", className)}
+				className={cn("min-w-fit truncate text-sm", className)}
 				{...props}
 			>
 				{total > 0
@@ -19,7 +19,7 @@ const PaginationResult = React.forwardRef<HTMLSpanElement, PaginationResultProps
 								to: to,
 								total: total,
 							},
-					  })
+						})
 					: trans("No results.")}
 			</span>
 		);

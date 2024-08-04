@@ -4,7 +4,7 @@ import * as React from "react";
 const PaginationNav = React.forwardRef<HTMLDivElement, PaginationNavProps>(({ className, ...props }, ref) => (
 	<nav
 		ref={ref}
-		className={cn("flex items-center justify-center w-full mx-auto", className)}
+		className={cn("mx-auto flex w-full items-center justify-center", className)}
 		aria-label='pagination'
 		role='navigation'
 		{...props}

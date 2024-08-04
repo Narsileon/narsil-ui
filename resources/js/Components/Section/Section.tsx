@@ -19,7 +19,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, ...
 		>
 			<div
 				ref={sectionRef}
-				className={cn("bg-background text-foreground p-4", className)}
+				className={cn("bg-background p-4 text-foreground", className)}
 				{...props}
 			/>
 		</SectionContext.Provider>

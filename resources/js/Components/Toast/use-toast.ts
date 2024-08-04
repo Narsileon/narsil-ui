@@ -68,13 +68,13 @@ export const reducer = (state: State, action: ToastAction): State => {
 
 			return {
 				...state,
-				toasts: state.toasts.map((t) =>
-					t.id === toastId || toastId === undefined
+				toasts: state.toasts.map((toast) =>
+					toast.id === toastId || toastId === undefined
 						? {
-								...t,
+								...toast,
 								open: false,
-						  }
-						: t
+							}
+						: toast
 				),
 			};
 		}

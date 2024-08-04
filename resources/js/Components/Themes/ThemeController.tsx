@@ -56,7 +56,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 						>
 							{trans("Mode")}
 						</Heading>
-						<div className='grid grid-cols-3 w-full gap-2'>
+						<div className='grid w-full grid-cols-3 gap-2'>
 							<Button
 								className={"flex items-center justify-start gap-2 text-xs"}
 								isActive={mode === "light"}
@@ -64,7 +64,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 								variant='outline'
 								onClick={() => setMode("light")}
 							>
-								<Sun className='w-5 h-5' />
+								<Sun className='h-5 w-5' />
 								{trans("Light")}
 							</Button>
 							<Button
@@ -74,7 +74,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 								variant='outline'
 								onClick={() => setMode("dark")}
 							>
-								<Moon className='w-5 h-5' />
+								<Moon className='h-5 w-5' />
 								{trans("Dark")}
 							</Button>
 							<Button
@@ -95,7 +95,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 						>
 							{trans("Color")}
 						</Heading>
-						<div className='grid grid-cols-3 w-full gap-2'>
+						<div className='grid w-full grid-cols-3 gap-2'>
 							{Object.entries(themes).map(([theme, backgroundColor], index) => {
 								return (
 									<Button
@@ -107,7 +107,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 										key={index}
 									>
 										<span
-											className='min-w-5 w-5 h-5 rounded-full'
+											className='h-5 w-5 min-w-5 rounded-full'
 											style={{
 												backgroundColor: backgroundColor,
 											}}

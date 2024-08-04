@@ -12,7 +12,7 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
 			<DialogPrimitive.Content
 				ref={ref}
 				className={cn(
-					"grid w-full max-w-lg max-h-screen gap-4 border bg-background shadow-lg sm:rounded-lg",
+					"grid max-h-screen w-full max-w-lg gap-4 border bg-background shadow-lg sm:rounded-lg",
 					"fixed left-[50%] top-[50%] z-50",
 					"translate-x-[-50%] translate-y-[-50%] duration-200",
 					"data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
@@ -28,7 +28,7 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
 					className={cn(
 						"absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity",
 						"hover:opacity-100",
-						"focus:outline-none focus:border-primary",
+						"focus:border-primary focus:outline-none",
 						"disabled:pointer-events-none",
 						"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
 					)}

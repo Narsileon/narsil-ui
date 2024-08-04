@@ -33,7 +33,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								preserveScroll={true}
 								preserveState={true}
 							>
-								<ChevronsLeft className='w-5 h-5' />
+								<ChevronsLeft className='h-5 w-5' />
 							</Link>
 						</PaginationButton>
 					</PaginationItem>
@@ -49,7 +49,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								preserveScroll={true}
 								preserveState={true}
 							>
-								<ChevronLeft className='w-5 h-5' />
+								<ChevronLeft className='h-5 w-5' />
 							</Link>
 						</PaginationButton>
 					</PaginationItem>
@@ -85,7 +85,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								preserveScroll={true}
 								preserveState={true}
 							>
-								<ChevronRight className='w-5 h-5' />
+								<ChevronRight className='h-5 w-5' />
 							</Link>
 						</PaginationButton>
 					</PaginationItem>
@@ -101,7 +101,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								preserveScroll={true}
 								preserveState={true}
 							>
-								<ChevronsRight className='w-5 h-5' />
+								<ChevronsRight className='h-5 w-5' />
 							</Link>
 						</PaginationButton>
 					</PaginationItem>
