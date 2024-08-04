@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	arrowParens: "always",
 	bracketSameLine: false,
 	bracketSpacing: true,
@@ -17,7 +17,6 @@ module.exports = {
 	tabWidth: 2,
 	trailingComma: "es5",
 	useTabs: true,
-	extends: "./vendor",
 
 	plugins: ["prettier-plugin-tailwindcss"],
 };

@@ -1,6 +1,6 @@
-module.exports = {
+export default {
 	darkMode: "class",
-	content: ["./resources/js/**/*.{ts,tsx}"],
+	content: ["./resources/js/**/*.{ts,tsx}", "./vendor/narsil/**/*.{ts,tsx}"],
 	theme: {
 		container: {
 			center: true,
