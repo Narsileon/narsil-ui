@@ -7,7 +7,11 @@ const SliderRange = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Roo
 		const values = props.value ?? [props.min, props.max];
 
 		return (
-			<div>
+			<div className='h-20'>
+				<div className='flex items-center justify-between gap-x-4 text-muted-foreground'>
+					<span className='pl-0.5'>{props.min}</span>
+					<span className='pr-0.5'>{props.max}</span>
+				</div>
 				<SliderPrimitive.Root
 					ref={ref}
 					className={cn("relative flex h-10 w-full touch-none select-none items-center", className)}
@@ -25,16 +29,10 @@ const SliderRange = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Roo
 							)}
 							key={index}
 						>
-							{value != props.min || value != props.max ? (
-								<span className='absolute left-0 right-0 top-7 mx-auto text-center'>{value}</span>
-							) : null}
+							<span className={cn("absolute top-7 text-center", index === 0 ? "left-0" : "right-0")}>{value}</span>
 						</SliderPrimitive.Thumb>
 					))}
 				</SliderPrimitive.Root>
-				<div className='flex items-center justify-between gap-x-4'>
-					<span>{props.min}</span>
-					<span>{props.max}</span>
-				</div>
 			</div>
 		);
 	}
