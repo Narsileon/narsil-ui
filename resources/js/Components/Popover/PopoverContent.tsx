@@ -8,7 +8,7 @@ const PopoverContent = React.forwardRef<React.ElementRef<typeof PopoverPrimitive
 			<PopoverPrimitive.Content
 				ref={ref}
 				className={cn(
-					"z-50 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none",
+					"z-50 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none pointer-events-auto",
 					"data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
 					"data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
 					"data-[side=bottom]:slide-in-from-top-2",
