@@ -10,18 +10,19 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 
 	return (
 		<DayPicker
-			className={cn("p-3", className)}
+			className={cn("max-w-fit p-4", className)}
 			classNames={{
 				button_next: cn(
 					buttonVariants({ variant: "outline" }),
-					"absolute right-1 h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+					"absolute top-0 right-1 z-50 h-9 w-9 bg-transparent p-0 opacity-50 hover:opacity-100"
 				),
 				button_previous: cn(
 					buttonVariants({ variant: "outline" }),
-					"absolute left-1 h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+					"absolute top-0 left-1 z-50 h-9 w-9 bg-transparent p-0 opacity-50 hover:opacity-100"
 				),
 				caption_label: "text-sm font-medium",
 				day: cn(
+					buttonVariants({ variant: "ghost" }),
 					"h-9 w-9 text-center text-sm p-0 relative",
 					"[&:has([aria-selected].range-end)]:rounded-r-md [&:has([aria-selected].outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent",
 					"first:[&:has([aria-selected])]:rounded-l-md",
@@ -34,10 +35,10 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 				),
 				disabled: "text-muted-foreground opacity-50",
 				hidden: "invisible",
-				month_caption: "flex justify-center pt-1 relative items-center",
+				month_caption: "flex justify-center pt-1 h-9 relative items-center",
 				month_grid: "w-full border-collapse space-y-1",
 				month: "space-y-4",
-				months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+				months: "relative",
 				nav: "space-x-1 flex items-center",
 				outside: cn(
 					"outside text-muted-foreground opacity-50",
