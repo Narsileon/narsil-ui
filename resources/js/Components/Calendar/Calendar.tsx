@@ -2,26 +2,11 @@ import { buttonVariants } from "@narsil-ui/Components/Button/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
 import { DayPicker } from "react-day-picker";
-import { Locale } from "date-fns";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
-import * as React from "react";
+import * as Locales from "date-fns/locale";
 
 const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => {
-	const locale = useTranslationsStore();
-
-	const [localeObject, setLocaleObject] = React.useState<Locale | undefined>(undefined);
-
-	React.useEffect(() => {
-		if (locale) {
-			import(`date-fns/locale/${locale}`)
-				.then((module) => {
-					setLocaleObject(module.default);
-				})
-				.catch((error) => {
-					console.error(`Error loading locale data for ${locale}:`, error);
-				});
-		}
-	}, [locale]);
+	const { locale } = useTranslationsStore();
 
 	return (
 		<DayPicker
@@ -76,7 +61,7 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 						<ChevronRight className='h-4 w-4' />
 					),
 			}}
-			locale={localeObject}
+			locale={Locales[locale as CalendarLocale]}
 			showOutsideDays={showOutsideDays}
 			{...props}
 		/>
