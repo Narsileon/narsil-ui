@@ -21,6 +21,7 @@ export * from "./Dialog";
 export * from "./DropdownMenu";
 export * from "./Heading";
 export * from "./HoverCard";
+export * from "./Input";
 export * from "./Label";
 export * from "./NavigationMenu";
 export * from "./Pagination";
