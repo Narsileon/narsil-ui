@@ -16,7 +16,17 @@
 	"repositories": [
 		{
 			"type": "vcs",
+			"url": "git@github.com:Narsileon/narsil-forms.git",
+			"no-api": true
+		},
+		{
+			"type": "vcs",
 			"url": "git@github.com:Narsileon/narsil-localization.git",
+			"no-api": true
+		},
+		{
+			"type": "vcs",
+			"url": "git@github.com:Narsileon/narsil-policies.git",
 			"no-api": true
 		}
 	],
