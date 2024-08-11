@@ -13,7 +13,7 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 
 	React.useEffect(() => {
 		if (locale) {
-			import(`date-fns/locale/${locale}/index.js`)
+			import(`date-fns/locale/${locale}`)
 				.then((module) => {
 					setLocaleObject(module.default);
 				})
@@ -38,7 +38,7 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 				caption_label: "text-sm font-medium",
 				day: cn(
 					"h-9 w-9 text-center text-sm p-0 relative",
-					"[&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent",
+					"[&:has([aria-selected].range-end)]:rounded-r-md [&:has([aria-selected].outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent",
 					"first:[&:has([aria-selected])]:rounded-l-md",
 					"last:[&:has([aria-selected])]:rounded-r-md",
 					"focus-within:relative focus-within:z-20"
@@ -54,9 +54,11 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 				month: "space-y-4",
 				months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
 				nav: "space-x-1 flex items-center",
-				outside:
-					"day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
-				range_end: "day-range-end",
+				outside: cn(
+					"outside text-muted-foreground opacity-50",
+					"aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30"
+				),
+				range_end: "range-end",
 				range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
 				selected:
 					"bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
