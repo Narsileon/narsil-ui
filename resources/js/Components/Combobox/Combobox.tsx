@@ -1,5 +1,5 @@
 import { Check, ChevronsUpDown } from "lucide-react";
-import { isString, sortBy, upperFirst } from "lodash";
+import { isString, lowerCase, sortBy, upperFirst } from "lodash";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
@@ -36,6 +36,16 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Conte
 			return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
 		};
 
+		function filter(value: string, search: string) {
+			const option = options?.find((option) => option[valueKey] === value);
+
+			if (lowerCase(option?.label ?? "").includes(search)) {
+				return 1;
+			}
+
+			return 0;
+		}
+
 		return (
 			<Popover
 				open={open}
@@ -60,7 +70,7 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Conte
 					className='p-0'
 					align='start'
 				>
-					<Command>
+					<Command filter={filter}>
 						<CommandInput
 							placeholder={trans("Search...")}
 							className='h-9'
