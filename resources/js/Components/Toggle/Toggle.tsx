@@ -5,9 +5,9 @@ import * as TogglePrimitive from "@radix-ui/react-toggle";
 
 export const toggleVariants = cva(
 	cn(
-		"inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors",
+		"inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors",
 		"hover:bg-muted hover:text-muted-foreground",
-		"focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+		"focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
 		"disabled:pointer-events-none disabled:opacity-50",
 		"data-[state=on]:bg-accent data-[state=on]:text-accent-foreground"
 	),
@@ -15,12 +15,12 @@ export const toggleVariants = cva(
 		variants: {
 			variant: {
 				default: "bg-transparent",
-				outline: cn("border border-input bg-transparent", "hover:bg-accent hover:text-accent-foreground"),
+				outline: "border border-input bg-transparent shadow-sm hover:bg-accent hover:text-accent-foreground",
 			},
 			size: {
-				default: "h-10 px-2",
-				sm: "h-9 px-1",
-				lg: "h-11 px-4",
+				default: "h-9 px-1",
+				sm: "h-8 px-1",
+				lg: "h-10 px-3",
 			},
 		},
 		defaultVariants: {
