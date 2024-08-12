@@ -7,7 +7,7 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
 	const secondRef = React.useRef<HTMLInputElement>(null);
 
 	return (
-		<div className='flex items-end gap-2'>
+		<div className='flex items-center gap-x-2 font-mono'>
 			<TimeInput
 				ref={hourRef}
 				picker='hours'
@@ -15,6 +15,7 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
 				onRightFocus={() => minuteRef.current?.focus()}
 				setDate={onChange}
 			/>
+			:
 			<TimeInput
 				ref={minuteRef}
 				picker='minutes'
@@ -23,6 +24,7 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
 				onRightFocus={() => secondRef.current?.focus()}
 				setDate={onChange}
 			/>
+			:
 			<TimeInput
 				ref={secondRef}
 				picker='seconds'

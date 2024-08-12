@@ -88,11 +88,7 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 				id={id || picker}
 				name={name || picker}
 				type={type}
-				className={cn(
-					"w-[48px] text-center font-mono text-base tabular-nums caret-transparent",
-					"focus:bg-accent focus:text-accent-foreground [&::-webkit-inner-spin-button]:appearance-none",
-					className
-				)}
+				className={cn("w-12 px-2 text-center font-mono text-base", className)}
 				inputMode='decimal'
 				value={value || calculatedValue}
 				onChange={(e) => {

@@ -34,10 +34,12 @@ const DatetimePicker = ({ value, onChange }: DateTimePickerProps) => {
 					onSelect={onChange}
 				/>
 				<Separator />
-				<TimePicker
-					value={value}
-					onChange={onChange}
-				/>
+				<div className='flex items-center justify-center p-4'>
+					<TimePicker
+						value={value}
+						onChange={onChange}
+					/>
+				</div>
 			</PopoverContent>
 		</Popover>
 	);
