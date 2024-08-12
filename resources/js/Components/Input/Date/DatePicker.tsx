@@ -1,9 +1,10 @@
 import { Button, Calendar, cn, Popover, PopoverContent, PopoverTrigger } from "@narsil-ui/Components";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
+import { inputStyle } from "@narsil-ui/Components/Input/Input";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 
-const DatePicker = ({ value, onChange }: DatePickerProps) => {
+const DatePicker = ({ className, value, onChange }: DatePickerProps) => {
 	const { trans } = useTranslationsStore();
 
 	return (
@@ -11,10 +12,10 @@ const DatePicker = ({ value, onChange }: DatePickerProps) => {
 			<PopoverTrigger asChild>
 				<Button
 					variant='outline'
-					className={cn("w-[280px] justify-start text-left font-normal", !value && "text-muted-foreground")}
+					className={cn(inputStyle(), "gap-x-2 text-left font-normal", className)}
 				>
-					<CalendarIcon className='mr-2 h-4 w-4' />
-					{value ? format(value, "PPP HH:mm:ss") : <span>{trans("Select")}</span>}
+					<CalendarIcon className='h-4 w-4' />
+					{value ? format(value, "PPP HH:mm:ss") : <span>{trans("Select...")}</span>}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className='w-auto p-0'>
