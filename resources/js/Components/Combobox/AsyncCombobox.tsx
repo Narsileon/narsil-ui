@@ -115,7 +115,7 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 							onValueChange={setSearch}
 						/>
 						<CommandList
-							className='min-h-9'
+							className='min-h-10'
 							key={options.length}
 						>
 							{loading ? <CommandLoading>{trans("Search...")}</CommandLoading> : null}
