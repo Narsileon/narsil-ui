@@ -1,3 +1,4 @@
+import AsyncCombobox from "./AsyncCombobox";
 import Combobox from "./Combobox";
 
-export { Combobox };
+export { AsyncCombobox, Combobox };
