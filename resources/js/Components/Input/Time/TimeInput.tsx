@@ -7,7 +7,7 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 		const date = new Date((value as string) ?? new Date().setHours(0, 0, 0, 0));
 
 		const setDate = (date: Date) => {
-			const value = date.toISOString().split("T")[0];
+			const value = date.toISOString();
 
 			const event = {
 				target: {
