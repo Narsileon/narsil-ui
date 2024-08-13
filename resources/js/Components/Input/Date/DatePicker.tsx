@@ -26,7 +26,7 @@ const DatePicker = ({ className, required = false, value, onChange }: DatePicker
 			<PopoverTrigger asChild>
 				<Button
 					variant='outline'
-					className={cn(inputStyle(), "gap-x-2 text-left font-normal", className)}
+					className={cn(inputStyle(), "justify-start gap-x-2 font-normal", className)}
 				>
 					<CalendarIcon className='h-4 w-4' />
 					{value ? format(selected, "PPP HH:mm:ss") : <span>{trans("Select...")}</span>}
