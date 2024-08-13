@@ -1,5 +1,4 @@
-import { CalendarIcon, Proportions } from "lucide-react";
-import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import { inputStyle } from "@narsil-ui/Components/Input/Input";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 
@@ -15,12 +14,12 @@ import {
 } from "@narsil-ui/Components";
 
 const DatetimePicker = ({ className, value, onChange, required }: DateTimePickerProps) => {
-	const { trans } = useTranslationsStore();
+	const { locale, trans } = useTranslationsStore();
 
 	const selected = new Date(value as string);
 
 	const onSelect = (date: Date) => {
-		const value = date.toISOString().split("T")[0];
+		const value = date.toISOString();
 
 		const event = {
 			target: {
@@ -39,7 +38,7 @@ const DatetimePicker = ({ className, value, onChange, required }: DateTimePicker
 					className={cn(inputStyle(), "justify-start gap-x-2 font-normal", className)}
 				>
 					<CalendarIcon className='h-4 w-4' />
-					{value ? selected.toLocaleString() : <span>{trans("Select...")}</span>}
+					{value ? selected.toLocaleString(locale) : <span>{trans("Select...")}</span>}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className='w-auto p-0'>

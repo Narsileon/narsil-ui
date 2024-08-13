@@ -88,6 +88,9 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 				className={cn("w-12 px-2 text-center font-mono text-base", className)}
 				inputMode='decimal'
 				value={calculatedValue}
+				onChange={(e) => {
+					e.preventDefault();
+				}}
 				onKeyDown={(event) => {
 					onKeyDown?.(event);
 					handleKeyDown(event);
