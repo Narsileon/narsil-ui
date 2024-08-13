@@ -4,12 +4,11 @@ import * as React from "react";
 
 export const inputStyle = cva(
 	cn(
-		"relative group inline-flex flex-1 items-center justify-start w-full h-10 gap-x-4 rounded-md bg-background px-3 py-2 text-sm font-medium transition-colors",
-		"hover:bg-accent hover:text-accent-foreground",
-		"focus:bg-accent focus:text-accent-foreground focus:outline-none",
-		"disabled:pointer-events-none disabled:opacity-50",
-		"data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-		"[&>img]:max-w-5 [&>img]:max-h-5"
+		"border-input bg-background ring-offset-background flex h-9 w-full rounded-md border px-4 py-2 text-sm",
+		"placeholder:text-muted-foreground",
+		"file:border-0 file:bg-transparent file:text-sm file:font-medium",
+		"focus-visible:border-primary focus-visible:outline-none",
+		"disabled:cursor-not-allowed disabled:opacity-50"
 	)
 );
 
