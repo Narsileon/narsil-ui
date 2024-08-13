@@ -29,7 +29,7 @@ const DatePicker = ({ className, required = false, value, onChange }: DatePicker
 					className={cn(inputStyle(), "justify-start gap-x-2 font-normal", className)}
 				>
 					<CalendarIcon className='h-4 w-4' />
-					{value ? format(selected, "PPP HH:mm:ss") : <span>{trans("Select...")}</span>}
+					{value ? selected.toLocaleDateString() : <span>{trans("Select...")}</span>}
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent className='w-auto p-0'>
