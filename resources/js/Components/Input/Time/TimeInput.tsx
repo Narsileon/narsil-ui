@@ -3,24 +3,21 @@ import { getArrowByType, getDateByType, setDateByType } from "./timeInputUtils";
 import React from "react";
 
 const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
-	(
-		{
-			className,
-			date = new Date(new Date().setHours(0, 0, 0, 0)),
-			id,
-			name,
-			picker,
-			type = "tel",
-			value,
-			onChange,
-			onKeyDown,
-			onLeftFocus,
-			onRightFocus,
-			setDate,
-			...props
-		},
-		ref
-	) => {
+	({ className, id, name, picker, value, onChange, onKeyDown, onLeftFocus, onRightFocus, ...props }, ref) => {
+		const date = new Date((value as string) ?? new Date().setHours(0, 0, 0, 0));
+
+		const setDate = (date: Date) => {
+			const value = date.toISOString().split("T")[0];
+
+			const event = {
+				target: {
+					value: value,
+				},
+			} as React.ChangeEvent<HTMLInputElement>;
+
+			onChange?.(event);
+		};
+
 		const [flag, setFlag] = React.useState<boolean>(false);
 
 		React.useEffect(() => {
@@ -87,17 +84,13 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 				ref={ref}
 				id={id || picker}
 				name={name || picker}
-				type={type}
+				type={"tel"}
 				className={cn("w-12 px-2 text-center font-mono text-base", className)}
 				inputMode='decimal'
-				value={value || calculatedValue}
-				onChange={(e) => {
-					e.preventDefault();
-					onChange?.(e);
-				}}
-				onKeyDown={(e) => {
-					onKeyDown?.(e);
-					handleKeyDown(e);
+				value={calculatedValue}
+				onKeyDown={(event) => {
+					onKeyDown?.(event);
+					handleKeyDown(event);
 				}}
 				{...props}
 			/>

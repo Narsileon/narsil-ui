@@ -1,7 +1,7 @@
 import { TimeInput } from "@narsil-ui/Components";
 import * as React from "react";
 
-const TimePicker = ({ value, onChange }: TimePickerProps) => {
+const TimePicker = ({ ...props }: TimePickerProps) => {
 	const hourRef = React.useRef<HTMLInputElement>(null);
 	const minuteRef = React.useRef<HTMLInputElement>(null);
 	const secondRef = React.useRef<HTMLInputElement>(null);
@@ -11,26 +11,23 @@ const TimePicker = ({ value, onChange }: TimePickerProps) => {
 			<TimeInput
 				ref={hourRef}
 				picker='hours'
-				date={value}
 				onRightFocus={() => minuteRef.current?.focus()}
-				setDate={onChange}
+				{...props}
 			/>
 			:
 			<TimeInput
 				ref={minuteRef}
 				picker='minutes'
-				date={value}
 				onLeftFocus={() => hourRef.current?.focus()}
 				onRightFocus={() => secondRef.current?.focus()}
-				setDate={onChange}
+				{...props}
 			/>
 			:
 			<TimeInput
 				ref={secondRef}
 				picker='seconds'
-				date={value}
 				onLeftFocus={() => minuteRef.current?.focus()}
-				setDate={onChange}
+				{...props}
 			/>
 		</div>
 	);

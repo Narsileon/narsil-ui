@@ -1,4 +1,4 @@
-import { cn } from "@narsil-ui/Components";
+import { cn, DatePicker, DatetimePicker, TimePicker } from "@narsil-ui/Components";
 import { cva } from "class-variance-authority";
 import * as React from "react";
 
@@ -12,13 +12,39 @@ export const inputStyle = cva(
 	)
 );
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, ...props }, ref) => (
-	<input
-		ref={ref}
-		type={type}
-		className={cn(inputStyle(), className)}
-		{...props}
-	/>
-));
+const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type = "text", ...props }, ref) => {
+	switch (type) {
+		case "date":
+			return (
+				<DatePicker
+					className={cn(inputStyle(), className)}
+					{...props}
+				/>
+			);
+		case "datetime-local":
+			return (
+				<DatetimePicker
+					className={cn(inputStyle(), className)}
+					{...props}
+				/>
+			);
+		case "time":
+			return (
+				<TimePicker
+					className={cn(inputStyle(), className)}
+					{...props}
+				/>
+			);
+		default:
+			return (
+				<input
+					ref={ref}
+					type={type}
+					className={cn(inputStyle(), className)}
+					{...props}
+				/>
+			);
+	}
+});
 
 export default Input;
