@@ -6,7 +6,7 @@ import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 const DatePicker = ({ className, required = false, value, onChange }: DatePickerProps) => {
 	const { locale, trans } = useTranslationsStore();
 
-	const selected = new Date(value as string);
+	const selected = value ? new Date(value as string) : new Date();
 
 	const onSelect = (date: Date) => {
 		const nextValue = date.toISOString();

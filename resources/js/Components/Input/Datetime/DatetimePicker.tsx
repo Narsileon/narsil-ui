@@ -16,10 +16,10 @@ import {
 const DatetimePicker = ({ className, value, onChange, required }: DateTimePickerProps) => {
 	const { locale, trans } = useTranslationsStore();
 
-	const selected = new Date(value as string);
+	const selected = value ? new Date(value as string) : new Date();
 
 	const onSelect = (date: Date) => {
-		const previousDate = new Date(value as string);
+		const previousDate = selected;
 
 		date.setHours(previousDate.getHours(), previousDate.getMinutes(), previousDate.getSeconds());
 
