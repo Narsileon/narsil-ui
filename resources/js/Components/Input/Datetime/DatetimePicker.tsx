@@ -19,11 +19,15 @@ const DatetimePicker = ({ className, value, onChange, required }: DateTimePicker
 	const selected = new Date(value as string);
 
 	const onSelect = (date: Date) => {
-		const value = date.toISOString();
+		const previousDate = new Date(value as string);
+
+		date.setHours(previousDate.getHours(), previousDate.getMinutes(), previousDate.getSeconds());
+
+		const nextValue = date.toISOString();
 
 		const event = {
 			target: {
-				value: value,
+				value: nextValue,
 			},
 		} as React.ChangeEvent<HTMLInputElement>;
 

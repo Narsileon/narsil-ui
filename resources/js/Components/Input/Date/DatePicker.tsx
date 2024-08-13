@@ -9,11 +9,11 @@ const DatePicker = ({ className, required = false, value, onChange }: DatePicker
 	const selected = new Date(value as string);
 
 	const onSelect = (date: Date) => {
-		const value = date.toISOString();
+		const nextValue = date.toISOString();
 
 		const event = {
 			target: {
-				value: value,
+				value: nextValue,
 			},
 		} as React.ChangeEvent<HTMLInputElement>;
 
