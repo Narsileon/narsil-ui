@@ -9,6 +9,8 @@ const initialState: TranslationStoreState = {
 
 const errorMap = (trans: TranslationStoreAction["trans"]): ZodErrorMap => {
 	return (issue, ctx) => {
+		const attribute = trans(`validation.attributes.${issue.path[issue.path.length - 1]}`);
+
 		let message;
 
 		switch (issue.code) {
@@ -16,49 +18,81 @@ const errorMap = (trans: TranslationStoreAction["trans"]): ZodErrorMap => {
 				message = ctx.defaultError;
 				break;
 			case ZodIssueCode.invalid_date:
-				message = trans("validation.date");
+				message = trans("validation.date", {
+					replacements: {
+						attribute: attribute,
+					},
+				});
 				break;
 			case ZodIssueCode.invalid_enum_value:
-				message = trans("validation.enum");
+				message = trans("validation.enum", {
+					replacements: {
+						attribute: attribute,
+					},
+				});
 				break;
 			case ZodIssueCode.invalid_string:
 				if (issue.validation === "email") {
-					message = trans("validation.email");
-				} else if (issue.validation === "url") {
-					message = trans("validation.url");
+					message = trans("validation.email", {
+						replacements: {
+							attribute: attribute,
+						},
+					});
 				} else if (issue.validation === "regex") {
-					message = trans("validation.regex");
+					message = trans("validation.regex", {
+						replacements: {
+							attribute: attribute,
+						},
+					});
+				} else if (issue.validation === "url") {
+					message = trans("validation.url", {
+						replacements: {
+							attribute: attribute,
+						},
+					});
 				}
 				break;
 			case ZodIssueCode.invalid_type:
-				if (issue.expected === "string") {
-					message = trans("validation.string");
+				if (issue.expected === "array") {
+					message = trans("validation.array", {
+						replacements: {
+							attribute: attribute,
+						},
+					});
 				} else if (issue.expected === "number") {
-					message = trans("validation.numeric");
-				} else if (issue.expected === "array") {
-					message = trans("validation.array");
+					message = trans("validation.numeric", {
+						replacements: {
+							attribute: attribute,
+						},
+					});
+				} else if (issue.expected === "string") {
+					message = trans("validation.string", {
+						replacements: {
+							attribute: attribute,
+						},
+					});
 				}
-				break;
-			case ZodIssueCode.invalid_union:
-				message = trans("validation.invalid_type");
 				break;
 			case ZodIssueCode.too_big:
 				if (issue.maximum !== undefined) {
-					if (issue.type === "string") {
-						message = trans("validation.max.string", {
+					if (issue.type === "array") {
+						message = trans("validation.max.array", {
 							replacements: {
+								attribute: attribute,
 								max: `${issue.maximum}`,
 							},
 						});
 					} else if (issue.type === "number") {
 						message = trans("validation.max.numeric", {
 							replacements: {
+								attribute: attribute,
 								max: `${issue.maximum}`,
 							},
 						});
-					} else if (issue.type === "array") {
-						message = trans("validation.max.array", {
+					} else if (issue.type === "string") {
+						message = trans("validation.max.string", {
 							replacements: {
+								attribute: attribute,
 								max: `${issue.maximum}`,
 							},
 						});
@@ -67,21 +101,24 @@ const errorMap = (trans: TranslationStoreAction["trans"]): ZodErrorMap => {
 				break;
 			case ZodIssueCode.too_small:
 				if (issue.minimum !== undefined) {
-					if (issue.type === "string") {
-						message = trans("validation.min.string", {
+					if (issue.type === "array") {
+						message = trans("validation.min.array", {
 							replacements: {
+								attribute: attribute,
 								min: `${issue.minimum}`,
 							},
 						});
 					} else if (issue.type === "number") {
 						message = trans("validation.min.numeric", {
 							replacements: {
+								attribute: attribute,
 								min: `${issue.minimum}`,
 							},
 						});
-					} else if (issue.type === "array") {
-						message = trans("validation.min.array", {
+					} else if (issue.type === "string") {
+						message = trans("validation.min.string", {
 							replacements: {
+								attribute: attribute,
 								min: `${issue.minimum}`,
 							},
 						});
