@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import * as React from "react";
 
+export interface NavigationMenuViewportProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Viewport> {}
+
 const NavigationMenuViewport = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
 	NavigationMenuViewportProps

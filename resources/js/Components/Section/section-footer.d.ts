@@ -1,1 +1,0 @@
-interface SectionFooterProps extends CardFooterProps {}

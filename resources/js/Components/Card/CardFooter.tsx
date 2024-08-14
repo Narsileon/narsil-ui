@@ -1,5 +1,8 @@
-import { cn, Separator } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
 import * as React from "react";
+import Separator from "@narsil-ui/Components/Separator/Separator";
+
+export interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({ className, ...props }, ref) => (
 	<>

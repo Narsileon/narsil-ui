@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarContentProps extends React.ComponentProps<typeof MenubarPrimitive.Content> {}
+
 const MenubarContent = React.forwardRef<React.ElementRef<typeof MenubarPrimitive.Content>, MenubarContentProps>(
 	({ className, align = "start", alignOffset = -4, sideOffset = 8, ...props }, ref) => (
 		<MenubarPrimitive.Portal>

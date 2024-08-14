@@ -1,7 +1,18 @@
+import { ChartTooltipProps } from "./ChartTooltip";
 import { cn } from "@narsil-ui/Components";
 import { getPayloadConfigFromPayload } from "./chart";
 import { useChart } from "./ChartContainer";
 import * as React from "react";
+
+export interface ChartTooltipContentProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		Pick<ChartTooltipProps, "active" | "payload" | "label" | "labelFormatter" | "labelClassName" | "formatter"> {
+	hideIndicator?: boolean;
+	hideLabel?: boolean;
+	indicator?: "line" | "dot" | "dashed";
+	labelKey?: string;
+	nameKey?: string;
+}
 
 const ChartTooltipContent = React.forwardRef<HTMLDivElement, ChartTooltipContentProps>(
 	(

@@ -1,1 +1,0 @@
-interface SectionContentProps extends CardContentProps {}

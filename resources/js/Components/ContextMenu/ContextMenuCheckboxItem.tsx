@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import * as React from "react";
 
+export interface ContextMenuCheckboxItemProps extends React.ComponentProps<typeof ContextMenuPrimitive.CheckboxItem> {}
+
 const ContextMenuCheckboxItem = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>,
 	ContextMenuCheckboxItemProps

@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 export const cardVariants = cva(cn("text-card-foreground"), {
@@ -13,6 +13,8 @@ export const cardVariants = cva(cn("text-card-foreground"), {
 		variant: "outline",
 	},
 });
+
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {}
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(({ className, variant, ...props }, ref) => (
 	<div

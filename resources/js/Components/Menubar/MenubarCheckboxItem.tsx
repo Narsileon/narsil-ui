@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarCheckboxItemProps extends React.ComponentProps<typeof MenubarPrimitive.CheckboxItem> {}
+
 const MenubarCheckboxItem = React.forwardRef<
 	React.ElementRef<typeof MenubarPrimitive.CheckboxItem>,
 	MenubarCheckboxItemProps

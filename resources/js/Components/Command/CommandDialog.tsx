@@ -1,6 +1,11 @@
-import { cn, Command, Dialog, DialogContent } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
+import { Command } from "cmdk";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
+import Dialog from "@narsil-ui/Components/Dialog/Dialog";
+import DialogContent from "@narsil-ui/Components/Dialog/DialogContent";
+
+export interface CommandDialogProps extends React.ComponentProps<typeof DialogPrimitive.Root> {}
 
 const CommandDialog = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Root>, CommandDialogProps>(
 	({ children, ...props }, ref) => (

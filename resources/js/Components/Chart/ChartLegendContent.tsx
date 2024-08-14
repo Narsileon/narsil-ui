@@ -1,7 +1,15 @@
+import { ChartLegendProps } from "./ChartLegend";
 import { cn } from "@narsil-ui/Components";
 import { getPayloadConfigFromPayload } from "./chart";
 import { useChart } from "./ChartContainer";
 import * as React from "react";
+
+export interface ChartLegendContentProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		Pick<ChartLegendProps, "payload" | "verticalAlign"> {
+	hideIcon?: boolean;
+	nameKey?: string;
+}
 
 const ChartLegendContent = React.forwardRef<HTMLDivElement, ChartLegendContentProps>(
 	({ className, hideIcon = false, payload, verticalAlign = "bottom", nameKey }, ref) => {

@@ -1,5 +1,32 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import * as colors from "./Colors";
+import blue from "./Colors/blue";
+import gray from "./Colors/gray";
+import green from "./Colors/green";
+import neutral from "./Colors/neutral";
+import orange from "./Colors/orange";
+import pink from "./Colors/pink";
+import red from "./Colors/red";
+import violet from "./Colors/violet";
+import yellow from "./Colors/yellow";
+
+type Mode = "dark" | "light" | "system";
+
+type ThemeProviderState = {
+	color: Color;
+	dark: boolean;
+	mode: Mode;
+	radius: number;
+	size: number;
+};
+
+type ThemeProviderAction = {
+	setColor: (color: Color) => void;
+	setMode: (mode: Mode) => void;
+	setRadius: (radius: number) => void;
+	setSize: (size: number) => void;
+};
+
+type ThemeProviderType = ThemeProviderState & ThemeProviderAction;
 
 const initialState: ThemeProviderType = {
 	color: "gray",
@@ -14,6 +41,15 @@ const initialState: ThemeProviderType = {
 };
 
 const ThemeProviderContext = createContext<ThemeProviderType>(initialState);
+
+export interface ThemeProviderProps {
+	children: React.ReactNode;
+	defaultColor?: Color;
+	defaultMode?: Mode;
+	defaultRadius?: number;
+	defaultSize?: number;
+	storageKey?: string;
+}
 
 const ThemeProvider = ({
 	children,
@@ -59,25 +95,23 @@ const ThemeProvider = ({
 	const getTheme = (color: Color) => {
 		switch (color) {
 			case "blue":
-				return colors["blue"];
+				return blue;
 			case "gray":
-				return colors["gray"];
+				return gray;
 			case "green":
-				return colors["green"];
+				return green;
 			case "neutral":
-				return colors["neutral"];
+				return neutral;
 			case "orange":
-				return colors["orange"];
+				return orange;
 			case "pink":
-				return colors["pink"];
+				return pink;
 			case "red":
-				return colors["red"];
+				return red;
 			case "violet":
-				return colors["violet"];
+				return violet;
 			case "yellow":
-				return colors["yellow"];
-			default:
-				return colors[defaultColor];
+				return yellow;
 		}
 	};
 

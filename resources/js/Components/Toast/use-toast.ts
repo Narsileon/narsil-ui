@@ -1,4 +1,31 @@
+import { ToastProps } from "./Toast";
 import * as React from "react";
+
+type ToastActionType = typeof import("./use-toast").actionTypes;
+
+type ToastType = ToastProps & {
+	action?: React.ReactElement<typeof import("./ToastAction")>;
+	description?: React.ReactNode;
+	id: string;
+};
+
+type ToastAction =
+	| {
+			type: ToastActionType["ADD_TOAST"];
+			toast: ToastType;
+	  }
+	| {
+			type: ToastActionType["UPDATE_TOAST"];
+			toast: Partial<ToastType>;
+	  }
+	| {
+			type: ToastActionType["DISMISS_TOAST"];
+			toastId?: ToastType["id"];
+	  }
+	| {
+			type: ToastActionType["REMOVE_TOAST"];
+			toastId?: ToastType["id"];
+	  };
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;

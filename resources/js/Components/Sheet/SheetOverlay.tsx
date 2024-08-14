@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 
+export interface SheetOverlayProps extends React.ComponentProps<typeof SheetPrimitive.Overlay> {}
+
 const SheetOverlay = React.forwardRef<
 	React.ElementRef<typeof SheetPrimitive.Overlay>,
 	React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>

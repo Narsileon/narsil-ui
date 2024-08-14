@@ -2,6 +2,10 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarItemProps extends React.ComponentProps<typeof MenubarPrimitive.Item> {
+	inset?: boolean;
+}
+
 const MenubarItem = React.forwardRef<React.ElementRef<typeof MenubarPrimitive.Item>, MenubarItemProps>(
 	({ className, inset, ...props }, ref) => (
 		<MenubarPrimitive.Item

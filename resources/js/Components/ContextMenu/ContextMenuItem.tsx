@@ -2,6 +2,10 @@ import { cn } from "@narsil-ui/Components";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import * as React from "react";
 
+export interface ContextMenuItemProps extends React.ComponentProps<typeof ContextMenuPrimitive.Item> {
+	inset?: boolean;
+}
+
 const ContextMenuItem = React.forwardRef<React.ElementRef<typeof ContextMenuPrimitive.Item>, ContextMenuItemProps>(
 	({ className, inset, ...props }, ref) => (
 		<ContextMenuPrimitive.Item

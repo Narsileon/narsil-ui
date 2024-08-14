@@ -15,6 +15,8 @@ export const collapsibleTriggerStyle = cva(
 	)
 );
 
+export interface CollapsibleTriggerProps extends React.ComponentProps<typeof CollapsiblePrimitive.CollapsibleTrigger> {}
+
 const CollapsibleTrigger = React.forwardRef<
 	React.ElementRef<typeof CollapsiblePrimitive.CollapsibleTrigger>,
 	CollapsibleTriggerProps

@@ -2,6 +2,10 @@ import { cn } from "@narsil-ui/Components";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import * as React from "react";
 
+export interface ContextMenuLabelProps extends React.ComponentProps<typeof ContextMenuPrimitive.Label> {
+	inset?: boolean;
+}
+
 const ContextMenuLabel = React.forwardRef<React.ElementRef<typeof ContextMenuPrimitive.Label>, ContextMenuLabelProps>(
 	({ className, inset, ...props }, ref) => (
 		<ContextMenuPrimitive.Label

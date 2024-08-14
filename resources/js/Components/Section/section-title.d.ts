@@ -1,1 +1,0 @@
-interface SectionTitleProps extends CardTitleProps {}

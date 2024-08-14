@@ -1,1 +1,0 @@
-interface CarouselPreviousProps extends ButtonProps {}

@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import * as React from "react";
 
+export interface ContextMenuSeparatorProps extends React.ComponentProps<typeof ContextMenuPrimitive.Separator> {}
+
 const ContextMenuSeparator = React.forwardRef<
 	React.ElementRef<typeof ContextMenuPrimitive.Separator>,
 	ContextMenuSeparatorProps

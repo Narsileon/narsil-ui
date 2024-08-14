@@ -3,6 +3,10 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarSubTriggerProps extends React.ComponentProps<typeof MenubarPrimitive.SubTrigger> {
+	inset?: boolean;
+}
+
 const MenubarSubTrigger = React.forwardRef<
 	React.ElementRef<typeof MenubarPrimitive.SubTrigger>,
 	MenubarSubTriggerProps

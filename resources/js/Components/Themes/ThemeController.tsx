@@ -1,19 +1,18 @@
 import { Moon, Sun, SunMoon } from "lucide-react";
 import { upperFirst } from "lodash";
+import { useTheme } from "./ThemeProvider";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import Button from "@narsil-ui/Components/Button/Button";
+import Card from "@narsil-ui/Components/Card/Card";
+import CardContent from "@narsil-ui/Components/Card/CardContent";
+import Heading from "@narsil-ui/Components/Heading/Heading";
+import Popover from "@narsil-ui/Components/Popover/Popover";
+import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
+import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
+import Slider from "@narsil-ui/Components/Slider/Slider";
+import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
 
-import {
-	Button,
-	Card,
-	CardContent,
-	Heading,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-	Slider,
-	TooltipWrapper,
-	useTheme,
-} from "@narsil-ui/Components";
+export interface ThemeControllerProps {}
 
 const ThemeController = ({}: ThemeControllerProps) => {
 	const { trans } = useTranslationsStore();

@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarSubContentProps extends React.ComponentProps<typeof MenubarPrimitive.SubContent> {}
+
 const MenubarSubContent = React.forwardRef<
 	React.ElementRef<typeof MenubarPrimitive.SubContent>,
 	MenubarSubContentProps

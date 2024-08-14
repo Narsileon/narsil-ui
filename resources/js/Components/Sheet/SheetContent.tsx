@@ -1,8 +1,10 @@
-import { cn, SheetOverlay, SheetPortal } from "@narsil-ui/Components";
-import { cva } from "class-variance-authority";
+import { cn } from "@narsil-ui/Components";
+import { cva, VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
+import SheetPortal from "./SheetPortal";
+import SheetOverlay from "./SheetOverlay";
 
 export const sheetVariants = cva(
 	"fixed z-50 gap-4 bg-background p-6 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
@@ -32,6 +34,10 @@ export const sheetVariants = cva(
 		},
 	}
 );
+
+export interface SheetContentProps
+	extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
+		VariantProps<typeof sheetVariants> {}
 
 const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Content>, SheetContentProps>(
 	({ side = "right", className, children, ...props }, ref) => (

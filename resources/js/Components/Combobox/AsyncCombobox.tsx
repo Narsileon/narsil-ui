@@ -1,25 +1,33 @@
 import { Check, ChevronsUpDown } from "lucide-react";
+import { cn } from "@narsil-ui/Components";
 import { debounce, isString, sortBy, upperFirst } from "lodash";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 import axios from "axios";
+import Button from "@narsil-ui/Components/Button/Button";
+import Command from "@narsil-ui/Components/Command/Command";
+import CommandEmpty from "@narsil-ui/Components/Command/CommandEmpty";
+import CommandGroup from "@narsil-ui/Components/Command/CommandGroup";
+import CommandInput from "@narsil-ui/Components/Command/CommandInput";
+import CommandItem from "@narsil-ui/Components/Command/CommandItem";
+import CommandList from "@narsil-ui/Components/Command/CommandList";
+import CommandLoading from "@narsil-ui/Components/Command/CommandLoading";
+import Popover from "@narsil-ui/Components/Popover/Popover";
+import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
+import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
+import Svg from "@narsil-ui/Components/Svg/Svg";
 
-import {
-	Button,
-	cn,
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-	CommandLoading,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-	Svg,
-} from "@narsil-ui/Components";
+export interface AsyncComboboxProps extends Omit<React.ComponentProps<typeof PopoverPrimitive.Content>, "onChange"> {
+	fetch: string;
+	labelKey?: string;
+	preview?: "icon" | "image";
+	sort?: boolean;
+	ucFirst?: boolean;
+	value: string | number;
+	valueKey?: string;
+	onChange: (value: number | string) => void;
+}
 
 const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Content>, AsyncComboboxProps>(
 	({ fetch, labelKey = "label", preview, sort = true, ucFirst = true, value, valueKey = "value", onChange }, ref) => {

@@ -1,8 +1,25 @@
 import { cn } from "@narsil-ui/Components";
+import { EmblaCarouselType } from "embla-carousel";
 import * as React from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import useEmblaCarousel, { UseEmblaCarouselType } from "embla-carousel-react";
+
+type CarouselContextProps = {
+	api: UseEmblaCarouselType[1];
+	canScrollPrev: boolean;
+	canScrollNext: boolean;
+	carouselRef: UseEmblaCarouselType[0];
+	scrollPrev: () => void;
+	scrollNext: () => void;
+} & CarouselProps;
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
+
+interface CarouselProps {
+	opts?: import("embla-carousel").EmblaOptionsType;
+	orientation?: "horizontal" | "vertical";
+	plugins?: import("embla-carousel").CreatePluginType<import("embla-carousel").EmblaPluginsType, {}>[] | undefined;
+	setApi?: (api: EmblaCarouselType) => void;
+}
 
 const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement> & CarouselProps>(
 	({ children, className, opts, orientation = "horizontal", plugins, setApi, ...props }, ref) => {
@@ -16,7 +33,7 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 		const [canScrollPrev, setCanScrollPrev] = React.useState(false);
 		const [canScrollNext, setCanScrollNext] = React.useState(false);
 
-		const onSelect = React.useCallback((api: CarouselApi) => {
+		const onSelect = React.useCallback((api: EmblaCarouselType) => {
 			if (!api) {
 				return;
 			}

@@ -1,14 +1,12 @@
-import {
-	Toast,
-	ToastClose,
-	ToastDescription,
-	ToastProvider,
-	ToastTitle,
-	ToastViewport,
-	useToast,
-} from "@narsil-ui/Components";
+import { useToast } from "./use-toast";
+import Toast from "./Toast";
+import ToastClose from "./ToastClose";
+import ToastDescription from "./ToastDescription";
+import ToastProvider from "./ToastProvider";
+import ToastTitle from "./ToastTitle";
+import ToastViewport from "./ToastViewport";
 
-export function Toaster() {
+const Toaster = () => {
 	const { toasts } = useToast();
 
 	return (
@@ -31,4 +29,6 @@ export function Toaster() {
 			<ToastViewport />
 		</ToastProvider>
 	);
-}
+};
+
+export default Toaster;

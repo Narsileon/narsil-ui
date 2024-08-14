@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import { Command as CommandPrimitive } from "cmdk";
 import * as React from "react";
 
+export interface CommandGroupProps extends React.ComponentProps<typeof CommandPrimitive.Group> {}
+
 const CommandGroup = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Group>, CommandGroupProps>(
 	({ className, ...props }, ref) => (
 		<CommandPrimitive.Group

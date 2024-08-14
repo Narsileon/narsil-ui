@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 
+export interface ToastActionProps extends React.ComponentProps<typeof ToastPrimitives.Action> {}
+
 const ToastAction = React.forwardRef<React.ElementRef<typeof ToastPrimitives.Action>, ToastActionProps>(
 	({ className, ...props }, ref) => (
 		<ToastPrimitives.Action

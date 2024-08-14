@@ -15,6 +15,8 @@ export const navigationMenuTriggerStyle = cva(
 	)
 );
 
+export interface NavigationMenuTriggerProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Trigger> {}
+
 const NavigationMenuTrigger = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
 	NavigationMenuTriggerProps

@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface SheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const SheetFooter = React.forwardRef<HTMLDivElement, SheetFooterProps>(({ className, ...props }, ref) => (
 	<div
 		ref={ref}

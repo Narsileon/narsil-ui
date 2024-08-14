@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarRadioItemProps extends React.ComponentProps<typeof MenubarPrimitive.RadioItem> {}
+
 const MenubarRadioItem = React.forwardRef<React.ElementRef<typeof MenubarPrimitive.RadioItem>, MenubarRadioItemProps>(
 	({ className, children, ...props }, ref) => (
 		<MenubarPrimitive.RadioItem

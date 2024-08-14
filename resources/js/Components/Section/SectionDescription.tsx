@@ -1,4 +1,6 @@
-import { CardDescription } from "@narsil-ui/Components";
+import CardDescription, { CardDescriptionProps } from "@narsil-ui/Components/Card/CardDescription";
+
+export interface SectionDescriptionProps extends CardDescriptionProps {}
 
 const SectionDescription = CardDescription;
 

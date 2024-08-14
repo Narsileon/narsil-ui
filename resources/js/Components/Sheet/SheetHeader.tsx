@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface SheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const SheetHeader = React.forwardRef<HTMLDivElement, SheetHeaderProps>(({ className, ...props }, ref) => (
 	<div
 		ref={ref}

@@ -3,6 +3,8 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import * as React from "react";
 import NavigationMenuViewport from "./NavigationMenuViewport";
 
+export interface NavigationMenuProps extends React.ComponentProps<typeof NavigationMenuPrimitive.Root> {}
+
 const NavigationMenu = React.forwardRef<React.ElementRef<typeof NavigationMenuPrimitive.Root>, NavigationMenuProps>(
 	({ className, children, orientation = "horizontal", ...props }, ref) => (
 		<NavigationMenuPrimitive.Root

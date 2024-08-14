@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import * as React from "react";
 
+export interface MenubarTriggerProps extends React.ComponentProps<typeof MenubarPrimitive.Trigger> {}
+
 const MenubarTrigger = React.forwardRef<React.ElementRef<typeof MenubarPrimitive.Trigger>, MenubarTriggerProps>(
 	({ className, ...props }, ref) => (
 		<MenubarPrimitive.Trigger

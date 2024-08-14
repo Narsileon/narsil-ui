@@ -1,4 +1,6 @@
-import { CardTitle } from "@narsil-ui/Components";
+import CardTitle, { CardTitleProps } from "@narsil-ui/Components/Card/CardTitle";
+
+export interface SectionTitleProps extends CardTitleProps {}
 
 const SectionTitle = CardTitle;
 

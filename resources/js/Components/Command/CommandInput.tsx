@@ -3,6 +3,8 @@ import { Command as CommandPrimitive } from "cmdk";
 import { Search } from "lucide-react";
 import * as React from "react";
 
+export interface CommandInputProps extends React.ComponentProps<typeof CommandPrimitive.Input> {}
+
 const CommandInput = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Input>, CommandInputProps>(
 	({ className, ...props }, ref) => (
 		<div

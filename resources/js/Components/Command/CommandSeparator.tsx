@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import { Command as CommandPrimitive } from "cmdk";
 import * as React from "react";
 
+export interface CommandSeparatorProps extends React.ComponentProps<typeof CommandPrimitive.Separator> {}
+
 const CommandSeparator = React.forwardRef<React.ElementRef<typeof CommandPrimitive.Separator>, CommandSeparatorProps>(
 	({ className, ...props }, ref) => (
 		<CommandPrimitive.Separator

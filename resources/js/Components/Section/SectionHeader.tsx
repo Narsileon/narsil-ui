@@ -1,7 +1,14 @@
-import { cn, Separator, Toggle, TooltipWrapper, useSection } from "@narsil-ui/Components";
+import { CardHeaderProps } from "@narsil-ui/Components/Card/CardHeader";
+import { cn } from "@narsil-ui/Components";
 import { Maximize, Minimize } from "lucide-react";
+import { useSection } from "./Section";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
+import Separator from "@narsil-ui/Components/Separator/Separator";
+import Toggle from "@narsil-ui/Components/Toggle/Toggle";
+import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
+
+export interface SectionHeaderProps extends CardHeaderProps {}
 
 const SectionHeader = React.forwardRef<HTMLDivElement, SectionHeaderProps>(({ children, className, ...props }, ref) => {
 	const { trans } = useTranslationsStore();
