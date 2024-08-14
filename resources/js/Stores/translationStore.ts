@@ -7,97 +7,97 @@ const initialState: TranslationStoreState = {
 	translations: {},
 };
 
-const errorMap: ZodErrorMap = (issue, ctx) => {
-	const { trans } = useTranslationsStore();
+const errorMap = (trans: TranslationStoreAction["trans"]): ZodErrorMap => {
+	return (issue, ctx) => {
+		let message;
 
-	let message;
-
-	switch (issue.code) {
-		case ZodIssueCode.custom:
-			message = ctx.defaultError;
-			break;
-		case ZodIssueCode.invalid_date:
-			message = trans("validation.date");
-			break;
-		case ZodIssueCode.invalid_enum_value:
-			message = trans("validation.enum");
-			break;
-		case ZodIssueCode.invalid_string:
-			if (issue.validation === "email") {
-				message = trans("validation.email");
-			} else if (issue.validation === "url") {
-				message = trans("validation.url");
-			} else if (issue.validation === "regex") {
-				message = trans("validation.regex");
-			}
-			break;
-		case ZodIssueCode.invalid_type:
-			if (issue.expected === "string") {
-				message = trans("validation.string");
-			} else if (issue.expected === "number") {
-				message = trans("validation.numeric");
-			} else if (issue.expected === "array") {
-				message = trans("validation.array");
-			}
-			break;
-		case ZodIssueCode.invalid_union:
-			message = trans("validation.invalid_type");
-			break;
-		case ZodIssueCode.too_big:
-			if (issue.maximum !== undefined) {
-				if (issue.type === "string") {
-					message = trans("validation.max.string", {
-						replacements: {
-							max: `${issue.maximum}`,
-						},
-					});
-				} else if (issue.type === "number") {
-					message = trans("validation.max.numeric", {
-						replacements: {
-							max: `${issue.maximum}`,
-						},
-					});
-				} else if (issue.type === "array") {
-					message = trans("validation.max.array", {
-						replacements: {
-							max: `${issue.maximum}`,
-						},
-					});
+		switch (issue.code) {
+			case ZodIssueCode.custom:
+				message = ctx.defaultError;
+				break;
+			case ZodIssueCode.invalid_date:
+				message = trans("validation.date");
+				break;
+			case ZodIssueCode.invalid_enum_value:
+				message = trans("validation.enum");
+				break;
+			case ZodIssueCode.invalid_string:
+				if (issue.validation === "email") {
+					message = trans("validation.email");
+				} else if (issue.validation === "url") {
+					message = trans("validation.url");
+				} else if (issue.validation === "regex") {
+					message = trans("validation.regex");
 				}
-			}
-			break;
-		case ZodIssueCode.too_small:
-			if (issue.minimum !== undefined) {
-				if (issue.type === "string") {
-					message = trans("validation.min.string", {
-						replacements: {
-							min: `${issue.minimum}`,
-						},
-					});
-				} else if (issue.type === "number") {
-					message = trans("validation.min.numeric", {
-						replacements: {
-							min: `${issue.minimum}`,
-						},
-					});
-				} else if (issue.type === "array") {
-					message = trans("validation.min.array", {
-						replacements: {
-							min: `${issue.minimum}`,
-						},
-					});
+				break;
+			case ZodIssueCode.invalid_type:
+				if (issue.expected === "string") {
+					message = trans("validation.string");
+				} else if (issue.expected === "number") {
+					message = trans("validation.numeric");
+				} else if (issue.expected === "array") {
+					message = trans("validation.array");
 				}
-			}
-			break;
-		default:
+				break;
+			case ZodIssueCode.invalid_union:
+				message = trans("validation.invalid_type");
+				break;
+			case ZodIssueCode.too_big:
+				if (issue.maximum !== undefined) {
+					if (issue.type === "string") {
+						message = trans("validation.max.string", {
+							replacements: {
+								max: `${issue.maximum}`,
+							},
+						});
+					} else if (issue.type === "number") {
+						message = trans("validation.max.numeric", {
+							replacements: {
+								max: `${issue.maximum}`,
+							},
+						});
+					} else if (issue.type === "array") {
+						message = trans("validation.max.array", {
+							replacements: {
+								max: `${issue.maximum}`,
+							},
+						});
+					}
+				}
+				break;
+			case ZodIssueCode.too_small:
+				if (issue.minimum !== undefined) {
+					if (issue.type === "string") {
+						message = trans("validation.min.string", {
+							replacements: {
+								min: `${issue.minimum}`,
+							},
+						});
+					} else if (issue.type === "number") {
+						message = trans("validation.min.numeric", {
+							replacements: {
+								min: `${issue.minimum}`,
+							},
+						});
+					} else if (issue.type === "array") {
+						message = trans("validation.min.array", {
+							replacements: {
+								min: `${issue.minimum}`,
+							},
+						});
+					}
+				}
+				break;
+			default:
+				message = ctx.defaultError;
+		}
+
+		if (!message) {
 			message = ctx.defaultError;
-	}
+		}
 
-	if (!message) {
-		message = ctx.defaultError;
-	}
-
-	return { message };
+		return { message };
+	};
 };
 
 export const useTranslationsStore = create<TranslationStoreType>((set, get) => ({
@@ -129,7 +129,7 @@ export const useTranslationsStore = create<TranslationStoreType>((set, get) => (
 				translations: translations,
 			};
 
-			z.setErrorMap(errorMap);
+			z.setErrorMap(errorMap(newState.trans));
 
 			return newState;
 		}),
