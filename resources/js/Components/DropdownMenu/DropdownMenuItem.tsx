@@ -2,6 +2,10 @@ import { cn } from "@narsil-ui/Components";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 
+export interface DropdownMenuItemProps extends React.ComponentProps<typeof DropdownMenuPrimitive.Item> {
+	inset?: boolean;
+}
+
 const DropdownMenuItem = React.forwardRef<React.ElementRef<typeof DropdownMenuPrimitive.Item>, DropdownMenuItemProps>(
 	({ className, inset, ...props }, ref) => (
 		<DropdownMenuPrimitive.Item

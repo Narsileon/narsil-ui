@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SeparatorPrimitive from "@radix-ui/react-separator";
 
+export interface SeparatorProps extends React.ComponentProps<typeof SeparatorPrimitive.Root> {}
+
 const Separator = React.forwardRef<React.ElementRef<typeof SeparatorPrimitive.Root>, SeparatorProps>(
 	({ className, orientation = "horizontal", decorative = true, ...props }, ref) => (
 		<SeparatorPrimitive.Root

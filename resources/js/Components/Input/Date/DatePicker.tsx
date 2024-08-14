@@ -1,7 +1,14 @@
-import { Button, Calendar, cn, Popover, PopoverContent, PopoverTrigger } from "@narsil-ui/Components";
 import { CalendarIcon } from "lucide-react";
-import { inputStyle } from "@narsil-ui/Components/Input/Input";
+import { cn } from "@narsil-ui/Components";
+import { InputProps, inputStyle } from "@narsil-ui/Components/Input/Input";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import Button from "@narsil-ui/Components/Button/Button";
+import Calendar from "@narsil-ui/Components/Calendar/Calendar";
+import Popover from "@narsil-ui/Components/Popover/Popover";
+import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
+import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
+
+export interface DatePickerProps extends InputProps {}
 
 const DatePicker = ({ className, required = false, value, onChange }: DatePickerProps) => {
 	const { locale, trans } = useTranslationsStore();

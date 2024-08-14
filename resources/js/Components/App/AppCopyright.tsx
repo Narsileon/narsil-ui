@@ -1,6 +1,11 @@
-import { Button } from "@narsil-ui/Components";
 import { Link } from "@inertiajs/react";
 import * as React from "react";
+import Button from "@narsil-ui/Components/Button/Button";
+
+export interface AppCopyrightProps extends React.HTMLAttributes<HTMLDivElement> {
+	href?: string;
+	name: string;
+}
 
 const AppCopyright = React.forwardRef<HTMLDivElement, AppCopyrightProps>(({ href = "/", name }, ref) => {
 	const year = new Date().getFullYear();

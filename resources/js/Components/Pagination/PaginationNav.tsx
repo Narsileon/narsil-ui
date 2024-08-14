@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface PaginationNavProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const PaginationNav = React.forwardRef<HTMLDivElement, PaginationNavProps>(({ className, ...props }, ref) => (
 	<nav
 		ref={ref}

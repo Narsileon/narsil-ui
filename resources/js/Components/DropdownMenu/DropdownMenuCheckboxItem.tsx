@@ -3,6 +3,9 @@ import { cn } from "@narsil-ui/Components";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import * as React from "react";
 
+export interface DropdownMenuCheckboxItemProps
+	extends React.ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem> {}
+
 const DropdownMenuCheckboxItem = React.forwardRef<
 	React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
 	DropdownMenuCheckboxItemProps

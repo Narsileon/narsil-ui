@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 import * as React from "react";
 
+export interface HoverCardContentProps extends React.ComponentProps<typeof HoverCardPrimitive.Content> {}
+
 const HoverCardContent = React.forwardRef<React.ElementRef<typeof HoverCardPrimitive.Content>, HoverCardContentProps>(
 	({ className, align = "center", sideOffset = 4, ...props }, ref) => (
 		<HoverCardPrimitive.Content

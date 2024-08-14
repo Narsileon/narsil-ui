@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 
+export interface PopoverContentProps extends React.ComponentProps<typeof PopoverPrimitive.Content> {}
+
 const PopoverContent = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Content>, PopoverContentProps>(
 	({ className, align = "center", sideOffset = 4, ...props }, ref) => (
 		<PopoverPrimitive.Portal>

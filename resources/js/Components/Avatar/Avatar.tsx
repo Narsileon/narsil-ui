@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 import * as React from "react";
 
+export interface AvatarProps extends React.ComponentProps<typeof AvatarPrimitive.Root> {}
+
 const Avatar = React.forwardRef<React.ElementRef<typeof AvatarPrimitive.Root>, AvatarProps>(
 	({ className, ...props }, ref) => (
 		<AvatarPrimitive.Root

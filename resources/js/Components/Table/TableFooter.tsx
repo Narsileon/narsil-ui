@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface TableFooterProps extends React.HTMLAttributes<HTMLTableSectionElement> {}
+
 const TableFooter = React.forwardRef<HTMLTableSectionElement, TableFooterProps>(({ className, ...props }, ref) => (
 	<tfoot
 		ref={ref}

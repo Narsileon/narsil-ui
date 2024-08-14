@@ -1,8 +1,19 @@
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
-import { Link, router } from "@inertiajs/react";
-import { PaginationButton, PaginationList, PaginationItem, PaginationNav } from "@narsil-ui/Components";
+import { InertiaLinkProps, Link, router } from "@inertiajs/react";
 import { useEffect } from "react";
 import * as React from "react";
+import PaginationButton from "./PaginationButton";
+import PaginationItem from "./PaginationItem";
+import PaginationList from "./PaginationList";
+import PaginationNav from "./PaginationNav";
+
+export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
+	currentPage: number;
+	data?: Pick<InertiaLinkProps, "data">;
+	lastPage: number;
+	links: PaginationLink[];
+	simpleLinks: SimpleLinks;
+}
 
 const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 	({ currentPage, data, lastPage, links, simpleLinks, ...props }, ref) => {

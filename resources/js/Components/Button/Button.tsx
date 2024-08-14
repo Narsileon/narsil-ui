@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import { Slot } from "@radix-ui/react-slot";
 import * as React from "react";
 
@@ -34,6 +34,13 @@ export const buttonVariants = cva(
 		},
 	}
 );
+
+export interface ButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+		VariantProps<typeof buttonVariants> {
+	asChild?: boolean;
+	isActive?: boolean;
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 	({ asChild = false, className, isActive, size, variant, ...props }, ref) => {

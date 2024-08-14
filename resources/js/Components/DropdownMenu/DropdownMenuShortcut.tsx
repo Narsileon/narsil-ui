@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface DropdownMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
 const DropdownMenuShortcut = React.forwardRef<HTMLSpanElement, DropdownMenuShortcutProps>(
 	({ className, ...props }, ref) => (
 		<span

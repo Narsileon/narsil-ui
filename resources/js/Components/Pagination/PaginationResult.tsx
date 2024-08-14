@@ -2,6 +2,12 @@ import { cn } from "@narsil-ui/Components";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
 
+export interface PaginationResultProps extends React.HTMLAttributes<HTMLSpanElement> {
+	from: number;
+	to: number;
+	total: number;
+}
+
 const PaginationResult = React.forwardRef<HTMLSpanElement, PaginationResultProps>(
 	({ className, from, to, total, ...props }, ref) => {
 		const { trans } = useTranslationsStore();

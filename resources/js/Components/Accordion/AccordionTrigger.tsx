@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import * as React from "react";
 
+export interface AccordionTriggerProps extends React.ComponentProps<typeof AccordionPrimitive.Trigger> {}
+
 const AccordionTrigger = React.forwardRef<React.ElementRef<typeof AccordionPrimitive.Trigger>, AccordionTriggerProps>(
 	({ className, children, ...props }, ref) => (
 		<AccordionPrimitive.Header className='flex'>

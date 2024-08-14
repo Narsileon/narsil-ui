@@ -1,6 +1,10 @@
-import { cn, SelectScrollDownButton, SelectScrollUpButton } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
+import SelectScrollDownButton from "./SelectScrollDownButton";
+import SelectScrollUpButton from "./SelectScrollUpButton";
+
+export interface SelectContentProps extends React.ComponentProps<typeof SelectPrimitive.Content> {}
 
 const SelectContent = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Content>, SelectContentProps>(
 	({ className, children, position = "popper", ...props }, ref) => (

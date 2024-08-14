@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
+export interface TooltipContentProps extends React.ComponentProps<typeof TooltipPrimitive.Content> {}
+
 const TooltipContent = React.forwardRef<React.ElementRef<typeof TooltipPrimitive.Content>, TooltipContentProps>(
 	({ className, sideOffset = 4, ...props }, ref) => (
 		<TooltipPrimitive.Content

@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
+export interface TabsTriggerProps extends React.ComponentProps<typeof TabsPrimitive.Trigger> {}
+
 const TabsTrigger = React.forwardRef<React.ElementRef<typeof TabsPrimitive.Trigger>, TabsTriggerProps>(
 	({ className, ...props }, ref) => (
 		<TabsPrimitive.Trigger

@@ -1,6 +1,15 @@
-import { cn, Input } from "@narsil-ui/Components";
-import { getArrowByType, getDateByType, setDateByType } from "./timeInputUtils";
+import { cn } from "@narsil-ui/Components";
+import { getArrowByType, getDateByType, setDateByType } from "./time-input-utils";
+import Input, { InputProps } from "@narsil-ui/Components/Input/Input";
 import React from "react";
+
+export type TimeInputType = "minutes" | "seconds" | "hours";
+
+export interface TimeInputProps extends InputProps {
+	picker: TimeInputType;
+	onLeftFocus?: () => void;
+	onRightFocus?: () => void;
+}
 
 const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 	({ className, id, name, picker, value, onChange, onKeyDown, onLeftFocus, onRightFocus, ...props }, ref) => {
@@ -88,8 +97,8 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 				className={cn("w-12 px-2 text-center font-mono text-base", className)}
 				inputMode='decimal'
 				value={calculatedValue}
-				onChange={(e) => {
-					e.preventDefault();
+				onChange={(event) => {
+					event.preventDefault();
 				}}
 				onKeyDown={(event) => {
 					onKeyDown?.(event);

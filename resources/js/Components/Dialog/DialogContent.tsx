@@ -1,9 +1,12 @@
-import { cn, ScrollArea } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
 import { X } from "lucide-react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
 import DialogOverlay from "./DialogOverlay";
 import DialogPortal from "./DialogPortal";
+import ScrollArea from "@narsil-ui/Components/ScrollArea/ScrollArea";
+
+export interface DialogContentProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {}
 
 const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Content>, DialogContentProps>(
 	({ className, children, ...props }, ref) => (

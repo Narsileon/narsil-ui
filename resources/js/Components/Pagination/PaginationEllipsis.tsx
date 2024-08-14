@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import { MoreHorizontal } from "lucide-react";
 import * as React from "react";
 
+export interface PaginationEllipsisProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
 const PaginationEllipsis = React.forwardRef<HTMLSpanElement, PaginationEllipsisProps>(
 	({ className, ...props }, ref) => (
 		<span

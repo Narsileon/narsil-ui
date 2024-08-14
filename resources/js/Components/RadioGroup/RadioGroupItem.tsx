@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import * as React from "react";
 
+export interface RadioGroupItemProps extends React.ComponentProps<typeof RadioGroupPrimitive.Item> {}
+
 const RadioGroupItem = React.forwardRef<React.ElementRef<typeof RadioGroupPrimitive.Item>, RadioGroupItemProps>(
 	({ className, ...props }, ref) => (
 		<RadioGroupPrimitive.Item

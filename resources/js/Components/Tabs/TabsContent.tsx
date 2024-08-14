@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
+export interface TabsContentProps extends React.ComponentProps<typeof TabsPrimitive.Content> {}
+
 const TabsContent = React.forwardRef<React.ElementRef<typeof TabsPrimitive.Content>, TabsContentProps>(
 	({ className, ...props }, ref) => (
 		<TabsPrimitive.Content

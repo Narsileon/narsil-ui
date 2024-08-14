@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import * as React from "react";
 
+export interface DialogOverlayProps extends React.ComponentProps<typeof DialogPrimitive.Overlay> {}
+
 const DialogOverlay = React.forwardRef<React.ElementRef<typeof DialogPrimitive.Overlay>, DialogOverlayProps>(
 	({ className, ...props }, ref) => (
 		<DialogPrimitive.Overlay

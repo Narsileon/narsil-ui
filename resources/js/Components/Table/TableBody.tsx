@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface TableBopyProps extends React.HTMLAttributes<HTMLTableSectionElement> {}
+
 const TableBody = React.forwardRef<HTMLTableSectionElement, TableBopyProps>(({ className, ...props }, ref) => (
 	<tbody
 		ref={ref}

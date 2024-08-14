@@ -1,5 +1,8 @@
-import { cn, Heading } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
 import * as React from "react";
+import Heading, { HeadingProps } from "@narsil-ui/Components/Heading/Heading";
+
+export interface AlertTitleProps extends HeadingProps {}
 
 const AlertTitle = React.forwardRef<HTMLParagraphElement, AlertTitleProps>(
 	({ className, level = "h2", variant = "h5", ...props }, ref) => (

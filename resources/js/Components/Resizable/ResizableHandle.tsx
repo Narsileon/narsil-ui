@@ -2,6 +2,10 @@ import { cn } from "@narsil-ui/Components";
 import { GripVertical } from "lucide-react";
 import * as ResizablePrimitive from "react-resizable-panels";
 
+export interface ResizableHandleProps extends React.ComponentProps<typeof ResizablePrimitive.PanelResizeHandle> {
+	withHandle?: boolean;
+}
+
 const ResizableHandle = ({ withHandle, className, ...props }: ResizableHandleProps) => (
 	<ResizablePrimitive.PanelResizeHandle
 		className={cn(

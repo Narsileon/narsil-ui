@@ -1,6 +1,10 @@
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
 
+export interface AppVersionProps extends React.HTMLAttributes<HTMLElement> {
+	version: string;
+}
+
 const AppVersion = React.forwardRef<HTMLElement, AppVersionProps>(({ version }, ref) => {
 	const { trans } = useTranslationsStore();
 

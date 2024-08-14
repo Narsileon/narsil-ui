@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SliderPrimitive from "@radix-ui/react-slider";
 
+export interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> {}
+
 const Slider = React.forwardRef<React.ElementRef<typeof SliderPrimitive.Root>, SliderProps>(
 	({ className, ...props }, ref) => (
 		<SliderPrimitive.Root

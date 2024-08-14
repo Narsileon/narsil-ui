@@ -1,11 +1,16 @@
 import { cn } from "@narsil-ui/Components";
+import { toggleVariants } from "./Toggle";
+import { VariantProps } from "class-variance-authority";
 import * as React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 
-const ToggleGroupContext = React.createContext<ToggleVariantProps>({
+const ToggleGroupContext = React.createContext<VariantProps<typeof toggleVariants>>({
 	size: "default",
 	variant: "default",
 });
+
+type ToggleGroupProps = React.ComponentProps<typeof import("@radix-ui/react-toggle-group").Root> &
+	VariantProps<typeof toggleVariants> & {};
 
 const ToggleGroup = React.forwardRef<React.ElementRef<typeof ToggleGroupPrimitive.Root>, ToggleGroupProps>(
 	({ className, variant, size, children, ...props }, ref) => (

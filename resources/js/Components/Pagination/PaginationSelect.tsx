@@ -1,8 +1,19 @@
-import { cn, Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
+import Select from "@narsil-ui/Components/Select/Select";
+import SelectContent from "@narsil-ui/Components/Select/SelectContent";
+import SelectItem from "@narsil-ui/Components/Select/SelectItem";
+import SelectTrigger from "@narsil-ui/Components/Select/SelectTrigger";
+import SelectValue from "@narsil-ui/Components/Select/SelectValue";
 
 const defaultOptions = [10, 25, 50, 100];
+
+export interface PaginationSelectProps extends React.HTMLAttributes<HTMLDivElement> {
+	options?: number[];
+	value?: number | string;
+	onValueChange?: (value: string) => void;
+}
 
 const PaginationSelect = React.forwardRef<HTMLDivElement, PaginationSelectProps>(
 	({ children, className, options = defaultOptions, value, onValueChange, ...props }, ref) => {

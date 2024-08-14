@@ -1,1 +1,0 @@
-interface DatePickerProps extends InputProps {}

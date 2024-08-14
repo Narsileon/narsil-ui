@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface TableHeadProps extends React.ThHTMLAttributes<HTMLTableCellElement> {}
+
 const TableHead = React.forwardRef<HTMLTableCellElement, TableHeadProps>(({ className, ...props }, ref) => (
 	<th
 		ref={ref}

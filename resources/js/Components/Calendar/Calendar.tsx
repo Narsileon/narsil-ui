@@ -1,11 +1,11 @@
 import { buttonVariants } from "@narsil-ui/Components/Button/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { DayPicker } from "react-day-picker";
+import { DayPicker, DayPickerProps } from "react-day-picker";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as Locales from "date-fns/locale";
 
-const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) => {
+const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: DayPickerProps) => {
 	const { locale } = useTranslationsStore();
 
 	return (
@@ -62,7 +62,7 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: C
 						<ChevronRight className='h-4 w-4' />
 					),
 			}}
-			locale={Locales[locale as CalendarLocale]}
+			locale={Locales[locale as keyof typeof Locales]}
 			showOutsideDays={showOutsideDays}
 			{...props}
 		/>

@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface AlertDialogFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const AlertDialogFooter = React.forwardRef<HTMLDivElement, AlertDialogFooterProps>(({ className, ...props }, ref) => (
 	<div
 		ref={ref}

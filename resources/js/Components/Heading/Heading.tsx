@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 export const headingVariants = cva(cn("scroll-m-20 font-semibold tracking-tight"), {
@@ -17,6 +17,10 @@ export const headingVariants = cva(cn("scroll-m-20 font-semibold tracking-tight"
 		variant: "h5",
 	},
 });
+
+export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement>, VariantProps<typeof headingVariants> {
+	level?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
 
 const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
 	({ className, level = "h2", variant = "h5", ...props }, ref) => {

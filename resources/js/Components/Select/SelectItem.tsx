@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
+export interface SelectItemProps extends React.ComponentProps<typeof SelectPrimitive.Item> {}
+
 const SelectItem = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Item>, SelectItemProps>(
 	({ className, children, ...props }, ref) => (
 		<SelectPrimitive.Item

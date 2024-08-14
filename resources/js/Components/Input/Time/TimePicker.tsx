@@ -1,5 +1,8 @@
-import { TimeInput } from "@narsil-ui/Components";
+import { InputProps } from "@narsil-ui/Components/Input/Input";
 import * as React from "react";
+import TimeInput from "@narsil-ui/Components/Input/Time/TimeInput";
+
+export interface TimePickerProps extends InputProps {}
 
 const TimePicker = ({ ...props }: TimePickerProps) => {
 	const hourRef = React.useRef<HTMLInputElement>(null);

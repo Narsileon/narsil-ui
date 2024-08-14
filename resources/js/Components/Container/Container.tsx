@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import React from "react";
 
+export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+
 const Container = React.forwardRef<HTMLDivElement, ContainerProps>(({ children, className }, ref) => (
 	<div
 		ref={ref}

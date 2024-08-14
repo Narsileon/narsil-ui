@@ -1,6 +1,8 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 
+export interface BreadcrumbListProps extends React.HTMLAttributes<HTMLOListElement> {}
+
 const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(({ className, ...props }, ref) => (
 	<ol
 		ref={ref}

@@ -4,6 +4,8 @@ import * as React from "react";
 import AlertDialogOverlay from "./AlertDialogOverlay";
 import AlertDialogPortal from "./AlertDialogPortal";
 
+export interface AlertDialogContentProps extends React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content> {}
+
 const AlertDialogContent = React.forwardRef<
 	React.ElementRef<typeof AlertDialogPrimitive.Content>,
 	AlertDialogContentProps

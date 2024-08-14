@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
+export interface SelectTriggerProps extends React.ComponentProps<typeof SelectPrimitive.Trigger> {}
+
 const SelectTrigger = React.forwardRef<React.ElementRef<typeof SelectPrimitive.Trigger>, SelectTriggerProps>(
 	({ className, children, ...props }, ref) => (
 		<SelectPrimitive.Trigger

@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 
+export interface SelectScrollDownButtonProps extends React.ComponentProps<typeof SelectPrimitive.ScrollDownButton> {}
+
 const SelectScrollDownButton = React.forwardRef<
 	React.ElementRef<typeof SelectPrimitive.ScrollDownButton>,
 	SelectScrollDownButtonProps

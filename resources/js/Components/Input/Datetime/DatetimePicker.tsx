@@ -1,17 +1,15 @@
 import { CalendarIcon } from "lucide-react";
-import { inputStyle } from "@narsil-ui/Components/Input/Input";
+import { cn } from "@narsil-ui/Components";
+import { InputProps, inputStyle } from "@narsil-ui/Components/Input/Input";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import Button from "@narsil-ui/Components/Button/Button";
+import Calendar from "@narsil-ui/Components/Calendar/Calendar";
+import Popover from "@narsil-ui/Components/Popover/Popover";
+import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
+import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
+import Separator from "@narsil-ui/Components/Separator/Separator";
 
-import {
-	Button,
-	Calendar,
-	cn,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-	Separator,
-	TimePicker,
-} from "@narsil-ui/Components";
+export interface DateTimePickerProps extends InputProps {}
 
 const DatetimePicker = ({ className, value, onChange, required }: DateTimePickerProps) => {
 	const { locale, trans } = useTranslationsStore();

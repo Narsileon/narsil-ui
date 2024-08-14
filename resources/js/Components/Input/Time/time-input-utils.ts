@@ -1,3 +1,17 @@
+import { TimeInputType } from "@narsil-ui/Components/Input/Time/TimeInput";
+
+type GetValidArrowNumberConfig = {
+	max: number;
+	min: number;
+	step: number;
+};
+
+type GetValidNumberConfig = {
+	loop?: boolean;
+	max: number;
+	min?: number;
+};
+
 export function getArrowByType(value: string, step: number, type: TimeInputType) {
 	switch (type) {
 		case "minutes":

@@ -3,6 +3,8 @@ import { cn } from "@narsil-ui/Components";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import * as React from "react";
 
+export interface CheckboxProps extends React.ComponentProps<typeof CheckboxPrimitive.Root> {}
+
 const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root>, CheckboxProps>(
 	({ className, ...props }, ref) => (
 		<CheckboxPrimitive.Root
@@ -19,6 +21,5 @@ const Checkbox = React.forwardRef<React.ElementRef<typeof CheckboxPrimitive.Root
 		</CheckboxPrimitive.Root>
 	)
 );
-Checkbox.displayName = CheckboxPrimitive.Root.displayName;
 
 export default Checkbox;

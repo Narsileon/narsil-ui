@@ -2,6 +2,8 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
 
+export interface SwitchProps extends React.ComponentProps<typeof SwitchPrimitives.Root> {}
+
 const Switch = React.forwardRef<React.ElementRef<typeof SwitchPrimitives.Root>, SwitchProps>(
 	({ className, ...props }, ref) => (
 		<SwitchPrimitives.Root

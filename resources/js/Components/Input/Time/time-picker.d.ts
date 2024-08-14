@@ -1,1 +1,0 @@
-interface TimePickerProps extends InputProps {}

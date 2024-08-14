@@ -15,3 +15,23 @@ type CollectionMeta = {
 	to: number;
 	total: number;
 };
+
+type PaginationLink = {
+	active: boolean;
+	label: string;
+	url: string | null;
+};
+
+type SelectOption = {
+	label?: string;
+	value?: string | number;
+	options?: SelectOption[];
+	[key: string]: any;
+};
+
+type SimpleLinks = {
+	first: string | null;
+	last: string | null;
+	next: string | null;
+	prev: string | null;
+};

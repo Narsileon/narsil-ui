@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import * as React from "react";
 
 export const alertVariants = cva(
@@ -19,6 +19,8 @@ export const alertVariants = cva(
 		},
 	}
 );
+
+export interface AlertProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof alertVariants> {}
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(({ className, variant, ...props }, ref) => (
 	<div

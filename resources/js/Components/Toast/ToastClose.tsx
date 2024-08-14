@@ -3,6 +3,8 @@ import { X } from "lucide-react";
 import * as React from "react";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 
+export interface ToastCloseProps extends React.ComponentProps<typeof ToastPrimitives.Close> {}
+
 const ToastClose = React.forwardRef<React.ElementRef<typeof ToastPrimitives.Close>, ToastCloseProps>(
 	({ className, ...props }, ref) => (
 		<ToastPrimitives.Close

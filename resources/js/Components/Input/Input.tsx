@@ -1,6 +1,9 @@
-import { cn, DatePicker, DatetimePicker, TimePicker } from "@narsil-ui/Components";
+import { cn } from "@narsil-ui/Components";
 import { cva } from "class-variance-authority";
 import * as React from "react";
+import DatePicker from "@narsil-ui/Components/Input/Date/DatePicker";
+import DatetimePicker from "@narsil-ui/Components/Input/Datetime/DatetimePicker";
+import TimePicker from "@narsil-ui/Components/Input/Time/TimePicker";
 
 export const inputStyle = cva(
 	cn(
@@ -11,6 +14,8 @@ export const inputStyle = cva(
 		"disabled:cursor-not-allowed disabled:opacity-50"
 	)
 );
+
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type = "text", ...props }, ref) => {
 	switch (type) {

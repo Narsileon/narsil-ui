@@ -1,16 +1,19 @@
+import { cn } from "@narsil-ui/Components";
 import { router } from "@inertiajs/react";
 import { upperCase } from "lodash";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import Button from "@narsil-ui/Components/Button/Button";
+import DropdownMenu from "@narsil-ui/Components/DropdownMenu/DropdownMenu";
+import DropdownMenuContent from "@narsil-ui/Components/DropdownMenu/DropdownMenuContent";
+import DropdownMenuItem from "@narsil-ui/Components/DropdownMenu/DropdownMenuItem";
+import DropdownMenuTrigger from "@narsil-ui/Components/DropdownMenu/DropdownMenuTrigger";
+import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
 
-import {
-	Button,
-	cn,
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-	TooltipWrapper,
-} from "@narsil-ui/Components";
+export interface AppLanguageProps {
+	languages: LanguageModel[];
+	locale: string;
+	variant?: "long" | "short";
+}
 
 const AppLanguage = ({ languages, locale, variant = "short" }: AppLanguageProps) => {
 	const { trans } = useTranslationsStore();

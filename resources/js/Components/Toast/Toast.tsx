@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { cva } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 import * as React from "react";
 import * as ToastPrimitives from "@radix-ui/react-toast";
 
@@ -25,6 +25,10 @@ export const toastVariants = cva(
 		},
 	}
 );
+
+export interface ToastProps
+	extends React.ComponentProps<typeof import("@radix-ui/react-toast").Root>,
+		VariantProps<typeof toastVariants> {}
 
 const Toast = React.forwardRef<React.ElementRef<typeof ToastPrimitives.Root>, ToastProps>(
 	({ className, variant, ...props }, ref) => {

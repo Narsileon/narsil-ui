@@ -1,1 +1,0 @@
-interface AlertTitleProps extends HeadingProps {}
