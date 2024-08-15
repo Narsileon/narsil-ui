@@ -18,7 +18,7 @@ import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
 import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
 import Svg from "@narsil-ui/Components/Svg/Svg";
 
-export interface AsyncComboboxProps extends Omit<React.ComponentProps<typeof PopoverPrimitive.Content>, "onChange"> {
+export interface AsyncComboboxProps extends Omit<React.ComponentProps<typeof PopoverPrimitive.Trigger>, "onChange"> {
 	fetch: string;
 	labelKey?: string;
 	preview?: "icon" | "image";
@@ -29,8 +29,21 @@ export interface AsyncComboboxProps extends Omit<React.ComponentProps<typeof Pop
 	onChange: (value: number | string) => void;
 }
 
-const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Content>, AsyncComboboxProps>(
-	({ fetch, labelKey = "label", preview, sort = true, ucFirst = true, value, valueKey = "value", onChange }, ref) => {
+const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigger>, AsyncComboboxProps>(
+	(
+		{
+			fetch,
+			labelKey = "label",
+			preview,
+			sort = true,
+			ucFirst = true,
+			value,
+			valueKey = "value",
+			onChange,
+			...props
+		},
+		ref
+	) => {
 		const { trans } = useTranslationsStore();
 
 		const [open, setOpen] = React.useState(false);
@@ -90,7 +103,11 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 				open={open}
 				onOpenChange={setOpen}
 			>
-				<PopoverTrigger asChild={true}>
+				<PopoverTrigger
+					ref={ref}
+					asChild={true}
+					{...props}
+				>
 					<Button
 						aria-expanded={open}
 						className='w-full justify-start gap-x-2'

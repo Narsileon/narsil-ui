@@ -3,13 +3,13 @@ import { InertiaLinkProps, Link, router } from "@inertiajs/react";
 import { useEffect } from "react";
 import * as React from "react";
 import PaginationButton from "./PaginationButton";
+import PaginationEllipsis from "./PaginationEllipsis";
 import PaginationItem from "./PaginationItem";
 import PaginationList from "./PaginationList";
 import PaginationNav from "./PaginationNav";
 import PaginationResult, { PaginationResultProps } from "./PaginationResult";
 import PaginationSelect, { PaginationSelectProps } from "./PaginationSelect";
 import useScreenStore from "@narsil-ui/Stores/screenStore";
-import PaginationEllipsis from "./PaginationEllipsis";
 
 export interface PaginationProps
 	extends React.HTMLAttributes<HTMLDivElement>,

@@ -15,7 +15,7 @@ import Popover from "@narsil-ui/Components/Popover/Popover";
 import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
 import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
 
-export interface ComboboxProps extends Omit<React.ComponentProps<typeof PopoverPrimitive.Content>, "onChange"> {
+export interface ComboboxProps extends Omit<React.ComponentProps<typeof PopoverPrimitive.Trigger>, "onChange"> {
 	labelKey?: string;
 	options?: SelectOption[];
 	sort?: boolean;
@@ -25,8 +25,11 @@ export interface ComboboxProps extends Omit<React.ComponentProps<typeof PopoverP
 	onChange: (value: number | string) => void;
 }
 
-const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Content>, ComboboxProps>(
-	({ labelKey = "label", sort = true, ucFirst = true, value, valueKey = "value", options, onChange }, ref) => {
+const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigger>, ComboboxProps>(
+	(
+		{ labelKey = "label", sort = true, ucFirst = true, value, valueKey = "value", options, onChange, ...props },
+		ref
+	) => {
 		const { trans } = useTranslationsStore();
 
 		const [open, setOpen] = React.useState(false);
@@ -58,7 +61,11 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Conte
 				open={open}
 				onOpenChange={setOpen}
 			>
-				<PopoverTrigger asChild={true}>
+				<PopoverTrigger
+					ref={ref}
+					asChild={true}
+					{...props}
+				>
 					<Button
 						aria-expanded={open}
 						className='w-full justify-between'
