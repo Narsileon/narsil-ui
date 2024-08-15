@@ -6,8 +6,13 @@ import PaginationButton from "./PaginationButton";
 import PaginationItem from "./PaginationItem";
 import PaginationList from "./PaginationList";
 import PaginationNav from "./PaginationNav";
+import PaginationResult, { PaginationResultProps } from "./PaginationResult";
+import PaginationSelect, { PaginationSelectProps } from "./PaginationSelect";
 
-export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface PaginationProps
+	extends React.HTMLAttributes<HTMLDivElement>,
+		PaginationResultProps,
+		PaginationSelectProps {
 	currentPage: number;
 	data?: Pick<InertiaLinkProps, "data">;
 	lastPage: number;
@@ -16,7 +21,23 @@ export interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
-	({ currentPage, data, lastPage, links, simpleLinks, ...props }, ref) => {
+	(
+		{
+			currentPage,
+			data,
+			from,
+			lastPage,
+			links,
+			options,
+			pageSize,
+			simpleLinks,
+			to,
+			total,
+			onPageSizeChange,
+			...props
+		},
+		ref
+	) => {
 		useEffect(() => {
 			if (simpleLinks.first && currentPage > lastPage) {
 				router.get(simpleLinks.first, data, {
@@ -27,97 +48,116 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 		}, [lastPage]);
 
 		return (
-			<PaginationNav
+			<div
 				ref={ref}
+				className='flex w-full flex-col items-center justify-between gap-x-4 gap-y-4 lg:flex-row'
 				{...props}
 			>
-				<PaginationList>
-					<PaginationItem>
-						<PaginationButton
-							asChild={true}
-							disabled={simpleLinks.prev === null}
-						>
-							<Link
-								as='button'
-								data={data}
-								href={simpleLinks.first ?? ""}
-								preserveScroll={true}
-								preserveState={true}
+				<PaginationResult
+					className='order-2 flex w-full justify-center lg:order-1'
+					from={from}
+					to={to}
+					total={total}
+				/>
+
+				<PaginationNav className='order-1 flex w-full justify-center lg:order-2'>
+					<PaginationList>
+						<PaginationItem>
+							<PaginationButton
+								asChild={true}
+								disabled={simpleLinks.prev === null}
 							>
-								<ChevronsLeft className='h-5 w-5' />
-							</Link>
-						</PaginationButton>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationButton
-							asChild={true}
-							disabled={simpleLinks.prev === null}
-						>
-							<Link
-								as='button'
-								data={data}
-								href={simpleLinks.prev ?? ""}
-								preserveScroll={true}
-								preserveState={true}
-							>
-								<ChevronLeft className='h-5 w-5' />
-							</Link>
-						</PaginationButton>
-					</PaginationItem>
-					{links.slice(1, links.length - 1).map((link, index) => {
-						return (
-							<PaginationItem key={index}>
-								<PaginationButton
-									asChild={true}
-									isActive={link.active}
+								<Link
+									as='button'
+									data={data}
+									href={simpleLinks.first ?? ""}
+									preserveScroll={true}
+									preserveState={true}
 								>
-									<Link
-										as='button'
-										data={data}
-										href={link.url ?? ""}
-										preserveScroll={true}
-										preserveState={true}
+									<ChevronsLeft className='h-5 w-5' />
+								</Link>
+							</PaginationButton>
+						</PaginationItem>
+						<PaginationItem>
+							<PaginationButton
+								asChild={true}
+								disabled={simpleLinks.prev === null}
+							>
+								<Link
+									as='button'
+									data={data}
+									href={simpleLinks.prev ?? ""}
+									preserveScroll={true}
+									preserveState={true}
+								>
+									<ChevronLeft className='h-5 w-5' />
+								</Link>
+							</PaginationButton>
+						</PaginationItem>
+						{links.slice(1, links.length - 1).map((link, index) => {
+							return (
+								<PaginationItem key={index}>
+									<PaginationButton
+										asChild={true}
+										isActive={link.active}
 									>
-										{link.label}
-									</Link>
-								</PaginationButton>
-							</PaginationItem>
-						);
-					})}
-					<PaginationItem>
-						<PaginationButton
-							asChild={true}
-							disabled={simpleLinks.next === null}
-						>
-							<Link
-								as='button'
-								data={data}
-								href={simpleLinks.next ?? ""}
-								preserveScroll={true}
-								preserveState={true}
+										<Link
+											as='button'
+											data={data}
+											href={link.url ?? ""}
+											preserveScroll={true}
+											preserveState={true}
+										>
+											{link.label}
+										</Link>
+									</PaginationButton>
+								</PaginationItem>
+							);
+						})}
+						<PaginationItem>
+							<PaginationButton
+								asChild={true}
+								disabled={simpleLinks.next === null}
 							>
-								<ChevronRight className='h-5 w-5' />
-							</Link>
-						</PaginationButton>
-					</PaginationItem>
-					<PaginationItem>
-						<PaginationButton
-							asChild={true}
-							disabled={simpleLinks.next === null}
-						>
-							<Link
-								as='button'
-								data={data}
-								href={simpleLinks.last ?? ""}
-								preserveScroll={true}
-								preserveState={true}
+								<Link
+									as='button'
+									data={data}
+									href={simpleLinks.next ?? ""}
+									preserveScroll={true}
+									preserveState={true}
+								>
+									<ChevronRight className='h-5 w-5' />
+								</Link>
+							</PaginationButton>
+						</PaginationItem>
+						<PaginationItem>
+							<PaginationButton
+								asChild={true}
+								disabled={simpleLinks.next === null}
 							>
-								<ChevronsRight className='h-5 w-5' />
-							</Link>
-						</PaginationButton>
-					</PaginationItem>
-				</PaginationList>
-			</PaginationNav>
+								<Link
+									as='button'
+									data={data}
+									href={simpleLinks.last ?? ""}
+									preserveScroll={true}
+									preserveState={true}
+								>
+									<ChevronsRight className='h-5 w-5' />
+								</Link>
+							</PaginationButton>
+						</PaginationItem>
+					</PaginationList>
+				</PaginationNav>
+
+				{onPageSizeChange ? (
+					<PaginationSelect
+						className='order-3 flex w-full justify-center lg:order-3'
+						pageSize={pageSize}
+						onPageSizeChange={onPageSizeChange}
+						options={options}
+					/>
+				) : null}
+			</div>
 		);
 	}
 );

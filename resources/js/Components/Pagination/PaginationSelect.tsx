@@ -11,12 +11,12 @@ const defaultOptions = [10, 25, 50, 100];
 
 export interface PaginationSelectProps extends React.HTMLAttributes<HTMLDivElement> {
 	options?: number[];
-	value?: number | string;
-	onValueChange?: (value: string) => void;
+	pageSize?: number | string;
+	onPageSizeChange?: (value: string) => void;
 }
 
 const PaginationSelect = React.forwardRef<HTMLDivElement, PaginationSelectProps>(
-	({ children, className, options = defaultOptions, value, onValueChange, ...props }, ref) => {
+	({ children, className, options = defaultOptions, pageSize, onPageSizeChange, ...props }, ref) => {
 		const { trans } = useTranslationsStore();
 
 		return (
@@ -27,11 +27,11 @@ const PaginationSelect = React.forwardRef<HTMLDivElement, PaginationSelectProps>
 			>
 				<p className='text-sm font-medium'>{trans("Per page")}</p>
 				<Select
-					value={`${value}`}
-					onValueChange={onValueChange}
+					value={`${pageSize}`}
+					onValueChange={onPageSizeChange}
 				>
 					<SelectTrigger className='h-8 w-[70px]'>
-						<SelectValue placeholder={value} />
+						<SelectValue placeholder={pageSize} />
 					</SelectTrigger>
 					<SelectContent side='top'>
 						{children}

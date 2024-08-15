@@ -2,18 +2,18 @@ import { cn } from "@narsil-ui/Components";
 import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
 import * as React from "react";
 
-export interface PaginationResultProps extends React.HTMLAttributes<HTMLSpanElement> {
+export interface PaginationResultProps extends React.HTMLAttributes<HTMLDivElement> {
 	from: number;
 	to: number;
 	total: number;
 }
 
-const PaginationResult = React.forwardRef<HTMLSpanElement, PaginationResultProps>(
+const PaginationResult = React.forwardRef<HTMLDivElement, PaginationResultProps>(
 	({ className, from, to, total, ...props }, ref) => {
 		const { trans } = useTranslationsStore();
 
 		return (
-			<span
+			<div
 				ref={ref}
 				className={cn("min-w-fit truncate text-sm", className)}
 				{...props}
@@ -27,7 +27,7 @@ const PaginationResult = React.forwardRef<HTMLSpanElement, PaginationResultProps
 							},
 						})
 					: trans("No results.")}
-			</span>
+			</div>
 		);
 	}
 );
