@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 import ScrollBar from "./ScrollBar";
 
-interface ScrollAreaProps
+export interface ScrollAreaProps
 	extends React.ComponentProps<typeof ScrollAreaPrimitive.Root>,
 		Pick<React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>, "orientation"> {}
 
