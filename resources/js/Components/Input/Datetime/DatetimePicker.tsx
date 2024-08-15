@@ -50,7 +50,7 @@ const DatetimePicker = ({ className, value, onChange, required }: DateTimePicker
 					mode='single'
 					selected={selected}
 					onSelect={onSelect}
-					required={required}
+					required={required as true}
 				/>
 				<Separator />
 				<div className='flex items-center justify-center p-4'>

@@ -3,6 +3,7 @@ import { create } from "zustand";
 type State = {
 	isDesktop: boolean;
 	isMobile: boolean;
+	isTablet: boolean;
 	width: number;
 };
 
@@ -13,8 +14,9 @@ const useScreenStore = create<State>((set) => {
 		let newWidth = window.innerWidth;
 
 		set({
-			isDesktop: newWidth >= 640,
+			isDesktop: newWidth >= 1024,
 			isMobile: newWidth < 640,
+			isTablet: newWidth < 1024,
 			width: newWidth,
 		});
 	};
@@ -22,8 +24,9 @@ const useScreenStore = create<State>((set) => {
 	window.addEventListener("resize", handleResize);
 
 	return {
-		isDesktop: initialWidth >= 640,
+		isDesktop: initialWidth >= 1024,
 		isMobile: initialWidth < 640,
+		isTablet: initialWidth < 1024,
 		width: initialWidth,
 
 		destroy: () => {

@@ -8,6 +8,8 @@ import PaginationList from "./PaginationList";
 import PaginationNav from "./PaginationNav";
 import PaginationResult, { PaginationResultProps } from "./PaginationResult";
 import PaginationSelect, { PaginationSelectProps } from "./PaginationSelect";
+import useScreenStore from "@narsil-ui/Stores/screenStore";
+import PaginationEllipsis from "./PaginationEllipsis";
 
 export interface PaginationProps
 	extends React.HTMLAttributes<HTMLDivElement>,
@@ -38,6 +40,25 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 		},
 		ref
 	) => {
+		const { isMobile, isTablet } = useScreenStore();
+
+		const { leftLinks, rightLinks } = (() => {
+			const size: number = isMobile ? 2 : isTablet ? 4 : 6;
+
+			let leftLinks: PaginationLink[] = [];
+			let rightLinks: PaginationLink[] = [];
+
+			if (links.length > size * 2 + 1) {
+				leftLinks = links.slice(0, size);
+				rightLinks = links.slice(-size);
+			}
+
+			return {
+				leftLinks: leftLinks,
+				rightLinks: rightLinks,
+			};
+		})();
+
 		useEffect(() => {
 			if (simpleLinks.first && currentPage > lastPage) {
 				router.get(simpleLinks.first, data, {
@@ -94,26 +115,74 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								</Link>
 							</PaginationButton>
 						</PaginationItem>
-						{links.slice(1, links.length - 1).map((link, index) => {
-							return (
-								<PaginationItem key={index}>
-									<PaginationButton
-										asChild={true}
-										isActive={link.active}
-									>
-										<Link
-											as='button'
-											data={data}
-											href={link.url ?? ""}
-											preserveScroll={true}
-											preserveState={true}
+						{leftLinks.length > 0 && rightLinks.length > 0 ? (
+							<>
+								{leftLinks.map((link, index) => {
+									return (
+										<PaginationItem key={index}>
+											<PaginationButton
+												asChild={true}
+												isActive={link.active}
+											>
+												<Link
+													as='button'
+													data={data}
+													href={link.url ?? ""}
+													preserveScroll={true}
+													preserveState={true}
+												>
+													{link.label}
+												</Link>
+											</PaginationButton>
+										</PaginationItem>
+									);
+								})}
+
+								<PaginationEllipsis />
+
+								{rightLinks.map((link, index) => {
+									return (
+										<PaginationItem key={index}>
+											<PaginationButton
+												asChild={true}
+												isActive={link.active}
+											>
+												<Link
+													as='button'
+													data={data}
+													href={link.url ?? ""}
+													preserveScroll={true}
+													preserveState={true}
+												>
+													{link.label}
+												</Link>
+											</PaginationButton>
+										</PaginationItem>
+									);
+								})}
+							</>
+						) : (
+							links.map((link, index) => {
+								return (
+									<PaginationItem key={index}>
+										<PaginationButton
+											asChild={true}
+											isActive={link.active}
 										>
-											{link.label}
-										</Link>
-									</PaginationButton>
-								</PaginationItem>
-							);
-						})}
+											<Link
+												as='button'
+												data={data}
+												href={link.url ?? ""}
+												preserveScroll={true}
+												preserveState={true}
+											>
+												{link.label}
+											</Link>
+										</PaginationButton>
+									</PaginationItem>
+								);
+							})
+						)}
 						<PaginationItem>
 							<PaginationButton
 								asChild={true}
@@ -149,14 +218,12 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 					</PaginationList>
 				</PaginationNav>
 
-				{onPageSizeChange ? (
-					<PaginationSelect
-						className='order-3 flex w-full justify-center lg:order-3'
-						pageSize={pageSize}
-						onPageSizeChange={onPageSizeChange}
-						options={options}
-					/>
-				) : null}
+				<PaginationSelect
+					className='order-3 flex w-full justify-center lg:order-3'
+					pageSize={pageSize}
+					options={options}
+					onPageSizeChange={onPageSizeChange}
+				/>
 			</div>
 		);
 	}

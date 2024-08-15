@@ -44,7 +44,7 @@ const DatePicker = ({ className, required = false, value, onChange }: DatePicker
 					mode='single'
 					selected={selected}
 					onSelect={onSelect}
-					required={required}
+					required={required as true}
 				/>
 			</PopoverContent>
 		</Popover>
