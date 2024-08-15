@@ -75,7 +75,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 				{...props}
 			>
 				<PaginationResult
-					className='order-2 flex w-full justify-center lg:order-1'
+					className='order-2 flex w-full justify-center lg:order-1 lg:w-fit'
 					from={from}
 					to={to}
 					total={total}
@@ -219,7 +219,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 				</PaginationNav>
 
 				<PaginationSelect
-					className='order-3 flex w-full justify-center lg:order-3'
+					className='order-3 flex w-full justify-center lg:order-3 lg:w-fit'
 					pageSize={pageSize}
 					options={options}
 					onPageSizeChange={onPageSizeChange}
