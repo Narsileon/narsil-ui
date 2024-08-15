@@ -8,6 +8,7 @@ import Popover from "@narsil-ui/Components/Popover/Popover";
 import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
 import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
 import Separator from "@narsil-ui/Components/Separator/Separator";
+import TimePicker from "@narsil-ui/Components/Input/Time/TimePicker";
 
 export interface DateTimePickerProps extends InputProps {}
 
