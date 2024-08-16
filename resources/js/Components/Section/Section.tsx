@@ -29,7 +29,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, ...
 				toggleFullscreen: toggleFullscreen,
 			}}
 		>
-			<div
+			<section
 				ref={sectionRef}
 				className={cn("bg-background p-4 text-foreground", className)}
 				{...props}
