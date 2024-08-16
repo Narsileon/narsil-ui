@@ -8,7 +8,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(({ classNam
 	<>
 		<div
 			ref={ref}
-			className={cn("flex flex-col gap-y-1.5", className)}
+			className={cn("flex items-center justify-between gap-2", className)}
 			{...props}
 		/>
 
