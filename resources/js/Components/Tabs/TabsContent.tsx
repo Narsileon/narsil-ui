@@ -9,7 +9,7 @@ const TabsContent = React.forwardRef<React.ElementRef<typeof TabsPrimitive.Conte
 		<TabsPrimitive.Content
 			ref={ref}
 			className={cn(
-				"mt-2 gap-y-4 ring-offset-background",
+				"mt-2 flex flex-col gap-y-4 ring-offset-background",
 				"focus-visible:border-primary focus-visible:outline-none",
 				className
 			)}
