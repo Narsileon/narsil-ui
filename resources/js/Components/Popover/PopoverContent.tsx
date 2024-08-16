@@ -20,6 +20,12 @@ const PopoverContent = React.forwardRef<React.ElementRef<typeof PopoverPrimitive
 					className
 				)}
 				align={align}
+				onOpenAutoFocus={(event) => {
+					event.preventDefault();
+				}}
+				onCloseAutoFocus={(event) => {
+					event.preventDefault();
+				}}
 				sideOffset={sideOffset}
 				{...props}
 			/>

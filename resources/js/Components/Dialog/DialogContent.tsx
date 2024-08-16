@@ -24,6 +24,12 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
 					"data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%]",
 					className
 				)}
+				onOpenAutoFocus={(event) => {
+					event.preventDefault();
+				}}
+				onCloseAutoFocus={(event) => {
+					event.preventDefault();
+				}}
 				{...props}
 			>
 				<ScrollArea className='max-h-screen p-4'>{children}</ScrollArea>
