@@ -6,7 +6,7 @@ export interface AlertDialogHeaderProps extends React.HTMLAttributes<HTMLDivElem
 const AlertDialogHeader = React.forwardRef<HTMLDivElement, AlertDialogHeaderProps>(({ className, ...props }, ref) => (
 	<div
 		ref={ref}
-		className={cn("flex flex-col space-y-2 text-center sm:text-left", className)}
+		className={cn("flex flex-col gap-y-2 text-center sm:text-left", className)}
 		{...props}
 	/>
 ));

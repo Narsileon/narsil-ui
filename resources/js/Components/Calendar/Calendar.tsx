@@ -36,10 +36,10 @@ const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: D
 				disabled: "text-muted-foreground opacity-50",
 				hidden: "invisible",
 				month_caption: "flex justify-center pt-1 h-9 relative items-center",
-				month_grid: "w-full border-collapse space-y-1",
-				month: "space-y-4",
+				month_grid: "w-full border-collapse gap-y-1",
+				month: "gap-y-4",
 				months: "relative",
-				nav: "space-x-1 flex items-center",
+				nav: "gap-x-1 flex items-center",
 				outside: cn(
 					"outside text-muted-foreground opacity-50",
 					"aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30"
