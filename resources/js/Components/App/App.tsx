@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
 
-interface Props {
+interface getInertiaAppOptionsProps {
 	layout: (path: string) => void;
 }
 
-export const getInertiaAppOptions = ({ layout }: Props) => {
+export const getInertiaAppOptions = ({ layout }: getInertiaAppOptionsProps) => {
 	return {
 		progress: {
 			color: "var(--primary)",

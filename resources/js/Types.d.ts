@@ -19,6 +19,7 @@ type CollectionMeta = {
 type GlobalProps = {
 	shared: {
 		app: {
+			favicon: string | null;
 			name: string;
 		};
 		localization: {
