@@ -25,7 +25,7 @@ type GlobalProps = {
 		localization: {
 			locale: string;
 			languages: LanguageType[];
-			translations: { [key: string]: Translation };
+			translations: { [key: string]: Translation } | null;
 		};
 		redirect: {
 			success: {
