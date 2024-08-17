@@ -39,7 +39,7 @@ final class NarsilUIServiceProvider extends ServiceProvider
     private function bootBlueprints(): void
     {
         Blueprint::macro(
-            'node',
+            'color',
             function (string $column)
             {
                 ColorBlueprint::define($this, $column);
