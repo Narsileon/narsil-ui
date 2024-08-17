@@ -14,10 +14,9 @@ export const getInertiaAppOptions = ({ layout }: Props) => {
 		resolve: async (name: string) => {
 			const [vendor, path] = name.includes("::") ? name.split("::") : [null, name];
 
-			const pages = import.meta.glob(
-				vendor ? `../../vendor/${vendor}/resources/js/Pages/${path}.tsx` : "./Pages/**/*.tsx",
-				{ eager: true }
-			);
+			const pages = vendor
+				? import.meta.glob(`../../vendor/${vendor}/resources/js/Pages/${path}.tsx`)
+				: import.meta.glob("./Pages/**/*.tsx", { eager: true });
 
 			return resolvePageComponent(path, pages as any).then((module: any) => {
 				module.default.layout = module.default.layout || layout(path);
