@@ -1,7 +1,7 @@
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
 import { InputProps, inputStyle } from "@narsil-ui/Components/Input/Input";
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import Button from "@narsil-ui/Components/Button/Button";
 import Calendar from "@narsil-ui/Components/Calendar/Calendar";
 import Popover from "@narsil-ui/Components/Popover/Popover";

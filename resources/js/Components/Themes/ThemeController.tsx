@@ -1,7 +1,7 @@
 import { Moon, Sun, SunMoon } from "lucide-react";
 import { upperFirst } from "lodash";
 import { useTheme } from "./ThemeProvider";
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import Button from "@narsil-ui/Components/Button/Button";
 import Card from "@narsil-ui/Components/Card/Card";
 import CardContent from "@narsil-ui/Components/Card/CardContent";

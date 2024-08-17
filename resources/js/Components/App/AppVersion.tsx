@@ -1,4 +1,4 @@
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 
 export interface AppVersionProps extends React.HTMLAttributes<HTMLElement> {

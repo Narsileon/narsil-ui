@@ -1,7 +1,7 @@
 import { cn } from "@narsil-ui/Components";
 import { router } from "@inertiajs/react";
 import { upperCase } from "lodash";
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import Button from "@narsil-ui/Components/Button/Button";
 import DropdownMenu from "@narsil-ui/Components/DropdownMenu/DropdownMenu";
 import DropdownMenuContent from "@narsil-ui/Components/DropdownMenu/DropdownMenuContent";

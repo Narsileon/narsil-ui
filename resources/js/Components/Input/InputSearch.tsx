@@ -1,7 +1,7 @@
 import { cn } from "@narsil-ui/Components";
 import { isEmpty } from "lodash";
 import { Search } from "lucide-react";
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import Input, { InputProps } from "@narsil-ui/Components/Input/Input";
 

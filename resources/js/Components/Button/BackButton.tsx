@@ -1,5 +1,5 @@
 import { router } from "@inertiajs/react";
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
 

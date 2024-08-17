@@ -1,7 +1,7 @@
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
 import { debounce, isString, sortBy, upperFirst } from "lodash";
-import { useTranslationsStore } from "@narsil-ui/Stores/translationStore";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import * as React from "react";
 import axios from "axios";
