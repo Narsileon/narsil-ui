@@ -1,6 +1,4 @@
-import "vendor/narsil/ui/resources/css/app.scss";
 import { createRoot } from "react-dom/client";
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 
 interface Props {
 	layout: (path: string) => void;
@@ -15,14 +13,15 @@ export const getInertiaAppOptions = ({ layout }: Props) => {
 			const [vendor, path] = name.includes("::") ? name.split("::") : [null, name];
 
 			const pages = vendor
-				? import.meta.glob(`../../vendor/${vendor}/resources/js/Pages/${path}.tsx`)
-				: import.meta.glob("./Pages/**/*.tsx", { eager: true });
+				? import.meta.glob("@/../../vendor/narsil/**/resources/js/Pages/**/*.tsx", { eager: true })
+				: import.meta.glob("@/Pages/**/*.tsx", { eager: true });
 
-			return resolvePageComponent(path, pages as any).then((module: any) => {
-				module.default.layout = module.default.layout || layout(path);
+			let page: any =
+				pages[vendor ? `/vendor/${vendor}/resources/js/Pages/${path}.tsx` : `/resources/js/Pages/${path}.tsx`];
 
-				return module;
-			});
+			page.default.layout = page.default.layout || layout(path);
+
+			return page;
 		},
 		setup({ el, App, props }: { el: any; App: any; props: any }) {
 			return createRoot(el).render(<App {...props} />);

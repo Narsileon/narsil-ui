@@ -1,11 +1,12 @@
+import "@narsil-ui/../css/app.scss";
 import { cn } from "@narsil-ui/Components";
 import { useEffect } from "react";
 import { usePage } from "@inertiajs/react";
 import { useToast } from "@narsil-ui/Components/Toast/useToast";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
+import * as React from "react";
 import ThemeProvider from "@narsil-ui/Components/Themes/ThemeProvider";
 import Toaster from "@narsil-ui/Components/Toast/Toaster";
-import * as React from "react";
 
 interface LayoutProps extends React.HTMLAttributes<HTMLElement> {
 	className?: string;
