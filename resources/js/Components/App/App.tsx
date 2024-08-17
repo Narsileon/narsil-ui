@@ -1,10 +1,9 @@
 import "vendor/narsil/ui/resources/css/app.scss";
 import { createRoot } from "react-dom/client";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
-import * as React from "react";
 
 interface Props {
-	layout: (path: string) => React.ReactNode;
+	layout: (path: string) => void;
 }
 
 export const getInertiaAppOptions = ({ layout }: Props) => {
