@@ -22,6 +22,9 @@ const DropdownMenuContent = React.forwardRef<
 				"data-[side=top]:slide-in-from-bottom-2",
 				className
 			)}
+			onCloseAutoFocus={(event) => {
+				event.preventDefault();
+			}}
 			{...props}
 		/>
 	</DropdownMenuPrimitive.Portal>
