@@ -6,7 +6,7 @@ import * as React from "react";
 import * as ToggleGroupPrimitive from "@radix-ui/react-toggle-group";
 
 export interface ToggleGroupItemProps
-	extends React.ComponentProps<typeof import("@radix-ui/react-toggle-group").Item>,
+	extends React.ComponentProps<typeof ToggleGroupPrimitive.Item>,
 		VariantProps<typeof toggleVariants> {}
 
 const ToggleGroupItem = React.forwardRef<React.ElementRef<typeof ToggleGroupPrimitive.Item>, ToggleGroupItemProps>(

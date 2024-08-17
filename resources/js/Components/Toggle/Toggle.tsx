@@ -31,7 +31,7 @@ export const toggleVariants = cva(
 );
 
 export interface ToggleProps
-	extends React.ComponentProps<typeof import("@radix-ui/react-toggle").Root>,
+	extends React.ComponentProps<typeof TogglePrimitive.Root>,
 		VariantProps<typeof toggleVariants> {}
 
 const Toggle = React.forwardRef<React.ElementRef<typeof TogglePrimitive.Root>, ToggleProps>(

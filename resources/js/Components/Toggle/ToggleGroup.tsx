@@ -9,7 +9,7 @@ const ToggleGroupContext = React.createContext<VariantProps<typeof toggleVariant
 	variant: "default",
 });
 
-type ToggleGroupProps = React.ComponentProps<typeof import("@radix-ui/react-toggle-group").Root> &
+type ToggleGroupProps = React.ComponentProps<typeof ToggleGroupPrimitive.Root> &
 	VariantProps<typeof toggleVariants> & {};
 
 const ToggleGroup = React.forwardRef<React.ElementRef<typeof ToggleGroupPrimitive.Root>, ToggleGroupProps>(

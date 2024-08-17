@@ -1,4 +1,4 @@
-import { useToast } from "./use-toast";
+import { useToast } from "./useToast";
 import Toast from "./Toast";
 import ToastClose from "./ToastClose";
 import ToastDescription from "./ToastDescription";

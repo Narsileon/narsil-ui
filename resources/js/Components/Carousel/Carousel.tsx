@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { EmblaCarouselType } from "embla-carousel";
+import { CreatePluginType, EmblaCarouselType, EmblaOptionsType, EmblaPluginsType } from "embla-carousel";
 import * as React from "react";
 import useEmblaCarousel, { UseEmblaCarouselType } from "embla-carousel-react";
 
@@ -15,9 +15,9 @@ type CarouselContextProps = {
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
 interface CarouselProps {
-	opts?: import("embla-carousel").EmblaOptionsType;
+	opts?: EmblaOptionsType;
 	orientation?: "horizontal" | "vertical";
-	plugins?: import("embla-carousel").CreatePluginType<import("embla-carousel").EmblaPluginsType, {}>[] | undefined;
+	plugins?: CreatePluginType<EmblaPluginsType, {}>[] | undefined;
 	setApi?: (api: EmblaCarouselType) => void;
 }
 

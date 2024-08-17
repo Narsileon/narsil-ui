@@ -1,10 +1,18 @@
 import { ToastProps } from "./Toast";
 import * as React from "react";
+import ToastAction from './ToastAction';
 
-type ToastActionType = typeof import("./use-toast").actionTypes;
+export const actionTypes = {
+	ADD_TOAST: "ADD_TOAST",
+	UPDATE_TOAST: "UPDATE_TOAST",
+	DISMISS_TOAST: "DISMISS_TOAST",
+	REMOVE_TOAST: "REMOVE_TOAST",
+} as const;
+
+type ToastActionType = typeof actionTypes;
 
 type ToastType = ToastProps & {
-	action?: React.ReactElement<typeof import("./ToastAction")>;
+	action?: React.ReactElement<typeof ToastAction>;
 	description?: React.ReactNode;
 	id: string;
 };
@@ -29,13 +37,6 @@ type ToastAction =
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
-
-export const actionTypes = {
-	ADD_TOAST: "ADD_TOAST",
-	UPDATE_TOAST: "UPDATE_TOAST",
-	DISMISS_TOAST: "DISMISS_TOAST",
-	REMOVE_TOAST: "REMOVE_TOAST",
-} as const;
 
 let count = 0;
 

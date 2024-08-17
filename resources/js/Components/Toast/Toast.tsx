@@ -27,7 +27,7 @@ export const toastVariants = cva(
 );
 
 export interface ToastProps
-	extends React.ComponentProps<typeof import("@radix-ui/react-toast").Root>,
+	extends React.ComponentProps<typeof ToastPrimitives.Root>,
 		VariantProps<typeof toastVariants> {}
 
 const Toast = React.forwardRef<React.ElementRef<typeof ToastPrimitives.Root>, ToastProps>(
