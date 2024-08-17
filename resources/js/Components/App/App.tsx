@@ -4,7 +4,7 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import * as React from "react";
 
 interface Props {
-	layout: React.ReactNode;
+	layout: (path: string) => React.ReactNode;
 }
 
 export const getInertiaAppOptions = ({ layout }: Props) => {
@@ -21,7 +21,7 @@ export const getInertiaAppOptions = ({ layout }: Props) => {
 			);
 
 			return resolvePageComponent(path, pages as any).then((module: any) => {
-				module.default.layout = module.default.layout || layout;
+				module.default.layout = module.default.layout || layout(path);
 
 				return module;
 			});
