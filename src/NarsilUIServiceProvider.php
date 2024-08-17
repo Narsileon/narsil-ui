@@ -4,7 +4,9 @@ namespace Narsil\UI;
 
 #region USE
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
+use Narsil\UI\Blueprints\ColorBlueprint;
 
 #endregion
 
@@ -22,6 +24,7 @@ final class NarsilUIServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->bootBlueprints();
         $this->bootPublishes();
         $this->bootTranslations();
     }
@@ -29,6 +32,20 @@ final class NarsilUIServiceProvider extends ServiceProvider
     #endregion
 
     #region PRIVATE METHODS
+
+    /**
+     * @return void
+     */
+    private function bootBlueprints(): void
+    {
+        Blueprint::macro(
+            'node',
+            function (string $column)
+            {
+                ColorBlueprint::define($this, $column);
+            }
+        );
+    }
 
     /**
      * @return void
