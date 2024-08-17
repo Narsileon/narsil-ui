@@ -12,13 +12,15 @@
 		"noEmit": true,
 		"noFallthroughCasesInSwitch": true,
 		"paths": {
+			"@narsil-localization/*": ["./vendor/narsil/localization/resources/js/*"],
 			"@narsil-ui/*": ["./resources/js/*"]
 		},
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "ESNext"
+		"target": "ESNext",
+		"types": ["vite/client"]
 	},
-	"include": ["resources/js/**/*.d.ts", "resources/js/**/*.ts", "resources/js/**/*.tsx", "vendor/narsil/**/*.d.ts"],
+	"include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "vendor/narsil/**/*.ts", "vendor/narsil/**/*.tsx"],
 	"exclude": ["node_modules"]
 }

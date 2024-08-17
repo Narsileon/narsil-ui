@@ -16,6 +16,33 @@ type CollectionMeta = {
 	total: number;
 };
 
+type GlobalProps = {
+	shared: {
+		app: {
+			name: string;
+		};
+		localization: {
+			locale: string;
+			languages: LanguageType[];
+			translations: { [key: string]: Translation };
+		};
+		redirect: {
+			success: {
+				message: string;
+				options?: import("@narsil-localization/Stores/translationStore").TransOptions;
+			};
+			error: {
+				message: string;
+				options?: import("@narsil-localization/Stores/translationStore").TransOptions;
+			};
+		};
+	};
+};
+
+type InertiaPage = React.ReactNode & {
+	props: GlobalProps;
+};
+
 type PaginationLink = {
 	active: boolean;
 	label: string;
