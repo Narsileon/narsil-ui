@@ -13,7 +13,7 @@ interface LayoutProps extends React.HTMLAttributes<HTMLElement> {
 	children?: React.ReactNode;
 }
 
-const LayoutWrapper = React.forwardRef<HTMLElement, LayoutProps>(({ children, className, ...props }, ref) => {
+const Layout = React.forwardRef<HTMLElement, LayoutProps>(({ children, className, ...props }, ref) => {
 	const { toast } = useToast();
 
 	const translationStore = useTranslationsStore();
@@ -64,4 +64,4 @@ const LayoutWrapper = React.forwardRef<HTMLElement, LayoutProps>(({ children, cl
 	);
 });
 
-export default LayoutWrapper;
+export default Layout;
