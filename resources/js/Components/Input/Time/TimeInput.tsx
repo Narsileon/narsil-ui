@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/Components";
-import { getArrowByType, getDateByType, setDateByType } from "./timeInputUtils";
+import { getArrowByType, getDateByType, setDateByType } from "./timeUtils";
 import Input, { InputProps } from "@narsil-ui/Components/Input/Input";
 import React from "react";
 
