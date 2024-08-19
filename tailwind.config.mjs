@@ -1,6 +1,6 @@
 export default {
 	darkMode: "class",
-	content: ["./resources/js/**/*.{ts,tsx}", "./vendor/narsil/**/*.{ts,tsx}"],
+	content: ["./resources/js/**/*.{ts,tsx}", "./vendor/narsil/**/resources/js/**/*.{ts,tsx}"],
 	theme: {
 		container: {
 			center: true,
