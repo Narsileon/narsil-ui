@@ -51,6 +51,7 @@ export interface ThemeProviderProps {
 	defaultMode?: Mode;
 	defaultRadius?: number;
 	defaultSize?: number;
+	defaultTheme?: Theme | null;
 	storageKey?: string;
 }
 
@@ -60,7 +61,9 @@ const ThemeProvider = ({
 	defaultMode = "system",
 	defaultRadius = 0.5,
 	defaultSize = 1.0,
+	defaultTheme = null,
 	storageKey = "theme",
+
 	...props
 }: ThemeProviderProps) => {
 	const colorStorageKey = `app:${storageKey}:color`;
@@ -88,7 +91,7 @@ const ThemeProvider = ({
 		return storedSize ? parseFloat(storedSize) : defaultSize;
 	});
 
-	const [theme, setTheme] = React.useState<Theme | null>(null);
+	const [theme, setTheme] = React.useState<Theme | null>(defaultTheme);
 
 	const getDark = () => {
 		let isDark = mode === "dark";
