@@ -183,7 +183,7 @@ const ThemeProvider = ({
 			localStorage.setItem(sizeStorageKey, size.toString());
 			setSize(size);
 		},
-		setTheme: (theme: Theme) => {
+		setTheme: (theme: Theme | null) => {
 			setTheme(theme);
 		},
 	};
