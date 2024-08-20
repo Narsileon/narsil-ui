@@ -52,7 +52,7 @@ export interface ThemeProviderProps {
 	defaultRadius?: number;
 	defaultSize?: number;
 	defaultTheme?: Theme | null;
-	storageKey?: string;
+	storageKey?: string | null;
 }
 
 const ThemeProvider = ({
@@ -63,8 +63,6 @@ const ThemeProvider = ({
 	defaultSize = 1.0,
 	defaultTheme = null,
 	storageKey = "theme",
-
-	...props
 }: ThemeProviderProps) => {
 	const colorStorageKey = `app:${storageKey}:color`;
 	const modeStorageKey = `app:${storageKey}:mode`;
@@ -72,20 +70,30 @@ const ThemeProvider = ({
 	const sizeStorageKey = `app:${storageKey}:size`;
 
 	const [color, setColor] = React.useState<Color>(
-		() => (localStorage.getItem(colorStorageKey) as Color) || defaultColor
+		storageKey ? () => (localStorage.getItem(colorStorageKey) as Color) || defaultColor : defaultColor
 	);
 
 	const [dark, setDark] = React.useState<boolean>(false);
 
-	const [mode, setMode] = React.useState<Mode>(() => (localStorage.getItem(modeStorageKey) as Mode) || defaultMode);
+	const [mode, setMode] = React.useState<Mode>(
+		storageKey ? () => (localStorage.getItem(modeStorageKey) as Mode) || defaultMode : defaultMode
+	);
 
 	const [radius, setRadius] = React.useState<number>(() => {
+		if (!storageKey) {
+			return defaultSize;
+		}
+
 		const storedRadius = localStorage.getItem(radiusStorageKey);
 
 		return storedRadius ? parseFloat(storedRadius) : defaultRadius;
 	});
 
 	const [size, setSize] = React.useState<number>(() => {
+		if (!storageKey) {
+			return defaultSize;
+		}
+
 		const storedSize = localStorage.getItem(sizeStorageKey);
 
 		return storedSize ? parseFloat(storedSize) : defaultSize;
@@ -193,14 +201,7 @@ const ThemeProvider = ({
 		},
 	};
 
-	return (
-		<ThemeProviderContext.Provider
-			{...props}
-			value={value}
-		>
-			{children}
-		</ThemeProviderContext.Provider>
-	);
+	return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
 };
 
 export const useTheme = () => {
