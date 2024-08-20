@@ -25,6 +25,7 @@ type ThemeProviderAction = {
 	setMode: (mode: Mode) => void;
 	setRadius: (radius: number) => void;
 	setSize: (size: number) => void;
+	setTheme: (theme: Theme) => void;
 };
 
 type ThemeProviderType = ThemeProviderState & ThemeProviderAction;
@@ -39,6 +40,7 @@ const initialState: ThemeProviderType = {
 	setMode: () => null,
 	setRadius: () => null,
 	setSize: () => null,
+	setTheme: () => null,
 };
 
 const ThemeProviderContext = React.createContext<ThemeProviderType>(initialState);
