@@ -1,4 +1,6 @@
-const pink = {
+import { Theme } from "./color";
+
+const green: Theme = {
 	light: {
 		"accent-foreground": "240 6% 10%",
 		"card-foreground": "240 10% 4%",
@@ -6,7 +8,7 @@ const pink = {
 		"destructive-foreground": "0 0% 98%",
 		"muted-foreground": "240 4% 46%",
 		"popover-foreground": "240 10% 4%",
-		"primary-foreground": "326 78% 95%",
+		"primary-foreground": "356 100% 97%",
 		"secondary-foreground": "240 6% 10%",
 		accent: "240 5% 96%",
 		background: "0 0% 100%",
@@ -18,8 +20,8 @@ const pink = {
 		input: "240 6% 90%",
 		muted: "240 5% 96%",
 		popover: "0 0% 100%",
-		primary: "333 71% 51%",
-		ring: "333 71% 51%",
+		primary: "142 76% 36%",
+		ring: "142 76% 36%",
 		secondary: "240 5% 96%",
 	},
 	dark: {
@@ -29,7 +31,7 @@ const pink = {
 		"destructive-foreground": "0 86% 97%",
 		"muted-foreground": "240 5% 65%",
 		"popover-foreground": "0 0% 95%",
-		"primary-foreground": "326 78% 95%",
+		"primary-foreground": "145 80% 10%",
 		"secondary-foreground": "0 0% 98%",
 		accent: "12 7% 15%",
 		background: "20 14% 4%",
@@ -41,10 +43,10 @@ const pink = {
 		input: "240 4% 16%",
 		muted: "0 0% 15%",
 		popover: "0 0% 9%",
-		primary: "333 71% 51%",
-		ring: "333 71% 51%",
+		primary: "142 71% 45%",
+		ring: "142 72% 29%",
 		secondary: "240 4% 16%",
 	},
 };
 
-export default pink;
+export default green;

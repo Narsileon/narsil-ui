@@ -1,4 +1,6 @@
-const gray = {
+import { Theme } from "./color";
+
+const violet: Theme = {
 	light: {
 		"accent-foreground": "221 39% 11%",
 		"card-foreground": "224 71% 4%",
@@ -18,8 +20,8 @@ const gray = {
 		input: "220 13% 91%",
 		muted: "220 14% 96%",
 		popover: "0 0% 100%",
-		primary: "221 39% 11%",
-		ring: "224 71% 4%",
+		primary: "262 83% 58%",
+		ring: "262 83% 58%",
 		secondary: "220 14% 96%",
 	},
 	dark: {
@@ -29,7 +31,7 @@ const gray = {
 		"destructive-foreground": "210 20% 98%",
 		"muted-foreground": "218 11% 65%",
 		"popover-foreground": "210 20% 98%",
-		"primary-foreground": "221 39% 11%",
+		"primary-foreground": "210 20% 98%",
 		"secondary-foreground": "210 20% 98%",
 		accent: "215 28% 17%",
 		background: "224 71% 4%",
@@ -41,10 +43,10 @@ const gray = {
 		input: "215 28% 17%",
 		muted: "215 28% 17%",
 		popover: "224 71% 4%",
-		primary: "210 20% 98%",
-		ring: "216 12% 84%",
+		primary: "263 70% 50%",
+		ring: "263 70% 50%",
 		secondary: "215 28% 17%",
 	},
 };
 
-export default gray;
+export default violet;

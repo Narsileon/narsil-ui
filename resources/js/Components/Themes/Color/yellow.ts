@@ -1,4 +1,6 @@
-const yellow = {
+import { Theme } from "./color";
+
+const yellow: Theme = {
 	light: {
 		"accent-foreground": "24 10% 10%",
 		"card-foreground": "20 14% 4%",

@@ -1,4 +1,6 @@
-const neutral = {
+import { Theme } from "./color";
+
+const neutral: Theme = {
 	light: {
 		"accent-foreground": "0 0% 9%",
 		"card-foreground": "0 0% 4%",

@@ -1,3 +1,4 @@
+import { Color } from "./Color/color";
 import { Moon, Sun, SunMoon } from "lucide-react";
 import { upperFirst } from "lodash";
 import { useTheme } from "./ThemeProvider";
@@ -19,7 +20,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 
 	const { color, mode, radius, size, setColor, setMode, setRadius, setSize } = useTheme();
 
-	const themes: Record<Color, string> = {
+	const Themes: Record<Color, string> = {
 		gray: "hsl(220 9% 46%)",
 		red: "hsl(0 72% 51%)",
 		orange: "hsl(25 95% 53%)",
@@ -95,14 +96,14 @@ const ThemeController = ({}: ThemeControllerProps) => {
 							{trans("Color")}
 						</Heading>
 						<div className='grid w-full grid-cols-3 gap-2'>
-							{Object.entries(themes).map(([theme, backgroundColor], index) => {
+							{Object.entries(Themes).map(([Theme, backgroundColor], index) => {
 								return (
 									<Button
 										className={"flex items-center justify-start gap-2 text-xs"}
-										isActive={theme === color}
+										isActive={Theme === color}
 										size='sm'
 										variant='outline'
-										onClick={() => setColor(theme as Color)}
+										onClick={() => setColor(Theme as Color)}
 										key={index}
 									>
 										<span
@@ -111,7 +112,7 @@ const ThemeController = ({}: ThemeControllerProps) => {
 												backgroundColor: backgroundColor,
 											}}
 										/>
-										{trans(upperFirst(theme))}
+										{trans(upperFirst(Theme))}
 									</Button>
 								);
 							})}

@@ -1,13 +1,14 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import blue from "./Colors/blue";
-import gray from "./Colors/gray";
-import green from "./Colors/green";
-import neutral from "./Colors/neutral";
-import orange from "./Colors/orange";
-import pink from "./Colors/pink";
-import red from "./Colors/red";
-import violet from "./Colors/violet";
-import yellow from "./Colors/yellow";
+import { Color, Theme } from "./Color/color";
+import * as React from "react";
+import blue from "./Color/blue";
+import gray from "./Color/gray";
+import green from "./Color/green";
+import neutral from "./Color/neutral";
+import orange from "./Color/orange";
+import pink from "./Color/pink";
+import red from "./Color/red";
+import violet from "./Color/violet";
+import yellow from "./Color/yellow";
 
 type Mode = "dark" | "light" | "system";
 
@@ -40,7 +41,7 @@ const initialState: ThemeProviderType = {
 	setSize: () => null,
 };
 
-const ThemeProviderContext = createContext<ThemeProviderType>(initialState);
+const ThemeProviderContext = React.createContext<ThemeProviderType>(initialState);
 
 export interface ThemeProviderProps {
 	children: React.ReactNode;
@@ -65,22 +66,27 @@ const ThemeProvider = ({
 	const radiusStorageKey = `app:${storageKey}:radius`;
 	const sizeStorageKey = `app:${storageKey}:size`;
 
-	const [color, setColor] = useState<Color>(() => (localStorage.getItem(colorStorageKey) as Color) || defaultColor);
-	const [mode, setMode] = useState<Mode>(() => (localStorage.getItem(modeStorageKey) as Mode) || defaultMode);
+	const [color, setColor] = React.useState<Color>(
+		() => (localStorage.getItem(colorStorageKey) as Color) || defaultColor
+	);
 
-	const [radius, setRadius] = useState<number>(() => {
+	const [dark, setDark] = React.useState<boolean>(false);
+
+	const [mode, setMode] = React.useState<Mode>(() => (localStorage.getItem(modeStorageKey) as Mode) || defaultMode);
+
+	const [radius, setRadius] = React.useState<number>(() => {
 		const storedRadius = localStorage.getItem(radiusStorageKey);
 
 		return storedRadius ? parseFloat(storedRadius) : defaultRadius;
 	});
 
-	const [size, setSize] = useState<number>(() => {
+	const [size, setSize] = React.useState<number>(() => {
 		const storedSize = localStorage.getItem(sizeStorageKey);
 
 		return storedSize ? parseFloat(storedSize) : defaultSize;
 	});
 
-	const [dark, setDark] = useState<boolean>(false);
+	const [theme, setTheme] = React.useState<Theme | null>(null);
 
 	const getDark = () => {
 		let isDark = mode === "dark";
@@ -115,13 +121,12 @@ const ThemeProvider = ({
 		}
 	};
 
-	useEffect(() => {
+	function loadTheme(theme: Theme) {
 		const root = window.document.documentElement;
 
 		root.classList.remove("light", "dark");
 
 		const dark = getDark();
-		const theme = getTheme(color);
 
 		Object.entries(dark ? theme.dark : theme.light).forEach(([property, value]) => {
 			root.style.setProperty(`--${property}`, value);
@@ -130,19 +135,31 @@ const ThemeProvider = ({
 		root.classList.add(dark ? "dark" : "light");
 
 		setDark(dark);
+	}
+
+	React.useEffect(() => {
+		const theme = getTheme(color);
+
+		loadTheme(theme);
 	}, [color, mode]);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const root = window.document.documentElement;
 
 		root.style.setProperty(`--radius`, `${radius}rem`);
 	}, [radius]);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const root = window.document.documentElement;
 
 		root.style.fontSize = `${size}rem`;
 	}, [size]);
+
+	React.useEffect(() => {
+		if (theme) {
+			loadTheme(theme);
+		}
+	}, [theme]);
 
 	const value = {
 		color: color,
@@ -166,6 +183,9 @@ const ThemeProvider = ({
 			localStorage.setItem(sizeStorageKey, size.toString());
 			setSize(size);
 		},
+		setTheme: (theme: Theme) => {
+			setTheme(theme);
+		},
 	};
 
 	return (
@@ -179,7 +199,7 @@ const ThemeProvider = ({
 };
 
 export const useTheme = () => {
-	const context = useContext(ThemeProviderContext);
+	const context = React.useContext(ThemeProviderContext);
 
 	if (context === undefined) {
 		throw new Error("useTheme must be used within a <ThemeProvider />");
