@@ -1,22 +1,32 @@
 import "@narsil-ui/../css/app.scss";
 import { cn } from "@narsil-ui/Components";
-import { Theme } from "@narsil-ui/Components/Themes/Color/color";
-import { useEffect } from "react";
 import { usePage } from "@inertiajs/react";
 import { useToast } from "@narsil-ui/Components/Toast/useToast";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
-import ThemeProvider from "@narsil-ui/Components/Themes/ThemeProvider";
+import ThemeProvider, { ThemeProviderProps } from "@narsil-ui/Components/Themes/ThemeProvider";
 import Toaster from "@narsil-ui/Components/Toast/Toaster";
 
-interface LayoutProps extends React.HTMLAttributes<HTMLElement> {
+interface LayoutProps extends React.HTMLAttributes<HTMLElement>, Partial<Omit<ThemeProviderProps, "children">> {
 	className?: string;
 	children?: React.ReactNode;
-	defaultTheme?: Theme;
 }
 
 const Layout = React.forwardRef<HTMLElement, LayoutProps>(
-	({ children, className, defaultTheme = null, ...props }, ref) => {
+	(
+		{
+			children,
+			className,
+			defaultColor,
+			defaultMode,
+			defaultRadius,
+			defaultSize,
+			defaultTheme = null,
+			storageKey,
+			...props
+		},
+		ref
+	) => {
 		const { toast } = useToast();
 
 		const translationStore = useTranslationsStore();
@@ -26,7 +36,7 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 		const { error, success } = shared.redirect;
 		const { locale, translations } = shared.localization;
 
-		useEffect(() => {
+		React.useEffect(() => {
 			if (translations) {
 				translationStore.setTranslations(translations);
 			}
@@ -34,7 +44,7 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 			translationStore.setLocale(locale);
 		}, [locale, translations]);
 
-		useEffect(() => {
+		React.useEffect(() => {
 			if (success) {
 				toast({
 					title: translationStore.trans(success.message, success.options),
@@ -43,7 +53,7 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 			}
 		}, [success]);
 
-		useEffect(() => {
+		React.useEffect(() => {
 			if (error) {
 				toast({
 					title: translationStore.trans(error.message, error.options),
@@ -53,7 +63,14 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 		}, [error]);
 
 		return (
-			<ThemeProvider defaultTheme={defaultTheme}>
+			<ThemeProvider
+				defaultColor={defaultColor}
+				defaultMode={defaultMode}
+				defaultRadius={defaultRadius}
+				defaultSize={defaultSize}
+				defaultTheme={defaultTheme}
+				storageKey={storageKey}
+			>
 				<main
 					ref={ref}
 					className={cn("flex h-screen min-h-fit w-full min-w-full max-w-full flex-col", className)}
