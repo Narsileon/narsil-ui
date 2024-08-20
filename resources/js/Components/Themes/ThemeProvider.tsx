@@ -81,7 +81,7 @@ const ThemeProvider = ({
 
 	const [radius, setRadius] = React.useState<number>(() => {
 		if (!storageKey) {
-			return defaultSize;
+			return defaultRadius;
 		}
 
 		const storedRadius = localStorage.getItem(radiusStorageKey);
