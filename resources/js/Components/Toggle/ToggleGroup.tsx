@@ -24,11 +24,11 @@ const ToggleGroup = React.forwardRef<React.ElementRef<typeof ToggleGroupPrimitiv
 	)
 );
 
-export function useToggleGroup() {
+export function useToggleGroupContext() {
 	const context = React.useContext(ToggleGroupContext);
 
 	if (!context) {
-		throw new Error("useToggleGroup must be used within a <ToggleGroup />");
+		throw new Error("useToggleGroupContext must be used within a <ToggleGroup />");
 	}
 
 	return context;

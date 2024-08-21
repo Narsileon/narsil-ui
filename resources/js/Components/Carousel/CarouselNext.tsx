@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { useCarousel } from "./Carousel";
+import { useCarouselContext } from "./Carousel";
 import * as React from "react";
 import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
 
@@ -8,7 +8,7 @@ export interface CarouselNextProps extends ButtonProps {}
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
 	({ className, variant = "outline", size = "icon", ...props }, ref) => {
-		const { canScrollNext, orientation, scrollNext } = useCarousel();
+		const { canScrollNext, orientation, scrollNext } = useCarouselContext();
 
 		return (
 			<Button

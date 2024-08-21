@@ -113,11 +113,11 @@ const Carousel = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivEl
 	}
 );
 
-export function useCarousel() {
+export function useCarouselContext() {
 	const context = React.useContext(CarouselContext);
 
 	if (!context) {
-		throw new Error("useCarousel must be used within a <Carousel />");
+		throw new Error("useCarouselContext must be used within a <Carousel />");
 	}
 
 	return context;

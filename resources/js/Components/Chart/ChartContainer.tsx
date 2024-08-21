@@ -69,11 +69,11 @@ const ChartContainer = React.forwardRef<
 	);
 });
 
-export function useChart() {
+export function useChartContext() {
 	const context = React.useContext(ChartContext);
 
 	if (!context) {
-		throw new Error("useChart must be used within a <ChartContainer />");
+		throw new Error("useChartContext must be used within a <ChartContainer />");
 	}
 
 	return context;

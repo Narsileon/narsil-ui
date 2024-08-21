@@ -1,5 +1,5 @@
 import { Maximize, Minimize } from "lucide-react";
-import { useSection } from "./Section";
+import { useSectionContext } from "./Section";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
@@ -14,16 +14,16 @@ const SectionFullscreenToggle = React.forwardRef<
 >(({ children, ...props }, ref) => {
 	const { trans } = useTranslationsStore();
 
-	const context = useSection();
+	const { isFullscreen, toggleFullscreen } = useSectionContext();
 
 	return (
-		<TooltipWrapper tooltip={trans(context?.isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
+		<TooltipWrapper tooltip={trans(isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
 			<Toggle
 				ref={ref}
-				onClick={() => context?.toggleFullscreen()}
+				onClick={() => toggleFullscreen()}
 				{...props}
 			>
-				{context?.isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+				{isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
 			</Toggle>
 		</TooltipWrapper>
 	);

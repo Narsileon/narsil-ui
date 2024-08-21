@@ -38,11 +38,11 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, ...
 	);
 });
 
-export function useSection() {
+export function useSectionContext() {
 	const context = React.useContext(SectionContext);
 
 	if (!context) {
-		throw new Error("useToggleGroup must be used within a <Section />");
+		throw new Error("useSectionContext must be used within a <Section />");
 	}
 
 	return context;

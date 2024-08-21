@@ -1,11 +1,11 @@
 import { cn } from "@narsil-ui/Components";
-import { useCarousel } from "./Carousel";
+import { useCarouselContext } from "./Carousel";
 import * as React from "react";
 
 export interface CarouselItemProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>(({ className, ...props }, ref) => {
-	const { orientation } = useCarousel();
+	const { orientation } = useCarouselContext();
 
 	return (
 		<div

@@ -1,7 +1,7 @@
 import { ChartTooltipProps } from "./ChartTooltip";
 import { cn } from "@narsil-ui/Components";
 import { getPayloadConfigFromPayload } from "./chart";
-import { useChart } from "./ChartContainer";
+import { useChartContext } from "./ChartContainer";
 import * as React from "react";
 
 export interface ChartTooltipContentProps
@@ -18,22 +18,22 @@ const ChartTooltipContent = React.forwardRef<HTMLDivElement, ChartTooltipContent
 	(
 		{
 			active,
-			payload,
 			className,
-			indicator = "dot",
-			hideLabel = false,
-			hideIndicator = false,
-			label,
-			labelFormatter,
-			labelClassName,
-			formatter,
 			color,
-			nameKey,
+			hideIndicator = false,
+			hideLabel = false,
+			indicator = "dot",
+			label,
+			labelClassName,
 			labelKey,
+			nameKey,
+			payload,
+			labelFormatter,
+			formatter,
 		},
 		ref
 	) => {
-		const { config } = useChart();
+		const { config } = useChartContext();
 
 		const tooltipLabel = React.useMemo(() => {
 			if (hideLabel || !payload?.length) {
