@@ -1,5 +1,6 @@
 import { cn, useFullscreenable } from "@narsil-ui/Components/utils";
 import * as React from "react";
+import ScrollArea from "@narsil-ui/Components/ScrollArea/ScrollArea";
 
 type SectionState = {
 	isFullscreen: boolean;
@@ -15,12 +16,10 @@ const SectionContext = React.createContext<SectionType>({} as SectionType);
 
 export interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, ...props }, ref) => {
-	const defaultRef = React.useRef<HTMLDivElement>(null);
+const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, children, ...props }, ref) => {
+	const fullscreenRef = React.useRef<HTMLDivElement>(null);
 
-	const sectionRef = ref && typeof ref === "object" ? ref : defaultRef;
-
-	const { isFullscreen, toggleFullscreen } = useFullscreenable(sectionRef);
+	const { isFullscreen, toggleFullscreen } = useFullscreenable(fullscreenRef);
 
 	return (
 		<SectionContext.Provider
@@ -29,12 +28,22 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, ...
 				toggleFullscreen: toggleFullscreen,
 			}}
 		>
-			<section
-				ref={sectionRef}
-				className={cn("bg-background p-4 text-foreground", className)}
-				data-fullscreen={isFullscreen}
-				{...props}
-			/>
+			<ScrollArea
+				ref={fullscreenRef}
+				className='h-fit w-full'
+				orientation='vertical'
+			>
+				<section
+					ref={ref}
+					className={cn("w-full grow bg-background p-4 text-foreground", className, {
+						"p-4": isFullscreen,
+					})}
+					data-fullscreen={isFullscreen}
+					{...props}
+				>
+					{children}
+				</section>
+			</ScrollArea>
 		</SectionContext.Provider>
 	);
 });
