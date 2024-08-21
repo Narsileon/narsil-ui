@@ -32,6 +32,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, ...
 			<section
 				ref={sectionRef}
 				className={cn("bg-background p-4 text-foreground", className)}
+				data-fullscreen={isFullscreen}
 				{...props}
 			/>
 		</SectionContext.Provider>
