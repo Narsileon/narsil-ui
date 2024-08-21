@@ -43,12 +43,25 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 		const { isMobile, isTablet } = useScreenStore();
 
 		const { leftLinks, rightLinks } = (() => {
-			const size: number = isMobile ? 2 : isTablet ? 4 : 6;
+			const size: number = isMobile ? 2 : isTablet ? 3 : 4;
 
 			let leftLinks: PaginationLink[] = [];
 			let rightLinks: PaginationLink[] = [];
 
-			if (links.length > size * 2 + 1) {
+			const ellipsisIndex = links.findIndex((x) => x.url === null);
+
+			if (ellipsisIndex !== -1) {
+				const ellipsisLeft = ellipsisIndex;
+				const ellipsisRight = links.length - 1 - ellipsisIndex;
+
+				if (ellipsisLeft <= ellipsisRight) {
+					leftLinks = links.slice(0, Math.min(size, ellipsisLeft));
+					rightLinks = links.slice(-Math.min(size * 2 - leftLinks.length, ellipsisRight));
+				} else {
+					rightLinks = links.slice(-Math.min(size, ellipsisRight));
+					leftLinks = links.slice(0, Math.min(size * 2 - rightLinks.length, ellipsisLeft));
+				}
+			} else if (links.length > size * 2 + 1) {
 				leftLinks = links.slice(0, size);
 				rightLinks = links.slice(-size);
 			}
@@ -71,17 +84,17 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 		return (
 			<div
 				ref={ref}
-				className='flex w-full flex-col items-center justify-between gap-x-4 gap-y-4 lg:flex-row'
+				className='grid w-full grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'
 				{...props}
 			>
 				<PaginationResult
-					className='order-2 flex w-full justify-center lg:order-1 lg:w-fit'
+					className='order-2 self-center justify-self-center lg:w-fit lg:justify-self-start xl:order-1'
 					from={from}
 					to={to}
 					total={total}
 				/>
 
-				<PaginationNav className='order-1 flex w-full justify-center lg:order-2'>
+				<PaginationNav className='order-1 self-center justify-self-center lg:col-span-2 xl:order-2 xl:col-span-1'>
 					<PaginationList>
 						<PaginationItem>
 							<PaginationButton
@@ -162,8 +175,8 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								})}
 							</>
 						) : (
-							links.map((link, index) => {
-								return (
+							links.map((link, index) =>
+								link.url ? (
 									<PaginationItem key={index}>
 										<PaginationButton
 											asChild={true}
@@ -172,7 +185,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 											<Link
 												as='button'
 												data={data}
-												href={link.url ?? ""}
+												href={link.url}
 												preserveScroll={true}
 												preserveState={true}
 											>
@@ -180,8 +193,10 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 											</Link>
 										</PaginationButton>
 									</PaginationItem>
-								);
-							})
+								) : (
+									<PaginationEllipsis />
+								)
+							)
 						)}
 						<PaginationItem>
 							<PaginationButton
@@ -219,7 +234,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 				</PaginationNav>
 
 				<PaginationSelect
-					className='order-3 flex w-full justify-center lg:order-3 lg:w-fit'
+					className='order-3 self-center justify-self-center lg:order-3 lg:justify-self-end'
 					pageSize={pageSize}
 					options={options}
 					onPageSizeChange={onPageSizeChange}
