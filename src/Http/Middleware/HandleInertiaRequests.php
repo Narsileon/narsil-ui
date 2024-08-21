@@ -83,7 +83,7 @@ abstract class HandleInertiaRequests extends Middleware
 
         $locale = App::getLocale();
         $languages = Language::options()->get();
-        $translations = $isFullReload ? LocalizationService::getTranslations(!request()->header('X-Inertia')) : null;
+        $translations = LocalizationService::getTranslations();
 
         return compact(
             'locale',
