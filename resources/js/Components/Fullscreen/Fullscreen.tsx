@@ -2,21 +2,21 @@ import { useFullscreen } from "react-use";
 import * as React from "react";
 import ScrollArea, { ScrollAreaProps } from "@narsil-ui/Components/ScrollArea/ScrollArea";
 
-type FullScreenState = {
+type FullscreenState = {
 	isFullscreen: boolean;
 };
 
-type FullScreenAction = {
+type FullscreenAction = {
 	toggleFullscreen: () => void;
 };
 
-type FullScreenType = FullScreenState & FullScreenAction;
+type FullscreenType = FullscreenState & FullscreenAction;
 
-const FullScreenContext = React.createContext<FullScreenType>({} as FullScreenType);
+const FullscreenContext = React.createContext<FullscreenType>({} as FullscreenType);
 
-export interface FullScreenProps extends ScrollAreaProps {}
+export interface FullscreenProps extends ScrollAreaProps {}
 
-const FullScreen = React.forwardRef<HTMLDivElement, FullScreenProps>(({ className, children, ...props }, ref) => {
+const Fullscreen = React.forwardRef<HTMLDivElement, FullscreenProps>(({ className, children, ...props }, ref) => {
 	const [isFullscreen, setIsFullscreen] = React.useState<boolean>(false);
 
 	const defaultRef = React.useRef<HTMLDivElement>(null);
@@ -32,7 +32,7 @@ const FullScreen = React.forwardRef<HTMLDivElement, FullScreenProps>(({ classNam
 	};
 
 	return (
-		<FullScreenContext.Provider
+		<FullscreenContext.Provider
 			value={{
 				isFullscreen: isFullscreen,
 				toggleFullscreen: toggleFullscreen,
@@ -44,18 +44,18 @@ const FullScreen = React.forwardRef<HTMLDivElement, FullScreenProps>(({ classNam
 				orientation='vertical'
 				{...props}
 			/>
-		</FullScreenContext.Provider>
+		</FullscreenContext.Provider>
 	);
 });
 
-export function useFullScreenContext() {
-	const context = React.useContext(FullScreenContext);
+export function useFullscreenContext() {
+	const context = React.useContext(FullscreenContext);
 
 	if (!context) {
-		throw new Error("useFullScreenContext must be used within a <FullScreen />");
+		throw new Error("useFullscreenContext must be used within a <Fullscreen />");
 	}
 
 	return context;
 }
 
-export default FullScreen;
+export default Fullscreen;

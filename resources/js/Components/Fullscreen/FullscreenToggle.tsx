@@ -1,5 +1,5 @@
 import { Maximize, Minimize } from "lucide-react";
-import { useFullScreenContext } from "./Fullscreen";
+import { useFullscreenContext } from "./Fullscreen";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
@@ -13,7 +13,7 @@ const FullscreenToggle = React.forwardRef<React.ElementRef<typeof TogglePrimitiv
 	({ children, ...props }, ref) => {
 		const { trans } = useTranslationsStore();
 
-		const { isFullscreen, toggleFullscreen } = useFullScreenContext();
+		const { isFullscreen, toggleFullscreen } = useFullscreenContext();
 
 		return (
 			<TooltipWrapper tooltip={trans(isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
