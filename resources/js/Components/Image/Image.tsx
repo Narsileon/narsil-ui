@@ -10,7 +10,7 @@ interface ImageProps extends React.HTMLAttributes<HTMLImageElement> {
 	disabled?: boolean;
 }
 
-const Image = forwardRef<HTMLImageElement, ImageProps>(({ disabled = false, ...props }, ref) => {
+const Image = forwardRef<HTMLImageElement, ImageProps>(({ disabled = true, ...props }, ref) => {
 	return (
 		<Dialog>
 			<DialogTrigger
