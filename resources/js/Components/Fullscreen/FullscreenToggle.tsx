@@ -7,33 +7,32 @@ import Button from "@narsil-ui/Components/Button/Button";
 import Toggle, { ToggleProps } from "@narsil-ui/Components/Toggle/Toggle";
 import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
 
-export interface SectionFullscreenToggleProps extends Partial<ToggleProps> {}
+export interface FullscreenToggleProps extends Partial<ToggleProps> {}
 
-const SectionFullscreenToggle = React.forwardRef<
-	React.ElementRef<typeof TogglePrimitive.Root>,
-	SectionFullscreenToggleProps
->(({ children, ...props }, ref) => {
-	const { trans } = useTranslationsStore();
+const FullscreenToggle = React.forwardRef<React.ElementRef<typeof TogglePrimitive.Root>, FullscreenToggleProps>(
+	({ children, ...props }, ref) => {
+		const { trans } = useTranslationsStore();
 
-	const { isFullscreen, toggleFullscreen } = useFullScreenContext();
+		const { isFullscreen, toggleFullscreen } = useFullScreenContext();
 
-	return (
-		<TooltipWrapper tooltip={trans(isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
-			<Toggle
-				ref={ref}
-				onClick={() => toggleFullscreen()}
-				asChild
-				{...props}
-			>
-				<Button
-					size={"icon"}
-					variant={"ghost"}
+		return (
+			<TooltipWrapper tooltip={trans(isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
+				<Toggle
+					ref={ref}
+					onClick={() => toggleFullscreen()}
+					asChild
+					{...props}
 				>
-					{isFullscreen ? <Minimize /> : <Maximize />}
-				</Button>
-			</Toggle>
-		</TooltipWrapper>
-	);
-});
+					<Button
+						size={"icon"}
+						variant={"ghost"}
+					>
+						{isFullscreen ? <Minimize /> : <Maximize />}
+					</Button>
+				</Toggle>
+			</TooltipWrapper>
+		);
+	}
+);
 
-export default SectionFullscreenToggle;
+export default FullscreenToggle;
