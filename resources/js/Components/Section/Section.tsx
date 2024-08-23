@@ -10,7 +10,7 @@ const Section = React.forwardRef<HTMLDivElement, SectionProps>(({ className, chi
 			className={cn(
 				"w-full grow bg-background p-4 text-foreground",
 				className,
-				"data-[fullscreen-group-on=true]:p-4"
+				"group-data-[fullscreen=true]:p-4"
 			)}
 			{...props}
 		>

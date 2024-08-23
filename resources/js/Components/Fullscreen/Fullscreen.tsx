@@ -40,7 +40,8 @@ const Fullscreen = React.forwardRef<HTMLDivElement, FullscreenProps>(({ classNam
 		>
 			<ScrollArea
 				ref={fullscreenRef}
-				className='h-fit w-full'
+				className='group h-fit w-full'
+				data-fullscreen={isFullscreen}
 				orientation='vertical'
 				{...props}
 			/>
