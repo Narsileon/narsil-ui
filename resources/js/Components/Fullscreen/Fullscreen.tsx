@@ -16,7 +16,7 @@ const FullscreenContext = React.createContext<FullscreenType>({} as FullscreenTy
 
 export interface FullscreenProps extends ScrollAreaProps {}
 
-const Fullscreen = React.forwardRef<HTMLDivElement, FullscreenProps>(({ className, children, ...props }, ref) => {
+const Fullscreen = React.forwardRef<HTMLDivElement, FullscreenProps>(({ className, ...props }, ref) => {
 	const [isFullscreen, setIsFullscreen] = React.useState<boolean>(false);
 
 	const defaultRef = React.useRef<HTMLDivElement>(null);
