@@ -1,7 +1,7 @@
 type Collection<T = { [key: string]: any }> = {
 	data: T;
 	links: SimpleLinks;
-	meta: Meta;
+	meta: CollectionMeta;
 };
 
 type CollectionMeta = {
@@ -16,11 +16,12 @@ type CollectionMeta = {
 	total: number;
 };
 
-type GlobalProps = {
+type SharedProps = {
 	shared: {
 		app: {
 			favicon: string | null;
-			name: string;
+			name: string | null;
+			version: string | null;
 		};
 		localization: {
 			locale: string;
@@ -28,20 +29,26 @@ type GlobalProps = {
 			translations: { [key: string]: Translation } | null;
 		};
 		redirect: {
-			success: {
-				message: string;
-				options?: import("@narsil-localization/Stores/translationStore").TransOptions;
-			};
-			error: {
-				message: string;
-				options?: import("@narsil-localization/Stores/translationStore").TransOptions;
-			};
+			success:
+				| string
+				| {
+						message: string;
+						options?: import("@narsil-localization/Stores/translationStore").TransOptions;
+				  }
+				| null;
+			error:
+				| string
+				| {
+						message: string;
+						options?: import("@narsil-localization/Stores/translationStore").TransOptions;
+				  }
+				| null;
 		};
 	};
 };
 
 type InertiaPage = React.ReactNode & {
-	props: GlobalProps;
+	props: SharedProps;
 };
 
 type PaginationLink = {

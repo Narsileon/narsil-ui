@@ -1,5 +1,6 @@
 import "@narsil-ui/../css/app.scss";
 import { cn } from "@narsil-ui/Components";
+import { isString } from "lodash";
 import { usePage } from "@inertiajs/react";
 import { useToast } from "@narsil-ui/Components/Toast/useToast";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
@@ -31,7 +32,7 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 
 		const translationStore = useTranslationsStore();
 
-		const shared = usePage<GlobalProps>().props.shared;
+		const shared = usePage<SharedProps>().props.shared;
 
 		const { error, success } = shared.redirect;
 		const { locale, translations } = shared.localization;
@@ -47,7 +48,9 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 		React.useEffect(() => {
 			if (success) {
 				toast({
-					title: translationStore.trans(success.message, success.options),
+					title: isString(success)
+						? translationStore.trans(success)
+						: translationStore.trans(success.message, success.options),
 					variant: "constructive",
 				});
 			}
@@ -56,7 +59,9 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 		React.useEffect(() => {
 			if (error) {
 				toast({
-					title: translationStore.trans(error.message, error.options),
+					title: isString(error)
+						? translationStore.trans(error)
+						: translationStore.trans(error.message, error.options),
 					variant: "destructive",
 				});
 			}

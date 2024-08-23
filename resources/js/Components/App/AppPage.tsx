@@ -8,7 +8,7 @@ interface Props {
 }
 
 const AppPage = ({ children, head, title }: Props) => {
-	const shared = usePage<GlobalProps>().props.shared;
+	const shared = usePage<SharedProps>().props.shared;
 
 	const { favicon, name } = shared.app;
 
