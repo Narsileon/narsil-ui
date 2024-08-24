@@ -5,17 +5,18 @@ import * as React from "react";
 
 export const buttonVariants = cva(
 	cn(
-		"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors",
+		"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm transition-colors gap-x-1",
 		"focus-visible:outline-none focus-visible:border-primary",
 		"disabled:pointer-events-none disabled:opacity-50"
 	),
 	{
 		variants: {
 			variant: {
-				default: "bg-primary font-medium text-primary-foreground hover:bg-primary/90",
-				destructive: "bg-destructive font-medium text-destructive-foreground hover:bg-destructive/90",
+				default: "bg-primary font-medium text-primary-foreground hover:bg-primary/80",
+				constructive: "bg-constructive font-medium text-constructive-foreground hover:bg-constructive/80",
+				destructive: "bg-destructive font-medium text-destructive-foreground hover:bg-destructive/80",
 				ghost: "font-medium hover:bg-accent hover:text-accent-foreground",
-				"inline-link": "text-primary underline-offset-4 hover:underline",
+				inline: "font-medium hover:underline",
 				link: "underline-offset-4 hover:underline",
 				outline: "border border-input bg-background font-medium hover:bg-accent hover:text-accent-foreground",
 				secondary: "bg-secondary font-medium text-secondary-foreground hover:bg-secondary/80",
@@ -24,7 +25,6 @@ export const buttonVariants = cva(
 				default: "h-10 px-4 py-2",
 				icon: "h-10 w-10 min-w-10 mn-h-10",
 				lg: "h-11 rounded-md px-8",
-				link: "",
 				sm: "h-9 rounded-md px-3",
 			},
 		},
