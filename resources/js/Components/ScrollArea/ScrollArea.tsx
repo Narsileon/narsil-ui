@@ -16,7 +16,7 @@ const ScrollArea = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.
 				{...props}
 			>
 				<ScrollAreaPrimitive.Viewport
-					className='!flex h-full flex-col items-start rounded-[inherit]'
+					className='flex h-full flex-col items-start gap-4 rounded-[inherit]'
 					asChild={true}
 				>
 					{children}

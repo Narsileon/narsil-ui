@@ -1,32 +1,33 @@
-import { DialogContent } from "@radix-ui/react-dialog";
 import { forwardRef } from "react";
 import * as React from "react";
 import Dialog from "@narsil-ui/Components/Dialog/Dialog";
-import DialogClose from "@narsil-ui/Components/Dialog/DialogClose";
+import DialogContent from "@narsil-ui/Components/Dialog/DialogContent";
+import DialogHeader from "@narsil-ui/Components/Dialog/DialogHeader";
+import DialogTitle from "@narsil-ui/Components/Dialog/DialogTitle";
 import DialogTrigger from "@narsil-ui/Components/Dialog/DialogTrigger";
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 	disabled?: boolean;
 }
 
-const Image = forwardRef<HTMLImageElement, ImageProps>(({ disabled = true, ...props }, ref) => {
+const Image = forwardRef<HTMLImageElement, ImageProps>(({ disabled = true, src, ...props }, ref) => {
 	return (
 		<Dialog>
-			<DialogTrigger
-				disabled={disabled}
-				asChild={true}
-			>
+			<DialogTrigger>
 				<img
 					ref={ref}
+					src={src}
 					{...props}
 				/>
 			</DialogTrigger>
 			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>{src}</DialogTitle>
+				</DialogHeader>
 				<img
-					ref={ref}
+					src={src}
 					{...props}
 				/>
-				<DialogClose />
 			</DialogContent>
 		</Dialog>
 	);
