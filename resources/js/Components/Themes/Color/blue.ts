@@ -20,8 +20,8 @@ const blue: Theme = {
 		input: "214 32% 91%",
 		muted: "210 40% 96%",
 		popover: "0 0% 100%",
-		primary: "221 83% 53%",
-		ring: "221 83% 53%",
+		primary: "217.2 91.2% 59.8%",
+		ring: "217.2 91.2% 59.8%",
 		secondary: "210 40% 96%",
 	},
 	dark: {
@@ -43,8 +43,8 @@ const blue: Theme = {
 		input: "217 33% 17%",
 		muted: "217 33% 17%",
 		popover: "222 84% 5%",
-		primary: "217 91% 60%",
-		ring: "224 76% 48%",
+		primary: "217.2 91.2% 59.8%",
+		ring: "217.2 91.2% 59.8%",
 		secondary: "217 33% 17%",
 	},
 };
