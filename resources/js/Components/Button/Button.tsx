@@ -16,7 +16,7 @@ export const buttonVariants = cva(
 				constructive: "bg-constructive font-medium text-constructive-foreground hover:bg-constructive/80",
 				destructive: "bg-destructive font-medium text-destructive-foreground hover:bg-destructive/80",
 				ghost: "font-medium hover:bg-accent hover:text-accent-foreground",
-				inline: "font-medium hover:underline",
+				inline: "font-medium underline-offset-4 hover:underline",
 				link: "underline-offset-4 hover:underline",
 				outline: "border border-input bg-background font-medium hover:bg-accent hover:text-accent-foreground",
 				secondary: "bg-secondary font-medium text-secondary-foreground hover:bg-secondary/80",
