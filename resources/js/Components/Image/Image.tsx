@@ -6,11 +6,10 @@ import DialogClose from "@narsil-ui/Components/Dialog/DialogClose";
 import DialogTrigger from "@narsil-ui/Components/Dialog/DialogTrigger";
 
 interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
-	className?: string;
 	disabled?: boolean;
 }
 
-const Image = forwardRef<HTMLImageElement, ImageProps>(({ disabled = true, src, ...props }, ref) => {
+const Image = forwardRef<HTMLImageElement, ImageProps>(({ disabled = true, ...props }, ref) => {
 	return (
 		<Dialog>
 			<DialogTrigger
