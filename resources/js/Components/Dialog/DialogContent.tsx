@@ -36,7 +36,7 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
 				}}
 				{...props}
 			>
-				<ScrollArea className='relative max-h-screen overflow-hidden p-4'>
+				<ScrollArea className='max-h-screen p-4'>
 					<ScrollAreaViewport
 						className='space-y-4'
 						asChild={true}
