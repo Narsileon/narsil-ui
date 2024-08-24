@@ -1,13 +1,14 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import ScrollAreaViewport from "./ScrollAreaViewport";
-import ScrollAreaScrollbar from "./ScrollAreaScrollbar";
+import ScrollAreaCorner from "./ScrollAreaCorner";
+import ScrollAreaScrollbar, { ScrollAreaScrollbarProps } from "./ScrollAreaScrollbar";
 import ScrollAreaThumb from "./ScrollAreaThumb";
+import ScrollAreaViewport from "./ScrollAreaViewport";
 
 export interface ScrollAreaProps
 	extends React.ComponentProps<typeof ScrollAreaPrimitive.Root>,
-		Pick<React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>, "orientation"> {}
+		Pick<ScrollAreaScrollbarProps, "orientation"> {}
 
 const ScrollArea = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.Root>, ScrollAreaProps>(
 	({ className, children, orientation = "vertical", ...props }, ref) => {
@@ -21,7 +22,7 @@ const ScrollArea = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.
 				<ScrollAreaScrollbar orientation={orientation}>
 					<ScrollAreaThumb />
 				</ScrollAreaScrollbar>
-				<ScrollAreaPrimitive.Corner />
+				<ScrollAreaCorner />
 			</ScrollAreaPrimitive.Root>
 		);
 	}
