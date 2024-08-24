@@ -18,12 +18,8 @@ export type CollectionMeta = {
 };
 
 export type GlobalProps = {
-	props: {
-		shared: SharedProps;
-	};
+	shared: SharedProps;
 };
-
-export type InertiaPage = React.ReactNode & GlobalProps;
 
 export type Resource<T> = {
 	data: T;

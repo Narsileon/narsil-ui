@@ -1,5 +1,6 @@
 import "@narsil-ui/../css/app.scss";
 import { cn } from "@narsil-ui/Components";
+import { GlobalProps } from "@narsil-ui/Types";
 import { isString } from "lodash";
 import { usePage } from "@inertiajs/react";
 import { useToast } from "@narsil-ui/Components/Toast/useToast";
@@ -32,7 +33,7 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 
 		const translationStore = useTranslationsStore();
 
-		const shared = usePage<SharedProps>().props.shared;
+		const shared = usePage<GlobalProps>().props.shared;
 
 		const { error, success } = shared.redirect;
 		const { locale, translations } = shared.localization;

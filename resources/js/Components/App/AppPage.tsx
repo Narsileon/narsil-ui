@@ -1,3 +1,4 @@
+import { GlobalProps } from "@narsil-ui/Types";
 import { Head, usePage } from "@inertiajs/react";
 import * as React from "react";
 
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const AppPage = ({ children, head, title }: Props) => {
-	const shared = usePage<SharedProps>().props.shared;
+	const shared = usePage<GlobalProps>().props.shared;
 
 	const { favicon, name } = shared.app;
 
