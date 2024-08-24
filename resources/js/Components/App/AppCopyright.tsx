@@ -7,13 +7,14 @@ export interface AppCopyrightProps extends React.HTMLAttributes<HTMLDivElement> 
 	name: string;
 }
 
-const AppCopyright = React.forwardRef<HTMLDivElement, AppCopyrightProps>(({ href = "/", name }, ref) => {
+const AppCopyright = React.forwardRef<HTMLDivElement, AppCopyrightProps>(({ href = "/", name, ...props }, ref) => {
 	const year = new Date().getFullYear();
 
 	return (
 		<div
 			ref={ref}
 			className='flex flex-wrap items-center gap-x-1'
+			{...props}
 		>
 			<small className='min-w-fit whitespace-nowrap'>{`© ${year}`}</small>
 			<Button
