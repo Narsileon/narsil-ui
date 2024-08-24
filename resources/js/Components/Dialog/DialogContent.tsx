@@ -5,6 +5,10 @@ import * as React from "react";
 import DialogOverlay from "./DialogOverlay";
 import DialogPortal from "./DialogPortal";
 import ScrollArea from "@narsil-ui/Components/ScrollArea/ScrollArea";
+import ScrollAreaCorner from "@narsil-ui/Components/ScrollArea/ScrollAreaCorner";
+import ScrollAreaScrollbar from "@narsil-ui/Components/ScrollArea/ScrollAreaScrollbar";
+import ScrollAreaThumb from "@narsil-ui/Components/ScrollArea/ScrollAreaThumb";
+import ScrollAreaViewport from "@narsil-ui/Components/ScrollArea/ScrollAreaViewport";
 
 export interface DialogContentProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {}
 
@@ -32,7 +36,18 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
 				}}
 				{...props}
 			>
-				<ScrollArea className='max-h-screen p-4'>{children}</ScrollArea>
+				<ScrollArea className='relative max-h-screen overflow-hidden p-4'>
+					<ScrollAreaViewport
+						className='space-y-4'
+						asChild={true}
+					>
+						{children}
+					</ScrollAreaViewport>
+					<ScrollAreaScrollbar orientation='vertical'>
+						<ScrollAreaThumb />
+					</ScrollAreaScrollbar>
+					<ScrollAreaCorner />
+				</ScrollArea>
 				<DialogPrimitive.Close
 					className={cn(
 						"absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity",

@@ -2,11 +2,12 @@ import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
 
-export interface ScrollBarProps extends React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar> {}
+export interface ScrollAreaScrollbarProps
+	extends React.ComponentProps<typeof ScrollAreaPrimitive.ScrollAreaScrollbar> {}
 
-const ScrollBar = React.forwardRef<
+const ScrollAreaScrollbar = React.forwardRef<
 	React.ElementRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>,
-	React.ComponentPropsWithoutRef<typeof ScrollAreaPrimitive.ScrollAreaScrollbar>
+	ScrollAreaScrollbarProps
 >(({ className, orientation = "vertical", ...props }, ref) => (
 	<ScrollAreaPrimitive.ScrollAreaScrollbar
 		ref={ref}
@@ -18,9 +19,7 @@ const ScrollBar = React.forwardRef<
 		)}
 		orientation={orientation}
 		{...props}
-	>
-		<ScrollAreaPrimitive.ScrollAreaThumb className='relative flex-1 rounded-full bg-border' />
-	</ScrollAreaPrimitive.ScrollAreaScrollbar>
+	/>
 ));
 
-export default ScrollBar;
+export default ScrollAreaScrollbar;

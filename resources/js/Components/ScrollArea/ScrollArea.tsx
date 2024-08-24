@@ -1,7 +1,9 @@
 import { cn } from "@narsil-ui/Components";
 import * as React from "react";
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area";
-import ScrollBar from "./ScrollBar";
+import ScrollAreaViewport from "./ScrollAreaViewport";
+import ScrollAreaScrollbar from "./ScrollAreaScrollbar";
+import ScrollAreaThumb from "./ScrollAreaThumb";
 
 export interface ScrollAreaProps
 	extends React.ComponentProps<typeof ScrollAreaPrimitive.Root>,
@@ -15,13 +17,10 @@ const ScrollArea = React.forwardRef<React.ElementRef<typeof ScrollAreaPrimitive.
 				className={cn("relative overflow-hidden", className)}
 				{...props}
 			>
-				<ScrollAreaPrimitive.Viewport
-					className='flex h-full flex-col items-start gap-4 rounded-[inherit]'
-					asChild={true}
-				>
-					{children}
-				</ScrollAreaPrimitive.Viewport>
-				<ScrollBar orientation={orientation} />
+				<ScrollAreaViewport asChild={true}>{children}</ScrollAreaViewport>
+				<ScrollAreaScrollbar orientation={orientation}>
+					<ScrollAreaThumb />
+				</ScrollAreaScrollbar>
 				<ScrollAreaPrimitive.Corner />
 			</ScrollAreaPrimitive.Root>
 		);
