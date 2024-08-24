@@ -11,26 +11,27 @@ export const buttonVariants = cva(
 	),
 	{
 		variants: {
+			size: {
+				default: "h-10",
+				icon: "h-10 w-10 min-w-10 mn-h-10",
+				lg: "h-12 px-8 py-3",
+				md: "h-10 px-4 py-2",
+				sm: "h-8 px-2 py-1",
+			},
 			variant: {
-				default: "bg-primary font-medium text-primary-foreground hover:bg-primary/80",
 				constructive: "bg-constructive font-medium text-constructive-foreground hover:bg-constructive/80",
 				destructive: "bg-destructive font-medium text-destructive-foreground hover:bg-destructive/80",
 				ghost: "font-medium hover:bg-accent hover:text-accent-foreground",
 				inline: "font-medium underline-offset-4 hover:underline",
 				link: "underline-offset-4 hover:underline",
 				outline: "border border-input bg-background font-medium hover:bg-accent hover:text-accent-foreground",
+				primary: "bg-primary font-medium text-primary-foreground hover:bg-primary/80",
 				secondary: "bg-secondary font-medium text-secondary-foreground hover:bg-secondary/80",
-			},
-			size: {
-				default: "h-10 px-4 py-2",
-				icon: "h-10 w-10 min-w-10 mn-h-10",
-				lg: "h-11 rounded-md px-8",
-				sm: "h-9 rounded-md px-3",
 			},
 		},
 		defaultVariants: {
-			variant: "default",
-			size: "default",
+			size: "md",
+			variant: "primary",
 		},
 	}
 );
