@@ -14,7 +14,10 @@ interface ImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 const Image = forwardRef<HTMLImageElement, ImageProps>(({ caption, disabled = false, src, ...props }, ref) => {
 	return (
 		<Dialog>
-			<DialogTrigger disabled={disabled}>
+			<DialogTrigger
+				className='h-full w-full'
+				disabled={disabled}
+			>
 				<figure>
 					<img
 						ref={ref}
