@@ -15,10 +15,10 @@ const AppCopyright = React.forwardRef<HTMLDivElement, AppCopyrightProps>(
 		return (
 			<div
 				ref={ref}
-				className={cn("inline-flex items-center", className)}
+				className={cn("inline-flex items-center gap-x-1", className)}
 				{...props}
 			>
-				<small className='min-w-fit whitespace-nowrap'>{`© ${year} `}</small>
+				<small className='min-w-fit whitespace-nowrap'>{`© ${year}`}</small>
 				<Button
 					asChild={true}
 					size='default'
