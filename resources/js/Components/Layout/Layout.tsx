@@ -79,7 +79,7 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 			>
 				<main
 					ref={ref}
-					className={cn("flex h-screen min-h-fit w-full min-w-full max-w-full flex-col", className)}
+					className={cn("flex h-fit min-h-screen w-full min-w-full max-w-full flex-col", className)}
 					{...props}
 				>
 					{children}
