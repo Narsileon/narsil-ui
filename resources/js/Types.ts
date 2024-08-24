@@ -25,6 +25,11 @@ export type GlobalProps = {
 
 export type InertiaPage = React.ReactNode & GlobalProps;
 
+export type Resource<T> = {
+	data: T;
+	meta: Record<string, any>;
+};
+
 export type SelectOption = {
 	label?: string;
 	value?: string | number;
