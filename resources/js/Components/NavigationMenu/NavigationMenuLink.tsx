@@ -7,10 +7,10 @@ export interface NavigationMenuLinkProps extends React.ComponentProps<typeof Nav
 const NavigationMenuLink = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Link>,
 	NavigationMenuLinkProps
->(({ className, ...props }, ref) => (
+>(({ active, className, ...props }, ref) => (
 	<NavigationMenuPrimitive.Link
 		ref={ref}
-		className={cn("grow truncate", className)}
+		className={cn(active && "font-semibold text-primary-highlight", "grow truncate", className)}
 		{...props}
 	/>
 ));
