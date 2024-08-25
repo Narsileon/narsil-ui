@@ -25,7 +25,6 @@ const orange: Theme = {
 		muted: "60 5% 96%",
 		popover: "0 0% 100%",
 		primary: "25 95% 53%",
-		ring: "25 95% 53%",
 		secondary: "60 5% 96%",
 	},
 	dark: {
@@ -52,7 +51,6 @@ const orange: Theme = {
 		muted: "12 7% 15%",
 		popover: "20 14% 4%",
 		primary: "20 90% 48%",
-		ring: "20 90% 48%",
 		secondary: "12 7% 15%",
 	},
 };

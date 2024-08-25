@@ -25,7 +25,6 @@ const green: Theme = {
 		muted: "240 5% 96%",
 		popover: "0 0% 100%",
 		primary: "142 76% 36%",
-		ring: "142 76% 36%",
 		secondary: "240 5% 96%",
 	},
 	dark: {
@@ -52,7 +51,6 @@ const green: Theme = {
 		muted: "0 0% 15%",
 		popover: "0 0% 9%",
 		primary: "142 71% 45%",
-		ring: "142 72% 29%",
 		secondary: "240 4% 16%",
 	},
 };

@@ -25,7 +25,6 @@ const neutral: Theme = {
 		muted: "0 0% 96%",
 		popover: "0 0% 100%",
 		primary: "0 0% 9%",
-		ring: "0 0% 4%",
 		secondary: "0 0% 96%",
 	},
 	dark: {
@@ -52,7 +51,6 @@ const neutral: Theme = {
 		muted: "0 0% 15%",
 		popover: "0 0% 4%",
 		primary: "0 0% 98%",
-		ring: "0 0% 83%",
 		secondary: "0 0% 15%",
 	},
 };

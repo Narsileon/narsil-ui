@@ -25,7 +25,6 @@ const pink: Theme = {
 		muted: "240 5% 96%",
 		popover: "0 0% 100%",
 		primary: "333 71% 51%",
-		ring: "333 71% 51%",
 		secondary: "240 5% 96%",
 	},
 	dark: {
@@ -52,7 +51,6 @@ const pink: Theme = {
 		muted: "0 0% 15%",
 		popover: "0 0% 9%",
 		primary: "333 71% 51%",
-		ring: "333 71% 51%",
 		secondary: "240 4% 16%",
 	},
 };

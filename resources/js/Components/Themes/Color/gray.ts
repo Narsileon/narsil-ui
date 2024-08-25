@@ -25,7 +25,6 @@ const gray: Theme = {
 		muted: "220 14% 96%",
 		popover: "0 0% 100%",
 		primary: "221 39% 11%",
-		ring: "224 71% 4%",
 		secondary: "220 14% 96%",
 	},
 	dark: {
@@ -52,7 +51,6 @@ const gray: Theme = {
 		muted: "215 28% 17%",
 		popover: "224 71% 4%",
 		primary: "210 20% 98%",
-		ring: "216 12% 84%",
 		secondary: "215 28% 17%",
 	},
 };

@@ -27,7 +27,6 @@ export type ThemeProperties = {
 	muted: string;
 	popover: string;
 	primary: string;
-	ring: string;
 	secondary: string;
 };
 

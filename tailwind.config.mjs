@@ -24,7 +24,6 @@ export default {
 				border: "hsl(var(--border))",
 				foreground: "hsl(var(--foreground))",
 				input: "hsl(var(--input))",
-				ring: "hsl(var(--ring))",
 				accent: {
 					DEFAULT: "hsl(var(--accent))",
 					foreground: "hsl(var(--accent-foreground))",

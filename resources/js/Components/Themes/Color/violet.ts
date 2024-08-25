@@ -25,7 +25,6 @@ const violet: Theme = {
 		muted: "220 14% 96%",
 		popover: "0 0% 100%",
 		primary: "262 83% 58%",
-		ring: "262 83% 58%",
 		secondary: "220 14% 96%",
 	},
 	dark: {
@@ -52,7 +51,6 @@ const violet: Theme = {
 		muted: "215 28% 17%",
 		popover: "224 71% 4%",
 		primary: "263 70% 50%",
-		ring: "263 70% 50%",
 		secondary: "215 28% 17%",
 	},
 };
