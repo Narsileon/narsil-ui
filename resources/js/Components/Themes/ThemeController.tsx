@@ -13,9 +13,19 @@ import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
 import Slider from "@narsil-ui/Components/Slider/Slider";
 import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
 
-export interface ThemeControllerProps {}
+export interface ThemeControllerProps {
+	enableColors?: boolean;
+	enableMode?: boolean;
+	enableRadius?: boolean;
+	enableSize?: boolean;
+}
 
-const ThemeController = ({}: ThemeControllerProps) => {
+const ThemeController = ({
+	enableColors = true,
+	enableMode = true,
+	enableRadius = true,
+	enableSize = true,
+}: ThemeControllerProps) => {
 	const { trans } = useTranslationsStore();
 
 	const { color, mode, radius, size, setColor, setMode, setRadius, setSize } = useTheme();
@@ -50,101 +60,117 @@ const ThemeController = ({}: ThemeControllerProps) => {
 			>
 				<Card variant='inline'>
 					<CardContent>
-						<Heading
-							level='h2'
-							variant='h6'
-						>
-							{trans("Mode")}
-						</Heading>
-						<div className='grid w-full grid-cols-3 gap-2'>
-							<Button
-								className={"flex items-center justify-start gap-2 text-xs"}
-								isActive={mode === "light"}
-								size='sm'
-								variant='outline'
-								onClick={() => setMode("light")}
-							>
-								<Sun className='h-5 w-5' />
-								{trans("Light")}
-							</Button>
-							<Button
-								className={"flex items-center justify-start gap-2 text-xs"}
-								isActive={mode === "dark"}
-								size='sm'
-								variant='outline'
-								onClick={() => setMode("dark")}
-							>
-								<Moon className='h-5 w-5' />
-								{trans("Dark")}
-							</Button>
-							<Button
-								className={"flex items-center justify-start gap-2 text-xs"}
-								isActive={mode === "system"}
-								size='sm'
-								variant='outline'
-								onClick={() => setMode("system")}
-							>
-								<SunMoon />
-								{trans("System")}
-							</Button>
-						</div>
-
-						<Heading
-							level='h2'
-							variant='h6'
-						>
-							{trans("Color")}
-						</Heading>
-						<div className='grid w-full grid-cols-3 gap-2'>
-							{Object.entries(Themes).map(([Theme, backgroundColor], index) => {
-								return (
+						{enableMode ? (
+							<>
+								<Heading
+									level='h2'
+									variant='h6'
+								>
+									{trans("Mode")}
+								</Heading>
+								<div className='grid w-full grid-cols-3 gap-2'>
 									<Button
 										className={"flex items-center justify-start gap-2 text-xs"}
-										isActive={Theme === color}
+										isActive={mode === "light"}
 										size='sm'
 										variant='outline'
-										onClick={() => setColor(Theme as Color)}
-										key={index}
+										onClick={() => setMode("light")}
 									>
-										<span
-											className='h-5 w-5 min-w-5 rounded-full'
-											style={{
-												backgroundColor: backgroundColor,
-											}}
-										/>
-										{trans(upperFirst(Theme))}
+										<Sun className='h-5 w-5' />
+										{trans("Light")}
 									</Button>
-								);
-							})}
-						</div>
+									<Button
+										className={"flex items-center justify-start gap-2 text-xs"}
+										isActive={mode === "dark"}
+										size='sm'
+										variant='outline'
+										onClick={() => setMode("dark")}
+									>
+										<Moon className='h-5 w-5' />
+										{trans("Dark")}
+									</Button>
+									<Button
+										className={"flex items-center justify-start gap-2 text-xs"}
+										isActive={mode === "system"}
+										size='sm'
+										variant='outline'
+										onClick={() => setMode("system")}
+									>
+										<SunMoon />
+										{trans("System")}
+									</Button>
+								</div>
+							</>
+						) : null}
 
-						<Heading
-							level='h2'
-							variant='h6'
-						>
-							{trans("Radius")}
-						</Heading>
-						<Slider
-							defaultValue={[radius]}
-							min={0}
-							max={1}
-							step={0.05}
-							onValueChange={(value) => setRadius(value[0])}
-						/>
+						{enableColors ? (
+							<>
+								<Heading
+									level='h2'
+									variant='h6'
+								>
+									{trans("Color")}
+								</Heading>
+								<div className='grid w-full grid-cols-3 gap-2'>
+									{Object.entries(Themes).map(([Theme, backgroundColor], index) => {
+										return (
+											<Button
+												className={"flex items-center justify-start gap-2 text-xs"}
+												isActive={Theme === color}
+												size='sm'
+												variant='outline'
+												onClick={() => setColor(Theme as Color)}
+												key={index}
+											>
+												<span
+													className='h-5 w-5 min-w-5 rounded-full'
+													style={{
+														backgroundColor: backgroundColor,
+													}}
+												/>
+												{trans(upperFirst(Theme))}
+											</Button>
+										);
+									})}
+								</div>
+							</>
+						) : null}
 
-						<Heading
-							level='h2'
-							variant='h6'
-						>
-							{trans("Size")}
-						</Heading>
-						<Slider
-							defaultValue={[size]}
-							min={0.75}
-							max={1.25}
-							step={0.025}
-							onValueChange={(value) => setSize(value[0])}
-						/>
+						{enableRadius ? (
+							<>
+								<Heading
+									level='h2'
+									variant='h6'
+								>
+									{trans("Radius")}
+								</Heading>
+								<Slider
+									defaultValue={[radius]}
+									min={0}
+									max={1}
+									step={0.05}
+									onValueChange={(value) => setRadius(value[0])}
+								/>
+							</>
+						) : null}
+
+						{enableSize ? (
+							<>
+								<Heading
+									level='h2'
+									variant='h6'
+								>
+									{trans("Size")}
+								</Heading>
+								<Slider
+									defaultValue={[size]}
+									min={0.75}
+									max={1.25}
+									step={0.025}
+									onValueChange={(value) => setSize(value[0])}
+								/>
+							</>
+						) : null}
 					</CardContent>
 				</Card>
 			</PopoverContent>
