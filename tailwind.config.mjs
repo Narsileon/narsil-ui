@@ -23,7 +23,6 @@ export default {
 				background: "hsl(var(--background))",
 				border: "hsl(var(--border))",
 				foreground: "hsl(var(--foreground))",
-				input: "hsl(var(--input))",
 				accent: {
 					DEFAULT: "hsl(var(--accent))",
 					foreground: "hsl(var(--accent-foreground))",

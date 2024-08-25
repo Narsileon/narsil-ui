@@ -23,7 +23,6 @@ export type ThemeProperties = {
 	constructive: string;
 	destructive: string;
 	foreground: string;
-	input: string;
 	muted: string;
 	popover: string;
 	primary: string;
