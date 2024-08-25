@@ -3,7 +3,7 @@ import { Moon, Sun, SunMoon } from "lucide-react";
 import { upperFirst } from "lodash";
 import { useTheme } from "./ThemeProvider";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
-import Button from "@narsil-ui/Components/Button/Button";
+import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
 import Card from "@narsil-ui/Components/Card/Card";
 import CardContent from "@narsil-ui/Components/Card/CardContent";
 import Heading from "@narsil-ui/Components/Heading/Heading";
@@ -13,7 +13,7 @@ import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
 import Slider from "@narsil-ui/Components/Slider/Slider";
 import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
 
-export interface ThemeControllerProps {
+export interface ThemeControllerProps extends Partial<ButtonProps> {
 	enableColors?: boolean;
 	enableMode?: boolean;
 	enableRadius?: boolean;
@@ -25,6 +25,7 @@ const ThemeController = ({
 	enableMode = true,
 	enableRadius = true,
 	enableSize = true,
+	...props
 }: ThemeControllerProps) => {
 	const { trans } = useTranslationsStore();
 
@@ -49,6 +50,7 @@ const ThemeController = ({
 					<Button
 						variant='ghost'
 						size='icon'
+						{...props}
 					>
 						<SunMoon />
 					</Button>
