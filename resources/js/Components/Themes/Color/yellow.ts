@@ -10,7 +10,7 @@ const yellow: Theme = {
 		"popover-foreground": "20 14% 4%",
 		"primary-foreground": "26 83% 14%",
 		"primary-highlight-foreground": "26 83% 14%",
-		"primary-highlight": "48 96% 53%",
+		"primary-highlight": "47.9 95.8% 53.1%", // yellow-400
 		"secondary-foreground": "24 10% 10%",
 		"secondary-highlight-foreground": "24 10% 10%",
 		"secondary-highlight": "60 5% 96%",
@@ -23,7 +23,7 @@ const yellow: Theme = {
 		foreground: "20 14% 4%",
 		muted: "60 5% 96%",
 		popover: "0 0% 100%",
-		primary: "48 96% 53%",
+		primary: "45.4 93.4% 47.5%", // yellow-500
 		secondary: "60 5% 96%",
 	},
 	dark: {
@@ -35,7 +35,7 @@ const yellow: Theme = {
 		"popover-foreground": "60 9% 98%",
 		"primary-foreground": "26 83% 14%",
 		"primary-highlight-foreground": "26 83% 14%",
-		"primary-highlight": "48 96% 53%",
+		"primary-highlight": "47.9 95.8% 53.1%", // yellow-400
 		"secondary-foreground": "60 9% 98%",
 		"secondary-highlight-foreground": "60 9% 98%",
 		"secondary-highlight": "12 7% 15%",
@@ -48,7 +48,7 @@ const yellow: Theme = {
 		foreground: "60 9% 98%",
 		muted: "12 7% 15%",
 		popover: "20 14% 4%",
-		primary: "48 96% 53%",
+		primary: "45.4 93.4% 47.5%", // yellow-500
 		secondary: "12 7% 15%",
 	},
 };

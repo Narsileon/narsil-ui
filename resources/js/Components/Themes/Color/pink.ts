@@ -10,7 +10,7 @@ const pink: Theme = {
 		"popover-foreground": "240 10% 4%",
 		"primary-foreground": "326 78% 95%",
 		"primary-highlight-foreground": "326 78% 95%",
-		"primary-highlight": "333 71% 51%",
+		"primary-highlight": "328.6 85.5% 70.2%", // pink-400
 		"secondary-foreground": "240 6% 10%",
 		"secondary-highlight-foreground": "240 6% 10%",
 		"secondary-highlight": "240 5% 96%",
@@ -23,7 +23,7 @@ const pink: Theme = {
 		foreground: "240 10% 4%",
 		muted: "240 5% 96%",
 		popover: "0 0% 100%",
-		primary: "333 71% 51%",
+		primary: "333.3 71.4% 50.6%", // pink-600
 		secondary: "240 5% 96%",
 	},
 	dark: {
@@ -35,7 +35,7 @@ const pink: Theme = {
 		"popover-foreground": "0 0% 95%",
 		"primary-foreground": "326 78% 95%",
 		"primary-highlight-foreground": "326 78% 95%",
-		"primary-highlight": "333 71% 51%",
+		"primary-highlight": "328.6 85.5% 70.2%", // pink-400
 		"secondary-foreground": "0 0% 98%",
 		"secondary-highlight-foreground": "0 0% 98%",
 		"secondary-highlight": "240 4% 16%",
@@ -48,7 +48,7 @@ const pink: Theme = {
 		foreground: "0 0% 95%",
 		muted: "0 0% 15%",
 		popover: "0 0% 9%",
-		primary: "333 71% 51%",
+		primary: "333.3 71.4% 50.6%", // pink-600
 		secondary: "240 4% 16%",
 	},
 };

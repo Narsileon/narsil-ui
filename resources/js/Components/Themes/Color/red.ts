@@ -10,7 +10,7 @@ const red: Theme = {
 		"popover-foreground": "0 0% 4%",
 		"primary-foreground": "0 86% 97%",
 		"primary-highlight-foreground": "0 86% 97%",
-		"primary-highlight": "0 72% 51%",
+		"primary-highlight": "0 72.2% 50.6%", // red-600
 		"secondary-foreground": "0 0% 9%",
 		"secondary-highlight-foreground": "0 0% 9%",
 		"secondary-highlight": "0 0% 96%",
@@ -23,7 +23,7 @@ const red: Theme = {
 		foreground: "0 0% 4%",
 		muted: "0 0% 96%",
 		popover: "0 0% 100%",
-		primary: "0 72% 51%",
+		primary: "0 70% 35.3%", // red-800
 		secondary: "0 0% 96%",
 	},
 	dark: {
@@ -35,7 +35,7 @@ const red: Theme = {
 		"popover-foreground": "0 0% 98%",
 		"primary-foreground": "0 86% 97%",
 		"primary-highlight-foreground": "0 86% 97%",
-		"primary-highlight": "0 72% 51%",
+		"primary-highlight": "0 72.2% 50.6%", // red-600
 		"secondary-foreground": "0 0% 98%",
 		"secondary-highlight-foreground": "0 0% 98%",
 		"secondary-highlight": "0 0% 15%",
@@ -48,7 +48,7 @@ const red: Theme = {
 		foreground: "0 0% 98%",
 		muted: "0 0% 15%",
 		popover: "0 0% 4%",
-		primary: "0 72% 51%",
+		primary: "0 70% 35.3%", // red-800
 		secondary: "0 0% 15%",
 	},
 };

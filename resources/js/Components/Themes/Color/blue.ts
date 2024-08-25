@@ -19,7 +19,7 @@ const blue: Theme = {
 		border: "214.3 31.8% 91.4%", // slate-200
 		card: "0 0% 100%", // white
 		constructive: "142 71% 45%", // green-500
-		destructive: "0 84.2% 60.2%", // red-200
+		destructive: "0 84.2% 60.2%", // red-500
 		foreground: "222.2 84% 4.9%", // slate-950
 		muted: "210 40% 96%", // slate-100
 		popover: "0 0% 100%", // white
@@ -44,7 +44,7 @@ const blue: Theme = {
 		border: "217.2 32.6% 17.5%", // slate-800
 		card: "222.2 84% 4.9%", // slate-950
 		constructive: "142.1 70.6% 45.3%", // green-500
-		destructive: "0 63% 31%", // red-200
+		destructive: "0 63% 31%", // red-500
 		foreground: "210 40% 98%", // slate-50
 		muted: "217.2 32.6% 17.5%", // slate-800
 		popover: "222.2 84% 4.9%", // slate-950

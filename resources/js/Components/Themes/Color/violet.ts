@@ -10,7 +10,7 @@ const violet: Theme = {
 		"popover-foreground": "224 71% 4%",
 		"primary-foreground": "210 20% 98%",
 		"primary-highlight-foreground": "210 20% 98%",
-		"primary-highlight": "262 83% 58%",
+		"primary-highlight": "258.3 89.5% 66.3%", // violet-500
 		"secondary-foreground": "221 39% 11%",
 		"secondary-highlight-foreground": "221 39% 11%",
 		"secondary-highlight": "220 14% 96%",
@@ -23,7 +23,7 @@ const violet: Theme = {
 		foreground: "224 71% 4%",
 		muted: "220 14% 96%",
 		popover: "0 0% 100%",
-		primary: "262 83% 58%",
+		primary: "263.5 67.4% 34.9%", // violet-900
 		secondary: "220 14% 96%",
 	},
 	dark: {
@@ -35,7 +35,7 @@ const violet: Theme = {
 		"popover-foreground": "210 20% 98%",
 		"primary-foreground": "210 20% 98%",
 		"primary-highlight-foreground": "210 20% 98%",
-		"primary-highlight": "263 70% 50%",
+		"primary-highlight": "258.3 89.5% 66.3%", // violet-500
 		"secondary-foreground": "210 20% 98%",
 		"secondary-highlight-foreground": "210 20% 98%",
 		"secondary-highlight": "215 28% 17%",
@@ -48,7 +48,7 @@ const violet: Theme = {
 		foreground: "210 20% 98%",
 		muted: "215 28% 17%",
 		popover: "224 71% 4%",
-		primary: "263 70% 50%",
+		primary: "263.5 67.4% 34.9%", // violet-900
 		secondary: "215 28% 17%",
 	},
 };

@@ -8,9 +8,9 @@ const green: Theme = {
 		"destructive-foreground": "0 0% 98%",
 		"muted-foreground": "240 4% 46%",
 		"popover-foreground": "240 10% 4%",
-		"primary-foreground": "356 100% 97%",
-		"primary-highlight-foreground": "356 100% 97%",
-		"primary-highlight": "142 76% 36%",
+		"primary-foreground": "210 40% 98%", // slate-50
+		"primary-highlight-foreground": "210 40% 98%", // slate-50
+		"primary-highlight": "142.1 76.2% 36.3%", //green-600
 		"secondary-foreground": "240 6% 10%",
 		"secondary-highlight-foreground": "240 6% 10%",
 		"secondary-highlight": "240 5% 96%",
@@ -23,7 +23,7 @@ const green: Theme = {
 		foreground: "240 10% 4%",
 		muted: "240 5% 96%",
 		popover: "0 0% 100%",
-		primary: "142 76% 36%",
+		primary: "143.8 61.2% 20.2%", // green-800
 		secondary: "240 5% 96%",
 	},
 	dark: {
@@ -33,9 +33,9 @@ const green: Theme = {
 		"destructive-foreground": "0 86% 97%",
 		"muted-foreground": "240 5% 65%",
 		"popover-foreground": "0 0% 95%",
-		"primary-foreground": "145 80% 10%",
-		"primary-highlight-foreground": "145 80% 10%",
-		"primary-highlight": "142 71% 45%",
+		"primary-foreground": "210 40% 98%", // slate-50
+		"primary-highlight-foreground": "210 40% 98%", // slate-50
+		"primary-highlight": "142.1 76.2% 36.3%", //green-600
 		"secondary-foreground": "0 0% 98%",
 		"secondary-highlight-foreground": "0 0% 98%",
 		"secondary-highlight": "240 4% 16%",
@@ -48,7 +48,7 @@ const green: Theme = {
 		foreground: "0 0% 95%",
 		muted: "0 0% 15%",
 		popover: "0 0% 9%",
-		primary: "142 71% 45%",
+		primary: "142.8 64.2% 24.1%", // green-800
 		secondary: "240 4% 16%",
 	},
 };

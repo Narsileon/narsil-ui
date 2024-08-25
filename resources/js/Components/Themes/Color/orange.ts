@@ -10,7 +10,7 @@ const orange: Theme = {
 		"popover-foreground": "20 14% 4%",
 		"primary-foreground": "60 9% 98%",
 		"primary-highlight-foreground": "60 9% 98%",
-		"primary-highlight": "25 95% 53%",
+		"primary-highlight": "20.5 90.2% 48.2%", // orange-600
 		"secondary-foreground": "24 10% 10%",
 		"secondary-highlight-foreground": "24 10% 10%",
 		"secondary-highlight": "60 5% 96%",
@@ -23,7 +23,7 @@ const orange: Theme = {
 		foreground: "20 14% 4%",
 		muted: "60 5% 96%",
 		popover: "0 0% 100%",
-		primary: "25 95% 53%",
+		primary: "15 79.1% 33.7%", // orange-800
 		secondary: "60 5% 96%",
 	},
 	dark: {
@@ -35,7 +35,7 @@ const orange: Theme = {
 		"popover-foreground": "60 9% 98%",
 		"primary-foreground": "60 9% 98%",
 		"primary-highlight-foreground": "60 9% 98%",
-		"primary-highlight": "20 90% 48%",
+		"primary-highlight": "20.5 90.2% 48.2%", // orange-600
 		"secondary-foreground": "60 9% 98%",
 		"secondary-highlight-foreground": "60 9% 98%",
 		"secondary-highlight": "12 7% 15%",
@@ -48,7 +48,7 @@ const orange: Theme = {
 		foreground: "60 9% 98%",
 		muted: "12 7% 15%",
 		popover: "20 14% 4%",
-		primary: "20 90% 48%",
+		primary: "15 79.1% 33.7%", // orange-800
 		secondary: "12 7% 15%",
 	},
 };
