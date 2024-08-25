@@ -1,6 +1,6 @@
 import { ToastProps } from "./Toast";
 import * as React from "react";
-import ToastAction from './ToastAction';
+import ToastAction from "./ToastAction";
 
 export const actionTypes = {
 	ADD_TOAST: "ADD_TOAST",
