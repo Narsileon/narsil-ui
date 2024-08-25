@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
 import * as React from "react";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import SheetPortal from "./SheetPortal";
+import SheetPortal, { SheetPortalProps } from "./SheetPortal";
 import SheetOverlay from "./SheetOverlay";
 
 export const sheetVariants = cva(
@@ -37,11 +37,12 @@ export const sheetVariants = cva(
 
 export interface SheetContentProps
 	extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
+		Pick<SheetPortalProps, "container">,
 		VariantProps<typeof sheetVariants> {}
 
 const SheetContent = React.forwardRef<React.ElementRef<typeof SheetPrimitive.Content>, SheetContentProps>(
-	({ side = "right", className, children, ...props }, ref) => (
-		<SheetPortal>
+	({ children, className, container, side = "right", ...props }, ref) => (
+		<SheetPortal container={container}>
 			<SheetOverlay />
 			<SheetPrimitive.Content
 				ref={ref}
