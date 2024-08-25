@@ -11,7 +11,11 @@ export type ThemeProperties = {
 	"muted-foreground": string;
 	"popover-foreground": string;
 	"primary-foreground": string;
+	"primary-highlight-foreground": string;
+	"primary-highlight": string;
 	"secondary-foreground": string;
+	"secondary-highlight-foreground": string;
+	"secondary-highlight": string;
 	accent: string;
 	background: string;
 	border: string;
