@@ -27,7 +27,7 @@ const FullscreenToggle = React.forwardRef<React.ElementRef<typeof TogglePrimitiv
 						size={"icon"}
 						variant={"ghost"}
 					>
-						{isFullscreen ? <Minimize /> : <Maximize />}
+						{isFullscreen ? <Minimize className='h-6 w-6' /> : <Maximize className='h-6 w-6' />}
 					</Button>
 				</Toggle>
 			</TooltipWrapper>

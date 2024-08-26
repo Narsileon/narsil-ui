@@ -19,7 +19,7 @@ const InputSearch = React.forwardRef<HTMLDivElement, InputSearchProps>(
 				className={cn("relative max-w-96", { "text-primary": !isEmpty(value) }, className)}
 				{...props}
 			>
-				<Search className='botton-1.5 z-1 absolute left-1.5 top-1.5' />
+				<Search className='botton-1.5 z-1 absolute left-1.5 top-1.5 h-6 w-6' />
 
 				<Input
 					className='w-full px-9'

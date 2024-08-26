@@ -98,7 +98,7 @@ const ThemeController = ({
 										variant='outline'
 										onClick={() => setMode("system")}
 									>
-										<SunMoon />
+										<SunMoon className='h-6 w-6' />
 										{trans("System")}
 									</Button>
 								</div>

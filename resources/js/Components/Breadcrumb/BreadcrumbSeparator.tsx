@@ -13,7 +13,7 @@ const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, BreadcrumbSeparatorP
 			role='presentation'
 			{...props}
 		>
-			{children ?? <ChevronRight />}
+			{children ?? <ChevronRight className='h-6 w-6' />}
 		</li>
 	)
 );
