@@ -3,7 +3,7 @@ import { PaginationLink, SimpleLinks } from "./Components/Pagination/paginationU
 import { Translation } from "@narsil-localization/Stores/translationStore";
 
 export type Collection<T = { [key: string]: any }> = {
-	data: T;
+	data: T[];
 	links: SimpleLinks;
 	meta: CollectionMeta;
 };
