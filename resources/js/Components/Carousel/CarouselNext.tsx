@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
 import { useCarouselContext } from "./Carousel";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
 
@@ -8,6 +9,8 @@ export interface CarouselNextProps extends ButtonProps {}
 
 const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
 	({ className, variant = "outline", size = "icon", ...props }, ref) => {
+		const { trans } = useTranslationsStore();
+
 		const { canScrollNext, orientation, scrollNext } = useCarouselContext();
 
 		return (
@@ -27,7 +30,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
 				{...props}
 			>
 				<ArrowRight className='h-4 w-4' />
-				<span className='sr-only'>Next slide</span>
+				<span className='sr-only'>{trans("Next slide")}</span>
 			</Button>
 		);
 	}

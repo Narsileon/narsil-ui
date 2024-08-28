@@ -1,6 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
 import { useCarouselContext } from "./Carousel";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
 
@@ -8,6 +9,8 @@ export interface CarouselPreviousProps extends ButtonProps {}
 
 const CarouselPrevious = React.forwardRef<HTMLButtonElement, CarouselPreviousProps>(
 	({ className, variant = "outline", size = "icon", ...props }, ref) => {
+		const { trans } = useTranslationsStore();
+
 		const { canScrollPrev, orientation, scrollPrev } = useCarouselContext();
 
 		return (
@@ -27,7 +30,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, CarouselPreviousPro
 				{...props}
 			>
 				<ArrowLeft className='h-4 w-4' />
-				<span className='sr-only'>Previous slide</span>
+				<span className='sr-only'>{trans("Previous slide")}</span>
 			</Button>
 		);
 	}

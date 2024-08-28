@@ -48,11 +48,13 @@ const ThemeController = ({
 			<TooltipWrapper tooltip={trans("Theme")}>
 				<PopoverTrigger asChild={true}>
 					<Button
+						title={trans("Theme")}
 						variant='ghost'
 						size='icon'
 						{...props}
 					>
 						<SunMoon />
+						<span className='sr-only'>{trans("Theme")}</span>
 					</Button>
 				</PopoverTrigger>
 			</TooltipWrapper>
