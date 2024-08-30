@@ -87,14 +87,8 @@
 	body {
 		@apply bg-background text-foreground;
 	}
-	p {
-		@apply text-sm leading-7 [&:not(:first-child)]:mt-6;
-	}
 	small {
 		@apply text-sm leading-none;
-	}
-	span {
-		@apply text-sm;
 	}
 }
 
