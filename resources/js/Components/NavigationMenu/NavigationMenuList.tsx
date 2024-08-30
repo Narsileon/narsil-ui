@@ -12,8 +12,15 @@ const NavigationMenuList = React.forwardRef<
 		ref={ref}
 		className={cn(
 			"group flex flex-1 list-none",
-			"data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-start data-[orientation=vertical]:justify-start data-[orientation=vertical]:gap-y-1",
-			"data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:items-center data-[orientation=horizontal]:justify-center data-[orientation=vertical]:gap-x-1",
+			"data-[orientation=vertical]:flex-col",
+			"data-[orientation=vertical]:items-start",
+			"data-[orientation=vertical]:justify-start",
+			"data-[orientation=vertical]:gap-y-1",
+			"data-[orientation=vertical]:w-full",
+			"data-[orientation=horizontal]:flex-row",
+			"data-[orientation=horizontal]:items-center",
+			"data-[orientation=horizontal]:justify-center",
+			"data-[orientation=horizontal]:gap-x-1",
 			className
 		)}
 		{...props}
