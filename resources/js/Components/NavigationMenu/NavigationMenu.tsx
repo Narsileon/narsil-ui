@@ -11,7 +11,9 @@ const NavigationMenu = React.forwardRef<React.ElementRef<typeof NavigationMenuPr
 			ref={ref}
 			className={cn(
 				"relative z-10 flex max-w-max flex-1",
-				orientation === "horizontal" ? "items-center justify-center" : "flex-col items-center justify-start",
+				orientation === "horizontal"
+					? "items-center justify-center"
+					: "min-w-full flex-col items-center justify-start",
 				className
 			)}
 			orientation={orientation}
