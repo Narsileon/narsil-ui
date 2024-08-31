@@ -1,3 +1,4 @@
+import { Config } from "ziggy-js";
 import { LanguageModel } from "@narsil-localization/Types";
 import { PaginationLink, SimpleLinks } from "./Components/Pagination/paginationUtils";
 import { Translation } from "@narsil-localization/Stores/translationStore";
@@ -61,4 +62,5 @@ export type SharedProps = {
 			  }
 			| null;
 	};
+	ziggy: Config;
 };
