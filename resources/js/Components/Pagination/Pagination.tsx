@@ -2,6 +2,7 @@ import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-r
 import { getLinksBySide, PaginationLink, SimpleLinks } from "./paginationUtils";
 import { InertiaLinkProps, Link, router } from "@inertiajs/react";
 import { useEffect } from "react";
+import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import PaginationButton from "./PaginationButton";
 import PaginationEllipsis from "./PaginationEllipsis";
@@ -10,6 +11,7 @@ import PaginationList from "./PaginationList";
 import PaginationNav from "./PaginationNav";
 import PaginationResult, { PaginationResultProps } from "./PaginationResult";
 import PaginationSelect, { PaginationSelectProps } from "./PaginationSelect";
+import TooltipWrapper from "../Tooltip/TooltipWrapper";
 import useScreenStore from "@narsil-ui/Stores/screenStore";
 
 export interface PaginationProps
@@ -41,6 +43,8 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 		},
 		ref
 	) => {
+		const { trans } = useTranslationsStore();
+
 		const { isMobile, isTablet } = useScreenStore();
 
 		const { leftLinks, rightLinks } = getLinksBySide(links, isMobile ? 2 : isTablet ? 3 : 4);
@@ -69,38 +73,44 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 
 				<PaginationNav className='order-1 self-center justify-self-center lg:col-span-2 xl:order-2 xl:col-span-1'>
 					<PaginationList>
-						<PaginationItem>
-							<PaginationButton
-								asChild={true}
-								disabled={simpleLinks.prev === null}
-							>
-								<Link
-									as='button'
-									data={data}
-									href={simpleLinks.first ?? ""}
-									preserveScroll={true}
-									preserveState={true}
+						<TooltipWrapper tooltip={trans("Next page")}>
+							<PaginationItem>
+								<PaginationButton
+									asChild={true}
+									disabled={simpleLinks.prev === null}
 								>
-									<ChevronsLeft className='h-5 w-5' />
-								</Link>
-							</PaginationButton>
-						</PaginationItem>
-						<PaginationItem>
-							<PaginationButton
-								asChild={true}
-								disabled={simpleLinks.prev === null}
-							>
-								<Link
-									as='button'
-									data={data}
-									href={simpleLinks.prev ?? ""}
-									preserveScroll={true}
-									preserveState={true}
+									<Link
+										as='button'
+										data={data}
+										href={simpleLinks.first ?? ""}
+										preserveScroll={true}
+										preserveState={true}
+									>
+										<ChevronsLeft className='h-5 w-5' />
+										<span className='sr-only'>{trans("First page")}</span>
+									</Link>
+								</PaginationButton>
+							</PaginationItem>
+						</TooltipWrapper>
+						<TooltipWrapper tooltip={trans("Next page")}>
+							<PaginationItem>
+								<PaginationButton
+									asChild={true}
+									disabled={simpleLinks.prev === null}
 								>
-									<ChevronLeft className='h-5 w-5' />
-								</Link>
-							</PaginationButton>
-						</PaginationItem>
+									<Link
+										as='button'
+										data={data}
+										href={simpleLinks.prev ?? ""}
+										preserveScroll={true}
+										preserveState={true}
+									>
+										<ChevronLeft className='h-5 w-5' />
+										<span className='sr-only'>{trans("Previous page")}</span>
+									</Link>
+								</PaginationButton>
+							</PaginationItem>
+						</TooltipWrapper>
 						{leftLinks.length > 0 && rightLinks.length > 0 ? (
 							<>
 								{leftLinks.map((link, index) => {
@@ -171,38 +181,44 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								)
 							)
 						)}
-						<PaginationItem>
-							<PaginationButton
-								asChild={true}
-								disabled={simpleLinks.next === null}
-							>
-								<Link
-									as='button'
-									data={data}
-									href={simpleLinks.next ?? ""}
-									preserveScroll={true}
-									preserveState={true}
+						<TooltipWrapper tooltip={trans("Next page")}>
+							<PaginationItem>
+								<PaginationButton
+									asChild={true}
+									disabled={simpleLinks.next === null}
 								>
-									<ChevronRight className='h-5 w-5' />
-								</Link>
-							</PaginationButton>
-						</PaginationItem>
-						<PaginationItem>
-							<PaginationButton
-								asChild={true}
-								disabled={simpleLinks.next === null}
-							>
-								<Link
-									as='button'
-									data={data}
-									href={simpleLinks.last ?? ""}
-									preserveScroll={true}
-									preserveState={true}
+									<Link
+										as='button'
+										data={data}
+										href={simpleLinks.next ?? ""}
+										preserveScroll={true}
+										preserveState={true}
+									>
+										<ChevronRight className='h-5 w-5' />
+										<span className='sr-only'>{trans("Next page")}</span>
+									</Link>
+								</PaginationButton>
+							</PaginationItem>
+						</TooltipWrapper>
+						<TooltipWrapper tooltip={trans("Last page")}>
+							<PaginationItem>
+								<PaginationButton
+									asChild={true}
+									disabled={simpleLinks.next === null}
 								>
-									<ChevronsRight className='h-5 w-5' />
-								</Link>
-							</PaginationButton>
-						</PaginationItem>
+									<Link
+										as='button'
+										data={data}
+										href={simpleLinks.last ?? ""}
+										preserveScroll={true}
+										preserveState={true}
+									>
+										<ChevronsRight className='h-5 w-5' />
+										<span className='sr-only'>{trans("Last page")}</span>
+									</Link>
+								</PaginationButton>
+							</PaginationItem>
+						</TooltipWrapper>
 					</PaginationList>
 				</PaginationNav>
 
