@@ -73,7 +73,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 
 				<PaginationNav className='order-1 self-center justify-self-center lg:col-span-2 xl:order-2 xl:col-span-1'>
 					<PaginationList>
-						<TooltipWrapper tooltip={trans("Next page")}>
+						<TooltipWrapper tooltip={trans("First page")}>
 							<PaginationItem>
 								<PaginationButton
 									asChild={true}
@@ -92,7 +92,7 @@ const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
 								</PaginationButton>
 							</PaginationItem>
 						</TooltipWrapper>
-						<TooltipWrapper tooltip={trans("Next page")}>
+						<TooltipWrapper tooltip={trans("Previous page")}>
 							<PaginationItem>
 								<PaginationButton
 									asChild={true}
