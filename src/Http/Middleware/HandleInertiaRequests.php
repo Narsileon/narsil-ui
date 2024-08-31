@@ -111,7 +111,11 @@ abstract class HandleInertiaRequests extends Middleware
      */
     private function getZiggy(): array
     {
-        return (new Ziggy())->toArray();
+        $ziggy = new Ziggy(
+            url: url()->current()
+        );
+
+        return $ziggy->toArray();
     }
 
     #endregion
