@@ -1,6 +1,6 @@
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { debounce, isString, sortBy, upperFirst } from "lodash";
+import { debounce, get, isString, sortBy, upperFirst } from "lodash";
 import { SelectOption } from "@narsil-ui/Types";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
@@ -55,7 +55,9 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 		const [search, setSearch] = React.useState<string>("");
 
 		const getValueOption = (value: string | number) => {
-			return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
+			const currentOption = options?.find((option) => get(option, valueKey) === value);
+
+			return currentOption ? get(currentOption, labelKey) : value;
 		};
 
 		const fetchOptions = async (search: string) => {
@@ -82,7 +84,7 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 					let options = await fetchOptions(search);
 
 					if (sort) {
-						options = sortBy(options, (option) => option[labelKey].toLowerCase());
+						options = sortBy(options, (option) => get(option, labelKey)?.toLowerCase());
 					}
 
 					setOptions(options);
@@ -117,10 +119,12 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 					>
 						{option ? (
 							<>
-								{preview === "icon" ? <Svg src={`/storage/icons/${option?.[labelKey]}`} /> : null}
+								{preview === "icon" ? <Svg src={`/storage/icons/${get(option, labelKey)}`} /> : null}
 
 								<span className='grow text-left'>
-									{ucFirst ? upperFirst(option?.[labelKey]) : getValueOption(option?.[labelKey])}
+									{ucFirst
+										? upperFirst(get(option, labelKey))
+										: getValueOption(get(option, labelKey))}
 								</span>
 							</>
 						) : (
@@ -147,8 +151,8 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 							{loading ? <CommandLoading>{trans("Search...")}</CommandLoading> : null}
 							<CommandGroup>
 								{options.map((option, index) => {
-									const optionLabel = isString(option) ? option : option[labelKey];
-									const optionValue = isString(option) ? option : option[valueKey];
+									const optionLabel = isString(option) ? option : get(option, labelKey);
+									const optionValue = isString(option) ? option : get(option, valueKey);
 
 									return (
 										<CommandItem
