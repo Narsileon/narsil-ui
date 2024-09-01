@@ -36,14 +36,14 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 		const shared = usePage<GlobalProps>().props.shared;
 
 		const { error, success } = shared.redirect;
-		const { locale, translations } = shared.localization;
+		const { languages, locale, translations } = shared.localization;
 
 		React.useEffect(() => {
 			if (translations) {
 				translationStore.setTranslations(translations);
 			}
 
-			translationStore.setLocale(locale);
+			translationStore.setLanguages(languages), translationStore.setLocale(locale);
 		}, [locale, translations]);
 
 		React.useEffect(() => {
