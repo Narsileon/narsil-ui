@@ -1,6 +1,6 @@
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { debounce, get } from "lodash";
+import { debounce } from "lodash";
 import { getSelectOptionLabel, getSelectOptionValue, sortSelectOption } from "./comboboxUtils";
 import { SelectOption } from "@narsil-ui/Types";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
@@ -114,7 +114,9 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 					>
 						{option ? (
 							<>
-								{preview === "icon" ? <Svg src={`/storage/icons/${get(option, labelKey)}`} /> : null}
+								{preview === "icon" ? (
+									<Svg src={`/storage/icons/${getSelectOptionLabel(option, labelKey)}`} />
+								) : null}
 
 								<span className='grow text-left'>
 									{getSelectOptionLabel(option, labelKey, ucFirst)}

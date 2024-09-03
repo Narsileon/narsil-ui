@@ -1,7 +1,7 @@
 import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { get, lowerCase } from "lodash";
 import { getSelectOptionLabel, getSelectOptionValue, sortSelectOption } from "./comboboxUtils";
+import { lowerCase } from "lodash";
 import { SelectOption } from "@narsil-ui/Types";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
@@ -46,13 +46,16 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 
 		function filter(value: string, search: string) {
 			const option = options?.find((option) => {
-				return get(option, valueKey) === value || get(option, labelKey) === value;
+				return (
+					getSelectOptionValue(option, valueKey) === value ||
+					getSelectOptionLabel(option, labelKey, false) === value
+				);
 			});
 
 			if (option) {
-				const optionLabel = getSelectOptionLabel(option, labelKey, false);
+				const optionLabel = getSelectOptionLabel(option, labelKey);
 
-				if (optionLabel.includes(lowerCase(search))) {
+				if (lowerCase(optionLabel).includes(lowerCase(search))) {
 					return 1;
 				}
 			}
