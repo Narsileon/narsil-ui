@@ -138,8 +138,9 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 				>
 					<Command shouldFilter={false}>
 						<CommandInput
+							className='h-10'
+							autoFocus={true}
 							placeholder={trans("Search...")}
-							className='h-9'
 							value={search}
 							onValueChange={setSearch}
 						/>

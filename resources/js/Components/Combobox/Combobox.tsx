@@ -93,8 +93,9 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 				>
 					<Command filter={filter}>
 						<CommandInput
+							className='h-10'
+							autoFocus={true}
 							placeholder={trans("Search...")}
-							className='h-9'
 						/>
 						<CommandList>
 							<CommandEmpty>{trans("No options.")}</CommandEmpty>
