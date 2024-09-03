@@ -46,7 +46,7 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 
 		function filter(value: string, search: string) {
 			const option = options?.find((option) => {
-				get(option, valueKey) === value || get(option, labelKey) === value;
+				return get(option, valueKey) === value || get(option, labelKey) === value;
 			});
 
 			if (option) {
