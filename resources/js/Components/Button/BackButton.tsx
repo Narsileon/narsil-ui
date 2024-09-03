@@ -29,7 +29,7 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 		return href ? (
 			<Button
 				ref={ref}
-				size={asIcon ? "icon" : "default"}
+				size={asIcon ? "icon" : "md"}
 				type='button'
 				variant='secondary'
 				onClick={onClick}
