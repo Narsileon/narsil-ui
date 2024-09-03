@@ -1,6 +1,7 @@
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { isString, lowerCase, sortBy, upperFirst } from "lodash";
+import { get, lowerCase } from "lodash";
+import { getSelectOptionLabel, getSelectOptionValue, sortSelectOption } from "./comboboxUtils";
 import { SelectOption } from "@narsil-ui/Types";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
@@ -36,22 +37,24 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 		const [open, setOpen] = React.useState(false);
 
 		if (sort) {
-			options = sortBy(options, (option) => {
-				const label = option[labelKey];
-
-				return isString(label) ? label.toLowerCase : label;
-			});
+			options = sortSelectOption(options, labelKey);
 		}
 
-		const getValueOption = (value: string | number) => {
-			return options?.find((option) => option[valueKey] === value)?.[labelKey] ?? value;
-		};
+		const [option, setOption] = React.useState<SelectOption | undefined>(
+			options?.find((option) => option[valueKey] === value)
+		);
 
 		function filter(value: string, search: string) {
-			const option = options?.find((option) => option[valueKey] === value);
+			const option = options?.find((option) => {
+				get(option, valueKey) === value || get(option, labelKey) === value;
+			});
 
-			if (lowerCase(option?.label ?? "").includes(search)) {
-				return 1;
+			if (option) {
+				const optionLabel = getSelectOptionLabel(option, labelKey, false);
+
+				if (optionLabel.includes(lowerCase(search))) {
+					return 1;
+				}
 			}
 
 			return 0;
@@ -73,12 +76,12 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 						role='combobox'
 						variant='outline'
 					>
-						{value
-							? ucFirst
-								? upperFirst(getValueOption(value))
-								: getValueOption(value)
-							: trans("Select...")}
-						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+						{option ? getSelectOptionLabel(option, labelKey, ucFirst) : trans("Select...")}
+						<ChevronDown
+							className={cn("h-4 w-4 shrink-0 opacity-50 transition duration-200", {
+								open: "rotate-180",
+							})}
+						/>
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent
@@ -93,20 +96,21 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 						<CommandList>
 							<CommandEmpty>{trans("No options.")}</CommandEmpty>
 							<CommandGroup>
-								{options?.map((option, index) => {
-									const optionLabel = isString(option) ? option : option[labelKey];
-									const optionValue = isString(option) ? option : option[valueKey];
+								{options?.map((option) => {
+									const optionLabel = getSelectOptionLabel(option, labelKey, ucFirst);
+									const optionValue = getSelectOptionValue(option, valueKey);
 
 									return (
 										<CommandItem
 											value={optionValue}
 											onSelect={() => {
 												onChange(optionValue);
+												setOption(option);
 												setOpen(false);
 											}}
-											key={index}
+											key={optionValue}
 										>
-											{ucFirst && isString(optionLabel) ? upperFirst(optionLabel) : optionLabel}
+											{optionLabel}
 											<Check
 												className={cn(
 													"ml-auto h-4 w-4",

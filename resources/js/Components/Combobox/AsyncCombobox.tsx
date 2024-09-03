@@ -1,6 +1,7 @@
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
-import { debounce, get, isString, sortBy, upperFirst } from "lodash";
+import { debounce, get } from "lodash";
+import { getSelectOptionLabel, getSelectOptionValue, sortSelectOption } from "./comboboxUtils";
 import { SelectOption } from "@narsil-ui/Types";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
@@ -54,12 +55,6 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 		const [loading, setLoading] = React.useState(false);
 		const [search, setSearch] = React.useState<string>("");
 
-		const getValueOption = (value: string | number) => {
-			const currentOption = options?.find((option) => get(option, valueKey) === value);
-
-			return currentOption ? get(currentOption, labelKey) : value;
-		};
-
 		const fetchOptions = async (search: string) => {
 			try {
 				const response = await axios.get(fetch, {
@@ -84,7 +79,7 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 					let options = await fetchOptions(search);
 
 					if (sort) {
-						options = sortBy(options, (option) => get(option, labelKey)?.toLowerCase());
+						options = sortSelectOption(options, labelKey);
 					}
 
 					setOptions(options);
@@ -122,15 +117,17 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 								{preview === "icon" ? <Svg src={`/storage/icons/${get(option, labelKey)}`} /> : null}
 
 								<span className='grow text-left'>
-									{ucFirst
-										? upperFirst(get(option, labelKey))
-										: getValueOption(get(option, labelKey))}
+									{getSelectOptionLabel(option, labelKey, ucFirst)}
 								</span>
 							</>
 						) : (
 							trans("Select...")
 						)}
-						<ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+						<ChevronDown
+							className={cn("h-4 w-4 shrink-0 opacity-50 transition duration-200", {
+								open: "rotate-180",
+							})}
+						/>
 					</Button>
 				</PopoverTrigger>
 				<PopoverContent
@@ -150,9 +147,9 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 						>
 							{loading ? <CommandLoading>{trans("Search...")}</CommandLoading> : null}
 							<CommandGroup>
-								{options.map((option, index) => {
-									const optionLabel = isString(option) ? option : get(option, labelKey);
-									const optionValue = isString(option) ? option : get(option, valueKey);
+								{options.map((option) => {
+									const optionLabel = getSelectOptionLabel(option, labelKey, ucFirst);
+									const optionValue = getSelectOptionValue(option, valueKey);
 
 									return (
 										<CommandItem
@@ -166,7 +163,7 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 											key={optionValue}
 										>
 											{preview === "icon" ? <Svg src={`/storage/icons/${optionLabel}`} /> : null}
-											{ucFirst ? upperFirst(optionLabel) : optionLabel}
+											{optionLabel}
 											<Check
 												className={cn(
 													"ml-auto h-4 w-4",
