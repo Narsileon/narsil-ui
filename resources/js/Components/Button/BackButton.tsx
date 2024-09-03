@@ -1,8 +1,9 @@
+import { ChevronLeft } from "lucide-react";
 import { router } from "@inertiajs/react";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
 import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
-import { ChevronLeft } from "lucide-react";
+import TooltipWrapper from "../Tooltip/TooltipWrapper";
 
 interface BackButtonProps extends ButtonProps {
 	asIcon?: boolean;
@@ -27,16 +28,31 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 		};
 
 		return href ? (
-			<Button
-				ref={ref}
-				size={asIcon ? "icon" : "md"}
-				type='button'
-				variant='secondary'
-				onClick={onClick}
-				{...props}
-			>
-				{asIcon ? <ChevronLeft className='h-6 w-6' /> : trans("common.back")}
-			</Button>
+			asIcon ? (
+				<TooltipWrapper tooltip={trans("common.back")}>
+					<Button
+						ref={ref}
+						size={"icon"}
+						type='button'
+						variant='secondary'
+						onClick={onClick}
+						{...props}
+					>
+						<ChevronLeft className='h-6 w-6' />
+						<span className='sr-only'>{trans("common.back")}</span>
+					</Button>
+				</TooltipWrapper>
+			) : (
+				<Button
+					ref={ref}
+					type='button'
+					variant='secondary'
+					onClick={onClick}
+					{...props}
+				>
+					{trans("common.back")}
+				</Button>
+			)
 		) : null;
 	}
 );
