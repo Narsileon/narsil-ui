@@ -82,7 +82,7 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 						{option ? getSelectOptionLabel(option, labelKey, ucFirst) : trans("Select...")}
 						<ChevronDown
 							className={cn("h-4 w-4 shrink-0 opacity-50 transition duration-200", {
-								open: "rotate-180",
+								"rotate-180": open,
 							})}
 						/>
 					</Button>
