@@ -42,7 +42,7 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 								ref={ref}
 								size={"icon"}
 								type='button'
-								variant='secondary'
+								variant='ghost'
 								onClick={() => {
 									if (!isDirty) {
 										router.visit(href);
