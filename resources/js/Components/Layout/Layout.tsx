@@ -43,8 +43,9 @@ const Layout = React.forwardRef<HTMLElement, LayoutProps>(
 				translationStore.setTranslations(translations);
 			}
 
-			translationStore.setLanguages(languages), translationStore.setLocale(locale);
-		}, [locale, translations]);
+			translationStore.setLanguages(languages);
+			translationStore.setLocale(locale);
+		}, [languages, locale, translations]);
 
 		React.useEffect(() => {
 			if (success) {
