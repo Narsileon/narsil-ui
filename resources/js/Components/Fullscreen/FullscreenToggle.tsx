@@ -15,8 +15,10 @@ const FullscreenToggle = React.forwardRef<React.ElementRef<typeof TogglePrimitiv
 
 		const { isFullscreen, toggleFullscreen } = useFullscreenContext();
 
+		const buttonText = trans(isFullscreen ? "Exit full screen mode" : "Enter full screen mode");
+
 		return (
-			<TooltipWrapper tooltip={trans(isFullscreen ? "Exit full screen mode" : "Enter full screen mode")}>
+			<TooltipWrapper tooltip={buttonText}>
 				<Toggle
 					ref={ref}
 					onClick={() => toggleFullscreen()}
@@ -28,6 +30,7 @@ const FullscreenToggle = React.forwardRef<React.ElementRef<typeof TogglePrimitiv
 						variant={"ghost"}
 					>
 						{isFullscreen ? <Minimize className='h-6 w-6' /> : <Maximize className='h-6 w-6' />}
+						<span className='sr-only'>{buttonText}</span>
 					</Button>
 				</Toggle>
 			</TooltipWrapper>

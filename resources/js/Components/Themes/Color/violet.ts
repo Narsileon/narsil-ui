@@ -10,7 +10,7 @@ const violet: Theme = {
 		"popover-foreground": "224 71% 4%",
 		"primary-foreground": "210 20% 98%",
 		"primary-highlight-foreground": "210 20% 98%",
-		"primary-highlight": "258.3 89.5% 66.3%", // violet-500
+		"primary-highlight": "262.1 83.3% 57.8%", // violet-600
 		"secondary-foreground": "221 39% 11%",
 		"secondary-highlight-foreground": "221 39% 11%",
 		"secondary-highlight": "220 14% 96%",
@@ -35,7 +35,7 @@ const violet: Theme = {
 		"popover-foreground": "210 20% 98%",
 		"primary-foreground": "210 20% 98%",
 		"primary-highlight-foreground": "210 20% 98%",
-		"primary-highlight": "258.3 89.5% 66.3%", // violet-500
+		"primary-highlight": "262.1 83.3% 57.8%", // violet-600
 		"secondary-foreground": "210 20% 98%",
 		"secondary-highlight-foreground": "210 20% 98%",
 		"secondary-highlight": "215 28% 17%",
