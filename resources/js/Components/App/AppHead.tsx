@@ -1,28 +1,36 @@
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
+import { GlobalProps } from "@narsil-ui/Types";
 import * as React from "react";
 
 export interface AppPageProps extends React.HTMLAttributes<HTMLHeadElement> {
 	description?: string;
-	favicon?: string;
 	head?: React.ReactNode;
 	keywords?: string;
 }
 
-const AppHead = ({ children, description, favicon, keywords, title }: AppPageProps) => {
+const AppHead = ({ children, description, keywords, title }: AppPageProps) => {
+	const app = usePage<GlobalProps>().props.shared.app;
+
+	const { favicon, name } = app;
+	const { description: sharedDescription, keywords: sharedKeywords, title: sharedTitle } = app.page;
+
+	const finalDescription = description ?? sharedDescription;
+	const finalKeywords = keywords ?? sharedKeywords;
+	const finalTitle = title ?? sharedTitle;
+
 	return (
 		<Head>
-			{title ? <title>{title}</title> : null}
-
-			{description ? (
+			<title>{finalTitle ? `${finalTitle} | ${name}` : name}</title>;
+			{finalDescription ? (
 				<meta
 					name='description'
-					content={description}
+					content={finalDescription}
 				/>
 			) : null}
-			{keywords ? (
+			{finalKeywords ? (
 				<meta
 					name='keywords'
-					content={keywords}
+					content={finalKeywords}
 				/>
 			) : null}
 			{favicon ? (
@@ -31,7 +39,6 @@ const AppHead = ({ children, description, favicon, keywords, title }: AppPagePro
 					href={favicon}
 				/>
 			) : null}
-
 			{children}
 		</Head>
 	);

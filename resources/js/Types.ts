@@ -40,6 +40,11 @@ export type SharedProps = {
 		logo: string | null;
 		name: string | null;
 		version: string | null;
+		page: {
+			title?: string | null;
+			description?: string | null;
+			keywords?: string | null;
+		};
 	};
 	localization: {
 		locale: string;
