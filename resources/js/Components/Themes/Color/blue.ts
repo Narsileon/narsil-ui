@@ -10,7 +10,7 @@ const blue: Theme = {
 		"popover-foreground": "222.2 84% 4.9%", // slate-950
 		"primary-foreground": "210 40% 98%", // slate-50
 		"primary-highlight-foreground": "210 40% 98%", // slate-50
-		"primary-highlight": "217.2 91.2% 59.8%", // blue-500
+		"primary-highlight": "221.2 83.2% 53.3%", // blue-600
 		"secondary-foreground": "222.2 47.4% 11.2%", // slate-900
 		"secondary-highlight-foreground": "222.2 47.4% 11.2%", // slate-900
 		"secondary-highlight": "210 40% 96%", // slate-100
@@ -35,7 +35,7 @@ const blue: Theme = {
 		"popover-foreground": "210 40% 98%", // slate-50
 		"primary-foreground": "210 40% 98%", // slate-50
 		"primary-highlight-foreground": "210 40% 98%", // slate-50
-		"primary-highlight": "217.2 91.2% 59.8%", // blue-500
+		"primary-highlight": "221.2 83.2% 53.3%", // blue-600
 		"secondary-foreground": "210 40% 98%", // slate-50
 		"secondary-highlight-foreground": "210 40% 98%",
 		"secondary-highlight": "217.2 32.6% 17.5%", // slate-800
