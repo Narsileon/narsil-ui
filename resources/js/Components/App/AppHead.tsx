@@ -19,8 +19,7 @@ const AppHead = ({ children, description, keywords, title }: AppPageProps) => {
 	const finalTitle = title ?? sharedTitle;
 
 	return (
-		<Head>
-			<title>{finalTitle ? `${finalTitle} | ${name}` : name}</title>;
+		<Head title={finalTitle ? `${finalTitle} | ${name ?? ""}` : (name ?? "")}>
 			{finalDescription ? (
 				<meta
 					name='description'
