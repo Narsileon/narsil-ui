@@ -46,6 +46,8 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 								onClick={() => {
 									if (!isDirty) {
 										router.visit(href);
+									} else {
+										setOpen(true);
 									}
 								}}
 								{...props}
