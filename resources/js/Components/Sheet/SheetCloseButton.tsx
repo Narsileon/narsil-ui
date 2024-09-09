@@ -20,10 +20,10 @@ const SheetCloseButton = React.forwardRef<React.ElementRef<typeof SheetPrimitive
 					"disabled:pointer-events-none",
 					"data-[state=open]:bg-secondary"
 				)}
+				aria-label={trans("Close")}
 				{...props}
 			>
 				<X className='h-4 w-4' />
-				<span className='sr-only'>{trans("Close")}</span>
 			</SheetPrimitive.Close>
 		);
 	}

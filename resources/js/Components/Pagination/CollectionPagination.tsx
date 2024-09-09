@@ -80,6 +80,7 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 									disabled={simpleLinks.prev === null}
 								>
 									<Link
+										aria-label={trans("First page")}
 										as='button'
 										data={data}
 										href={simpleLinks.first ?? ""}
@@ -87,7 +88,6 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 										preserveState={true}
 									>
 										<ChevronsLeft className='h-5 w-5' />
-										<span className='sr-only'>{trans("First page")}</span>
 									</Link>
 								</PaginationButton>
 							</PaginationItem>
@@ -99,6 +99,7 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 									disabled={simpleLinks.prev === null}
 								>
 									<Link
+										aria-label={trans("Previous page")}
 										as='button'
 										data={data}
 										href={simpleLinks.prev ?? ""}
@@ -106,7 +107,6 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 										preserveState={true}
 									>
 										<ChevronLeft className='h-5 w-5' />
-										<span className='sr-only'>{trans("Previous page")}</span>
 									</Link>
 								</PaginationButton>
 							</PaginationItem>
@@ -188,6 +188,7 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 									disabled={simpleLinks.next === null}
 								>
 									<Link
+										aria-label={trans("Next page")}
 										as='button'
 										data={data}
 										href={simpleLinks.next ?? ""}
@@ -195,7 +196,6 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 										preserveState={true}
 									>
 										<ChevronRight className='h-5 w-5' />
-										<span className='sr-only'>{trans("Next page")}</span>
 									</Link>
 								</PaginationButton>
 							</PaginationItem>
@@ -207,6 +207,7 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 									disabled={simpleLinks.next === null}
 								>
 									<Link
+										aria-label={trans("Last page")}
 										as='button'
 										data={data}
 										href={simpleLinks.last ?? ""}
@@ -214,7 +215,6 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 										preserveState={true}
 									>
 										<ChevronsRight className='h-5 w-5' />
-										<span className='sr-only'>{trans("Last page")}</span>
 									</Link>
 								</PaginationButton>
 							</PaginationItem>

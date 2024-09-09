@@ -60,9 +60,9 @@ const DialogContent = React.forwardRef<React.ElementRef<typeof DialogPrimitive.C
 							"disabled:pointer-events-none",
 							"data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
 						)}
+						aria-label={trans("Close")}
 					>
 						<X className='h-4 w-4' />
-						<span className='sr-only'>{trans("Close")}</span>
 					</DialogPrimitive.Close>
 				</DialogPrimitive.Content>
 			</DialogPortal>

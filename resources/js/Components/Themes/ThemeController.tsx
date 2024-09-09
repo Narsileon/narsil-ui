@@ -43,18 +43,19 @@ const ThemeController = ({
 		neutral: "hsl(0 0% 45%)",
 	};
 
+	const themeLabel = trans("Theme");
+
 	return (
 		<Popover>
-			<TooltipWrapper tooltip={trans("Theme")}>
+			<TooltipWrapper tooltip={themeLabel}>
 				<PopoverTrigger asChild={true}>
 					<Button
-						title={trans("Theme")}
-						variant='ghost'
+						aria-label={themeLabel}
 						size='icon'
+						variant='ghost'
 						{...props}
 					>
 						<SunMoon />
-						<span className='sr-only'>{trans("Theme")}</span>
 					</Button>
 				</PopoverTrigger>
 			</TooltipWrapper>

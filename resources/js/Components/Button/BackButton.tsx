@@ -26,6 +26,8 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 
 		const [open, setOpen] = React.useState(false);
 
+		const backLabel = trans("Back");
+
 		return href ? (
 			<AlertDialog
 				open={open}
@@ -37,9 +39,10 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 			>
 				<AlertDialogTrigger asChild={true}>
 					{asIcon ? (
-						<TooltipWrapper tooltip={trans("common.back")}>
+						<TooltipWrapper tooltip={backLabel}>
 							<Button
 								ref={ref}
+								aria-label={backLabel}
 								size={"icon"}
 								type='button'
 								variant='ghost'
@@ -53,7 +56,6 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 								{...props}
 							>
 								<ChevronLeft className='h-6 w-6' />
-								<span className='sr-only'>{trans("common.back")}</span>
 							</Button>
 						</TooltipWrapper>
 					) : (
@@ -68,7 +70,7 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 							}}
 							{...props}
 						>
-							{trans("common.back")}
+							{backLabel}
 						</Button>
 					)}
 				</AlertDialogTrigger>

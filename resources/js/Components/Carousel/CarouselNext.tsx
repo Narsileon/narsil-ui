@@ -14,12 +14,12 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
 
 		const { canScrollNext, orientation, scrollNext } = useCarouselContext();
 
+		const buttonLabel = trans("Next slide");
+
 		return (
-			<TooltipWrapper tooltip={trans("Next slide")}>
+			<TooltipWrapper tooltip={buttonLabel}>
 				<Button
 					ref={ref}
-					variant={variant}
-					size={size}
 					className={cn(
 						"absolute rounded-full",
 						orientation === "horizontal"
@@ -27,12 +27,14 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, CarouselNextProps>(
 							: "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
 						className
 					)}
+					aria-label={buttonLabel}
 					disabled={!canScrollNext}
+					size={size}
+					variant={variant}
 					onClick={scrollNext}
 					{...props}
 				>
 					<ChevronRight className='h-6 w-6' />
-					<span className='sr-only'>{trans("Next slide")}</span>
 				</Button>
 			</TooltipWrapper>
 		);

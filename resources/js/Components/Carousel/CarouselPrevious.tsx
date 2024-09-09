@@ -14,12 +14,12 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, CarouselPreviousPro
 
 		const { canScrollPrev, orientation, scrollPrev } = useCarouselContext();
 
+		const buttonLabel = trans("Previous slide");
+
 		return (
-			<TooltipWrapper tooltip={trans("Previous slide")}>
+			<TooltipWrapper tooltip={buttonLabel}>
 				<Button
 					ref={ref}
-					variant={variant}
-					size={size}
 					className={cn(
 						"absolute rounded-full",
 						orientation === "horizontal"
@@ -27,12 +27,14 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, CarouselPreviousPro
 							: "-top-12 left-1/2 -translate-x-1/2 rotate-90",
 						className
 					)}
+					aria-label={buttonLabel}
 					disabled={!canScrollPrev}
+					size={size}
+					variant={variant}
 					onClick={scrollPrev}
 					{...props}
 				>
 					<ChevronLeft className='h-6 w-6' />
-					<span className='sr-only'>{trans("Previous slide")}</span>
 				</Button>
 			</TooltipWrapper>
 		);
