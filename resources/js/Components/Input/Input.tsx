@@ -7,7 +7,7 @@ import TimePicker from "@narsil-ui/Components/Input/Time/TimePicker";
 
 export const inputStyle = cva(
 	cn(
-		"border-border bg-background ring-offset-background flex h-10 w-full rounded-md border px-4 py-2 text-sm",
+		"border-border bg-background ring-offset-background flex h-10 w-full rounded-md border px-3.5 py-2 text-sm",
 		"placeholder:text-muted-foreground",
 		"file:border-0 file:bg-transparent file:text-sm file:font-medium",
 		"focus-visible:outline-none focus-visible:border-primary-highlight",
