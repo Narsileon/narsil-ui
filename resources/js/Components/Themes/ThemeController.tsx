@@ -36,7 +36,7 @@ const ThemeController = ({
 		yellow: "hsl(45.4 93.4% 47.5%)",
 		green: "hsl(142.1 70.6% 45.3%)",
 		blue: "hsl(217.2 91.2% 59.8%)",
-		violet: "hsl(238.7 83.5% 66.7%)",
+		violet: "hsl(258.3 89.5% 66.3%)",
 		gray: "hsl(0 0% 45.1%)",
 		slate: "hsl(215.4 16.3% 46.9%)",
 		pink: "hsl(330.4 81.2% 60.4%)",
