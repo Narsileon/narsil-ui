@@ -8,11 +8,11 @@ import type { TooltipContentProps } from "./TooltipContent";
 import type { TooltipTriggerProps } from "./TooltipTrigger";
 
 export interface TooltipWrapperProps extends TooltipTriggerProps {
-	align: TooltipContentProps["align"];
-	alignOffset: TooltipContentProps["alignOffset"];
+	align?: TooltipContentProps["align"];
+	alignOffset?: TooltipContentProps["alignOffset"];
 	children: React.ReactNode;
-	side: TooltipContentProps["side"];
-	sideOffset: TooltipContentProps["sideOffset"];
+	side?: TooltipContentProps["side"];
+	sideOffset?: TooltipContentProps["sideOffset"];
 	tooltip: string | React.ReactNode;
 }
 
