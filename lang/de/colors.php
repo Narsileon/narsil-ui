@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'amber'   => 'Bernstein',
+    'black'   => 'Schwarz',
+    'blue'    => 'Blau',
+    'cyan'    => 'Cyan',
+    'emerald' => 'Smaragd',
+    'fuschia' => 'Fuchsie',
+    'gray'    => 'Grau',
+    'green'   => 'Grün',
+    'indigo'  => 'Indigo',
+    'lime'    => 'Limette',
+    'orange'  => 'Orange',
+    'pink'    => 'Rosa',
+    'purple'  => 'Lila',
+    'red'     => 'Rot',
+    'rose'    => 'Rose',
+    'sky'     => 'Himmelblau',
+    'slate'   => 'Schiefer',
+    'teal'    => 'Blaugrün',
+    'violet'  => 'Violett',
+    'white'   => 'Weiß',
+    'yellow'  => 'Gelb',
+];

@@ -29,4 +29,4 @@ export type ThemeProperties = {
 	secondary: string;
 };
 
-export type Color = "blue" | "gray" | "green" | "neutral" | "orange" | "pink" | "red" | "violet" | "yellow";
+export type Color = "blue" | "gray" | "green" | "orange" | "pink" | "red" | "slate" | "violet" | "yellow";

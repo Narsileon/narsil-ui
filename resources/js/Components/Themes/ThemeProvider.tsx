@@ -3,10 +3,10 @@ import * as React from "react";
 import blue from "./Color/blue";
 import gray from "./Color/gray";
 import green from "./Color/green";
-import neutral from "./Color/neutral";
 import orange from "./Color/orange";
 import pink from "./Color/pink";
 import red from "./Color/red";
+import slate from "./Color/slate";
 import violet from "./Color/violet";
 import yellow from "./Color/yellow";
 
@@ -119,14 +119,14 @@ const ThemeProvider = ({
 				return gray;
 			case "green":
 				return green;
-			case "neutral":
-				return neutral;
 			case "orange":
 				return orange;
 			case "pink":
 				return pink;
 			case "red":
 				return red;
+			case "slate":
+				return slate;
 			case "violet":
 				return violet;
 			case "yellow":
@@ -204,11 +204,11 @@ const ThemeProvider = ({
 	return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
 };
 
-export const useTheme = () => {
+export const useThemeContext = () => {
 	const context = React.useContext(ThemeProviderContext);
 
 	if (context === undefined) {
-		throw new Error("useTheme must be used within a <ThemeProvider />");
+		throw new Error("useThemeContext must be used within a <ThemeProvider />");
 	}
 
 	return context;
