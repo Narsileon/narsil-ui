@@ -75,7 +75,7 @@ const Combobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.Trigg
 				>
 					<Button
 						aria-expanded={open}
-						className='w-full justify-between'
+						className='w-full justify-between gap-x-2 px-3.5 font-normal'
 						role='combobox'
 						variant='outline'
 					>

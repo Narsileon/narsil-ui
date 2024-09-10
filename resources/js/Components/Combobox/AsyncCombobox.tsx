@@ -108,7 +108,7 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 				>
 					<Button
 						aria-expanded={open}
-						className='w-full justify-start gap-x-2'
+						className='w-full justify-start gap-x-2 px-3.5 font-normal'
 						role='combobox'
 						variant='outline'
 					>
