@@ -12,6 +12,7 @@
 		"noEmit": true,
 		"noFallthroughCasesInSwitch": true,
 		"paths": {
+			"@narsil-auth/*": ["./vendor/narsil/auth/resources/js/*"],
 			"@narsil-localization/*": ["./vendor/narsil/localization/resources/js/*"],
 			"@narsil-ui/*": ["./resources/js/*"]
 		},

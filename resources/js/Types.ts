@@ -2,6 +2,7 @@ import { Config } from "ziggy-js";
 import { LanguageModel } from "@narsil-localization/Types";
 import { PaginationLink, SimpleLinks } from "./Components/Pagination/paginationUtils";
 import { Translation } from "@narsil-localization/Stores/translationStore";
+import { UserModel } from '@narsil-auth/Types';
 
 export type Collection<T = { [key: string]: any }> = {
 	data: T[];
@@ -45,6 +46,13 @@ export type SharedProps = {
 			description?: string | null;
 			keywords?: string | null;
 		};
+	};
+	auth: {
+		first_name: UserModel["first_name"];
+		full_name: UserModel["full_name"];
+		id: UserModel["id"];
+		last_name: UserModel["last_name"];
+		username: UserModel["username"];
 	};
 	localization: {
 		locale: string;
