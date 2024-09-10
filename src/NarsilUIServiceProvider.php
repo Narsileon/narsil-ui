@@ -63,6 +63,7 @@ final class NarsilUIServiceProvider extends ServiceProvider
     private function bootTranslations(): void
     {
         $this->loadJsonTranslationsFrom(__DIR__ . '/../lang', 'ui');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'ui');
     }
 
     #endregion
