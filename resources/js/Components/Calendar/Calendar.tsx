@@ -2,7 +2,7 @@ import { buttonVariants } from "@narsil-ui/Components/Button/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@narsil-ui/Components";
 import { DayPicker, DayPickerProps } from "react-day-picker";
-import { useDatetimeLocale } from "../Input/Datetime/datetimeUtils";
+import { useDatetimeLocale } from "@narsil-ui/Components/Input/Datetime/datetimeUtils";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 
 const Calendar = ({ className, classNames, showOutsideDays = true, ...props }: DayPickerProps) => {
