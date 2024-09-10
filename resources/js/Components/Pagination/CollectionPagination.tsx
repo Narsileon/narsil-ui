@@ -45,6 +45,11 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 	) => {
 		const { trans } = useTranslationsStore();
 
+		const firstPageLabel = trans("First page");
+		const lastPageLabel = trans("Last page");
+		const nextPageLabel = trans("Next page");
+		const previousPageLabel = trans("Previous page");
+
 		const { isMobile, isTablet } = useScreenStore();
 
 		const { leftLinks, rightLinks } = getLinksBySide(links, isMobile ? 2 : isTablet ? 3 : 4);
@@ -73,14 +78,14 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 
 				<Pagination className='order-1 self-center justify-self-center lg:col-span-2 xl:order-2 xl:col-span-1'>
 					<PaginationList>
-						<TooltipWrapper tooltip={trans("First page")}>
+						<TooltipWrapper tooltip={firstPageLabel}>
 							<PaginationItem>
 								<PaginationButton
 									asChild={true}
 									disabled={simpleLinks.prev === null}
 								>
 									<Link
-										aria-label={trans("First page")}
+										aria-label={firstPageLabel}
 										as='button'
 										data={data}
 										href={simpleLinks.first ?? ""}
@@ -92,14 +97,14 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 								</PaginationButton>
 							</PaginationItem>
 						</TooltipWrapper>
-						<TooltipWrapper tooltip={trans("Previous page")}>
+						<TooltipWrapper tooltip={previousPageLabel}>
 							<PaginationItem>
 								<PaginationButton
 									asChild={true}
 									disabled={simpleLinks.prev === null}
 								>
 									<Link
-										aria-label={trans("Previous page")}
+										aria-label={previousPageLabel}
 										as='button'
 										data={data}
 										href={simpleLinks.prev ?? ""}
@@ -181,14 +186,14 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 								)
 							)
 						)}
-						<TooltipWrapper tooltip={trans("Next page")}>
+						<TooltipWrapper tooltip={nextPageLabel}>
 							<PaginationItem>
 								<PaginationButton
 									asChild={true}
 									disabled={simpleLinks.next === null}
 								>
 									<Link
-										aria-label={trans("Next page")}
+										aria-label={nextPageLabel}
 										as='button'
 										data={data}
 										href={simpleLinks.next ?? ""}
@@ -200,14 +205,14 @@ const CollectionPagination = React.forwardRef<HTMLDivElement, CollectionPaginati
 								</PaginationButton>
 							</PaginationItem>
 						</TooltipWrapper>
-						<TooltipWrapper tooltip={trans("Last page")}>
+						<TooltipWrapper tooltip={lastPageLabel}>
 							<PaginationItem>
 								<PaginationButton
 									asChild={true}
 									disabled={simpleLinks.next === null}
 								>
 									<Link
-										aria-label={trans("Last page")}
+										aria-label={lastPageLabel}
 										as='button'
 										data={data}
 										href={simpleLinks.last ?? ""}
