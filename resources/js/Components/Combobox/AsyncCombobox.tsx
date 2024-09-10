@@ -108,23 +108,25 @@ const AsyncCombobox = React.forwardRef<React.ElementRef<typeof PopoverPrimitive.
 				>
 					<Button
 						aria-expanded={open}
-						className='w-full justify-start gap-x-2 px-3.5 font-normal'
+						className='w-full justify-between gap-x-2 px-3.5 font-normal'
 						role='combobox'
 						variant='outline'
 					>
-						{option ? (
-							<>
-								{preview === "icon" ? (
-									<Svg src={`/storage/icons/${getSelectOptionLabel(option, labelKey)}`} />
-								) : null}
+						<div className='flex items-center gap-x-2'>
+							{option ? (
+								<>
+									{preview === "icon" ? (
+										<Svg src={`/storage/icons/${getSelectOptionLabel(option, labelKey)}`} />
+									) : null}
 
-								<span className='grow text-left'>
-									{getSelectOptionLabel(option, labelKey, ucFirst)}
-								</span>
-							</>
-						) : (
-							trans("Select...")
-						)}
+									<span className='grow text-left'>
+										{getSelectOptionLabel(option, labelKey, ucFirst)}
+									</span>
+								</>
+							) : (
+								trans("Select...")
+							)}
+						</div>
 						<ChevronDown
 							className={cn("h-4 w-4 shrink-0 opacity-50 transition duration-200", {
 								"rotate-180": open,
