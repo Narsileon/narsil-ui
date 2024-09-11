@@ -1,6 +1,6 @@
 import { baseDark, baseLight, Theme } from "./color";
 
-const neutral: Theme = {
+const gray: Theme = {
 	light: {
 		...baseLight,
 		"accent-foreground": "0 0% 9%",
@@ -52,4 +52,4 @@ const neutral: Theme = {
 	},
 };
 
-export default neutral;
+export default gray;

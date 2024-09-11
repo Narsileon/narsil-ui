@@ -2,15 +2,24 @@ import { Color } from "./Color/color";
 import { Moon, Sun, SunMoon } from "lucide-react";
 import { useThemeContext } from "./ThemeProvider";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
+import blue from "./Color/blue";
 import Button, { ButtonProps } from "@narsil-ui/Components/Button/Button";
 import Card from "@narsil-ui/Components/Card/Card";
 import CardContent from "@narsil-ui/Components/Card/CardContent";
+import gray from "./Color/gray";
+import green from "./Color/green";
 import Heading from "@narsil-ui/Components/Heading/Heading";
+import orange from "./Color/orange";
+import pink from "./Color/pink";
 import Popover from "@narsil-ui/Components/Popover/Popover";
 import PopoverContent from "@narsil-ui/Components/Popover/PopoverContent";
 import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
+import red from "./Color/red";
+import slate from "./Color/slate";
 import Slider from "@narsil-ui/Components/Slider/Slider";
 import TooltipWrapper from "@narsil-ui/Components/Tooltip/TooltipWrapper";
+import violet from "./Color/violet";
+import yellow from "./Color/yellow";
 
 export interface ThemeControllerProps extends Partial<ButtonProps> {
 	enableColors?: boolean;
@@ -31,15 +40,15 @@ const ThemeController = ({
 	const { color, mode, radius, size, setColor, setMode, setRadius, setSize } = useThemeContext();
 
 	const Themes: Record<Color, string> = {
-		red: "hsl(0 84.2% 60.2%)",
-		orange: "hsl(24.6 95% 53.1%)",
-		yellow: "hsl(45.4 93.4% 47.5%)",
-		green: "hsl(142.1 70.6% 45.3%)",
-		blue: "hsl(217.2 91.2% 59.8%)",
-		violet: "hsl(258.3 89.5% 66.3%)",
-		gray: "hsl(0 0% 45.1%)",
-		slate: "hsl(215.4 16.3% 46.9%)",
-		pink: "hsl(330.4 81.2% 60.4%)",
+		red: `hsl(${red.light["primary-highlight"]})`,
+		orange: `hsl(${orange.light["primary-highlight"]})`,
+		yellow: `hsl(${yellow.light["primary-highlight"]})`,
+		green: `hsl(${green.light["primary-highlight"]})`,
+		blue: `hsl(${blue.light["primary-highlight"]})`,
+		violet: `hsl(${violet.light["primary-highlight"]})`,
+		gray: `hsl(${gray.light["primary-highlight"]})`,
+		slate: `hsl(${slate.light["primary-highlight"]})`,
+		pink: `hsl(${pink.light["primary-highlight"]})`,
 	};
 
 	const themeLabel = trans("Theme");

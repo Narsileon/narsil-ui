@@ -9,7 +9,7 @@ const pink: Theme = {
 	dark: {
 		...baseDark,
 		"primary-highlight": "333.3 71.4% 50.6%", // pink-600
-		background: "346.67 60% 5.88%", // pink-990
+		background: "349.09 64.71% 3.33%", // pink-995
 		primary: "335.8 74.4% 35.3%", // pink-800
 	},
 };

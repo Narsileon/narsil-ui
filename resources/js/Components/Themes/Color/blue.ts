@@ -9,7 +9,7 @@ const blue: Theme = {
 	dark: {
 		...baseDark,
 		"primary-highlight": "212.76 74.3% 48.82%", // sky-600/blue/600
-		background: "240 33.33% 6.47%", // blue-990
+		background: "247.5 44.44% 3.53%", // blue-995
 		primary: "216.38 70.17% 35.49%", // sky-800/blue/800
 	},
 };

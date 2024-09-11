@@ -1,6 +1,6 @@
 import { baseDark, baseLight, Theme } from "./color";
 
-const gray: Theme = {
+const slate: Theme = {
 	light: {
 		...baseLight,
 		"accent-foreground": "222.2 47.4% 11.2%",
@@ -52,4 +52,4 @@ const gray: Theme = {
 	},
 };
 
-export default gray;
+export default slate;
