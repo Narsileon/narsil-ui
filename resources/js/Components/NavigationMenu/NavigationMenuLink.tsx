@@ -10,7 +10,7 @@ const NavigationMenuLink = React.forwardRef<
 >(({ active, className, ...props }, ref) => (
 	<NavigationMenuPrimitive.Link
 		ref={ref}
-		className={cn(active && "font-semibold text-primary-highlight", "grow truncate", className)}
+		className={cn(active && "font-semibold text-primary", "grow truncate", className)}
 		{...props}
 	/>
 ));
