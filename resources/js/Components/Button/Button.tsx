@@ -21,9 +21,9 @@ export const buttonVariants = cva(
 			variant: {
 				constructive: "bg-constructive font-medium text-constructive-foreground hover:bg-constructive/80",
 				destructive: "bg-destructive font-medium text-destructive-foreground hover:bg-destructive/80",
-				ghost: "font-medium hover:bg-accent hover:text-accent-foreground",
-				inline: "font-medium underline-offset-4 hover:underline",
-				link: "underline-offset-4 hover:underline",
+				ghost: "font-medium hover:bg-accent hover:text-accent-foreground focus-visible:ring-offset-0",
+				inline: "font-medium underline-offset-4 hover:underline focus-visible:ring-offset-0",
+				link: "underline-offset-4 hover:underline focus-visible:ring-offset-0",
 				outline: "border border-border bg-background font-medium hover:bg-accent hover:text-accent-foreground",
 				primary: "bg-primary font-medium text-primary-foreground hover:bg-primary/90",
 				secondary: "bg-secondary font-medium text-secondary-foreground hover:bg-secondary/80",
