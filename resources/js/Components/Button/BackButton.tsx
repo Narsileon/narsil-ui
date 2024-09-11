@@ -37,16 +37,18 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 					}
 				}}
 			>
-				<AlertDialogTrigger asChild={true}>
-					{asIcon ? (
-						<TooltipWrapper tooltip={backLabel}>
+				{asIcon ? (
+					<TooltipWrapper tooltip={backLabel}>
+						<AlertDialogTrigger asChild={true}>
 							<Button
 								ref={ref}
 								aria-label={backLabel}
 								size={"icon"}
 								type='button'
 								variant='ghost'
-								onClick={() => {
+								onClick={(event) => {
+									event.preventDefault();
+
 									if (!isDirty) {
 										router.visit(href);
 									} else {
@@ -57,8 +59,10 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 							>
 								<ChevronLeft className='h-6 w-6' />
 							</Button>
-						</TooltipWrapper>
-					) : (
+						</AlertDialogTrigger>
+					</TooltipWrapper>
+				) : (
+					<AlertDialogTrigger asChild={true}>
 						<Button
 							ref={ref}
 							type='button'
@@ -72,8 +76,9 @@ const BackButton = React.forwardRef<HTMLButtonElement, BackButtonProps>(
 						>
 							{backLabel}
 						</Button>
-					)}
-				</AlertDialogTrigger>
+					</AlertDialogTrigger>
+				)}
+
 				<AlertDialogContent>
 					<AlertDialogHeader>
 						<AlertDialogTitle>{trans("Are you sure?")}</AlertDialogTitle>
