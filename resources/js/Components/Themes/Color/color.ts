@@ -37,6 +37,7 @@ export type ThemeProperties = {
 };
 
 export const baseDark = {
+	"accent-foreground": "214.3 31.8% 91.4%", // slate-200
 	"card-foreground": "210 40% 98%", // slate-50
 	"chart-1": "12 76% 61%", // ?
 	"chart-2": "173 58% 39%", // ?
@@ -45,18 +46,27 @@ export const baseDark = {
 	"chart-5": "27 87 % 67 %", // ?
 	"constructive-foreground": "210 40% 98%", // slate-50
 	"destructive-foreground": "210 40% 98%", // slate-50
+	"muted-foreground": "215 20.2% 65.1%", // slate-400
 	"popover-foreground": "210 40% 98%", // slate-50
 	"primary-foreground": "210 40% 98%", // slate-50
 	"primary-highlight-foreground": "210 40% 98%", // slate-50
+	"secondary-foreground": "214.3 31.8% 91.4%", // slate-200
+	"secondary-highlight-foreground": "214.3 31.8% 91.4%", // slate-200
+	"secondary-highlight": "217.2 32.6% 17.5%", // slate-800
+	accent: "217.2 32.6% 17.5%", // slate-800
 	background: "222.2 84% 4.9%", // slate-950
+	border: "217.2 32.6% 17.5%", // slate-800
 	card: "222.2 84% 4.9%", // slate-950
 	constructive: "142.1 76.2% 36.3%", // green-600
 	destructive: "0 72.2% 50.6%", // red-600
 	foreground: "210 40% 98%", // slate-50
+	muted: "217.2 32.6% 17.5%", // slate-800
 	popover: "222.2 84% 4.9%", // slate-950
+	secondary: "217.2 32.6% 17.5%", // slate-800
 };
 
 export const baseLight = {
+	"accent-foreground": "217.2 32.6% 17.5%", // slate-800
 	"card-foreground": "222.2 84% 4.9%", // slate-950
 	"chart-1": "220 70% 50%", // ?
 	"chart-2": "160 60% 45%", // ?
@@ -65,13 +75,21 @@ export const baseLight = {
 	"chart-5": "340 75% 55%", // ?
 	"constructive-foreground": "210 40% 98%", // slate-50
 	"destructive-foreground": "210 40% 98%", // slate-50
+	"muted-foreground": "215.4 16.3% 46.9%", // slate-500
 	"popover-foreground": "222.2 84% 4.9%", // slate-950
 	"primary-foreground": "210 40% 98%", // slate-50
 	"primary-highlight-foreground": "210 40% 98%", // slate-50
+	"secondary-foreground": "217.2 32.6% 17.5%", // slate-800
+	"secondary-highlight-foreground": "217.2 32.6% 17.5%", // slate-800
+	"secondary-highlight": "214.3 31.8% 91.4%", // slate-200
+	accent: "214.3 31.8% 91.4%", // slate-200
 	background: "210 40% 98%", // slate-50
+	border: "214.3 31.8% 91.4%", // slate-200
 	card: "210 40% 98%", // slate-50
 	constructive: "142.1 76.2% 36.3%", // green-600
 	destructive: "0 72.2% 50.6%", // red-600
 	foreground: "222.2 84% 4.9%", // slate-950
+	muted: "214.3 31.8% 91.4%", // slate-200
 	popover: "210 40% 98%", // slate-50
+	secondary: "214.3 31.8% 91.4%", // slate-200
 };
