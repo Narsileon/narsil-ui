@@ -1,7 +1,8 @@
-import { Theme } from "./color";
+import { baseDark, baseLight, Theme } from "./color";
 
 const neutral: Theme = {
 	light: {
+		...baseLight,
 		"accent-foreground": "0 0% 9%",
 		"card-foreground": "0 0% 4%",
 		"constructive-foreground": "0 0% 98%",
@@ -27,6 +28,7 @@ const neutral: Theme = {
 		secondary: "0 0% 96%",
 	},
 	dark: {
+		...baseDark,
 		"accent-foreground": "0 0% 98%",
 		"card-foreground": "0 0% 98%",
 		"constructive-foreground": "0 0% 98%",

@@ -1,7 +1,8 @@
-import { Theme } from "./color";
+import { baseDark, baseLight, Theme } from "./color";
 
 const orange: Theme = {
 	light: {
+		...baseLight,
 		"accent-foreground": "24 10% 10%",
 		"card-foreground": "20 14% 4%",
 		"constructive-foreground": "60 9% 98%",
@@ -27,6 +28,7 @@ const orange: Theme = {
 		secondary: "60 5% 96%",
 	},
 	dark: {
+		...baseDark,
 		"accent-foreground": "60 9% 98%",
 		"card-foreground": "60 9% 98%",
 		"constructive-foreground": "60 9% 98%",
