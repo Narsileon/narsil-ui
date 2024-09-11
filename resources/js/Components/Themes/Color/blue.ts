@@ -3,13 +3,14 @@ import { baseDark, baseLight, Theme } from "./color";
 const blue: Theme = {
 	light: {
 		...baseLight,
-		"primary-highlight": "201.02 96.72% 35.88%", // sky-650
-		primary: "224.4 64.3% 32.9%", // blue-900
+		"primary-highlight": "212.76 74.3% 48.82%", // sky-600/blue/600
+		primary: "216.38 70.17% 35.49%", // sky-800/blue/800
 	},
 	dark: {
 		...baseDark,
-		"primary-highlight": "201.02 96.72% 35.88%", // sky-650
-		primary: "224.4 64.3% 32.9%", // blue-900
+		"primary-highlight": "212.76 74.3% 48.82%", // sky-600/blue/600
+		background: "240 33.33% 6.47%", // blue-990
+		primary: "216.38 70.17% 35.49%", // sky-800/blue/800
 	},
 };
 
