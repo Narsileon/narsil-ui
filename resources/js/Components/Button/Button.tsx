@@ -25,8 +25,18 @@ export const buttonVariants = cva(
 				inline: "font-medium underline-offset-4 hover:underline focus-visible:ring-offset-0",
 				link: "underline-offset-4 hover:underline focus-visible:ring-offset-0",
 				outline: "border border-border bg-background font-medium hover:bg-accent hover:text-accent-foreground",
-				primary: "bg-primary font-medium text-primary-foreground hover:bg-primary/90",
-				secondary: "bg-secondary font-medium text-secondary-foreground hover:bg-secondary/80",
+				primary: cn(
+					"bg-primary-highlight font-medium text-primary-highlight-foreground",
+					"hover:bg-primary hover:text-primary-foreground",
+					"dark:bg-primary dark:text-primary-foreground",
+					"dark:hover:bg-primary-highlight dark:hover:text-primary-highlight-foreground"
+				),
+				secondary: cn(
+					"bg-secondary-highlight font-medium text-secondary-highlight-foreground",
+					"hover:bg-secondary hover:text-secondary-foreground",
+					"dark:bg-secondary dark:text-secondary-foreground",
+					"dark:hover:bg-secondary-highlight dark:hover:text-secondary-highlight-foreground"
+				),
 			},
 		},
 		defaultVariants: {
