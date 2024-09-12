@@ -7,12 +7,27 @@ export interface NavigationMenuItemProps extends React.ComponentProps<typeof Nav
 const NavigationMenuItem = React.forwardRef<
 	React.ElementRef<typeof NavigationMenuPrimitive.Item>,
 	NavigationMenuItemProps
->(({ className, ...props }, ref) => (
-	<NavigationMenuPrimitive.Item
-		ref={ref}
-		className={cn("grow", className)}
-		{...props}
-	/>
-));
+>(({ className, onMouseEnter, onMouseLeave, ...props }, ref) => {
+	const [isHovered, setIsHovered] = React.useState(false);
+
+	return (
+		<NavigationMenuPrimitive.Item
+			ref={ref}
+			className={cn("grow", className)}
+			onMouseEnter={(event) => {
+				setIsHovered(true);
+
+				onMouseEnter?.(event);
+			}}
+			onMouseLeave={(event) => {
+				setIsHovered(false);
+
+				onMouseLeave?.(event);
+			}}
+			data-hovered={isHovered}
+			{...props}
+		/>
+	);
+});
 
 export default NavigationMenuItem;
