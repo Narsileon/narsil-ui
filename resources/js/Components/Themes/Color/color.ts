@@ -56,12 +56,12 @@ export const baseDark = {
 	accent: "217.2 32.6% 17.5%", // slate-800
 	background: "222.2 84% 4.9%", // slate-950
 	border: "217.2 32.6% 17.5%", // slate-800
-	card: "222.2 84% 4.9%", // slate-950
+	card: "222.2 47.4% 11.2%", // slate-900
 	constructive: "142.1 76.2% 36.3%", // green-600
 	destructive: "0 72.2% 50.6%", // red-600
 	foreground: "210 40% 98%", // slate-50
 	muted: "217.2 32.6% 17.5%", // slate-800
-	popover: "222.2 84% 4.9%", // slate-950
+	popover: "222.2 47.4% 11.2%", // slate-900
 	secondary: "217.2 32.6% 17.5%", // slate-800
 };
 
