@@ -52,7 +52,7 @@ export const baseDark = {
 	"primary-highlight-foreground": "210 40% 98%", // slate-50
 	"secondary-foreground": "214.3 31.8% 91.4%", // slate-200
 	"secondary-highlight-foreground": "214.3 31.8% 91.4%", // slate-200
-	"secondary-highlight": "217.2 32.6% 17.5%", // slate-800
+	"secondary-highlight": "215.3 25% 26.7%", // slate-700
 	accent: "217.2 32.6% 17.5%", // slate-800
 	background: "222.2 84% 4.9%", // slate-950
 	border: "217.2 32.6% 17.5%", // slate-800
@@ -81,7 +81,7 @@ export const baseLight = {
 	"primary-highlight-foreground": "210 40% 98%", // slate-50
 	"secondary-foreground": "217.2 32.6% 17.5%", // slate-800
 	"secondary-highlight-foreground": "217.2 32.6% 17.5%", // slate-800
-	"secondary-highlight": "214.3 31.8% 91.4%", // slate-200
+	"secondary-highlight": "212.7 26.8% 83.9%", // slate-300
 	accent: "214.3 31.8% 91.4%", // slate-200
 	background: "210 40% 98%", // slate-50
 	border: "214.3 31.8% 91.4%", // slate-200

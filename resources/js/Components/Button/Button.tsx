@@ -32,8 +32,8 @@ export const buttonVariants = cva(
 					"dark:hover:bg-primary-highlight dark:hover:text-primary-highlight-foreground"
 				),
 				secondary: cn(
-					"bg-secondary-highlight font-medium text-secondary-highlight-foreground",
-					"hover:bg-secondary hover:text-secondary-foreground",
+					"bg-secondary font-medium text-secondary-foreground",
+					"hover:bg-secondary-highlight hover:text-secondary-highlight-foreground",
 					"dark:bg-secondary dark:text-secondary-foreground",
 					"dark:hover:bg-secondary-highlight dark:hover:text-secondary-highlight-foreground"
 				),
