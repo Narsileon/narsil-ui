@@ -10,7 +10,7 @@ import PopoverTrigger from "@narsil-ui/Components/Popover/PopoverTrigger";
 
 export interface DatePickerProps extends InputProps {}
 
-const DatePicker = ({ className, required = false, value, onChange }: DatePickerProps) => {
+const DatePicker = ({ className, id, required, value, onChange }: DatePickerProps) => {
 	const { locale, trans } = useTranslationsStore();
 
 	const selected = value ? new Date(value as string) : new Date();
@@ -41,6 +41,7 @@ const DatePicker = ({ className, required = false, value, onChange }: DatePicker
 			<PopoverContent className='w-auto p-0'>
 				<Calendar
 					autoFocus={true}
+					id={id}
 					mode='single'
 					selected={selected}
 					onSelect={onSelect}

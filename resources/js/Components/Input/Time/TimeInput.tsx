@@ -47,22 +47,22 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 			return !flag ? "0" + key : calculatedValue.slice(1, 2) + key;
 		};
 
-		const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-			if (e.key === "Tab") {
+		const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+			if (event.key === "Tab") {
 				return;
 			}
 
-			e.preventDefault();
+			event.preventDefault();
 
-			if (e.key === "ArrowRight") {
+			if (event.key === "ArrowRight") {
 				onRightFocus?.();
 			}
-			if (e.key === "ArrowLeft") {
+			if (event.key === "ArrowLeft") {
 				onLeftFocus?.();
 			}
 
-			if (["ArrowUp", "ArrowDown"].includes(e.key)) {
-				const step = e.key === "ArrowUp" ? 1 : -1;
+			if (["ArrowUp", "ArrowDown"].includes(event.key)) {
+				const step = event.key === "ArrowUp" ? 1 : -1;
 				const newValue = getArrowByType(calculatedValue, step, picker);
 
 				if (flag) {
@@ -73,8 +73,8 @@ const TimeInput = React.forwardRef<HTMLInputElement, TimeInputProps>(
 
 				setDate(setDateByType(tempDate, newValue, picker));
 			}
-			if (e.key >= "0" && e.key <= "9") {
-				const newValue = calculateNewValue(e.key);
+			if (event.key >= "0" && event.key <= "9") {
+				const newValue = calculateNewValue(event.key);
 
 				if (flag) {
 					onRightFocus?.();

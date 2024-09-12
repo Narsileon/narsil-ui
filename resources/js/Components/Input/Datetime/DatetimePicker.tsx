@@ -12,7 +12,7 @@ import TimePicker from "@narsil-ui/Components/Input/Time/TimePicker";
 
 export interface DateTimePickerProps extends InputProps {}
 
-const DatetimePicker = ({ className, value, onChange, required }: DateTimePickerProps) => {
+const DatetimePicker = ({ className, id, required, value, onChange }: DateTimePickerProps) => {
 	const { locale, trans } = useTranslationsStore();
 
 	const selected = value ? new Date(value as string) : new Date();
@@ -47,6 +47,7 @@ const DatetimePicker = ({ className, value, onChange, required }: DateTimePicker
 			<PopoverContent className='w-auto p-0'>
 				<Calendar
 					autoFocus={true}
+					id={id}
 					mode='single'
 					selected={selected}
 					onSelect={onSelect}
