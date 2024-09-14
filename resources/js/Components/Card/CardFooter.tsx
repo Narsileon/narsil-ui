@@ -10,7 +10,7 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(({ classNam
 
 		<div
 			ref={ref}
-			className={cn("flex flex-row-reverse items-center justify-between", className)}
+			className={cn("flex flex-row-reverse flex-wrap items-center justify-between gap-4", className)}
 			{...props}
 		/>
 	</>
