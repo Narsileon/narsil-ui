@@ -26,13 +26,15 @@ export const buttonVariants = cva(
 				link: "underline-offset-4 hover:underline focus-visible:ring-offset-0",
 				outline: "border border-border bg-background font-medium hover:bg-accent hover:text-accent-foreground",
 				primary: cn(
-					"bg-primary-highlight font-medium text-primary-highlight-foreground",
+					"font-medium",
+					"bg-primary-highlight text-primary-highlight-foreground",
 					"hover:bg-primary hover:text-primary-foreground",
 					"dark:bg-primary dark:text-primary-foreground",
 					"dark:hover:bg-primary-highlight dark:hover:text-primary-highlight-foreground"
 				),
 				secondary: cn(
-					"bg-secondary font-medium text-secondary-foreground",
+					"font-medium",
+					"bg-secondary text-secondary-foreground",
 					"hover:bg-secondary-highlight hover:text-secondary-highlight-foreground",
 					"dark:bg-secondary dark:text-secondary-foreground",
 					"dark:hover:bg-secondary-highlight dark:hover:text-secondary-highlight-foreground"

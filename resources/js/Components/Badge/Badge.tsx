@@ -10,14 +10,21 @@ export const badgeVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
-				secondary: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-				destructive: "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
+				primary: cn(
+					"bg-primary-highlight text-primary-highlight-foreground",
+					"dark:bg-primary dark:text-primary-foreground"
+				),
+				secondary: cn(
+					"bg-secondary text-secondary-foreground",
+					"dark:bg-secondary dark:text-secondary-foreground"
+				),
+				constructive: "border-transparent bg-constructive text-constructive-foreground",
+				destructive: "border-transparent bg-destructive text-destructive-foreground",
 				outline: "text-foreground",
 			},
 		},
 		defaultVariants: {
-			variant: "default",
+			variant: "primary",
 		},
 	}
 );
