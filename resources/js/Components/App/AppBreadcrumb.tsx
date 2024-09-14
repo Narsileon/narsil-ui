@@ -1,3 +1,4 @@
+import { cn } from "@narsil-ui/Components/utils";
 import { Link } from "@inertiajs/react";
 import { useTranslationsStore } from "@narsil-localization/Stores/translationStore";
 import * as React from "react";
@@ -16,13 +17,14 @@ export interface AppBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 	breadcrumb: BreadcrumbType[];
 }
 
-const AppBreadcrumb = React.forwardRef<HTMLElement, AppBreadcrumbProps>(({ breadcrumb }, ref) => {
+const AppBreadcrumb = React.forwardRef<HTMLElement, AppBreadcrumbProps>(({ breadcrumb, className, ...props }, ref) => {
 	const { trans } = useTranslationsStore();
 
 	return (
 		<Breadcrumb
 			ref={ref}
-			className='py-2'
+			className={cn("py-2", className)}
+			{...props}
 		>
 			<BreadcrumbList>
 				<BreadcrumbItem>
