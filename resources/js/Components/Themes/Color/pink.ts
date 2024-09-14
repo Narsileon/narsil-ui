@@ -3,8 +3,8 @@ import { baseDark, baseLight, Theme } from "./color";
 const pink: Theme = {
 	light: {
 		...baseLight,
-		"primary-highlight": "333.3 71.4% 50.6%", // pink-600
-		primary: "335.8 74.4% 35.3%", // pink-800
+		"primary-highlight": "335.8 74.4% 35.3%", // pink-800
+		primary: "333.3 71.4% 50.6%", // pink-600
 	},
 	dark: {
 		...baseDark,

@@ -10,14 +10,8 @@ export const badgeVariants = cva(
 	{
 		variants: {
 			variant: {
-				primary: cn(
-					"bg-primary-highlight text-primary-highlight-foreground",
-					"dark:bg-primary dark:text-primary-foreground"
-				),
-				secondary: cn(
-					"bg-secondary text-secondary-foreground",
-					"dark:bg-secondary dark:text-secondary-foreground"
-				),
+				primary: "bg-primary text-primary-highlight",
+				secondary: "bg-secondary text-secondary-foreground",
 				constructive: "border-transparent bg-constructive text-constructive-foreground",
 				destructive: "border-transparent bg-destructive text-destructive-foreground",
 				outline: "text-foreground",

@@ -3,8 +3,8 @@ import { baseDark, baseLight, Theme } from "./color";
 const orange: Theme = {
 	light: {
 		...baseLight,
-		"primary-highlight": "20.5 90.2% 48.2%", // orange-600
-		primary: "15 79.1% 33.7%", // orange-800
+		"primary-highlight": "15 79.1% 33.7%", // orange-800
+		primary: "20.5 90.2% 48.2%", // orange-600
 	},
 	dark: {
 		...baseDark,

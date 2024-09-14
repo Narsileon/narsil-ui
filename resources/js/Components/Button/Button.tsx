@@ -27,17 +27,13 @@ export const buttonVariants = cva(
 				outline: "border border-border bg-background font-medium hover:bg-accent hover:text-accent-foreground",
 				primary: cn(
 					"font-medium",
-					"bg-primary-highlight text-primary-highlight-foreground",
-					"hover:bg-primary hover:text-primary-foreground",
-					"dark:bg-primary dark:text-primary-foreground",
-					"dark:hover:bg-primary-highlight dark:hover:text-primary-highlight-foreground"
+					"bg-primary text-primary-foreground",
+					"hover:bg-primary-highlight hover:text-primary-highlight-foreground"
 				),
 				secondary: cn(
 					"font-medium",
 					"bg-secondary text-secondary-foreground",
-					"hover:bg-secondary-highlight hover:text-secondary-highlight-foreground",
-					"dark:bg-secondary dark:text-secondary-foreground",
-					"dark:hover:bg-secondary-highlight dark:hover:text-secondary-highlight-foreground"
+					"hover:bg-secondary-highlight hover:text-secondary-highlight-foreground"
 				),
 			},
 		},

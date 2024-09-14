@@ -3,8 +3,8 @@ import { baseDark, baseLight, Theme } from "./color";
 const slate: Theme = {
 	light: {
 		...baseLight,
-		"primary-highlight": "215.3 25% 26.7%", // slate-700
-		primary: "217.2 32.6% 17.5%", // slate-800
+		"primary-highlight": "217.2 32.6% 17.5%", // slate-800
+		primary: "215.3 25% 26.7%", // slate-700
 	},
 	dark: {
 		...baseDark,
