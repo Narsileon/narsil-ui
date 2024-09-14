@@ -37,18 +37,20 @@ const ThemeController = ({
 }: ThemeControllerProps) => {
 	const { trans } = useTranslationsStore();
 
-	const { color, mode, radius, size, setColor, setMode, setRadius, setSize } = useThemeContext();
+	const { color, dark, mode, radius, size, setColor, setMode, setRadius, setSize } = useThemeContext();
+
+	const currentTheme = dark ? "dark" : "light";
 
 	const Themes: Record<Color, string> = {
-		red: `hsl(${red.light["primary-highlight"]})`,
-		orange: `hsl(${orange.light["primary-highlight"]})`,
-		yellow: `hsl(${yellow.light["primary-highlight"]})`,
-		green: `hsl(${green.light["primary-highlight"]})`,
-		blue: `hsl(${blue.light["primary-highlight"]})`,
-		violet: `hsl(${violet.light["primary-highlight"]})`,
-		gray: `hsl(${gray.light["primary-highlight"]})`,
-		slate: `hsl(${slate.light["primary-highlight"]})`,
-		pink: `hsl(${pink.light["primary-highlight"]})`,
+		red: `hsl(${red[currentTheme]["primary"]})`,
+		orange: `hsl(${orange[currentTheme]["primary"]})`,
+		yellow: `hsl(${yellow[currentTheme]["primary"]})`,
+		green: `hsl(${green[currentTheme]["primary"]})`,
+		blue: `hsl(${blue[currentTheme]["primary"]})`,
+		violet: `hsl(${violet[currentTheme]["primary"]})`,
+		gray: `hsl(${gray[currentTheme]["primary"]})`,
+		slate: `hsl(${slate[currentTheme]["primary"]})`,
+		pink: `hsl(${pink[currentTheme]["primary"]})`,
 	};
 
 	const themeLabel = trans("Theme");
