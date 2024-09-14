@@ -5,14 +5,14 @@ const yellow: Theme = {
 		...baseLight,
 		"primary-foreground": "222.2 84% 4.9%", // slate-950
 		"primary-highlight-foreground": "222.2 84% 4.9%", // slate-950
-		"primary-highlight": "50.4 97.8% 63.5%", // yellow-300
+		"primary-highlight": "47.95,95.82%,53.14%", // yellow-400
 		primary: "45.4 93.4% 47.5%", // yellow-500
 	},
 	dark: {
 		...baseDark,
 		"primary-foreground": "222.2 84% 4.9%", // slate-950
 		"primary-highlight-foreground": "222.2 84% 4.9%", // slate-950
-		"primary-highlight": "50.4 97.8% 63.5%", // yellow-300
+		"primary-highlight": "47.95,95.82%,53.14%", // yellow-400
 		background: "21.82 84.62% 2.55%", //yellow-995
 		primary: "45.4 93.4% 47.5%", // yellow-500
 	},
