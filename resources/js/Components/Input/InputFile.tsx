@@ -43,38 +43,40 @@ const InputFile = React.forwardRef<HTMLDivElement, InputFileProps>(
 
 		return (
 			<>
-				<div
-					ref={ref}
-					className='flex items-center'
-				>
-					<div className='flex items-center'>
-						<Button variant='secondary'>
-							<Database className='h-5 w-5' />
-						</Button>
-						<Button
-							className='rounded-r-none'
-							variant='secondary'
-							onClick={() => inputRef.current?.click()}
-						>
-							{trans("Choose file")}
-						</Button>
-					</div>
+				<div className='flex items-center'>
+					<Button
+						className='rounded-r-none border-r border-muted-foreground'
+						size='icon'
+						type='button'
+						variant='secondary'
+					>
+						<Database className='h-5 w-5' />
+					</Button>
+					<Button
+						className='rounded-none border-l border-muted-foreground px-3.5'
+						type='button'
+						variant='secondary'
+						onClick={() => inputRef.current?.click()}
+					>
+						{trans("Choose file")}
+					</Button>
 					<input
-						className={cn(inputStyle())}
-						disabled={true}
+						className={cn(inputStyle(), "cursor-default rounded-l-none")}
+						placeholder={trans("No file chosen")}
+						readOnly={true}
 						value={value?.name}
 					/>
+				</div>
 
-					<div className='ml-2'>
-						{value ? (
-							<img
-								src={isFile() ? (filePreview ?? "") : value}
-								height={56}
-								width={56}
-								previewable={true}
-							/>
-						) : null}
-					</div>
+				<div className='flex items-center gap-x-2'>
+					{value ? (
+						<img
+							src={isFile() ? (filePreview ?? "") : value}
+							height={64}
+							width={64}
+							previewable={true}
+						/>
+					) : null}
 				</div>
 				<input
 					ref={inputRef}
