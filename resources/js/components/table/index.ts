@@ -1,4 +1,4 @@
-// https://ui.shadcn.com/docs/components/table
+// https://ui.shadcn.com/docs/components/base/table
 
 import TableBody from "./table-body";
 import TableCaption from "./table-caption";
