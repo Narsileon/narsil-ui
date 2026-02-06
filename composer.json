@@ -17,9 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Narsil\\Ui\\": "src/",
-      "Database\\Factories\\": "database/factories/",
-      "Database\\Seeders\\": "database/seeders/"
+      "Narsil\\Ui\\": "src/"
     }
   },
   "autoload-dev": {
