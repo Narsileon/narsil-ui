@@ -11,7 +11,7 @@ function ComboboxClear({ className, render, ...props }: Combobox.Clear.Props) {
       {...props}
       render={
         render ?? (
-          <InputGroupButton variant="ghost" size="icon-xs">
+          <InputGroupButton variant="ghost" size="icon-sm">
             <Icon className="pointer-events-none" name="x" />
           </InputGroupButton>
         )
