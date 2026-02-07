@@ -1,6 +1,7 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
@@ -9,7 +10,9 @@ type RichTextEditorItalicProps = ComponentProps<typeof Toggle> & {
   label?: string;
 };
 
-function RichTextEditorItalic({ editor, label = "Italic", ...props }: RichTextEditorItalicProps) {
+function RichTextEditorItalic({ editor, ...props }: RichTextEditorItalicProps) {
+  const { trans } = useTranslator();
+
   const { canItalic, isItalic } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -19,6 +22,8 @@ function RichTextEditorItalic({ editor, label = "Italic", ...props }: RichTextEd
       };
     },
   });
+
+  const label = trans("rich-text-editor.italic", { fallback: "Italic" });
 
   return (
     <Tooltip tooltip={label}>

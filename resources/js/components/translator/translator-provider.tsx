@@ -1,16 +1,16 @@
 import { get } from "lodash-es";
 import { type ReactNode, useEffect, useState } from "react";
-import { LocalizationContext } from "./localization-context";
+import { TranslatorContext } from "./translator-context";
 
-type LocalizationProviderProps = {
+type TranslatorProviderProps = {
   children: ReactNode;
   translations: Record<string, string>;
 };
 
-function LocalizationProvider({
+function TranslatorProvider({
   children,
   translations: initialTranslations,
-}: LocalizationProviderProps) {
+}: TranslatorProviderProps) {
   const [translations, setTranslations] = useState<Record<string, string>>(initialTranslations);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ function LocalizationProvider({
   }, [initialTranslations]);
 
   return (
-    <LocalizationContext.Provider
+    <TranslatorContext.Provider
       value={{
         addTranslations: (translations) => {
           setTranslations((prev) => ({
@@ -29,8 +29,9 @@ function LocalizationProvider({
             ...translations,
           }));
         },
+        setTranslations: setTranslations,
         trans: (key, options) => {
-          let trans = get(translations, key) ?? "No translation found";
+          let trans = get(translations, key) ?? get(options, "fallback", "No translation found");
 
           if (options?.replacements) {
             Object.entries(options?.replacements).forEach(([placeholder, value]) => {
@@ -45,8 +46,8 @@ function LocalizationProvider({
       }}
     >
       {children}
-    </LocalizationContext.Provider>
+    </TranslatorContext.Provider>
   );
 }
 
-export default LocalizationProvider;
+export default TranslatorProvider;

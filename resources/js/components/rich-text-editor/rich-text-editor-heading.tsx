@@ -1,16 +1,18 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorHeadingProps = ComponentProps<typeof Toggle> & {
   editor: Editor;
-  label?: string;
   level: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
-function RichTextEditorHeading({ editor, label, level, ...props }: RichTextEditorHeadingProps) {
+function RichTextEditorHeading({ editor, level, ...props }: RichTextEditorHeadingProps) {
+  const { trans } = useTranslator();
+
   const { isHeading } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -20,9 +22,7 @@ function RichTextEditorHeading({ editor, label, level, ...props }: RichTextEdito
     },
   });
 
-  if (!label) {
-    label = `Heading ${level}`;
-  }
+  const label = trans(`rich-text-editor.heading_${level}`, { fallback: `Heading ${level}` });
 
   return (
     <Tooltip tooltip={label}>

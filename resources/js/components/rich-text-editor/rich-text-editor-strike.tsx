@@ -1,15 +1,17 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorStrikeProps = ComponentProps<typeof Toggle> & {
   editor: Editor;
-  label?: string;
 };
 
-function RichTextEditorStrike({ editor, label = "Strike", ...props }: RichTextEditorStrikeProps) {
+function RichTextEditorStrike({ editor, ...props }: RichTextEditorStrikeProps) {
+  const { trans } = useTranslator();
+
   const { canStrike, isStrike } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -19,6 +21,8 @@ function RichTextEditorStrike({ editor, label = "Strike", ...props }: RichTextEd
       };
     },
   });
+
+  const label = trans("rich-text-editor.strike", { fallback: "Strike" });
 
   return (
     <Tooltip tooltip={label}>

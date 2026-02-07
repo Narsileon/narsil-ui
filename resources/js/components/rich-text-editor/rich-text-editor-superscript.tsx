@@ -1,19 +1,17 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorSuperscriptProps = ComponentProps<typeof Toggle> & {
   editor: Editor;
-  label?: string;
 };
 
-function RichTextEditorSuperscript({
-  editor,
-  label = "Superscript",
-  ...props
-}: RichTextEditorSuperscriptProps) {
+function RichTextEditorSuperscript({ editor, ...props }: RichTextEditorSuperscriptProps) {
+  const { trans } = useTranslator();
+
   const { canSuperscript, isSuperscript } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -23,6 +21,8 @@ function RichTextEditorSuperscript({
       };
     },
   });
+
+  const label = trans("rich-text-editor.superscript", { fallback: "Superscript" });
 
   return (
     <Tooltip tooltip={label}>

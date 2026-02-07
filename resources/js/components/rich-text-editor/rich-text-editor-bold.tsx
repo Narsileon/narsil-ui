@@ -1,15 +1,17 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorBoldProps = ComponentProps<typeof Toggle> & {
   editor: Editor;
-  label?: string;
 };
 
-function RichTextEditorBold({ editor, label = "Bold", ...props }: RichTextEditorBoldProps) {
+function RichTextEditorBold({ editor, ...props }: RichTextEditorBoldProps) {
+  const { trans } = useTranslator();
+
   const { canBold, isBold } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -19,6 +21,8 @@ function RichTextEditorBold({ editor, label = "Bold", ...props }: RichTextEditor
       };
     },
   });
+
+  const label = trans("rich-text-editor.bold", { fallback: "Bold" });
 
   return (
     <Tooltip tooltip={label}>

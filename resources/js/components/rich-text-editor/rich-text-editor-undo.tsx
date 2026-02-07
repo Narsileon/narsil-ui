@@ -1,15 +1,17 @@
 import { Button } from "@narsil-ui/components/button";
 import { Icon } from "@narsil-ui/components/icon";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorUndoProps = ComponentProps<typeof Button> & {
   editor: Editor;
-  label?: string;
 };
 
-function RichTextEditorUndo({ editor, label = "Undo", ...props }: RichTextEditorUndoProps) {
+function RichTextEditorUndo({ editor, ...props }: RichTextEditorUndoProps) {
+  const { trans } = useTranslator();
+
   const { canUndo } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -18,6 +20,8 @@ function RichTextEditorUndo({ editor, label = "Undo", ...props }: RichTextEditor
       };
     },
   });
+
+  const label = trans("rich-text-editor.undo", { fallback: "Undo" });
 
   return (
     <Tooltip tooltip={label}>

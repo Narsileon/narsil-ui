@@ -6,7 +6,7 @@ type RichTextEditorContentProps = Omit<ComponentProps<typeof EditorContent>, "ed
 function RichTextEditorContent({ ...props }: RichTextEditorContentProps) {
   const { editor } = useCurrentEditor();
 
-  return <EditorContent editor={editor} {...props} />;
+  return <EditorContent data-slot="rich-text-editor-content" editor={editor} {...props} />;
 }
 
 export default RichTextEditorContent;

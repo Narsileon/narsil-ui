@@ -1,19 +1,17 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorSubscriptProps = ComponentProps<typeof Toggle> & {
   editor: Editor;
-  label?: string;
 };
 
-function RichTextEditorSubscript({
-  editor,
-  label = "Subscript",
-  ...props
-}: RichTextEditorSubscriptProps) {
+function RichTextEditorSubscript({ editor, ...props }: RichTextEditorSubscriptProps) {
+  const { trans } = useTranslator();
+
   const { canSubscript, isSubscript } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -23,6 +21,8 @@ function RichTextEditorSubscript({
       };
     },
   });
+
+  const label = trans("rich-text-editor.subscript", { fallback: "Subscript" });
 
   return (
     <Tooltip tooltip={label}>

@@ -7,9 +7,9 @@ import {
   DropdownMenuTrigger,
 } from "@narsil-ui/components/dropdown-menu";
 import { Icon } from "@narsil-ui/components/icon";
-import { useLocalization } from "@narsil-ui/components/localization";
 import { Separator } from "@narsil-ui/components/separator";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { useCurrentEditor } from "@tiptap/react";
 import { ComponentProps } from "react";
@@ -34,7 +34,7 @@ const headings = [1, 2, 3, 4, 5, 6] as const;
 
 function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEditorToolbarProps) {
   const { editor } = useCurrentEditor();
-  const { trans } = useLocalization();
+  const { trans } = useTranslator();
 
   if (!editor || !editor.isEditable) {
     return null;
@@ -65,33 +65,18 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
       {...props}
     >
       {/* Basic styles */}
-      {hasModule("bold") && (
-        <RichTextEditorBold editor={editor} label={trans("rich-text-editor.bold")} />
-      )}
-      {hasModule("italic") && (
-        <RichTextEditorItalic editor={editor} label={trans("rich-text-editor.italic")} />
-      )}
-      {hasModule("underline") && (
-        <RichTextEditorUnderline editor={editor} label={trans("rich-text-editor.underline")} />
-      )}
-      {hasModule("strike") && (
-        <RichTextEditorStrike editor={editor} label={trans("rich-text-editor.strike")} />
-      )}
+      {hasModule("bold") && <RichTextEditorBold editor={editor} />}
+      {hasModule("italic") && <RichTextEditorItalic editor={editor} />}
+      {hasModule("underline") && <RichTextEditorUnderline editor={editor} />}
+      {hasModule("strike") && <RichTextEditorStrike editor={editor} />}
 
       {/* Advanced styles */}
       {hasModules(["superscript", "subscript"]) && (
         <>
           <Separator orientation="vertical" />
 
-          {hasModule("superscript") && (
-            <RichTextEditorSuperscript
-              editor={editor}
-              label={trans("rich-text-editor.superscript")}
-            />
-          )}
-          {hasModule("subscript") && (
-            <RichTextEditorSubscript editor={editor} label={trans("rich-text-editor.subscript")} />
-          )}
+          {hasModule("superscript") && <RichTextEditorSuperscript editor={editor} />}
+          {hasModule("subscript") && <RichTextEditorSubscript editor={editor} />}
         </>
       )}
 
@@ -119,14 +104,7 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
                   {headings
                     .filter((level) => hasModule(`heading_${level}`) !== false)
                     .map((level) => {
-                      return (
-                        <RichTextEditorHeading
-                          editor={editor}
-                          label={trans(`rich-text-editor.heading_${level}`)}
-                          level={level}
-                          key={level}
-                        />
-                      );
+                      return <RichTextEditorHeading editor={editor} level={level} key={level} />;
                     })}
                 </DropdownMenuPopup>
               </DropdownMenuPositioner>
@@ -140,33 +118,15 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
         <>
           <Separator orientation="vertical" />
 
-          {hasModule("align_left") && (
-            <RichTextEditorTextAlign
-              alignment="left"
-              editor={editor}
-              label={trans(`rich-text-editor.align_left`)}
-            />
-          )}
+          {hasModule("align_left") && <RichTextEditorTextAlign alignment="left" editor={editor} />}
           {hasModule("align_center") && (
-            <RichTextEditorTextAlign
-              alignment="center"
-              editor={editor}
-              label={trans(`rich-text-editor.align_center`)}
-            />
+            <RichTextEditorTextAlign alignment="center" editor={editor} />
           )}
           {hasModule("align_right") && (
-            <RichTextEditorTextAlign
-              alignment="right"
-              editor={editor}
-              label={trans(`rich-text-editor.align_right`)}
-            />
+            <RichTextEditorTextAlign alignment="right" editor={editor} />
           )}
           {hasModule("align_justify") && (
-            <RichTextEditorTextAlign
-              alignment="justify"
-              editor={editor}
-              label={trans(`rich-text-editor.align_justify`)}
-            />
+            <RichTextEditorTextAlign alignment="justify" editor={editor} />
           )}
         </>
       )}
@@ -176,18 +136,8 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
         <>
           <Separator orientation="vertical" />
 
-          {hasModule("bullet_list") && (
-            <RichTextEditorBulletList
-              editor={editor}
-              label={trans("rich-text-editor.bullet_list")}
-            />
-          )}
-          {hasModule("ordered_list") && (
-            <RichTextEditorOrderedList
-              editor={editor}
-              label={trans("rich-text-editor.ordered_list")}
-            />
-          )}
+          {hasModule("bullet_list") && <RichTextEditorBulletList editor={editor} />}
+          {hasModule("ordered_list") && <RichTextEditorOrderedList editor={editor} />}
         </>
       )}
 
@@ -196,12 +146,8 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
         <>
           <Separator orientation="vertical" />
 
-          {hasModule("undo") && (
-            <RichTextEditorUndo editor={editor} label={trans("rich-text-editor.redo")} />
-          )}
-          {hasModule("redo") && (
-            <RichTextEditorRedo editor={editor} label={trans("rich-text-editor.undo")} />
-          )}
+          {hasModule("undo") && <RichTextEditorUndo editor={editor} />}
+          {hasModule("redo") && <RichTextEditorRedo editor={editor} />}
         </>
       )}
     </div>

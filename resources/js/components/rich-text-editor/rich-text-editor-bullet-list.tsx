@@ -1,19 +1,17 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Toggle } from "@narsil-ui/components/toggle";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { Editor, useEditorState } from "@tiptap/react";
 import { type ComponentProps } from "react";
 
 type RichTextEditorBulletListProps = ComponentProps<typeof Toggle> & {
   editor: Editor;
-  label?: string;
 };
 
-function RichTextEditorBulletList({
-  editor,
-  label = "Bullet list",
-  ...props
-}: RichTextEditorBulletListProps) {
+function RichTextEditorBulletList({ editor, ...props }: RichTextEditorBulletListProps) {
+  const { trans } = useTranslator();
+
   const { isBulletList } = useEditorState({
     editor,
     selector: (ctx) => {
@@ -22,6 +20,8 @@ function RichTextEditorBulletList({
       };
     },
   });
+
+  const label = trans("rich-text-editor.bullet_list", { fallback: "Bullet list" });
 
   return (
     <Tooltip tooltip={label}>
