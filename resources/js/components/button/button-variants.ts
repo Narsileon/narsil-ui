@@ -15,7 +15,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         destructive: cn(
-          "text-destructive-foreground bg-destructive/80",
+          "bg-destructive/80 text-destructive-foreground",
           "focus-visible:bg-destructive",
           "hover:bg-destructive",
         ),
@@ -42,7 +42,7 @@ const buttonVariants = cva(
           "[&_svg]:text-secondary-foreground",
         ),
         sidebar: cn(
-          "peer/menu-button ring-sidebar-ring w-full justify-start truncate rounded-md p-2 text-left outline-hidden transition-[width,height,padding]",
+          "peer/menu-button w-full justify-start truncate rounded-md p-2 text-left ring-sidebar-ring outline-hidden transition-[width,height,padding]",
           "active:bg-sidebar-accent active:text-sidebar-accent-foreground",
           "data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground",
           "data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground",
@@ -59,11 +59,12 @@ const buttonVariants = cva(
       },
       size: {
         default: "h-9 px-3 py-2 has-[>svg]:px-2",
-        sm: "h-8 gap-1.5 px-3 has-[>svg]:px-2",
-        lg: "h-10 px-6 has-[>svg]:px-2",
-        icon: "size-9 [&>svg]:size-6",
+        lg: "h-11 px-6 has-[>svg]:px-2",
+        sm: "h-7 gap-1.5 px-3 has-[>svg]:px-2",
+        icon: "size-9",
+        "icon-sm": "size-7 rounded-full p-2 [&>svg]:size-5",
+        "icon-xs": "size-5 rounded-full p-2 [&>svg]:size-3",
         link: "",
-        "icon-sm": "size-7",
       },
     },
     defaultVariants: {

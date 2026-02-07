@@ -1,26 +1,19 @@
 import { Button } from "@narsil-ui/components/button";
-import { cn } from "@narsil-ui/lib/utils";
-import { type VariantProps } from "class-variance-authority";
-import inputGroupButtonVariants from "./input-group-button-variants";
+import { type ComponentProps } from "react";
 
-type InputGroupButtonProps = Omit<React.ComponentProps<typeof Button>, "size" | "type"> &
-  VariantProps<typeof inputGroupButtonVariants> & {
-    type?: "button" | "submit" | "reset";
-  };
+type InputGroupButtonProps = ComponentProps<typeof Button>;
 
 function InputGroupButton({
   className,
-  size = "xs",
-  type = "button",
+  size = "sm",
   variant = "ghost",
   ...props
 }: InputGroupButtonProps) {
   return (
     <Button
       data-slot="input-group-button"
-      data-size={size}
-      className={cn(inputGroupButtonVariants({ size }), className)}
-      type={type}
+      className={className}
+      size={size}
       variant={variant}
       {...props}
     />
