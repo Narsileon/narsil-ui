@@ -5,7 +5,14 @@ function ToastDescription({ className, ...props }: Toast.Description.Props) {
   return (
     <Toast.Description
       data-slot="toast-description"
-      className={cn("text-sm leading-5", className)}
+      className={cn(
+        "line-clamp-2 text-left text-sm leading-normal font-normal text-muted-foreground",
+        "group-data-[size=xs]/item:text-xs",
+        "[&>a]:underline",
+        "[&>a]:underline-offset-4",
+        "[&>a:hover]:text-primary",
+        className,
+      )}
       {...props}
     />
   );

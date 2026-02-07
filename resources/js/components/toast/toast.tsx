@@ -1,4 +1,6 @@
 import { type ToastManagerAddOptions, Toast as ToastPrimitive } from "@base-ui/react/toast";
+import { Icon } from "@narsil-ui/components/icon";
+import { ItemActions, ItemContent, ItemMedia, ItemRoot } from "@narsil-ui/components/item";
 import { useEffect } from "react";
 import ToastClose from "./toast-close";
 import ToastContent from "./toast-content";
@@ -27,11 +29,32 @@ function Toast({ options }: ToastProps) {
         {toasts.map((toast) => {
           return (
             <ToastRoot toast={toast} key={toast.id}>
-              <ToastContent>
-                <ToastTitle />
-                <ToastDescription />
-                <ToastClose />
-              </ToastContent>
+              <ToastContent
+                render={
+                  <ItemRoot>
+                    <ItemMedia variant="icon">
+                      <Icon
+                        name={
+                          toast.type === "success"
+                            ? "circle-check"
+                            : toast.type === "warning"
+                              ? "warning"
+                              : toast.type === "error"
+                                ? "circle-x"
+                                : "info"
+                        }
+                      />
+                    </ItemMedia>
+                    <ItemContent>
+                      <ToastTitle />
+                      <ToastDescription />
+                    </ItemContent>
+                    <ItemActions>
+                      <ToastClose />
+                    </ItemActions>
+                  </ItemRoot>
+                }
+              />
             </ToastRoot>
           );
         })}
