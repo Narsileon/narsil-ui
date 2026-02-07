@@ -1,6 +1,6 @@
 import { Field } from "@base-ui/react";
 import { cn } from "@narsil-ui/lib/utils";
-import { VariantProps } from "class-variance-authority";
+import { type VariantProps } from "class-variance-authority";
 import fieldVariants from "./field-variants";
 
 type FieldRootProps = Field.Root.Props &

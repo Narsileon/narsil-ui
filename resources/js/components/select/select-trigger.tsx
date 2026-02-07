@@ -1,6 +1,6 @@
 import { Select } from "@base-ui/react/select";
 import { cn } from "@narsil-ui/lib/utils";
-import { VariantProps } from "class-variance-authority";
+import { type VariantProps } from "class-variance-authority";
 import selectTriggerVariants from "./select-trigger-variants";
 
 type SelectTriggerProps = Select.Trigger.Props &

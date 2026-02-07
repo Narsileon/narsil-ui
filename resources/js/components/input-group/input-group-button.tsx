@@ -1,6 +1,6 @@
 import { Button } from "@narsil-ui/components/button";
 import { cn } from "@narsil-ui/lib/utils";
-import { VariantProps } from "class-variance-authority";
+import { type VariantProps } from "class-variance-authority";
 import inputGroupButtonVariants from "./input-group-button-variants";
 
 type InputGroupButtonProps = Omit<React.ComponentProps<typeof Button>, "size" | "type"> &

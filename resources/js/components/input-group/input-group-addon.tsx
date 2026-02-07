@@ -1,5 +1,5 @@
 import { cn } from "@narsil-ui/lib/utils";
-import { VariantProps } from "class-variance-authority";
+import { type VariantProps } from "class-variance-authority";
 import { type ComponentProps } from "react";
 import inputGroupAddonVariants from "./input-group-addon-variants";
 
