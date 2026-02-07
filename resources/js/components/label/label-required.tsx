@@ -1,3 +1,5 @@
+import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";
 
@@ -5,20 +7,22 @@ type LabelRequiredProps = ComponentProps<"span"> & {
   label?: string;
 };
 
-function LabelRequired({
-  className,
-  label = "This field is required",
-  ...props
-}: LabelRequiredProps) {
+function LabelRequired({ className, ...props }: LabelRequiredProps) {
+  const { trans } = useTranslator();
+
+  const label = trans("tooltip.required", { fallback: "This field is required." });
+
   return (
-    <span
-      data-slot="label-required"
-      className={cn("text-destructive", className)}
-      aria-label={label}
-      {...props}
-    >
-      *
-    </span>
+    <Tooltip tooltip={label}>
+      <span
+        data-slot="label-required"
+        className={cn("text-destructive", className)}
+        aria-label={label}
+        {...props}
+      >
+        *
+      </span>
+    </Tooltip>
   );
 }
 

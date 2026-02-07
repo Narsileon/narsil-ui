@@ -1,17 +1,13 @@
 import { Icon } from "@narsil-ui/components/icon";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";
 
-type BreadcrumbEllipsisProps = ComponentProps<"span"> & {
-  label?: string;
-};
+function BreadcrumbEllipsis({ children, className, ...props }: ComponentProps<"span">) {
+  const { trans } = useTranslator();
 
-function BreadcrumbEllipsis({
-  children,
-  className,
-  label = "More",
-  ...props
-}: BreadcrumbEllipsisProps) {
+  const label = trans("pagination.more", { fallback: "More" });
+
   return (
     <span
       data-slot="breadcrumb-ellipsis"

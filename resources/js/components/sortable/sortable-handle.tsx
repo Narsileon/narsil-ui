@@ -1,6 +1,7 @@
 import { Button } from "@narsil-ui/components/button";
 import { Icon } from "@narsil-ui/components/icon";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";
 
@@ -9,12 +10,11 @@ type SortableHandleProps = ComponentProps<typeof Button> & {
   label?: string;
 };
 
-function SortableHandle({
-  className,
-  isDragging = false,
-  label = "Move",
-  ...props
-}: SortableHandleProps) {
+function SortableHandle({ className, isDragging = false, ...props }: SortableHandleProps) {
+  const { trans } = useTranslator();
+
+  const label = trans("tooltip.move", { fallback: "Move" });
+
   return (
     <Tooltip hidden={isDragging} tooltip={label}>
       <Button

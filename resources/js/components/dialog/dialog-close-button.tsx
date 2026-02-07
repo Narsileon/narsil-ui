@@ -1,19 +1,15 @@
 import { Dialog } from "@base-ui/react/dialog";
 import { Icon } from "@narsil-ui/components/icon";
 import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
-import { type IconName } from "@narsil-ui/registries/icons";
 import { type ComponentProps } from "react";
 
-function DialogCloseButton({
-  className,
-  icon = "x",
-  label = "Close",
-  ...props
-}: ComponentProps<typeof Dialog.Close> & {
-  icon?: IconName;
-  label?: string;
-}) {
+function DialogCloseButton({ className, ...props }: ComponentProps<typeof Dialog.Close>) {
+  const { trans } = useTranslator();
+
+  const label = trans("tooltip.close", { fallback: "Close" });
+
   return (
     <Tooltip tooltip={label}>
       <Dialog.Close
@@ -29,7 +25,7 @@ function DialogCloseButton({
         )}
         {...props}
       >
-        <Icon name={icon} />
+        <Icon name="x" />
         <span className="sr-only">{label}</span>
       </Dialog.Close>
     </Tooltip>
