@@ -30,12 +30,12 @@ function DataTableHeadSort({ className, header, ...props }: DataTableHeadSortPro
       <Button
         aria-label={label}
         className={className}
-        size="icon"
+        size="icon-sm"
         variant="ghost-secondary"
         onClick={header.column.getToggleSortingHandler()}
         {...props}
       >
-        <Icon className="size-4" name={getIconName()} />
+        <Icon name={getIconName()} />
       </Button>
     </Tooltip>
   );
