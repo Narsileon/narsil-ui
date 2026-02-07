@@ -6,10 +6,7 @@ type DynamicOptions = {
   loading?: ComponentType;
 };
 
-export default function dynamic<T extends object = {}>(
-  importer: DynamicImport<T>,
-  options: DynamicOptions = {},
-) {
+function dynamic<T extends object = {}>(importer: DynamicImport<T>, options: DynamicOptions = {}) {
   const { loading: Loading = () => <div /> } = options;
 
   const LazyComponent = lazy(importer);
@@ -22,3 +19,5 @@ export default function dynamic<T extends object = {}>(
 
   return DynamicWrapper;
 }
+
+export { dynamic };
