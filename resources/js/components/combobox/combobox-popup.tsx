@@ -8,7 +8,7 @@ function ComboboxPopup({ className, ...props }: Combobox.Popup.Props) {
       className={cn(
         "group/combobox-popup",
         "relative max-h-72 min-w-36 overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100",
-        "*:data-[slot=input-group]:m-1 *:data-[slot=input-group]:mb-0 *:data-[slot=input-group]:h-8 *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none",
+        "*:data-[slot=input-group]:h-9 *:data-[slot=input-group]:rounded-b-none *:data-[slot=input-group]:border-input/30 *:data-[slot=input-group]:bg-input/30 *:data-[slot=input-group]:shadow-none",
         "data-[chips=true]:min-w-(--anchor-width)",
         "data-[side=bottom]:slide-in-from-top-2",
         "data-[side=inline-end]:slide-in-from-left-2",
