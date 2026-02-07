@@ -9,6 +9,8 @@ use Narsil\Ui\Http\Data\OptionData;
 #endregion
 
 /**
+ * Enumeration of rich text editor modules.
+ *
  * @version 1.0.0
  * @author Jonathan Rigaux
  */

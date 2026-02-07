@@ -14,7 +14,7 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
  */
 class ServiceProvider extends BaseServiceProvider
 {
-#region PUBLIC METHODS
+    #region PUBLIC METHODS
 
     /**
      * Boot any application services.
@@ -23,7 +23,34 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot(): void
     {
+        $this->bootTranslations();
+        $this->bootViews();
+    }
+
+    #endregion
+
+    #region PROTECTED METHODS
+
+    /**
+     * Boot the translations.
+     *
+     * @return void
+     */
+    protected function bootTranslations(): void
+    {
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'narsil-ui');
+    }
+
+    /**
+     * Boot the views.
+     *
+     * @return void
+     */
+    protected function bootViews(): void
+    {
+        $this->loadViewsFrom([
+            __DIR__ . '/../resources/views',
+        ], 'narsil-ui');
     }
 
     #endregion
