@@ -1,4 +1,9 @@
+import FacebookIcon from "@narsil-ui/components/icon/icons/facebook-icon";
+import InstagramIcon from "@narsil-ui/components/icon/icons/instagram-icon";
+import LinkedinIcon from "@narsil-ui/components/icon/icons/linkedin-icon";
 import NarsilIcon from "@narsil-ui/components/icon/icons/narsil-icon";
+import TiktokIcon from "@narsil-ui/components/icon/icons/tiktok-icon";
+import YoutubeIcon from "@narsil-ui/components/icon/icons/youtube-icon";
 import {
   ActivityIcon,
   AlignCenterIcon,
@@ -148,6 +153,7 @@ const defaultRegistry: Registry = {
   ["entity"]: LayersIcon,
   ["eye-off"]: EyeOffIcon,
   ["eye"]: EyeIcon,
+  ["facebook"]: FacebookIcon,
   ["field"]: CuboidIcon,
   ["fieldset"]: FormIcon,
   ["file"]: FileIcon,
@@ -169,9 +175,11 @@ const defaultRegistry: Registry = {
   ["horizon"]: ActivityIcon,
   ["image"]: ImageIcon,
   ["input"]: RectangleEllipsisIcon,
+  ["instagram"]: InstagramIcon,
   ["italic"]: ItalicIcon,
   ["layers"]: LayersIcon,
   ["link"]: LinkIcon,
+  ["linkedin"]: LinkedinIcon,
   ["list-bullet"]: ListIcon,
   ["list-ordered"]: ListOrderedIcon,
   ["loader-circle"]: LoaderCircleIcon,
@@ -214,6 +222,7 @@ const defaultRegistry: Registry = {
   ["table"]: TableIcon,
   ["template"]: LayoutIcon,
   ["text"]: TextCursorInput,
+  ["tiktok"]: TiktokIcon,
   ["textarea"]: TypeIcon,
   ["time"]: ClockIcon,
   ["trash"]: TrashIcon,
@@ -224,6 +233,7 @@ const defaultRegistry: Registry = {
   ["user"]: UserIcon,
   ["video"]: VideoIcon,
   ["x"]: XIcon,
+  ["youtube"]: YoutubeIcon,
 };
 
 type IconName = keyof typeof defaultRegistry;

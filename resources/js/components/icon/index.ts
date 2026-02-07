@@ -1,4 +1,4 @@
-import type { IconName } from "@narsil-cms/registries/icons";
+import type { IconName } from "@narsil-ui/registries/icons";
 import Icon from "./icon";
 
 export { Icon, IconName };
