@@ -6,8 +6,9 @@ function ToastRoot({ className, ...props }: Toast.Root.Props) {
     <Toast.Root
       data-slot="toast-root"
       className={cn(
-        "text-bg-popover absolute right-0 bottom-0 left-auto z-50 mr-0 h-(--height) w-full origin-bottom rounded-lg border bg-popover bg-clip-padding shadow-lg select-none",
+        "text-bg-popover absolute right-0 bottom-0 left-auto mr-0 h-(--height) w-full origin-bottom rounded-lg border bg-popover bg-clip-padding shadow-lg select-none",
         "transform-[translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]",
+        "z-[calc(1000-var(--toast-index))]",
         "[--gap:0.75rem]",
         "[--height:var(--toast-frontmost-height,var(--toast-height))]",
         "[--offset-y:calc(var(--toast-offset-y)*-1+calc(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))]",
