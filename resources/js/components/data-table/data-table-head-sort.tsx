@@ -23,7 +23,7 @@ function DataTableHeadSort({ className, header, ...props }: DataTableHeadSortPro
     }
   }
 
-  const label = trans("tooltip.sort", { fallback: "Sort" });
+  const label = trans("tooltips.sort", { fallback: "Sort" });
 
   return (
     <Tooltip tooltip={label}>
