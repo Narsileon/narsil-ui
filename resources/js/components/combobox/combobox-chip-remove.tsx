@@ -13,10 +13,10 @@ function ComboboxChipRemove({
   return (
     <Combobox.ChipRemove
       data-slot="combobox-chip-remove"
-      className={cn("-ml-1 opacity-50 hover:opacity-100", className)}
+      className={cn("-ml-0.5", className)}
       render={
         render ?? (
-          <Button variant="ghost" size="icon-sm">
+          <Button variant="ghost-secondary" size="icon-xs">
             <Icon className="pointer-events-none" name="x" />
           </Button>
         )
