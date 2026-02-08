@@ -51,12 +51,12 @@ function AlertDialog({
               {actions?.map((action, index) => {
                 return (
                   <AlertDialogAction
+                    {...action}
                     onClick={(event) => {
                       action.onClick?.(event);
 
                       setAlertDialog(null);
                     }}
-                    {...action}
                     key={index}
                   >
                     {action.children ?? trans("ui.confirm")}
@@ -64,7 +64,14 @@ function AlertDialog({
                 );
               })}
             </div>
-            <AlertDialogCancel {...cancel}>
+            <AlertDialogCancel
+              {...cancel}
+              onClick={(event) => {
+                cancel?.onClick?.(event);
+
+                setAlertDialog(null);
+              }}
+            >
               {cancel?.children ?? trans("ui.cancel")}
             </AlertDialogCancel>
           </AlertDialogFooter>

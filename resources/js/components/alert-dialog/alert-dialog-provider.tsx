@@ -14,16 +14,11 @@ function AlertDialogProvider({ children }: AlertDialogProviderProps) {
       {children}
       {alertDialog ? (
         <AlertDialog
-          open={!!alertDialog}
-          buttons={alertDialog.buttons}
-          cancelLabel={alertDialog.cancelLabel}
+          actions={alertDialog.actions}
+          cancel={alertDialog.cancel}
           description={alertDialog.description}
+          open={!!alertDialog}
           title={alertDialog.title}
-          cancelClick={(event) => {
-            alertDialog.cancelClick?.(event);
-
-            setAlertDialog(null);
-          }}
         />
       ) : null}
     </AlertDialogContext.Provider>
