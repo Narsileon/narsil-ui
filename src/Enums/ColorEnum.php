@@ -4,7 +4,7 @@ namespace Narsil\Ui\Enums;
 
 #region USE
 
-use Narsil\Cms\Support\SelectOption;
+use Narsil\Ui\Http\Data\OptionData;
 
 #endregion
 
@@ -53,11 +53,10 @@ enum ColorEnum: string
                 'label' => trans("narsil-ui::colors.$value"),
             ])->render();
 
-            $option = new SelectOption()
-                ->optionLabel($label)
-                ->optionValue($value);
-
-            $options[] = $option;
+            $options[] = new OptionData(
+                label: $label,
+                value: $value
+            );
         }
 
         return $options;

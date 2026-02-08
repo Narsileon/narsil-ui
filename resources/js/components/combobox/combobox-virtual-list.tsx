@@ -1,13 +1,13 @@
 import { useRender } from "@base-ui/react";
-import type { SelectOption } from "@narsil-cms/types";
 import { ComboboxItem, ComboboxVirtualItem } from "@narsil-ui/components/combobox";
 import { cn } from "@narsil-ui/lib/utils";
-import { ReactVirtualizerOptions, useVirtualizer } from "@tanstack/react-virtual";
+import type { OptionData } from "@narsil-ui/types";
+import { type ReactVirtualizerOptions, useVirtualizer } from "@tanstack/react-virtual";
 import { useCallback, useRef } from "react";
 
 type ComboboxVirtualListProps = Partial<ReactVirtualizerOptions<HTMLDivElement, Element>> & {
   className?: string;
-  filteredItems: (SelectOption | string)[];
+  filteredItems: (OptionData | string)[];
   render: useRender.ComponentProps<typeof ComboboxItem>["render"];
 };
 

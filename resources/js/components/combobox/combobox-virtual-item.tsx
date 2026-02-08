@@ -1,10 +1,10 @@
 import { useRender } from "@base-ui/react";
-import { SelectOption } from "@narsil-cms/types";
 import { ComboboxItem } from "@narsil-ui/components/combobox";
+import type { OptionData } from "@narsil-ui/types";
 import { ComponentProps } from "react";
 
 type ComboboxVirtualizerProps = ComponentProps<typeof ComboboxItem> & {
-  item: SelectOption | string;
+  item: OptionData | string;
   render: useRender.ComponentProps<typeof ComboboxItem>["render"];
 };
 
