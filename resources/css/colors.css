@@ -2,8 +2,8 @@
 @source inline('{bg,text}-{gray,red,orange,amber,yellow,lime,green,emerald,teal,cyan,sky,blue,indigo,violet,purple,fuchsia,pink,rose}-{500}');
 
 [data-color="red"] {
-  --primary: var(--color-red-600);
-  --ring: var(--color-red-600);
+  --primary: var(--color-red-500);
+  --ring: var(--color-red-500);
 }
 [data-color="red"].dark {
   --primary-foreground: white;
@@ -12,8 +12,8 @@
 }
 
 [data-color="orange"] {
-  --primary: var(--color-orange-600);
-  --ring: var(--color-orange-600);
+  --primary: var(--color-orange-500);
+  --ring: var(--color-orange-500);
 }
 [data-color="orange"].dark {
   --primary-foreground: white;
@@ -22,8 +22,8 @@
 }
 
 [data-color="amber"] {
-  --primary: var(--color-amber-600);
-  --ring: var(--color-amber-600);
+  --primary: var(--color-amber-500);
+  --ring: var(--color-amber-500);
 }
 [data-color="amber"].dark {
   --primary-foreground: white;
@@ -32,8 +32,8 @@
 }
 
 [data-color="yellow"] {
-  --primary: var(--color-yellow-600);
-  --ring: var(--color-yellow-600);
+  --primary: var(--color-yellow-500);
+  --ring: var(--color-yellow-500);
 }
 [data-color="yellow"].dark {
   --primary-foreground: white;
@@ -42,8 +42,8 @@
 }
 
 [data-color="lime"] {
-  --primary: var(--color-lime-600);
-  --ring: var(--color-lime-600);
+  --primary: var(--color-lime-500);
+  --ring: var(--color-lime-500);
 }
 [data-color="lime"].dark {
   --primary-foreground: white;
@@ -52,8 +52,8 @@
 }
 
 [data-color="green"] {
-  --primary: var(--color-green-600);
-  --ring: var(--color-green-600);
+  --primary: var(--color-green-500);
+  --ring: var(--color-green-500);
 }
 [data-color="green"].dark {
   --primary-foreground: white;
@@ -62,8 +62,8 @@
 }
 
 [data-color="emerald"] {
-  --primary: var(--color-emerald-600);
-  --ring: var(--color-emerald-600);
+  --primary: var(--color-emerald-500);
+  --ring: var(--color-emerald-500);
 }
 [data-color="emerald"].dark {
   --primary-foreground: white;
@@ -72,8 +72,8 @@
 }
 
 [data-color="teal"] {
-  --primary: var(--color-teal-600);
-  --ring: var(--color-teal-600);
+  --primary: var(--color-teal-500);
+  --ring: var(--color-teal-500);
 }
 [data-color="teal"].dark {
   --primary-foreground: white;
@@ -82,8 +82,8 @@
 }
 
 [data-color="cyan"] {
-  --primary: var(--color-cyan-600);
-  --ring: var(--color-cyan-600);
+  --primary: var(--color-cyan-500);
+  --ring: var(--color-cyan-500);
 }
 [data-color="cyan"].dark {
   --primary-foreground: white;
@@ -92,8 +92,8 @@
 }
 
 [data-color="sky"] {
-  --primary: var(--color-sky-600);
-  --ring: var(--color-sky-600);
+  --primary: var(--color-sky-500);
+  --ring: var(--color-sky-500);
 }
 [data-color="sky"].dark {
   --primary-foreground: white;
@@ -102,8 +102,8 @@
 }
 
 [data-color="blue"] {
-  --primary: var(--color-blue-600);
-  --ring: var(--color-blue-600);
+  --primary: var(--color-blue-500);
+  --ring: var(--color-blue-500);
 }
 [data-color="blue"].dark {
   --primary-foreground: white;
@@ -112,8 +112,8 @@
 }
 
 [data-color="indigo"] {
-  --primary: var(--color-indigo-600);
-  --ring: var(--color-indigo-600);
+  --primary: var(--color-indigo-500);
+  --ring: var(--color-indigo-500);
 }
 [data-color="indigo"].dark {
   --primary-foreground: white;
@@ -122,8 +122,8 @@
 }
 
 [data-color="violet"] {
-  --primary: var(--color-violet-600);
-  --ring: var(--color-violet-600);
+  --primary: var(--color-violet-500);
+  --ring: var(--color-violet-500);
 }
 [data-color="violet"].dark {
   --primary-foreground: white;
@@ -132,8 +132,8 @@
 }
 
 [data-color="purple"] {
-  --primary: var(--color-purple-600);
-  --ring: var(--color-purple-600);
+  --primary: var(--color-purple-500);
+  --ring: var(--color-purple-500);
 }
 [data-color="purple"].dark {
   --primary-foreground: white;
@@ -142,8 +142,8 @@
 }
 
 [data-color="fuchsia"] {
-  --primary: var(--color-fuchsia-600);
-  --ring: var(--color-fuchsia-600);
+  --primary: var(--color-fuchsia-500);
+  --ring: var(--color-fuchsia-500);
 }
 [data-color="fuchsia"].dark {
   --primary-foreground: white;
@@ -152,8 +152,8 @@
 }
 
 [data-color="pink"] {
-  --primary: var(--color-pink-600);
-  --ring: var(--color-pink-600);
+  --primary: var(--color-pink-500);
+  --ring: var(--color-pink-500);
 }
 [data-color="pink"].dark {
   --primary-foreground: white;
@@ -162,8 +162,8 @@
 }
 
 [data-color="rose"] {
-  --primary: var(--color-rose-600);
-  --ring: var(--color-rose-600);
+  --primary: var(--color-rose-500);
+  --ring: var(--color-rose-500);
 }
 [data-color="rose"].dark {
   --primary-foreground: white;
