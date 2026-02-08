@@ -2,7 +2,6 @@
 // https://base-ui.com/react/components/combobox
 
 import ComboboxChip from "./combobox-chip";
-import ComboboxChipInput from "./combobox-chip-input";
 import ComboboxChipRemove from "./combobox-chip-remove";
 import ComboboxChips from "./combobox-chips";
 import ComboboxCollection from "./combobox-collection";
@@ -23,7 +22,6 @@ import ComboboxValue from "./combobox-value";
 
 export {
   ComboboxChip,
-  ComboboxChipInput,
   ComboboxChipRemove,
   ComboboxChips,
   ComboboxCollection,
