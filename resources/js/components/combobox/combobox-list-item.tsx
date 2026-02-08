@@ -1,7 +1,7 @@
+import { ComboboxItem, ComboboxItemIndicator } from "@narsil-ui/components/combobox";
 import { ItemContent, ItemDescription, ItemRoot, ItemTitle } from "@narsil-ui/components/item";
 import parse from "html-react-parser";
-import { ComponentProps } from "react";
-import ComboboxItem from "./combobox-item";
+import { type ComponentProps } from "react";
 
 type ComboboxListItemProps = ComponentProps<typeof ComboboxItem> & {
   displayValue?: boolean;
@@ -19,6 +19,7 @@ function ComboboxListItem({ displayValue = true, label, value, ...props }: Combo
             <ItemTitle className="font-normal whitespace-nowrap">{parse(label)}</ItemTitle>
             {displayValue && <ItemDescription>{value}</ItemDescription>}
           </ItemContent>
+          <ComboboxItemIndicator />
         </ItemRoot>
       }
       {...props}
