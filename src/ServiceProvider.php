@@ -23,6 +23,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot(): void
     {
+        $this->bootMigrations();
         $this->bootTranslations();
         $this->bootViews();
     }
@@ -30,6 +31,18 @@ class ServiceProvider extends BaseServiceProvider
     #endregion
 
     #region PROTECTED METHODS
+
+    /**
+     * Boot the migrations.
+     *
+     * @return void
+     */
+    protected function bootMigrations(): void
+    {
+        $this->loadMigrationsFrom([
+            __DIR__ . '/../database/migrations',
+        ]);
+    }
 
     /**
      * Boot the translations.
