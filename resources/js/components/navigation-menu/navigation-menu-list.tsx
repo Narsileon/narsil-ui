@@ -8,6 +8,7 @@ function NavigationMenuList({
 }: ComponentPropsWithRef<typeof NavigationMenu.List>) {
   return (
     <NavigationMenu.List
+      aria-orientation={undefined} // Temp fix
       data-slot="navigation-menu-list"
       className={cn("group flex flex-1 list-none items-center justify-center gap-0", className)}
       {...props}
