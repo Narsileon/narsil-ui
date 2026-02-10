@@ -1,6 +1,6 @@
 <?php
 
-namespace Narsil\Ui\Models;
+namespace Narsil\Base\Models;
 
 #region USE
 
@@ -70,6 +70,13 @@ class TanStackTable extends Model
      * @var string
      */
     final public const COLUMN_VISIBILITY = 'column_visibility';
+
+    /**
+     * The name of the "filters" column.
+     *
+     * @var string
+     */
+    final public const FILTERS = 'filters';
 
     /**
      * The name of the "global filter" column.

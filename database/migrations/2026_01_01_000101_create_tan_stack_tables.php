@@ -5,7 +5,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Narsil\Ui\Models\TanStackTable;
+use Narsil\Base\Models\TanStackTable;
 
 #endregion
 
@@ -59,21 +59,32 @@ return new class extends Migration
                 ->index();
             $blueprint
                 ->string(TanStackTable::NAME)
+                ->nullable()
                 ->index();
             $blueprint
-                ->string(TanStackTable::GLOBAL_FILTER);
+                ->string(TanStackTable::GLOBAL_FILTER)
+                ->nullable();
             $blueprint
-                ->jsonb(TanStackTable::COLUMN_ORDER);
+                ->json(TanStackTable::FILTERS)
+                ->nullable();
             $blueprint
-                ->jsonb(TanStackTable::COLUMN_SIZING);
+                ->json(TanStackTable::COLUMN_ORDER)
+                ->nullable();
             $blueprint
-                ->jsonb(TanStackTable::COLUMN_VISIBILITY);
+                ->json(TanStackTable::COLUMN_SIZING)
+                ->nullable();
             $blueprint
-                ->jsonb(TanStackTable::PAGINATION);
+                ->json(TanStackTable::COLUMN_VISIBILITY)
+                ->nullable();
             $blueprint
-                ->jsonb(TanStackTable::ROW_SELECTION);
+                ->json(TanStackTable::PAGINATION)
+                ->nullable();
             $blueprint
-                ->jsonb(TanStackTable::SORTING);
+                ->json(TanStackTable::ROW_SELECTION)
+                ->nullable();
+            $blueprint
+                ->json(TanStackTable::SORTING)
+                ->nullable();
             $blueprint
                 ->timestamps();
         });

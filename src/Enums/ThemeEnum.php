@@ -1,6 +1,6 @@
 <?php
 
-namespace Narsil\Ui\Enums;
+namespace Narsil\Base\Enums;
 
 /**
  * Enumeration of browser themes.

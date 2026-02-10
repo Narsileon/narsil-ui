@@ -1,10 +1,10 @@
 <?php
 
-namespace Narsil\Ui\Enums;
+namespace Narsil\Base\Enums;
 
 #region USE
 
-use Narsil\Ui\Http\Data\OptionData;
+use Narsil\Base\Http\Data\OptionData;
 
 #endregion
 

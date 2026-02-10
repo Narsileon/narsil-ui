@@ -1,6 +1,6 @@
 {
   "$schema": "https://getcomposer.org/schema.json",
-  "name": "narsil/ui",
+  "name": "narsil/base",
   "type": "library",
   "description": "Headless CMS based on Laravel and React",
   "keywords": [
@@ -17,7 +17,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Narsil\\Ui\\": "src/"
+      "Narsil\\Base\\": "src/"
     }
   },
   "autoload-dev": {
@@ -53,7 +53,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Narsil\\Ui\\ServiceProvider"
+        "Narsil\\Base\\ServiceProvider"
       ]
     }
   },

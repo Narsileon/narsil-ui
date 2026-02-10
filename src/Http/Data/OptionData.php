@@ -1,6 +1,6 @@
 <?php
 
-namespace Narsil\Ui\Http\Data;
+namespace Narsil\Base\Http\Data;
 
 #region USE
 

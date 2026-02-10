@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@narsil/ui",
+  "name": "@narsil/base",
   "version": "1.0.0",
   "type": "module",
   "private": true,

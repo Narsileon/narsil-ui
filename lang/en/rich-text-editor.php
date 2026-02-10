@@ -2,7 +2,7 @@
 
 #region USE
 
-use Narsil\Ui\Enums\RichTextEditorEnum;
+use Narsil\Base\Enums\RichTextEditorEnum;
 
 #endregion
 
