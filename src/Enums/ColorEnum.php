@@ -5,6 +5,7 @@ namespace Narsil\Base\Enums;
 #region USE
 
 use Narsil\Base\Http\Data\OptionData;
+use Narsil\Base\Traits\Enumerable;
 
 #endregion
 
@@ -16,6 +17,8 @@ use Narsil\Base\Http\Data\OptionData;
  */
 enum ColorEnum: string
 {
+    use Enumerable;
+
     case GRAY = 'gray';
     case RED = 'red';
     case ORANGE  = 'orange';

@@ -5,6 +5,7 @@ namespace Narsil\Base\Enums;
 #region USE
 
 use Narsil\Base\Http\Data\OptionData;
+use Narsil\Base\Traits\Enumerable;
 
 #endregion
 
@@ -16,6 +17,8 @@ use Narsil\Base\Http\Data\OptionData;
  */
 enum RichTextEditorEnum: string
 {
+    use Enumerable;
+
     case ALIGN_CENTER = 'align_center';
     case ALIGN_LEFT = 'align_left';
     case ALIGN_RIGHT = 'align_right';

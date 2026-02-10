@@ -2,6 +2,12 @@
 
 namespace Narsil\Base\Enums;
 
+#region USE
+
+use Narsil\Base\Traits\Enumerable;
+
+#endregion
+
 /**
  * Enumeration of browser themes.
  *
@@ -10,24 +16,9 @@ namespace Narsil\Base\Enums;
  */
 enum ThemeEnum: string
 {
+    use Enumerable;
+
     case SYSTEM = 'system';
     case LIGHT = 'light';
     case DARK = 'dark';
-
-    #region PUBLIC METHODS
-
-    /**
-     * Get the values of the enum.
-     *
-     * @return string[]
-     */
-    public static function values(): array
-    {
-        return array_map(function ($case)
-        {
-            return $case->value;
-        }, self::cases());
-    }
-
-    #endregion
 }
