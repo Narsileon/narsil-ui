@@ -5,13 +5,13 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Narsil\Base\Models\TanStackTable;
+use Narsil\Base\Models\Users\TanStackTable;
 
 #endregion
 
 return new class extends Migration
 {
-    #region PUBLIC METHODS
+    #region PUBLIC METHODS‚
 
     /**
      * Run the migrations.

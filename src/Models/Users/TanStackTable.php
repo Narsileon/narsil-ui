@@ -1,12 +1,13 @@
 <?php
 
-namespace Narsil\Base\Models;
+namespace Narsil\Base\Models\Users;
 
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Config;
+use Narsil\Base\Models\User;
 use Narsil\Base\Traits\HasUuidKey;
 
 #endregion
@@ -149,8 +150,9 @@ class TanStackTable extends Model
     {
         return $this
             ->belongsTo(
-                Config::get('auth.providers.users.model'),
+                Config::get('auth.providers.users.model', User::class),
                 self::USER_ID,
+                User::class,
             );
     }
 
