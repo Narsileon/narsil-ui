@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
-trait HasUuidKey
+trait HasUuidPrimaryKey
 {
     use HasUuids;
 
@@ -32,7 +32,7 @@ trait HasUuidKey
     /**
      * @return void
      */
-    final public function initializeHasUuidKey(): void
+    final public function initializeHasUuidPrimaryKey(): void
     {
         $this->primaryKey = self::UUID;
 

@@ -6,9 +6,9 @@ namespace Narsil\Base\Models\Users;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Narsil\Base\Models\User;
-use Narsil\Base\Traits\HasUuidKey;
+use Narsil\Base\Traits\HasUuidPrimaryKey;
 
 #endregion
 
@@ -18,7 +18,7 @@ use Narsil\Base\Traits\HasUuidKey;
  */
 class TanStackTable extends Model
 {
-    use HasUuidKey;
+    use HasUuidPrimaryKey;
 
     #region CONSTRUCTOR
 
@@ -150,7 +150,7 @@ class TanStackTable extends Model
     {
         return $this
             ->belongsTo(
-                Config::get('auth.providers.users.model', User::class),
+                Relation::getMorphedModel(User::TABLE),
                 self::USER_ID,
                 User::class,
             );

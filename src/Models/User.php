@@ -6,13 +6,22 @@ namespace Narsil\Base\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Narsil\Base\Models\Policies\Permission;
+use Narsil\Base\Models\Policies\Role;
+use Narsil\Base\Models\Policies\UserPermission;
+use Narsil\Base\Models\Policies\UserRole;
 use Narsil\Base\Models\Users\Session;
 use Narsil\Base\Models\Users\UserConfiguration;
+use Narsil\Base\Traits\AuditLoggable;
+use Narsil\Base\Traits\Blameable;
+use Narsil\Base\Traits\HasPermissions;
+use Narsil\Base\Traits\HasRoles;
 
 #endregion
 
@@ -22,6 +31,10 @@ use Narsil\Base\Models\Users\UserConfiguration;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
+    use AuditLoggable;
+    use Blameable;
+    use HasPermissions;
+    use HasRoles;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -76,6 +89,13 @@ class User extends Authenticatable implements MustVerifyEmail
     final public const TABLE = 'users';
 
     #region • COLUMNS
+
+    /**
+     * The name of the "avatar" column.
+     *
+     * @var string
+     */
+    final public const AVATAR = 'avatar';
 
     /**
      * The name of the "email" column.
@@ -225,6 +245,36 @@ class User extends Authenticatable implements MustVerifyEmail
                 UserConfiguration::USER_ID,
                 self::ID
             );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    final public function permissions(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(
+                Permission::class,
+                UserPermission::TABLE,
+                UserPermission::USER_ID,
+                UserPermission::PERMISSION_ID,
+            )
+            ->using(UserPermission::class);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    final public function roles(): BelongsToMany
+    {
+        return $this
+            ->belongsToMany(
+                Role::class,
+                UserRole::TABLE,
+                UserRole::USER_ID,
+                UserRole::ROLE_ID,
+            )
+            ->using(UserRole::class);
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace Narsil\Base\Models\Users;
+namespace Narsil\Base\Models\Policies;
 
 #region USE
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Narsil\Base\Models\User;
 use Narsil\Base\Traits\HasUuidPrimaryKey;
@@ -16,7 +16,7 @@ use Narsil\Base\Traits\HasUuidPrimaryKey;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
-class UserConfiguration extends Model
+class UserPermission extends Pivot
 {
     use HasUuidPrimaryKey;
 
@@ -28,6 +28,8 @@ class UserConfiguration extends Model
     public function __construct(array $attributes = [])
     {
         $this->table = self::TABLE;
+
+        $this->timestamps = false;
 
         parent::__construct($attributes);
     }
@@ -41,44 +43,16 @@ class UserConfiguration extends Model
      *
      * @var string
      */
-    final public const TABLE = 'user_configurations';
+    final public const TABLE = 'user_permission';
 
     #region • COLUMNS
 
     /**
-     * The name of the "color" column.
+     * The name of the "permission id" column.
      *
      * @var string
      */
-    final public const COLOR = 'color';
-
-    /**
-     * The name of the "language" column.
-     *
-     * @var string
-     */
-    final public const LANGUAGE = 'language';
-
-    /**
-     * The name of the "preferences" column.
-     *
-     * @var string
-     */
-    final public const PREFERENCES = 'preferences';
-
-    /**
-     * The name of the "radius" column.
-     *
-     * @var string
-     */
-    final public const RADIUS = 'radius';
-
-    /**
-     * The name of the "theme" column.
-     *
-     * @var string
-     */
-    final public const THEME = 'theme';
+    final public const PERMISSION_ID = 'permission_id';
 
     /**
      * The name of the "user id" column.
@@ -90,6 +64,13 @@ class UserConfiguration extends Model
     #endregion
 
     #region • RELATIONS
+
+    /**
+     * The name of the "permission" relation.
+     *
+     * @var string
+     */
+    final public const RELATION_PERMISSION = 'permission';
 
     /**
      * The name of the "user" relation.
@@ -107,6 +88,21 @@ class UserConfiguration extends Model
     #region • RELATIONSHIPS
 
     /**
+     * Get the associated permission.
+     *
+     * @return BelongsTo
+     */
+    final public function permission(): BelongsTo
+    {
+        return $this
+            ->belongsTo(
+                Permission::class,
+                self::PERMISSION_ID,
+                Permission::ID,
+            );
+    }
+
+    /**
      * Get the associated user.
      *
      * @return BelongsTo
@@ -117,7 +113,7 @@ class UserConfiguration extends Model
             ->belongsTo(
                 Relation::getMorphedModel(User::TABLE),
                 self::USER_ID,
-                User::ID
+                User::ID,
             );
     }
 

@@ -45,7 +45,7 @@ trait AuditLoggable
      *
      * @return void
      */
-    public static function bootHasAuditLogs(): void
+    public static function bootAuditLoggable(): void
     {
         static::getEvents()->each(function ($event)
         {
