@@ -14,6 +14,7 @@ use Narsil\Base\Models\User;
 use Narsil\Base\Observers\ModelObserver;
 use Narsil\Base\Traits\AuditLoggable;
 use Narsil\Base\Traits\Blameable;
+use Narsil\Base\Traits\HasDatetimes;
 use Narsil\Base\Traits\HasPermissions;
 use Narsil\Base\Traits\HasTranslations;
 
@@ -28,6 +29,7 @@ class Role extends Model
 {
     use AuditLoggable;
     use Blameable;
+    use HasDatetimes;
     use HasPermissions;
     use HasTranslations;
 
