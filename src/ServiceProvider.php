@@ -28,6 +28,16 @@ class ServiceProvider extends BaseServiceProvider
         $this->bootViews();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function register(): void
+    {
+        $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/requests.php', 'narsil.bindings.requests');
+
+        $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/morphs.php', 'narsil.morphs.requests');
+    }
+
     #endregion
 
     #region PROTECTED METHODS
