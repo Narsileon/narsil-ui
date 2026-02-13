@@ -4,13 +4,18 @@ namespace Narsil\Base\Models\Policies;
 
 #region USE
 
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Cache;
+use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Models\User;
+use Narsil\Base\Observers\ModelObserver;
 use Narsil\Base\Traits\AuditLoggable;
 use Narsil\Base\Traits\Blameable;
 use Narsil\Base\Traits\HasRoles;
+use Narsil\Base\Traits\HasTranslations;
 
 #endregion
 
@@ -18,11 +23,13 @@ use Narsil\Base\Traits\HasRoles;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
+#[ObservedBy([ModelObserver::class])]
 class Permission extends Model
 {
     use AuditLoggable;
     use Blameable;
     use HasRoles;
+    use HasTranslations;
 
     #region CONSTRUCTOR
 
@@ -32,6 +39,10 @@ class Permission extends Model
     public function __construct(array $attributes = [])
     {
         $this->table = self::TABLE;
+
+        $this->translatable = [
+            self::LABEL,
+        ];
 
         $this->mergeGuarded([
             self::ID,
@@ -101,6 +112,32 @@ class Permission extends Model
     #endregion
 
     #region PUBLIC METHODS
+
+        #region PUBLIC METHODS
+
+    /**
+     * Get the permissions as options.
+     *
+     * @return OptionData[]
+     */
+    public static function options(): array
+    {
+        return Cache::tags([self::TABLE])
+            ->rememberForever('options', function ()
+            {
+                return self::all()
+                    ->map(function (Permission $permission)
+                    {
+                        return new OptionData(
+                            label: $permission->{self::LABEL},
+                            value: $permission->{self::ID},
+                        );
+                    })
+                    ->all();
+            });
+    }
+
+    #endregion
 
     #region • RELATIONSHIPS
 
