@@ -1,10 +1,11 @@
 <?php
 
-namespace Narsil\Base\Http\Requests;
+namespace Narsil\Base\Implementations\Requests;
 
 #region USE
 
 use Illuminate\Foundation\Http\FormRequest;
+use Narsil\Base\Contracts\Requests\TanStackTableFormRequest as Contract;
 use Narsil\Base\Models\Users\TanStackTable;
 use Narsil\Base\Validation\FormRule;
 
@@ -14,7 +15,7 @@ use Narsil\Base\Validation\FormRule;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
-class TanStackTableFormRequest extends FormRequest
+class TanStackTableFormRequest extends FormRequest implements Contract
 {
     #region PUBLIC METHODS
 
@@ -45,7 +46,7 @@ class TanStackTableFormRequest extends FormRequest
                 FormRule::NULLABLE,
             ],
             TanStackTable::GLOBAL_FILTER => [
-                FormRule::ARRAY,
+                FormRule::STRING,
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
             ],
@@ -70,6 +71,7 @@ class TanStackTableFormRequest extends FormRequest
             ],
             TanStackTable::TABLE_ID => [
                 FormRule::STRING,
+                FormRule::REQUIRED,
             ],
         ];
     }
