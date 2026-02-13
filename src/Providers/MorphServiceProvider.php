@@ -48,7 +48,6 @@ class MorphServiceProvider extends ServiceProvider
      */
     protected function bootMorphMap(): void
     {
-
         $config = Config::get('narsil.models.morphs', []);
 
         $map = [];
