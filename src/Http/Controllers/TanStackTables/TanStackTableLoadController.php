@@ -1,0 +1,52 @@
+<?php
+
+namespace Narsil\Base\Http\Controllers\TanStackTables;
+
+#region USE
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Narsil\Base\Contracts\Requests\TanStackTableFormRequest;
+use Narsil\Base\Models\Users\TanStackTable;
+
+#endregion
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ */
+class TanStackTableLoadController
+{
+    #region PUBLIC METHODS
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function __invoke(TanStackTableFormRequest $request): RedirectResponse
+    {
+        $attributes = $request->validated();
+
+        $tanStackTable = TanStackTable::query()
+            ->where(TanStackTable::USER_ID, Auth::id())
+            ->where(TanStackTable::TABLE_ID, Arr::get($attributes, TanStackTable::TABLE_ID))
+            ->where(TanStackTable::NAME, Arr::get($attributes, TanStackTable::NAME))
+            ->first();
+
+        if ($tanStackTable)
+        {
+            TanStackTable::query()
+                ->where(TanStackTable::USER_ID, Auth::id())
+                ->where(TanStackTable::TABLE_ID, Arr::get($attributes, TanStackTable::TABLE_ID))
+                ->where(TanStackTable::NAME, null)
+                ->update($tanStackTable->getAttributes());
+        }
+
+        return back();
+    }
+
+    #endregion
+}

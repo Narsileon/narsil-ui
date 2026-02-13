@@ -24,6 +24,7 @@ class ServiceProvider extends BaseServiceProvider
     public function boot(): void
     {
         $this->bootMigrations();
+        $this->bootRoutes();
         $this->bootTranslations();
         $this->bootViews();
     }
@@ -33,10 +34,8 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/narsil/locales.php', 'narsil.locales');
-
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/requests.php', 'narsil.bindings.requests');
-
+        $this->mergeConfigFrom(__DIR__ . '/../config/narsil/locales.php', 'narsil.locales');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/morphs.php', 'narsil.models.morphs');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/observers.php', 'narsil.models.observers');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/policies.php', 'narsil.models.policies');
@@ -56,6 +55,16 @@ class ServiceProvider extends BaseServiceProvider
         $this->loadMigrationsFrom([
             __DIR__ . '/../database/migrations',
         ]);
+    }
+
+    /**
+     * Boot the routes.
+     *
+     * @return void
+     */
+    protected function bootRoutes(): void
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
     }
 
     /**
