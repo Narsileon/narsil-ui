@@ -1,9 +1,9 @@
 import { Button, buttonVariants } from "@narsil-ui/components/button";
+import { CalendarDayButton } from "@narsil-ui/components/calendar";
 import { Icon } from "@narsil-ui/components/icon";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";
 import { DayPicker, getDefaultClassNames } from "react-day-picker";
-import CalendarDayButton from "./calendar-day-button";
 
 type CalendarRootProps = ComponentProps<typeof DayPicker> & {
   buttonVariant?: ComponentProps<typeof Button>["variant"];
@@ -26,7 +26,7 @@ function CalendarRoot({
       className={cn(
         "group/calendar bg-background p-3 [--cell-size:--spacing(8)]",
         "in-data-[slot=card-content]:bg-transparent",
-        "in-data-[slot=popover-content]:bg-transparent",
+        "in-data-[slot=popover-popup]:bg-transparent",
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className,

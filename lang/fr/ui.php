@@ -1,6 +1,13 @@
 <?php
 
 return [
-    'confirm' => 'Confirmer',
-    'cancel'  => 'Annuler',
+    'cancel'    => 'Annuler',
+    'confirm'   => 'Confirmer',
+    'create'    => 'Créer',
+    'delete'    => 'Supprimer',
+    'duplicate' => 'Dupliquer',
+    'edit'      => 'Modifier',
+    'reset'     => 'Reinitialiser',
+    'settings'  => 'Paramètres',
+    'update'    => 'Mettre à jour',
 ];

@@ -7,12 +7,7 @@ type ToggleGroupContextProps = VariantProps<typeof toggleVariants> & {
   spacing?: number;
 };
 
-export const ToggleGroupContext = createContext<ToggleGroupContextProps>({
-  orientation: "horizontal",
-  size: "default",
-  spacing: 0,
-  variant: "default",
-});
+export const ToggleGroupContext = createContext<ToggleGroupContextProps | null>(null);
 
 function useToggleGroup() {
   const context = useContext(ToggleGroupContext);

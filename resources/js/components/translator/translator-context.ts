@@ -13,13 +13,7 @@ export type TranslatorContextProps = {
   trans: (key: string, options?: TransOptions) => string;
 };
 
-export const TranslatorContext = createContext<TranslatorContextProps>({
-  locale: "en",
-  addTranslations: () => {},
-  setLocale: () => {},
-  setTranslations: () => {},
-  trans: () => "",
-});
+export const TranslatorContext = createContext<TranslatorContextProps | null>(null);
 
 function useTranslator() {
   const context = useContext(TranslatorContext);

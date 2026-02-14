@@ -25,22 +25,17 @@ class TanStackTableFormRequest extends FormRequest implements Contract
     public function rules(): array
     {
         return [
+            TanStackTable::COLUMN_FILTERS => [
+                FormRule::ARRAY,
+                FormRule::SOMETIMES,
+                FormRule::NULLABLE,
+            ],
             TanStackTable::COLUMN_ORDER => [
                 FormRule::ARRAY,
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
             ],
-            TanStackTable::COLUMN_SIZING => [
-                FormRule::ARRAY,
-                FormRule::SOMETIMES,
-                FormRule::NULLABLE,
-            ],
             TanStackTable::COLUMN_VISIBILITY => [
-                FormRule::ARRAY,
-                FormRule::SOMETIMES,
-                FormRule::NULLABLE,
-            ],
-            TanStackTable::FILTERS => [
                 FormRule::ARRAY,
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
@@ -54,8 +49,8 @@ class TanStackTableFormRequest extends FormRequest implements Contract
                 FormRule::STRING,
                 FormRule::SOMETIMES,
             ],
-            TanStackTable::PAGINATION => [
-                FormRule::ARRAY,
+            TanStackTable::PAGE_SIZE => [
+                FormRule::INTEGER,
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
             ],
@@ -69,7 +64,7 @@ class TanStackTableFormRequest extends FormRequest implements Contract
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
             ],
-            TanStackTable::TABLE_ID => [
+            TanStackTable::TABLE_NAME => [
                 FormRule::STRING,
                 FormRule::REQUIRED,
             ],

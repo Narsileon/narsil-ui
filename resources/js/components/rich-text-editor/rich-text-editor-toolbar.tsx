@@ -7,24 +7,26 @@ import {
   DropdownMenuTrigger,
 } from "@narsil-ui/components/dropdown-menu";
 import { Icon } from "@narsil-ui/components/icon";
+import {
+  RichTextEditorBold,
+  RichTextEditorBulletList,
+  RichTextEditorHeading,
+  RichTextEditorItalic,
+  RichTextEditorOrderedList,
+  RichTextEditorRedo,
+  RichTextEditorStrike,
+  RichTextEditorSubscript,
+  RichTextEditorSuperscript,
+  RichTextEditorTextAlign,
+  RichTextEditorUnderline,
+  RichTextEditorUndo,
+} from "@narsil-ui/components/rich-text-editor";
 import { Separator } from "@narsil-ui/components/separator";
 import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { useCurrentEditor } from "@tiptap/react";
 import { ComponentProps } from "react";
-import RichTextEditorBold from "./rich-text-editor-bold";
-import RichTextEditorBulletList from "./rich-text-editor-bullet-list";
-import RichTextEditorHeading from "./rich-text-editor-heading";
-import RichTextEditorItalic from "./rich-text-editor-italic";
-import RichTextEditorOrderedList from "./rich-text-editor-ordered-list";
-import RichTextEditorRedo from "./rich-text-editor-redo";
-import RichTextEditorStrike from "./rich-text-editor-strike";
-import RichTextEditorSubscript from "./rich-text-editor-subscript";
-import RichTextEditorSuperscript from "./rich-text-editor-superscript";
-import RichTextEditorTextAlign from "./rich-text-editor-text-align";
-import RichTextEditorUnderline from "./rich-text-editor-underline";
-import RichTextEditorUndo from "./rich-text-editor-undo";
 
 type RichTextEditorToolbarProps = ComponentProps<"div"> & {
   modules: string[];

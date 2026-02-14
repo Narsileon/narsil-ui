@@ -11,6 +11,9 @@ use Illuminate\Support\Fluent;
 /**
  * @version 1.0.0
  * @author Jonathan Rigaux
+ *
+ * @property string $label The label of the option.
+ * @property string $value The value of the option.
  */
 class OptionData extends Fluent
 {

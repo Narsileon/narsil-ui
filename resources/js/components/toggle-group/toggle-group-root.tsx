@@ -38,7 +38,7 @@ function ToggleGroupRoot({
       {...props}
     >
       <ToggleGroupContext.Provider
-        value={{ orientation: orientation, spacing: spacing, size: size, variant: variant }}
+        value={{ orientation: orientation, size: size, spacing: spacing, variant: variant }}
       >
         {children}
       </ToggleGroupContext.Provider>

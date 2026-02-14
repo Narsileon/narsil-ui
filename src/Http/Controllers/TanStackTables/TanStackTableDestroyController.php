@@ -32,7 +32,7 @@ class TanStackTableDestroyController
 
         TanStackTable::query()
             ->where(TanStackTable::USER_ID, Auth::id())
-            ->where(TanStackTable::TABLE_ID, Arr::get($attributes, TanStackTable::TABLE_ID))
+            ->where(TanStackTable::TABLE_NAME, Arr::get($attributes, TanStackTable::TABLE_NAME))
             ->where(TanStackTable::NAME, Arr::get($attributes, TanStackTable::NAME))
             ->delete();
 

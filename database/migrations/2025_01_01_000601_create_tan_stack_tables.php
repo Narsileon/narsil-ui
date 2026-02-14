@@ -55,7 +55,7 @@ return new class extends Migration
             $blueprint
                 ->bigInteger(TanStackTable::USER_ID);
             $blueprint
-                ->string(TanStackTable::TABLE_ID)
+                ->string(TanStackTable::TABLE_NAME)
                 ->index();
             $blueprint
                 ->string(TanStackTable::NAME)
@@ -65,20 +65,17 @@ return new class extends Migration
                 ->string(TanStackTable::GLOBAL_FILTER)
                 ->nullable();
             $blueprint
-                ->json(TanStackTable::FILTERS)
+                ->json(TanStackTable::COLUMN_FILTERS)
                 ->nullable();
             $blueprint
                 ->json(TanStackTable::COLUMN_ORDER)
                 ->nullable();
             $blueprint
-                ->json(TanStackTable::COLUMN_SIZING)
-                ->nullable();
-            $blueprint
                 ->json(TanStackTable::COLUMN_VISIBILITY)
                 ->nullable();
             $blueprint
-                ->json(TanStackTable::PAGINATION)
-                ->nullable();
+                ->integer(TanStackTable::PAGE_SIZE)
+                ->default(10);
             $blueprint
                 ->json(TanStackTable::ROW_SELECTION)
                 ->nullable();

@@ -17,6 +17,8 @@ abstract class PermissionService
     #region PUBLIC METHODS
 
     /**
+     * Get the label of the permission based on the name of the table.
+     *
      * @param string $table
      * @param string $permission
      * @param string|null $locale
@@ -32,6 +34,8 @@ abstract class PermissionService
     }
 
     /**
+     * Get the name of the permission based on the name of the table.
+     *
      * @param string $table
      * @param AbilityEnum $ability
      *

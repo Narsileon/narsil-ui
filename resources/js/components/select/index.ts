@@ -1,6 +1,7 @@
 // https://ui.shadcn.com/docs/components/base/select
 // https://base-ui.com/react/components/select
 
+import Select from "./select";
 import SelectGroup from "./select-group";
 import SelectGroupLabel from "./select-group-label";
 import SelectIcon from "./select-icon";
@@ -19,6 +20,7 @@ import selectTriggerVariants from "./select-trigger-variants";
 import SelectValue from "./select-value";
 
 export {
+  Select,
   SelectGroup,
   SelectGroupLabel,
   SelectIcon,

@@ -1,0 +1,203 @@
+<?php
+
+namespace Narsil\Base\Http\Data\TanStackTables;
+
+#region USE
+
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Fluent;
+use Narsil\Base\Enums\OperatorEnum;
+use Narsil\Base\Enums\PostgreTypeEnum;
+use Narsil\Base\Models\Users\TanStackTable;
+use Narsil\Base\Services\TableService;
+
+#endregion
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ *
+ * @property string $table_name The name of the table.
+ * @property array $column_filters The filters of the columns.
+ * @property array $column_order The order of the columns.
+ * @property array $column_visibility The visibility of the columns.
+ * @property string $global_filter The filter of the table.
+ * @property integer $page_size The page size of the table.
+ * @property array $row_selection The selected rows.
+ * @property array $sorting The sorting of the columns.
+ */
+class TanStackTableData extends Fluent
+{
+    #region CONSTRUCTOR
+
+    /**
+     * @param string $tableName
+     * @param array|null $columnFilters
+     * @param array|null $columnOrder
+     * @param array|null $columnVisibility
+     * @param string|null $globalFilter
+     * @param integer|null $pageSize
+     * @param array|null $sorting
+     *
+     * @return void
+     */
+    public function __construct(
+        string $tableName,
+        ?array $columnFilters = null,
+        ?array $columnOrder = null,
+        ?array $columnVisibility = null,
+        ?string $globalFilter = null,
+        ?int $pageSize = null,
+        ?array $rowSelection = null,
+        ?array $sorting = null
+    )
+    {
+        $this->set('table_name', $tableName);
+
+        $this->set('column_filters', $columnFilters ?? []);
+        $this->set('column_order', $columnOrder ?? []);
+        $this->set('column_visibility', $columnVisibility ?? []);
+        $this->set('global_filter', $globalFilter ?? '');
+        $this->set('page_size', $pageSize ?? 10);
+        $this->set('row_selection', $rowSelection ?? []);
+        $this->set('sorting', $sorting ?? []);
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * @param TanStackTable $tanStacktable
+     *
+     * @return TanStackTableData
+     */
+    public static function fromModel(TanStackTable $tanStacktable): TanStackTableData
+    {
+        return new TanStackTableData(
+            tableName: $tanStacktable?->{TanStackTable::TABLE_NAME},
+            columnFilters: $tanStacktable?->{TanStackTable::COLUMN_FILTERS},
+            columnOrder: $tanStacktable?->{TanStackTable::COLUMN_ORDER},
+            columnVisibility: $tanStacktable?->{TanStackTable::COLUMN_VISIBILITY},
+            globalFilter: $tanStacktable?->{TanStackTable::GLOBAL_FILTER},
+            pageSize: $tanStacktable?->{TanStackTable::PAGE_SIZE},
+            rowSelection: $tanStacktable?->{TanStackTable::ROW_SELECTION},
+            sorting: $tanStacktable?->{TanStackTable::SORTING},
+        );
+    }
+
+    /**
+     * Applies the column filters to the query.
+     *
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function applyColumnFilters(Builder $query): void
+    {
+        $locale = App::getLocale();
+
+        $model = $query->getModel();
+
+        foreach ($this->column_filters as $filter)
+        {
+            $column = Arr::get($filter, 'column');
+            $operator = Arr::get($filter, 'operator');
+            $value = Arr::get($filter, 'value');
+
+            if (empty($column) || empty($operator) || empty($value))
+            {
+                continue;
+            }
+
+            $key = $column;
+
+            if (method_exists($model, 'isTranslatableAttribute') && $model->isTranslatableAttribute($column))
+            {
+                $key = "$column->$locale";
+            }
+
+            match ($operator)
+            {
+                OperatorEnum::AFTER_OR_EQUAL->value => $query->whereDate($key, '>=', $value),
+                OperatorEnum::AFTER->value => $query->whereDate($key, '>', $value),
+                OperatorEnum::BEFORE_OR_EQUAL->value => $query->whereDate($key, '<=', $value),
+                OperatorEnum::BEFORE->value => $query->whereDate($key, '<', $value),
+                OperatorEnum::CONTAINS->value => $query->whereLike($key, "%{$value}%"),
+                OperatorEnum::DOESNT_END_WITH->value => $query->whereNotLike($key, "%{$value}"),
+                OperatorEnum::DOESNT_START_WITH->value => $query->whereNotLike($key,  "{$value}%"),
+                OperatorEnum::ENDS_WITH->value => $query->whereLike($key, "%{$value}"),
+                OperatorEnum::EQUALS->value => $query->where($key, '=', $value),
+                OperatorEnum::GREATER_THAN_OR_EQUAL->value => $query->where($key, '>=', $value),
+                OperatorEnum::GREATER_THAN->value => $query->where($key, '>', $value),
+                OperatorEnum::LESS_THAN_OR_EQUAL->value => $query->where($key, '<=', $value),
+                OperatorEnum::LESS_THAN->value => $query->where($key, '<', $value),
+                OperatorEnum::NOT_CONTAINS->value => $query->whereNotLike($key, "%{$value}%"),
+                OperatorEnum::NOT_EQUALS->value => $query->where($key, '!=', $value),
+                OperatorEnum::STARTS_WITH->value => $query->whereLike($key, "{$value}%"),
+                default => null,
+            };
+        }
+    }
+
+    /**
+     * Applies the global filter to the query.
+     *
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function applyGlobalFilter(Builder $query): void
+    {
+        if (empty($this->global_filter))
+        {
+            return;
+        }
+
+        $locale = App::getLocale();
+
+        $columns = TableService::getColumns($this->table_name);
+
+        $columns->each(function ($column) use ($locale, $query)
+        {
+            switch ($column->type)
+            {
+                case PostgreTypeEnum::JSONB->value:
+                    $query->orWhereLike("$column->name->$locale", '%' . $this->global_filter . '%');
+                    break;
+                case PostgreTypeEnum::VARCHAR->value:
+                    $query->orWhereLike($column->name, '%' . $this->global_filter . '%');
+                    break;
+                default:
+                    break;
+            }
+        });
+    }
+
+    /**
+     * Applies the sorting to the query.
+     *
+     * @param Builder $query
+     *
+     * @return void
+     */
+    public function applySorting(Builder $query): void
+    {
+        if (empty($this->sorting))
+        {
+            return;
+        }
+
+        foreach ($this->sorting as $sorting)
+        {
+            $id = Arr::get($sorting, 'id');
+            $desc = Arr::get($sorting, 'desc');
+
+            $query->orderBy($id, $desc ? 'desc' : 'asc');
+        }
+    }
+
+    #endregion
+}

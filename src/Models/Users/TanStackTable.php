@@ -29,6 +29,14 @@ class TanStackTable extends Model
     {
         $this->table = self::TABLE;
 
+        $this->mergeCasts([
+            self::COLUMN_FILTERS => 'array',
+            self::COLUMN_ORDER => 'array',
+            self::COLUMN_VISIBILITY => 'array',
+            self::ROW_SELECTION => 'array',
+            self::SORTING => 'array',
+        ]);
+
         parent::__construct($attributes);
     }
 
@@ -46,6 +54,13 @@ class TanStackTable extends Model
     #region • COLUMNS
 
     /**
+     * The name of the "column filters" column.
+     *
+     * @var string
+     */
+    final public const COLUMN_FILTERS = 'column_filters';
+
+    /**
      * The name of the "column order" column.
      *
      * @var string
@@ -53,25 +68,11 @@ class TanStackTable extends Model
     final public const COLUMN_ORDER = 'column_order';
 
     /**
-     * The name of the "column sizing" column.
-     *
-     * @var string
-     */
-    final public const COLUMN_SIZING = 'column_sizing';
-
-    /**
      * The name of the "column visibility" column.
      *
      * @var string
      */
     final public const COLUMN_VISIBILITY = 'column_visibility';
-
-    /**
-     * The name of the "filters" column.
-     *
-     * @var string
-     */
-    final public const FILTERS = 'filters';
 
     /**
      * The name of the "global filter" column.
@@ -88,11 +89,11 @@ class TanStackTable extends Model
     final public const NAME = 'name';
 
     /**
-     * The name of the "pagination" column.
+     * The name of the "page size" column.
      *
      * @var string
      */
-    final public const PAGINATION = 'pagination';
+    final public const PAGE_SIZE = 'page_size';
 
     /**
      * The name of the "row selection" column.
@@ -109,11 +110,11 @@ class TanStackTable extends Model
     final public const SORTING = 'sorting';
 
     /**
-     * The name of the "table id" column.
+     * The name of the "table name" column.
      *
      * @var string
      */
-    final public const TABLE_ID = 'table_id';
+    final public const TABLE_NAME = 'table_name';
 
     /**
      * The name of the "user id" column.

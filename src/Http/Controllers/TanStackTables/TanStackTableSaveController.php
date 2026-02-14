@@ -33,7 +33,7 @@ class TanStackTableSaveController
         TanStackTable::updateOrCreate(
             [
                 TanStackTable::NAME => Arr::get($attributes, TanStackTable::NAME),
-                TanStackTable::TABLE_ID => Arr::get($attributes, TanStackTable::TABLE_ID),
+                TanStackTable::TABLE_NAME => Arr::get($attributes, TanStackTable::TABLE_NAME),
                 TanStackTable::USER_ID => Auth::id(),
             ],
             $attributes

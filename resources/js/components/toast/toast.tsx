@@ -1,14 +1,16 @@
 import { type ToastManagerAddOptions, Toast as ToastPrimitive } from "@base-ui/react/toast";
 import { Icon } from "@narsil-ui/components/icon";
 import { ItemActions, ItemContent, ItemMedia, ItemRoot } from "@narsil-ui/components/item";
+import {
+  ToastClose,
+  ToastContent,
+  ToastDescription,
+  ToastPortal,
+  ToastRoot,
+  ToastTitle,
+  ToastViewport,
+} from "@narsil-ui/components/toast";
 import { useEffect } from "react";
-import ToastClose from "./toast-close";
-import ToastContent from "./toast-content";
-import ToastDescription from "./toast-description";
-import ToastPortal from "./toast-portal";
-import ToastRoot from "./toast-root";
-import ToastTitle from "./toast-title";
-import ToastViewport from "./toast-viewport";
 
 type ToastProps = {
   options?: ToastManagerAddOptions<object>[];

@@ -1,10 +1,10 @@
 import { Popover } from "@base-ui/react/popover";
 import { cn } from "@narsil-ui/lib/utils";
 
-function PopoverContent({ className, ...props }: Popover.Popup.Props) {
+function PopoverPopup({ className, ...props }: Popover.Popup.Props) {
   return (
     <Popover.Popup
-      data-slot="popover-content"
+      data-slot="popover-popup"
       className={cn(
         "z-50 flex w-72 flex-col gap-2.5 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 outline-hidden duration-100",
         "data-[side=bottom]:slide-in-from-top-2",
@@ -23,4 +23,4 @@ function PopoverContent({ className, ...props }: Popover.Popup.Props) {
   );
 }
 
-export default PopoverContent;
+export default PopoverPopup;

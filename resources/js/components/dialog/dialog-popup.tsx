@@ -1,8 +1,8 @@
 import { Dialog } from "@base-ui/react/dialog";
+import { DialogCloseButton } from "@narsil-ui/components/dialog";
 import { cn } from "@narsil-ui/lib/utils";
 import { type VariantProps } from "class-variance-authority";
 import { type ComponentProps } from "react";
-import DialogCloseButton from "./dialog-close-button";
 import dialogPopupVariants from "./dialog-popup-variants";
 
 function DialogPopup({
