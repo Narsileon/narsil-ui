@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use JsonSerializable;
 use Narsil\Base\Contracts\Table;
 use Narsil\Base\Enums\OperatorEnum;
@@ -47,11 +46,9 @@ class DataTableCollection extends ResourceCollection
 
         $this->table = $template;
 
-        $this->id = Str::slug($table);
-
         $tanStackTable = TanStackTable::query()
             ->where(TanStackTable::USER_ID, Auth::id())
-            ->where(TanStackTable::TABLE_NAME, $this->id)
+            ->where(TanStackTable::TABLE_NAME, $table)
             ->first();
 
         if ($tanStackTable)
@@ -61,7 +58,7 @@ class DataTableCollection extends ResourceCollection
         else
         {
             $this->tableData = new TableData(
-                tableName: $this->id,
+                tableName: $table,
             );
         }
 
@@ -91,11 +88,6 @@ class DataTableCollection extends ResourceCollection
     #endregion
 
     #region PROPERTIES
-
-    /**
-     * @var string
-     */
-    protected readonly string $id;
 
     /**
      * @var Table
@@ -132,33 +124,20 @@ class DataTableCollection extends ResourceCollection
      */
     public function with($request): array
     {
-        $meta = $this->getMeta();
-
         $columns = $this->table->columns();
 
-        return array_merge([
-            'columns' => $columns,
-            'columnOrder' => $this->table->columnOrder($columns),
-            'columnVisibility' => $this->table->columnVisibility($columns),
-            'meta' => $meta,
-        ]);
+        return [
+            'meta' => [
+                'columns' => $columns,
+                'routes' => $this->table->routes(),
+                'tableData' => $this->tableData,
+            ],
+        ];
     }
 
     #endregion
 
     #region PROTECTED METHODS
-
-    /**
-     * @return array<string,mixed>
-     */
-    protected function getMeta(): array
-    {
-        return array_merge($this->options, [
-            'id'     => $this->id,
-            'routes' => $this->table->routes(),
-            'tableData' => $this->tableData,
-        ]);
-    }
 
     /**
      * @return void

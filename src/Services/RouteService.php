@@ -51,7 +51,7 @@ abstract class RouteService
             return Route::has($name);
         });
 
-        $names['params'] = $parameters;
+        $names['parameters'] = $parameters;
 
         return $names;
     }
