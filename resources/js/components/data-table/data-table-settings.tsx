@@ -115,73 +115,47 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
           </DialogHeader>
           <DialogBody className="grow flex-row">
             <SectionRoot className="flex-1/3 shrink-0">
-              <SectionHeader className="border-b">
-                <Heading>{trans("ui.available_columns")}</Heading>
+              <SectionHeader>
+                <Heading>{trans("data-table.columns", { fallback: "Columns" })}</Heading>
               </SectionHeader>
-              <SectionContent className="gap-y-1">
-                {availableColumns.map((column) => {
-                  const columnLabel = upperFirst(column.columnDef.header as string);
-                  const label = `${trans("tooltips.show")} '${columnLabel}'`;
+              <SectionContent className="grid grid-cols-2 divide-x">
+                <div className="flex-1/2 pr-4">
+                  {availableColumns.map((column) => {
+                    const columnLabel = upperFirst(column.columnDef.header as string);
+                    const label = `${trans("tooltips.show")} '${columnLabel}'`;
 
-                  return (
-                    <Tooltip tooltip={label} key={column.id}>
-                      <Button
-                        aria-label={label}
-                        className="justify-start font-normal"
-                        variant="outline"
-                        onClick={() => handleActivate(column)}
-                      >
-                        {upperFirst(column.columnDef.header as string)}
-                      </Button>
-                    </Tooltip>
-                  );
-                })}
-              </SectionContent>
-            </SectionRoot>
-            <SectionRoot className="flex-1/3 shrink-0">
-              <SectionHeader className="border-b">
-                <Heading>{trans("ui.active_columns")}</Heading>
-              </SectionHeader>
-              <SectionContent className="gap-y-1">
-                <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-                  <SortableContext
-                    items={activeColumns.map((column) => column.id)}
-                    strategy={verticalListSortingStrategy}
-                  >
-                    {activeColumns.map((column) => {
-                      return (
-                        <SortableItem
-                          key={column.id}
-                          column={column}
-                          onRemove={() => handleDeactivate(column)}
-                        />
-                      );
-                    })}
-                  </SortableContext>
-                </DndContext>
-              </SectionContent>
-            </SectionRoot>
-            <SectionRoot className="flex-1/3 shrink-0">
-              <SectionHeader className="border-b">
-                <Heading>{trans("ui.active_columns")}</Heading>
-              </SectionHeader>
-              <SectionContent className="gap-y-1">
-                <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-                  <SortableContext
-                    items={activeColumns.map((column) => column.id)}
-                    strategy={verticalListSortingStrategy}
-                  >
-                    {activeColumns.map((column) => {
-                      return (
-                        <SortableItem
-                          key={column.id}
-                          column={column}
-                          onRemove={() => handleDeactivate(column)}
-                        />
-                      );
-                    })}
-                  </SortableContext>
-                </DndContext>
+                    return (
+                      <Tooltip tooltip={label} key={column.id}>
+                        <Button
+                          aria-label={label}
+                          className="w-full justify-start font-normal"
+                          variant="outline"
+                          onClick={() => handleActivate(column)}
+                        >
+                          {upperFirst(column.columnDef.header as string)}
+                        </Button>
+                      </Tooltip>
+                    );
+                  })}
+                </div>
+                <div className="flex-1/2 pl-4">
+                  <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                    <SortableContext
+                      items={activeColumns.map((column) => column.id)}
+                      strategy={verticalListSortingStrategy}
+                    >
+                      {activeColumns.map((column) => {
+                        return (
+                          <SortableItem
+                            column={column}
+                            onRemove={() => handleDeactivate(column)}
+                            key={column.id}
+                          />
+                        );
+                      })}
+                    </SortableContext>
+                  </DndContext>
+                </div>
               </SectionContent>
             </SectionRoot>
           </DialogBody>
