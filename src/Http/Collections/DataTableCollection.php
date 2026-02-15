@@ -134,10 +134,12 @@ class DataTableCollection extends ResourceCollection
     {
         $meta = $this->getMeta();
 
+        $columns = $this->table->columns();
+
         return array_merge([
-            'columns' => $this->table->getColumns(),
-            'columnOrder' => $this->table->getColumnOrder(),
-            'columnVisibility' => $this->table->getColumnVisibility(),
+            'columns' => $columns,
+            'columnOrder' => $this->table->columnOrder($columns),
+            'columnVisibility' => $this->table->columnVisibility($columns),
             'meta' => $meta,
         ]);
     }
@@ -153,7 +155,7 @@ class DataTableCollection extends ResourceCollection
     {
         return array_merge($this->options, [
             'id'     => $this->id,
-            'routes' => $this->table->getRoutes(),
+            'routes' => $this->table->routes(),
             'tableData' => $this->tableData,
         ]);
     }

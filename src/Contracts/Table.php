@@ -2,6 +2,12 @@
 
 namespace Narsil\Base\Contracts;
 
+#region USE
+
+use Narsil\Base\Http\Data\TanStackTables\ColumnDefData;
+
+#endregion
+
 /**
  * @version 1.0.0
  * @author Jonathan Rigaux
@@ -13,30 +19,34 @@ interface Table
     /**
      * Get the columns of the table.
      *
-     * @return array
+     * @return ColumnDefData[]
      */
-    public function getColumns(): array;
+    public function columns(): array;
 
     /**
      * Get the order of the columns.
      *
+     * @param ColumnDefData[] $columns
+     *
      * @return array
      */
-    public function getColumnOrder(): array;
+    public function columnOrder(array $columns): array;
 
     /**
      * Get the visibility of the columns.
      *
+     * @param ColumnDefData[] $columns
+     *
      * @return array
      */
-    public function getColumnVisibility(): array;
+    public function columnVisibility(array $columns): array;
 
     /**
      * Get the routes associated with the table.
      *
      * @return array
      */
-    public function getRoutes(): array;
+    public function routes(): array;
 
     #endregion
 }
