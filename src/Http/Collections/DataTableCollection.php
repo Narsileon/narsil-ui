@@ -181,6 +181,7 @@ class DataTableCollection extends ResourceCollection
             ->add('narsil-ui::pagination.more')
             ->add('narsil-ui::pagination.next_page')
             ->add('narsil-ui::pagination.previous_page')
+            ->add('narsil-ui::placeholders.choose')
             ->add('narsil-ui::placeholders.search')
             ->add('narsil-ui::tooltips.hide')
             ->add('narsil-ui::tooltips.menu')

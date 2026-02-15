@@ -1,6 +1,6 @@
 import { Button } from "@narsil-ui/components/button";
 import { ButtonGroup } from "@narsil-ui/components/button-group";
-import { DataTableColumnFilters, useDataTable } from "@narsil-ui/components/data-table";
+import { DataTableFilterForm, useDataTable } from "@narsil-ui/components/data-table";
 import { Icon } from "@narsil-ui/components/icon";
 import { InputContent } from "@narsil-ui/components/input";
 import {
@@ -58,7 +58,7 @@ function DataTableInput({ className, ...props }: DataTableInputProps) {
         ) : null}
       </InputGroup>
       <Tooltip tooltip={filterLabel}>
-        <DataTableColumnFilters
+        <DataTableFilterForm
           render={
             <Button aria-label={filterLabel} className="border-secondary" variant="secondary">
               <Icon name="filter" />

@@ -1,7 +1,6 @@
-import DataTableColumnFilters from "./data-table-column-filters";
 import useDataTable from "./data-table-context";
-import DataTableFilterItem from "./data-table-filter-item";
-import DataTableFilterList from "./data-table-filter-list";
+import DataTableFilterForm from "./data-table-filter-form";
+import DataTableFilters from "./data-table-filters";
 import DataTableFooter from "./data-table-footer";
 import DataTableHead from "./data-table-head";
 import DataTableHeadSort from "./data-table-head-sort";
@@ -19,9 +18,8 @@ type Data = {
 };
 
 export {
-  DataTableColumnFilters,
-  DataTableFilterItem,
-  DataTableFilterList,
+  DataTableFilterForm,
+  DataTableFilters,
   DataTableFooter,
   DataTableHead,
   DataTableHeadSort,

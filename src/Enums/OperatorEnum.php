@@ -46,7 +46,7 @@ enum OperatorEnum: string
     public static function option(OperatorEnum $case): OptionData
     {
         return new OptionData(
-            label: trans('narsil-cms::operators.' . $case->value),
+            label: trans('narsil-ui::operators.' . $case->value),
             value: $case->value
         );
     }

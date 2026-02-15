@@ -25,7 +25,7 @@ function DataTableProvider({
   columnResizeMode = "onEnd",
   columns,
   data,
-  enableColumnFilters = false,
+  enableColumnFilters = true,
   enableFilters = true,
   enableGlobalFilter = true,
   enableHiding = true,

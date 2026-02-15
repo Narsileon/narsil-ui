@@ -103,9 +103,11 @@ class TanStackTableData extends Fluent
 
         foreach ($this->column_filters as $filter)
         {
-            $column = Arr::get($filter, 'column');
-            $operator = Arr::get($filter, 'operator');
-            $value = Arr::get($filter, 'value');
+            $column = Arr::get($filter, 'id');
+            $content = json_decode(Arr::get($filter, 'value', ''), true);
+
+            $operator = Arr::get($content, 'operator');
+            $value = Arr::get($content, 'value');
 
             if (empty($column) || empty($operator) || empty($value))
             {
