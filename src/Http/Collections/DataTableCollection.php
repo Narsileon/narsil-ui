@@ -10,10 +10,11 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use JsonSerializable;
+use Narsil\Base\Contracts\Table;
+use Narsil\Base\Enums\OperatorEnum;
 use Narsil\Base\Http\Data\TanStackTables\TanStackTableData;
 use Narsil\Base\Models\Users\TanStackTable;
 use Narsil\Base\Support\TranslationsBag;
-use Narsil\Base\Contracts\Table;
 
 #endregion
 
@@ -75,7 +76,7 @@ class DataTableCollection extends ResourceCollection
 
         parent::__construct($paginated);
 
-        $this->registerLabels();
+        $this->registerTranslations();
     }
 
     #endregion
@@ -160,7 +161,7 @@ class DataTableCollection extends ResourceCollection
     /**
      * @return void
      */
-    protected function registerLabels(): void
+    protected function registerTranslations(): void
     {
         app(TranslationsBag::class)
             ->add('narsil-ui::data-table.columns')
@@ -196,6 +197,12 @@ class DataTableCollection extends ResourceCollection
             ->add('narsil-ui::ui.edit')
             ->add('narsil-ui::ui.reset')
             ->add('narsil-ui::ui.settings');
+
+        foreach (OperatorEnum::values() as $value)
+        {
+            app(TranslationsBag::class)
+                ->add('narsil-ui::operators.' . $value);
+        }
     }
 
     #endregion
