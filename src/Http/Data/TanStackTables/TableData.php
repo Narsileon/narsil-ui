@@ -28,7 +28,7 @@ use Narsil\Base\Services\TableService;
  * @property array $row_selection The selected rows.
  * @property array $sorting The sorting of the columns.
  */
-class TanStackTableData extends Fluent
+class TableData extends Fluent
 {
     #region CONSTRUCTOR
 
@@ -72,11 +72,11 @@ class TanStackTableData extends Fluent
     /**
      * @param TanStackTable $tanStacktable
      *
-     * @return TanStackTableData
+     * @return TableData
      */
-    public static function fromModel(TanStackTable $tanStacktable): TanStackTableData
+    public static function fromModel(TanStackTable $tanStacktable): TableData
     {
-        return new TanStackTableData(
+        return new TableData(
             tableName: $tanStacktable?->{TanStackTable::TABLE_NAME},
             columnFilters: $tanStacktable?->{TanStackTable::COLUMN_FILTERS},
             columnOrder: $tanStacktable?->{TanStackTable::COLUMN_ORDER},

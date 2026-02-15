@@ -9,6 +9,8 @@ use Narsil\Base\Traits\Enumerable;
 #endregion
 
 /**
+ * Enumeration of user abilities.
+ *
  * @version 1.0.0
  * @author Jonathan Rigaux
  */

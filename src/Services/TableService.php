@@ -34,10 +34,10 @@ abstract class TableService
 
             return collect($columns)->mapWithKeys(function ($column)
             {
-                $tableColumn = ColumnData::fromSchema($column);
+                $column = ColumnData::fromSchema($column);
 
                 return [
-                    $tableColumn->name => $tableColumn,
+                    $column->name => $column,
                 ];
             });
         });

@@ -1,5 +1,5 @@
 import { router } from "@inertiajs/react";
-import { TanStackTableData } from "@narsil-ui/types";
+import { TableData } from "@narsil-ui/types";
 import {
   getCoreRowModel,
   TableState,
@@ -17,7 +17,7 @@ type DataTableProviderProps = Partial<Omit<TableOptions<Data>, "columns" | "init
   children: ReactNode;
   columns: ColumnDef<Data>[];
   data: Data[];
-  initialState: TanStackTableData;
+  initialState: TableData;
 };
 
 function DataTableProvider({
@@ -40,7 +40,7 @@ function DataTableProvider({
   state,
   ...props
 }: DataTableProviderProps) {
-  const ref = useRef<TanStackTableData>(null);
+  const ref = useRef<TableData>(null);
 
   const [tableState, setTableState] = useState<Partial<TableState>>({
     columnFilters: initialState.column_filters,
@@ -60,7 +60,7 @@ function DataTableProvider({
     setTableState((old) => {
       const next = typeof updater === "function" ? updater(old as TableState) : updater;
 
-      const tanStackTableData = {
+      const tableData = {
         column_filters: next.columnFilters,
         column_order: next.columnOrder,
         column_visibility: next.columnVisibility,
@@ -72,10 +72,10 @@ function DataTableProvider({
         table_name: initialState.table_name,
       };
 
-      if (JSON.stringify(tanStackTableData) !== JSON.stringify(ref.current)) {
-        ref.current = tanStackTableData;
+      if (JSON.stringify(tableData) !== JSON.stringify(ref.current)) {
+        ref.current = tableData;
 
-        router.post(route("narsil.data-tables.save"), tanStackTableData, {
+        router.post(route("narsil.data-tables.save"), tableData, {
           preserveState: true,
           preserveScroll: true,
           replace: true,

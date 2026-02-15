@@ -7,7 +7,7 @@ export type OptionData = {
   value: unknown;
 };
 
-export type TanStackTableData = {
+export type TableData = {
   column_filters: { id: string; value: unknown }[];
   column_order: string[];
   column_visibility: Record<string, boolean>;

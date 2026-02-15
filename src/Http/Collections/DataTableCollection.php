@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use JsonSerializable;
 use Narsil\Base\Contracts\Table;
 use Narsil\Base\Enums\OperatorEnum;
-use Narsil\Base\Http\Data\TanStackTables\TanStackTableData;
+use Narsil\Base\Http\Data\TanStackTables\TableData;
 use Narsil\Base\Models\Users\TanStackTable;
 use Narsil\Base\Support\TranslationsBag;
 
@@ -56,18 +56,18 @@ class DataTableCollection extends ResourceCollection
 
         if ($tanStackTable)
         {
-            $this->tanStackTableData = TanStackTableData::fromModel($tanStackTable);
+            $this->tableData = TableData::fromModel($tanStackTable);
         }
         else
         {
-            $this->tanStackTableData = new TanStackTableData(
+            $this->tableData = new TableData(
                 tableName: $this->id,
             );
         }
 
-        $this->tanStackTableData->applyGlobalFilter($query);
-        $this->tanStackTableData->applyColumnFilters($query);
-        $this->tanStackTableData->applySorting($query);
+        $this->tableData->applyGlobalFilter($query);
+        $this->tableData->applyColumnFilters($query);
+        $this->tableData->applySorting($query);
 
         $paginated = $query->paginate(
             perPage: $this->tanStackTable->{TanStackTable::PAGE_SIZE} ?? 10,
@@ -103,9 +103,9 @@ class DataTableCollection extends ResourceCollection
     protected readonly Table $table;
 
     /**
-     * @var TanStackTableData
+     * @var TableData
      */
-    protected readonly TanStackTableData $tanStackTableData;
+    protected readonly TableData $tableData;
 
     /**
      * @var array<string,mixed>
@@ -154,7 +154,7 @@ class DataTableCollection extends ResourceCollection
         return array_merge($this->options, [
             'id'     => $this->id,
             'routes' => $this->table->getRoutes(),
-            'tanStackTable' => $this->tanStackTableData,
+            'tableData' => $this->tableData,
         ]);
     }
 
