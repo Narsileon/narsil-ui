@@ -5,7 +5,7 @@ function SelectSeparator({ className, ...props }: Select.Separator.Props) {
   return (
     <Select.Separator
       data-slot="select-separator"
-      className={cn("pointer-events-none -mx-1 my-1 h-px bg-border", className)}
+      className={cn("pointer-events-none -mx-1.5 my-1 h-px bg-border", className)}
       {...props}
     />
   );
