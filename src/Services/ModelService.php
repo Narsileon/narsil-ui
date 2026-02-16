@@ -18,6 +18,18 @@ abstract class ModelService
     #region PUBLIC METHODS
 
     /**
+     * @param string $table
+     * @param string $attribute
+     * @param array $replace
+     *
+     * @return string
+     */
+    public static function getAttributeDescription(string $table, string $attribute, array $replace = []): string
+    {
+        return Translator::trans("fields.descriptions.$table.$attribute", $replace);
+    }
+
+    /**
      * Get the label of the model based on the name of the table.
      *
      * @param string $table
