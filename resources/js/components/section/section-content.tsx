@@ -1,7 +1,14 @@
-import { type ComponentProps } from "react";
+import { useRender } from "@base-ui/react";
 
-function SectionContent({ ...props }: ComponentProps<"div">) {
-  return <div data-slot="section-content" {...props} />;
+function SectionContent({ render, ...props }: useRender.ComponentProps<"div">) {
+  return useRender({
+    defaultTagName: "div",
+    props: props,
+    render: render,
+    state: {
+      slot: "section-content",
+    },
+  });
 }
 
 export default SectionContent;

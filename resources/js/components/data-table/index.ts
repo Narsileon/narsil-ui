@@ -2,7 +2,6 @@ import DataTable from "./data-table";
 import useDataTable from "./data-table-context";
 import DataTableFilterForm from "./data-table-filter-form";
 import DataTableFilters from "./data-table-filters";
-import DataTableFooter from "./data-table-footer";
 import DataTableHeadSort from "./data-table-head-sort";
 import DataTableInput from "./data-table-input";
 import DataTablePageSize from "./data-table-page-size";
@@ -20,7 +19,6 @@ export {
   DataTable,
   DataTableFilterForm,
   DataTableFilters,
-  DataTableFooter,
   DataTableHeadSort,
   DataTableInput,
   DataTablePageSize,
