@@ -51,19 +51,19 @@ class UpdatePasswordForm extends Form implements Contract
                 elements: [
                     new InputData(
                         autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
-                        handle: User::ATTRIBUTE_CURRENT_PASSWORD,
+                        id: User::ATTRIBUTE_CURRENT_PASSWORD,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
-                        handle: User::PASSWORD,
+                        id: User::PASSWORD,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
-                        handle: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
+                        id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),

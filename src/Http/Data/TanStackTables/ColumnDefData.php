@@ -16,10 +16,11 @@ use Narsil\Base\Helpers\Translator;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $accessorKey The accessor key of the column.
- * @property string $header The header of the column.
  * @property string $id The id of the column.
- * @property string $type The type of the column.
+ * @property InputTypeEnum $type The type of the column.
+ * @property string|null $accessorKey The accessor key of the column.
+ * @property string|null $header The header of the column.
+ * @property boolean $enableColumnFilter The filterability of the column.
  * @property boolean $visibility The visibility of the column.
  */
 class ColumnDefData extends Fluent
@@ -30,8 +31,8 @@ class ColumnDefData extends Fluent
      * @param string $id
      * @param InputTypeEnum $type
      * @param string|null $accessorKey
-     * @param boolean $enableColumnFilter
      * @param string|null $header
+     * @param boolean $enableColumnFilter
      * @param boolean $visibility
      *
      * @return void
@@ -40,8 +41,8 @@ class ColumnDefData extends Fluent
         string $id,
         InputTypeEnum $type,
         ?string $accessorKey = null,
-        ?bool $enableColumnFilter = true,
         ?string $header = null,
+        bool $enableColumnFilter = true,
         bool $visibility = false,
     )
     {
@@ -69,14 +70,16 @@ class ColumnDefData extends Fluent
 
     #endregion
 
-    #region PUBLIC METHODS
+    #region PROTECTED METHODS
 
     /**
+     * Get the header of the column.
+     *
      * @param string $column
      *
      * @return string
      */
-    public function getHeader(string $column): string
+    protected function getHeader(string $column): string
     {
         if (Str::endsWith($column, '_id'))
         {
@@ -106,7 +109,7 @@ class ColumnDefData extends Fluent
      *
      * @return array
      */
-    public function getOperators(string $type): array
+    protected function getOperators(string $type): array
     {
         $operators = [];
 

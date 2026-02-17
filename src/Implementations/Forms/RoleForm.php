@@ -5,23 +5,17 @@ namespace Narsil\Base\Implementations\Forms;
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Narsil\Base\Implementations\Form;
-use Narsil\Base\Models\Policies\Permission;
-use Narsil\Base\Models\Policies\Role;
-use Narsil\Base\Services\RouteService;
-use Narsil\Cms\Contracts\Fields\CheckboxField;
 use Narsil\Base\Contracts\Forms\RoleForm as Contract;
 use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FormStepData;
 use Narsil\Base\Http\Data\Forms\InputData;
-use Narsil\Cms\Models\Collections\Field;
-use Narsil\Cms\Models\Collections\FieldOption;
-use Narsil\Cms\Models\Collections\TemplateTab;
-use Narsil\Cms\Models\Collections\TemplateTabElement;
-use Narsil\Cms\Services\ModelService;
-use Narsil\Cms\Support\SelectOption;
+use Narsil\Base\Http\Data\OptionData;
+use Narsil\Base\Implementations\Form;
+use Narsil\Base\Models\Policies\Permission;
+use Narsil\Base\Models\Policies\Role;
+use Narsil\Base\Services\ModelService;
+use Narsil\Base\Services\RouteService;
 
 #endregion
 
@@ -48,87 +42,70 @@ class RoleForm extends Form implements Contract
     #region PROTECTED METHODS
 
     /**
-     * {@inheritDoc}
+     * @return array
      */
-    protected function steps(): array
+    protected function getPermissionElements(): array
     {
-        $permissionSelectOptions = static::getPermissionSelectOptions();
+        $permissionOptions = Permission::options();
 
-        $permissionElements = $permissionSelectOptions
+        $groupedPermissionOptions = collect($permissionOptions)->groupBy(function (OptionData $option)
+        {
+            $key = Str::beforeLast($option->value, '_');
+
+            return ModelService::getTableLabel($key);
+        });
+
+        return $groupedPermissionOptions
             ->sortBy(function ($options, $group)
             {
                 return $group;
             })
             ->map(function ($options, $group)
             {
-                return [
-                    TemplateTabElement::HANDLE => Role::RELATION_PERMISSIONS,
-                    TemplateTabElement::LABEL => $group,
-                    TemplateTabElement::RELATION_BASE => [
-                        Field::TYPE => CheckboxField::class,
-                        Field::SETTINGS => app(CheckboxField::class),
-                        Field::RELATION_OPTIONS => $options,
-                    ],
-                ];
+                return new InputData(
+                    id: Role::RELATION_PERMISSIONS,
+                    label: $group,
+                    options: $options->toArray(),
+                    type: InputTypeEnum::CHECKBOX->value,
+                );
             })
             ->values()
             ->toArray();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function steps(): array
+    {
+        $permissionElements = $this->getPermissionElements();
 
         return [
             new FormStepData(
-                handle: 'definition',
+                id: 'definition',
                 label: trans('narsil-ui::ui.definition'),
                 elements: [
                     new InputData(
                         description: ModelService::getAttributeDescription(Role::TABLE, Role::NAME),
-                        handle: Role::NAME,
-                        readonly: true,
+                        id: Role::NAME,
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                     new InputData(
                         description: ModelService::getAttributeDescription(Role::TABLE, Role::LABEL),
-                        handle: Role::LABEL,
-                        readonly: true,
+                        id: Role::LABEL,
                         required: true,
                         translatable: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                 ],
             ),
-
-
-            [
-                TemplateTab::HANDLE => Role::RELATION_PERMISSIONS,
-                TemplateTab::LABEL => ModelService::getTableLabel(Permission::TABLE),
-                TemplateTab::RELATION_ELEMENTS => $permissionElements,
-            ],
+            new FormStepData(
+                id: Role::RELATION_PERMISSIONS,
+                label: ModelService::getTableLabel(Permission::TABLE),
+                elements: $permissionElements,
+            ),
         ];
-    }
-
-    /**
-     * @return Collection<string,array<SelectOption>>
-     */
-    protected static function getPermissionSelectOptions(): Collection
-    {
-        return Permission::query()
-            ->get()
-            ->groupBy(function (Permission $permission)
-            {
-                $key = Str::beforeLast($permission->{Permission::NAME}, '_');
-
-                return ModelService::getTableLabel($key);
-            })
-            ->map(function ($permissions)
-            {
-                return $permissions->map(function (Permission $permission)
-                {
-                    return [
-                        FieldOption::LABEL => $permission->{Permission::LABEL},
-                        FieldOption::VALUE => $permission->{Permission::ID},
-                    ];
-                })->toArray();
-            });
     }
 
     #endregion

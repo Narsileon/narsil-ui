@@ -49,38 +49,38 @@ class RegisterForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new InputData(
-                        handle: User::EMAIL,
                         icon: 'email',
+                        id: User::EMAIL,
                         required: true,
                         type: InputTypeEnum::EMAIL->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
                         className: 'col-span-6',
-                        handle: User::PASSWORD,
+                        id: User::PASSWORD,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
                         className: 'col-span-6',
-                        handle: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
+                        id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
                         className: 'col-span-6',
-                        handle: User::FIRST_NAME,
                         icon: 'circle-user',
+                        id: User::FIRST_NAME,
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
                         className: 'col-span-6',
-                        handle: User::LAST_NAME,
                         icon: 'circle-user',
+                        id: User::LAST_NAME,
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),

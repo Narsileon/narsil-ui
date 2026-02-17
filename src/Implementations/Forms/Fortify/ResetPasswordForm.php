@@ -49,20 +49,20 @@ class ResetPasswordForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new InputData(
-                        handle: User::EMAIL,
                         icon: 'email',
+                        id: User::EMAIL,
                         required: true,
                         type: InputTypeEnum::EMAIL->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
-                        handle: User::PASSWORD,
+                        id: User::PASSWORD,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
-                        handle: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
+                        id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),

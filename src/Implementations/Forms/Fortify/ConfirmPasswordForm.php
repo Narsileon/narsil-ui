@@ -50,7 +50,7 @@ class ConfirmPasswordForm extends Form implements Contract
                 elements: [
                     new InputData(
                         autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
-                        handle: User::PASSWORD,
+                        id: User::PASSWORD,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),

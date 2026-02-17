@@ -5,21 +5,16 @@ namespace Narsil\Base\Implementations\Forms;
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
+use Narsil\Base\Contracts\Forms\UserForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
+use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FormStepData;
+use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Policies\Role;
 use Narsil\Base\Models\User;
 use Narsil\Base\Services\ModelService;
 use Narsil\Base\Services\RouteService;
-use Narsil\Cms\Contracts\Fields\CheckboxField;
-use Narsil\Cms\Contracts\Fields\EmailField;
-use Narsil\Cms\Contracts\Fields\FileField;
-use Narsil\Cms\Contracts\Fields\PasswordField;
-use Narsil\Cms\Contracts\Fields\TextField;
-use Narsil\Cms\Contracts\Forms\UserForm as Contract;
-use Narsil\Cms\Models\Collections\Field;
-use Narsil\Cms\Models\Collections\TemplateTab;
-use Narsil\Cms\Models\Collections\TemplateTabElement;
 
 #endregion
 
@@ -48,98 +43,70 @@ class UserForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function getTabs(): array
+    protected function steps(): array
     {
         return [
-            [
-                TemplateTab::HANDLE => 'account',
-                TemplateTab::LABEL => trans('narsil-cms::ui.account'),
-                TemplateTab::RELATION_ELEMENTS => [
-                    [
-                        TemplateTabElement::HANDLE => User::EMAIL,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.email'),
-                        TemplateTabElement::REQUIRED => true,
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => EmailField::class,
-                            Field::SETTINGS => app(EmailField::class)
-                                ->icon('email'),
-                        ],
-                    ],
-                    [
-                        TemplateTabElement::HANDLE => User::PASSWORD,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.password'),
-                        TemplateTabElement::REQUIRED => !$this->model,
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => PasswordField::class,
-                            Field::SETTINGS => app(PasswordField::class)
-                                ->autoComplete(AutoCompleteEnum::NEW_PASSWORD->value),
-                        ],
-                    ],
-                    [
-                        TemplateTabElement::HANDLE => User::ATTRIBUTE_PASSWORD_CONFIRMATION,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.password_confirmation'),
-                        TemplateTabElement::REQUIRED => !$this->model,
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => PasswordField::class,
-                            Field::SETTINGS => app(PasswordField::class)
-                                ->autoComplete(AutoCompleteEnum::NEW_PASSWORD->value),
-                        ],
-                    ],
+            new FormStepData(
+                id: 'account',
+                label: trans('narsil-ui::ui.account'),
+                elements: [
+                    new InputData(
+                        icon: 'email',
+                        id: User::EMAIL,
+                        required: true,
+                        type: InputTypeEnum::EMAIL->value,
+                    ),
+                    new InputData(
+                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        id: User::PASSWORD,
+                        required: !$this->model,
+                        type: InputTypeEnum::PASSWORD->value,
+                    ),
+                    new InputData(
+                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
+                        required: !$this->model,
+                        type: InputTypeEnum::PASSWORD->value,
+                    ),
                 ],
-            ],
-            [
-                TemplateTab::HANDLE => 'profile',
-                TemplateTab::LABEL => trans('narsil-cms::ui.profile'),
-                TemplateTab::RELATION_ELEMENTS => [
-                    [
-                        TemplateTabElement::HANDLE => User::LAST_NAME,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.last_name'),
-                        TemplateTabElement::REQUIRED => true,
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => TextField::class,
-                            Field::SETTINGS => app(TextField::class)
-                                ->autoComplete(AutoCompleteEnum::FAMILY_NAME->value)
-                                ->icon('circle-user'),
-                        ],
-                    ],
-                    [
-                        TemplateTabElement::HANDLE => User::FIRST_NAME,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.first_name'),
-                        TemplateTabElement::REQUIRED => true,
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => TextField::class,
-                            Field::SETTINGS => app(TextField::class)
-                                ->autoComplete(AutoCompleteEnum::GIVEN_NAME->value)
-                                ->icon('circle-user'),
-                        ],
-                    ],
-                    [
-                        TemplateTabElement::HANDLE => User::AVATAR,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.avatar'),
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => FileField::class,
-                            Field::SETTINGS => app(FileField::class)
-                                ->accept('image/*')
-                                ->icon('image'),
-                        ],
-                    ],
+            ),
+            new FormStepData(
+                id: 'profile',
+                label: trans('narsil-ui::ui.profile'),
+                elements: [
+                    new InputData(
+                        autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                        icon: 'circle-user',
+                        id: User::LAST_NAME,
+                        required: true,
+                        type: InputTypeEnum::TEXT->value,
+                    ),
+                    new InputData(
+                        autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                        icon: 'circle-user',
+                        id: User::FIRST_NAME,
+                        required: true,
+                        type: InputTypeEnum::TEXT->value,
+                    ),
+                    new InputData(
+                        accept: 'image/*',
+                        icon: 'image',
+                        id: User::AVATAR,
+                        type: InputTypeEnum::FILE->value,
+                    ),
                 ],
-            ],
-            [
-                TemplateTab::HANDLE => 'roles',
-                TemplateTab::LABEL => ModelService::getTableLabel(Role::TABLE),
-                TemplateTab::RELATION_ELEMENTS => [
-                    [
-                        TemplateTabElement::HANDLE => User::RELATION_ROLES,
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.roles'),
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => CheckboxField::class,
-                            Field::RELATION_OPTIONS => Role::options(),
-                            Field::SETTINGS => app(CheckboxField::class),
-                        ],
-                    ],
+            ),
+            new FormStepData(
+                id: User::RELATION_ROLES,
+                label: ModelService::getTableLabel(Role::TABLE),
+                elements: [
+                    new InputData(
+                        id: Role::RELATION_PERMISSIONS,
+                        options: Role::options(),
+                        type: InputTypeEnum::CHECKBOX->value,
+                    ),
                 ],
-            ],
+            ),
         ];
     }
 

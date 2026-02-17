@@ -49,15 +49,15 @@ class TwoFactorChallengeForm extends Form implements Contract
                 elements: [
                     new InputData(
                         autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
-                        handle: 'code',
                         icon: 'circle-check',
+                        id: 'code',
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
-                        handle: 'recovery_code',
                         icon: 'circle-check',
+                        id: 'recovery_code',
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),

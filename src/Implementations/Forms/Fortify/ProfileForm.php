@@ -51,22 +51,22 @@ class ProfileForm extends Form implements Contract
                 elements: [
                     new InputData(
                         autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
-                        handle: User::LAST_NAME,
                         icon: 'circle-user',
+                        id: User::LAST_NAME,
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                     new InputData(
                         autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
-                        handle: User::FIRST_NAME,
                         icon: 'circle-user',
+                        id: User::FIRST_NAME,
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                     new InputData(
                         accept: 'image/*',
-                        handle: User::AVATAR,
                         icon: 'image',
+                        id: User::AVATAR,
                         type: InputTypeEnum::FILE->value,
                     ),
                 ],

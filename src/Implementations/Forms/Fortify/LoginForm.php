@@ -50,8 +50,8 @@ class LoginForm extends Form implements Contract
                 elements: [
                     new InputData(
                         autoComplete: AutoCompleteEnum::EMAIL->value,
-                        handle: User::EMAIL,
                         icon: 'email',
+                        id: User::EMAIL,
                         required: true,
                         placeholder: 'email@example.com',
                         type: InputTypeEnum::EMAIL->value,
@@ -62,13 +62,13 @@ class LoginForm extends Form implements Contract
                             'route' => route('password.request'),
                         ])->render(),
                         autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
-                        handle: User::PASSWORD,
+                        id: User::PASSWORD,
                         required: true,
                         type: InputTypeEnum::PASSWORD->value,
                     ),
                     new InputData(
                         className: 'flex-row-reverse justify-end',
-                        handle: User::REMEMBER,
+                        id: User::REMEMBER,
                         type: InputTypeEnum::CHECKBOX->value,
                     ),
                 ],

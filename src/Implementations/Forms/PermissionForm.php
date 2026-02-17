@@ -48,15 +48,14 @@ class PermissionForm extends Form implements Contract
                 elements: [
                     new InputData(
                         description: ModelService::getAttributeDescription(Permission::TABLE, Permission::NAME),
-                        handle: Permission::NAME,
+                        id: Permission::NAME,
                         readonly: true,
                         required: true,
                         type: InputTypeEnum::TEXT->value,
                     ),
                     new InputData(
                         description: ModelService::getAttributeDescription(Permission::TABLE, Permission::LABEL),
-                        handle: Permission::LABEL,
-                        readonly: true,
+                        id: Permission::LABEL,
                         required: true,
                         translatable: true,
                         type: InputTypeEnum::TEXT->value,

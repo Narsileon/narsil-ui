@@ -4,15 +4,16 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 #region USE
 
+use Narsil\Base\Contracts\Forms\Fortify\TwoFactorForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
+use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FormStepData;
+use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Implementations\Form;
+use Narsil\Base\Models\User;
+use Narsil\Base\Services\ModelService;
 use Narsil\Base\Support\TranslationsBag;
-use Narsil\Cms\Contracts\Fields\TextField;
-use Narsil\Cms\Contracts\Forms\Fortify\TwoFactorForm as Contract;
-use Narsil\Cms\Enums\RequestMethodEnum;
-use Narsil\Cms\Implementations\AbstractForm;
-use Narsil\Cms\Models\Collections\Field;
-use Narsil\Cms\Models\Collections\TemplateTab;
-use Narsil\Cms\Models\Collections\TemplateTabElement;
 
 #endregion
 
@@ -20,7 +21,7 @@ use Narsil\Cms\Models\Collections\TemplateTabElement;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
-class TwoFactorForm extends AbstractForm implements Contract
+class TwoFactorForm extends Form implements Contract
 {
     #region CONSTRUCTOR
 
@@ -37,12 +38,10 @@ class TwoFactorForm extends AbstractForm implements Contract
             ->submitLabel(trans('narsil-ui::ui.confirm'));
 
         app(TranslationsBag::class)
-            ->add('validation.custom.code.invalid')
-            ->add('narsil-cms::two-factor.recovery_codes_copied')
-            ->add('narsil-cms::two-factor.recovery_codes_description')
-            ->add('narsil-cms::two-factor.recovery_codes_title')
-            ->add('narsil-cms::two-factor.two_factor_authentication')
-            ->add('narsil-cms::ui.copy_clipboard');
+            ->add('narsil-ui::descriptions.users.recovery_codes')
+            ->add('narsil-ui::ui.recovery_codes')
+            ->add('narsil-ui::ui.two_factor')
+            ->add('narsil-ui::validation.custom.code.invalid');
     }
 
     #endregion
@@ -52,25 +51,21 @@ class TwoFactorForm extends AbstractForm implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function getTabs(): array
+    protected function steps(): array
     {
         return [
-            [
-                TemplateTab::RELATION_ELEMENTS => [
-                    [
-                        TemplateTabElement::DESCRIPTION => trans('narsil-cms::two-factor.code_description'),
-                        TemplateTabElement::HANDLE => 'code',
-                        TemplateTabElement::LABEL => trans('narsil-cms::validation.attributes.code'),
-                        TemplateTabElement::REQUIRED => true,
-                        TemplateTabElement::RELATION_BASE => [
-                            Field::TYPE => TextField::class,
-                            Field::SETTINGS => app(TextField::class)
-                                ->autoComplete(AutoCompleteEnum::ONE_TIME_CODE->value)
-                                ->icon('circle-check'),
-                        ],
-                    ],
+            new FormStepData(
+                elements: [
+                    new InputData(
+                        autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                        description: ModelService::getAttributeDescription(User::TABLE, 'code'),
+                        icon: 'circle-check',
+                        id: 'code',
+                        required: true,
+                        type: InputTypeEnum::TEXT->value,
+                    ),
                 ],
-            ],
+            ),
         ];
     }
 

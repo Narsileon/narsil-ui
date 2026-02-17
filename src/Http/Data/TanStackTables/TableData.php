@@ -20,13 +20,13 @@ use Narsil\Base\Services\TableService;
  * @author Jonathan Rigaux
  *
  * @property string $table_name The name of the table.
- * @property array $column_filters The filters of the columns.
- * @property array $column_order The order of the columns.
- * @property array $column_visibility The visibility of the columns.
- * @property string $global_filter The filter of the table.
- * @property integer $page_size The page size of the table.
- * @property array $row_selection The selected rows.
- * @property array $sorting The sorting of the columns.
+ * @property array|null $column_filters The filters of the columns.
+ * @property array|null $column_order The order of the columns.
+ * @property array|null $column_visibility The visibility of the columns.
+ * @property string|null $global_filter The filter of the table.
+ * @property integer|null $page_size The size of the table.
+ * @property array|null $row_selection The selected rows.
+ * @property array|null $sorting The sorted columns.
  */
 class TableData extends Fluent
 {
@@ -39,6 +39,7 @@ class TableData extends Fluent
      * @param array|null $columnVisibility
      * @param string|null $globalFilter
      * @param integer|null $pageSize
+     * @param array|null $rowSelection
      * @param array|null $sorting
      *
      * @return void
@@ -55,7 +56,6 @@ class TableData extends Fluent
     )
     {
         $this->set('table_name', $tableName);
-
         $this->set('column_filters', $columnFilters ?? []);
         $this->set('column_order', $columnOrder ?? []);
         $this->set('column_visibility', $columnVisibility ?? []);
