@@ -5,10 +5,14 @@ namespace Narsil\Base\Implementations;
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Fluent;
+use Illuminate\Support\Str;
+use Locale;
 use Narsil\Base\Contracts\Form as Contract;
 use Narsil\Base\Http\Data\Forms\FieldStepData;
+use Narsil\Base\Http\Data\OptionData;
 
 #endregion
 
@@ -30,15 +34,11 @@ abstract class Form extends Fluent implements Contract
         $this->set('model', $model);
 
         $defaultLanguage = Config::get('app.locale', 'en');
-        $languageOptions = Config::get('narsil.locales', []);
-
-        $id = $this->getDefaultId();
 
         $this
             ->defaultLanguage($defaultLanguage)
-            ->id($id)
-            ->languageOptions($languageOptions)
-            ->submitLabel(trans('narsil-cms::ui.save'));
+            ->steps($this->getSteps())
+            ->submitLabel(trans('narsil-ui::ui.save'));
     }
 
     #endregion
@@ -51,6 +51,48 @@ abstract class Form extends Fluent implements Contract
     public function action(string $action): static
     {
         $this->set('action', $action);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function defaultLanguage(string $defaultLanguage): static
+    {
+        $this->set('defaultLanguage', $defaultLanguage);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function id(string $id): static
+    {
+        $this->set('id', $id);
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function languages(array $locales): static
+    {
+        $languageOptions = [];
+
+        foreach ($locales as $locale)
+        {
+            $label = Str::ucfirst(Locale::getDisplayName($locale, App::getLocale()));
+
+            $languageOptions[] = new OptionData(
+                label: $label,
+                value: $locale
+            );
+        }
+
+        $this->set('languageOptions', $languageOptions);
 
         return $this;
     }
@@ -102,7 +144,7 @@ abstract class Form extends Fluent implements Contract
     /**
      * @return FieldStepData[]
      */
-    abstract protected function steps(): array;
+    abstract protected function getSteps(): array;
 
     #endregion
 }

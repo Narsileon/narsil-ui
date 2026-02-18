@@ -6,10 +6,10 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\ForgotPasswordForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\User;
 
@@ -33,7 +33,7 @@ class ForgotPasswordForm extends Form implements Contract
         $this
             ->action(route('password.email'))
             ->method(RequestMethodEnum::POST->value)
-            ->submitLabel(trans('narsil-cms::ui.send'));
+            ->submitLabel(trans('narsil-ui::ui.send'));
     }
 
     #endregion
@@ -43,17 +43,18 @@ class ForgotPasswordForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::EMAIL->value,
+                    new FieldData(
                         icon: 'email',
                         id: User::EMAIL,
                         required: true,
-                        type: InputTypeEnum::EMAIL->value,
+                        input: new EmailInputData(
+                            autoComplete: AutoCompleteEnum::EMAIL->value,
+                        ),
                     ),
                 ],
             ),

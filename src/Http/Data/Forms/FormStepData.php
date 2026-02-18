@@ -5,6 +5,8 @@ namespace Narsil\Base\Http\Data\Forms;
 #region USE
 
 use Illuminate\Support\Fluent;
+use Narsil\Base\Http\Data\Forms\FieldData;
+use Narsil\Base\Http\Data\Forms\FieldsetData;
 
 #endregion
 
@@ -25,7 +27,7 @@ class FormStepData extends Fluent
      * @param string|null $id
      * @param string|null $label
      * @param string|null $description
-     * @param array<FieldsetData|InputData> $elements
+     * @param array<FieldsetData|FieldData> $elements
      *
      * @return void
      */

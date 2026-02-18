@@ -6,10 +6,12 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\RegisterForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\User;
 
@@ -43,46 +45,50 @@ class RegisterForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
+                    new FieldData(
                         icon: 'email',
                         id: User::EMAIL,
                         required: true,
-                        type: InputTypeEnum::EMAIL->value,
+                        input: new EmailInputData(),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                    new FieldData(
                         className: 'col-span-6',
                         id: User::PASSWORD,
                         required: true,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                    new FieldData(
                         className: 'col-span-6',
                         id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: true,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                    new FieldData(
                         className: 'col-span-6',
                         icon: 'circle-user',
                         id: User::FIRST_NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                    new FieldData(
                         className: 'col-span-6',
                         icon: 'circle-user',
                         id: User::LAST_NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                        ),
                     ),
                 ],
             ),

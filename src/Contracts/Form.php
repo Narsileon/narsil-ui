@@ -2,12 +2,6 @@
 
 namespace Narsil\Base\Contracts;
 
-#region USE
-
-use Narsil\Base\Http\Data\Forms\FormStepData;
-
-#endregion
-
 /**
  * @version 1.0.0
  * @author Jonathan Rigaux
@@ -26,7 +20,34 @@ interface Form
     public function action(string $action): static;
 
     /**
-     * Set the "method" attribute of the form.
+     * Set the default language of the form.
+     *
+     * @param string $defaultLanguage
+     *
+     * @return static
+     */
+    public function defaultLanguage(string $defaultLanguage): static;
+
+    /**
+     * Set the identifier of the form.
+     *
+     * @param string $id
+     *
+     * @return static
+     */
+    public function id(string $id): static;
+
+    /**
+     * Set the language options of the form.
+     *
+     * @param array $locales
+     *
+     * @return static
+     */
+    public function languages(array $locales): static;
+
+    /**
+     * Set the method of the form.
      *
      * @param string $method
      *
@@ -35,7 +56,7 @@ interface Form
     public function method(string $method): static;
 
     /**
-     * Set the "routes" associated with the form.
+     * Set the routes associated with the form.
      *
      * @param array $routes
      *

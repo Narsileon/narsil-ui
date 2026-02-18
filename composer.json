@@ -2,7 +2,6 @@
   "$schema": "https://getcomposer.org/schema.json",
   "name": "narsil/base",
   "type": "library",
-  "description": "Headless CMS based on Laravel and React",
   "keywords": [
     "ui",
     "base-ui",

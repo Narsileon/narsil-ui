@@ -6,10 +6,10 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\TwoFactorForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\User;
 use Narsil\Base\Services\ModelService;
@@ -38,10 +38,10 @@ class TwoFactorForm extends Form implements Contract
             ->submitLabel(trans('narsil-ui::ui.confirm'));
 
         app(TranslationsBag::class)
+            ->add('narsil-ui::descriptions.users.code')
             ->add('narsil-ui::descriptions.users.recovery_codes')
             ->add('narsil-ui::ui.recovery_codes')
-            ->add('narsil-ui::ui.two_factor')
-            ->add('narsil-ui::validation.custom.code.invalid');
+            ->add('narsil-ui::ui.two_factor');
     }
 
     #endregion
@@ -51,18 +51,19 @@ class TwoFactorForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                    new FieldData(
                         description: ModelService::getAttributeDescription(User::TABLE, 'code'),
                         icon: 'circle-check',
                         id: 'code',
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                        ),
                     ),
                 ],
             ),

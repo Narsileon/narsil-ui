@@ -4,5 +4,6 @@
 import Checkbox from "./checkbox";
 import CheckboxIndicator from "./checkbox-indicator";
 import CheckboxRoot from "./checkbox-root";
+import Checkboxes from "./checkboxes";
 
-export { Checkbox, CheckboxIndicator, CheckboxRoot };
+export { Checkbox, CheckboxIndicator, CheckboxRoot, Checkboxes };

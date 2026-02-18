@@ -6,10 +6,11 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\ProfileForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\User;
 
@@ -34,7 +35,7 @@ class ProfileForm extends Form implements Contract
             ->action(route('user-profile-information.update'))
             ->method(RequestMethodEnum::PUT->value)
             ->submitIcon('save')
-            ->submitLabel(trans('narsil-cms::ui.save'));
+            ->submitLabel(trans('narsil-ui::ui.save'));
     }
 
     #endregion
@@ -44,30 +45,33 @@ class ProfileForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                    new FieldData(
                         icon: 'circle-user',
                         id: User::LAST_NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                    new FieldData(
                         icon: 'circle-user',
                         id: User::FIRST_NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                        ),
                     ),
-                    new InputData(
-                        accept: 'image/*',
+                    new FieldData(
                         icon: 'image',
                         id: User::AVATAR,
-                        type: InputTypeEnum::FILE->value,
+                        input: new FileInputData(
+                            accept: 'image/*',
+                        ),
                     ),
                 ],
             ),

@@ -6,9 +6,9 @@ namespace Narsil\Base\Implementations\Forms;
 
 use Illuminate\Database\Eloquent\Model;
 use Narsil\Base\Contracts\Forms\PermissionForm as Contract;
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Policies\Permission;
 use Narsil\Base\Services\ModelService;
@@ -41,24 +41,24 @@ class PermissionForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
+                    new FieldData(
                         description: ModelService::getAttributeDescription(Permission::TABLE, Permission::NAME),
                         id: Permission::NAME,
-                        readonly: true,
+                        readOnly: true,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(),
                     ),
-                    new InputData(
+                    new FieldData(
                         description: ModelService::getAttributeDescription(Permission::TABLE, Permission::LABEL),
                         id: Permission::LABEL,
                         required: true,
                         translatable: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(),
                     ),
                 ],
             ),

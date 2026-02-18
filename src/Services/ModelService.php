@@ -26,7 +26,7 @@ abstract class ModelService
      */
     public static function getAttributeDescription(string $table, string $attribute, array $replace = []): string
     {
-        return Translator::trans("fields.descriptions.$table.$attribute", $replace);
+        return Translator::trans("descriptions.$table.$attribute", $replace);
     }
 
     /**

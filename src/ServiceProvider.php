@@ -34,6 +34,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/forms.php', 'narsil.bindings.forms');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/requests.php', 'narsil.bindings.requests');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/locales.php', 'narsil.locales');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/morphs.php', 'narsil.models.morphs');

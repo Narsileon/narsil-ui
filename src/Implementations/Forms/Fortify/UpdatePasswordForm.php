@@ -6,10 +6,10 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\UpdatePasswordForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\User;
 
@@ -34,7 +34,7 @@ class UpdatePasswordForm extends Form implements Contract
             ->action(route('user-password.update'))
             ->method(RequestMethodEnum::PUT->value)
             ->submitIcon('save')
-            ->submitLabel(trans('narsil-cms::ui.save'));
+            ->submitLabel(trans('narsil-ui::ui.save'));
     }
 
     #endregion
@@ -44,28 +44,31 @@ class UpdatePasswordForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
+                    new FieldData(
                         id: User::ATTRIBUTE_CURRENT_PASSWORD,
                         required: true,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                    new FieldData(
                         id: User::PASSWORD,
                         required: true,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                    new FieldData(
                         id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: true,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
                     ),
                 ],
             ),

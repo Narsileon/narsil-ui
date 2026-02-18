@@ -1,0 +1,45 @@
+<?php
+
+namespace Narsil\Base\Http\Data\Forms\Inputs;
+
+#region USE
+
+use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\InputData;
+
+#endregionx
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ *
+ * @property string|null $defaultValue The "default value" attribute of the input.
+ * @property string|null $max The "max" attribute of the input.
+ * @property string|null $min The "min" attribute of the input.
+ */
+class DateInputData extends InputData
+{
+    #region CONSTRUCTOR
+
+    /**
+     * @param string|null $defaultValue The "default value" attribute of the input.
+     * @param string|null $max The "max" attribute of the input.
+     * @param string|null $min The "min" attribute of the input.
+     *
+     * @return void
+     */
+    public function __construct(
+        ?string $defaultValue = null,
+        ?string $max = null,
+        ?string $min = null,
+    )
+    {
+        $this->set('defaultValue', $defaultValue);
+        $this->set('max', $max);
+        $this->set('min', $min);
+
+        parent::__construct(InputTypeEnum::DATE->value);
+    }
+
+    #endregion
+}

@@ -7,9 +7,10 @@ namespace Narsil\Base\Implementations\Forms;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Narsil\Base\Contracts\Forms\RoleForm as Contract;
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Policies\Permission;
@@ -62,11 +63,12 @@ class RoleForm extends Form implements Contract
             })
             ->map(function ($options, $group)
             {
-                return new InputData(
+                return new FieldData(
                     id: Role::RELATION_PERMISSIONS,
                     label: $group,
-                    options: $options->toArray(),
-                    type: InputTypeEnum::CHECKBOX->value,
+                    input: new CheckboxInputData(
+                        options: $options->toArray(),
+                    ),
                 );
             })
             ->values()
@@ -76,7 +78,7 @@ class RoleForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         $permissionElements = $this->getPermissionElements();
 
@@ -85,18 +87,18 @@ class RoleForm extends Form implements Contract
                 id: 'definition',
                 label: trans('narsil-ui::ui.definition'),
                 elements: [
-                    new InputData(
+                    new FieldData(
                         description: ModelService::getAttributeDescription(Role::TABLE, Role::NAME),
                         id: Role::NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(),
                     ),
-                    new InputData(
+                    new FieldData(
                         description: ModelService::getAttributeDescription(Role::TABLE, Role::LABEL),
                         id: Role::LABEL,
                         required: true,
                         translatable: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(),
                     ),
                 ],
             ),

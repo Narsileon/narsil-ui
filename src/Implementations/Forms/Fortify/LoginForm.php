@@ -6,10 +6,12 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\LoginForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\User;
 
@@ -43,33 +45,36 @@ class LoginForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::EMAIL->value,
+                    new FieldData(
                         icon: 'email',
                         id: User::EMAIL,
                         required: true,
-                        placeholder: 'email@example.com',
-                        type: InputTypeEnum::EMAIL->value,
+                        input: new EmailInputData(
+                            autoComplete: AutoCompleteEnum::EMAIL->value,
+                            placeholder: 'email@example.com',
+                        )
+
                     ),
-                    new InputData(
+                    new FieldData(
                         append: view('narsil-cms::components.link', [
                             'label' => trans('narsil-cms::passwords.link'),
                             'route' => route('password.request'),
                         ])->render(),
-                        autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
                         id: User::PASSWORD,
                         required: true,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
+                        )
                     ),
-                    new InputData(
+                    new FieldData(
                         className: 'flex-row-reverse justify-end',
                         id: User::REMEMBER,
-                        type: InputTypeEnum::CHECKBOX->value,
+                        input: new CheckboxInputData()
                     ),
                 ],
             ),

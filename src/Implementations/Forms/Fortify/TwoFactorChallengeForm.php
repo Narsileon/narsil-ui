@@ -6,10 +6,10 @@ namespace Narsil\Base\Implementations\Forms\Fortify;
 
 use Narsil\Base\Contracts\Forms\Fortify\TwoFactorChallengeForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Implementations\Form;
 
 #endregion
@@ -42,24 +42,26 @@ class TwoFactorChallengeForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                    new FieldData(
                         icon: 'circle-check',
                         id: 'code',
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                    new FieldData(
                         icon: 'circle-check',
                         id: 'recovery_code',
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
+                        ),
                     ),
                 ],
             ),

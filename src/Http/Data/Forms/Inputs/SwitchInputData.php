@@ -1,0 +1,37 @@
+<?php
+
+namespace Narsil\Base\Http\Data\Forms\Inputs;
+
+#region USE
+
+use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\InputData;
+
+#endregionx
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ *
+ * @property boolean $defaultValue The "default value" attribute of the input.
+ */
+class NumberInputData extends InputData
+{
+    #region CONSTRUCTOR
+
+    /**
+     * @param boolean $defaultValue The "default value" attribute of the input.
+     *
+     * @return void
+     */
+    public function __construct(
+        bool $defaultValue = false,
+    )
+    {
+        $this->set('defaultValue', $defaultValue);
+
+        parent::__construct(InputTypeEnum::SWITCH->value);
+    }
+
+    #endregion
+}

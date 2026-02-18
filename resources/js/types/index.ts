@@ -3,6 +3,12 @@ import { PaginationLinks, PaginationMeta } from "@narsil-ui/components/paginatio
 import { type IconName } from "@narsil-ui/registries/icons";
 import { type ColumnDef } from "@tanstack/react-table";
 
+export type ConditionData = {
+  handle: string;
+  operator: string;
+  value: string;
+};
+
 export type DataTableCollection<T = Data> = {
   data: T[];
   links: PaginationLinks;
@@ -15,47 +21,52 @@ export type DataTableCollection<T = Data> = {
 };
 
 export type FieldsetData = {
+  conditions: ConditionData[];
+  description?: string | null;
+  elements: Array<FieldsetData | FieldData>;
   id?: string | null;
   label?: string | null;
-  description?: string | null;
-  elements: Array<FieldsetData | InputData>;
+};
+
+export type FormData = {
+  action: string;
+  method: string;
+  id: string;
+  steps: FormStepData[];
+  submitIcon?: string | null;
+  submitLabel: string;
 };
 
 export type FormStepData = {
+  description?: string | null;
+  elements: Array<FieldsetData | FieldData>;
   id?: string | null;
   label?: string | null;
-  description?: string | null;
-  elements: Array<FieldsetData | InputData>;
 };
 
-export type InputData = {
+export type FieldData = {
+  append?: string | null;
+  className?: string | null;
+  conditions: ConditionData[];
+  description?: string | null;
+  icon?: string | null;
   id: string;
   label?: string | null;
-  description?: string | null;
-  append?: string | null;
-  icon?: string | null;
+  readOnly?: boolean;
+  required?: boolean;
   translatable: boolean;
   width: number;
-  type: string;
-  options?: OptionData[] | null;
-  props: {
-    accept?: string | null;
-    autoComplete?: string | null;
-    className?: string | null;
-    id: string;
-    placeholder?: string | null;
-    readonly?: boolean;
-    required?: boolean;
+  input: {
     type: string;
     [key: string]: any;
-  } | null;
+  };
 };
 
-export type OptionData = {
+export type OptionData<T = unknown> = {
   [key: string]: unknown;
   icon?: IconName;
   label: string | Record<string, string>;
-  value: unknown;
+  value: T;
 };
 
 export type RoutesData = Record<string, string> & {

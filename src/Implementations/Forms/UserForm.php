@@ -7,9 +7,13 @@ namespace Narsil\Base\Implementations\Forms;
 use Illuminate\Database\Eloquent\Model;
 use Narsil\Base\Contracts\Forms\UserForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
-use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Policies\Role;
 use Narsil\Base\Models\User;
@@ -43,30 +47,32 @@ class UserForm extends Form implements Contract
     /**
      * {@inheritDoc}
      */
-    protected function steps(): array
+    protected function getSteps(): array
     {
         return [
             new FormStepData(
                 id: 'account',
                 label: trans('narsil-ui::ui.account'),
                 elements: [
-                    new InputData(
+                    new FieldData(
                         icon: 'email',
                         id: User::EMAIL,
                         required: true,
-                        type: InputTypeEnum::EMAIL->value,
+                        input: new EmailInputData(),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                    new FieldData(
                         id: User::PASSWORD,
                         required: !$this->model,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                    new FieldData(
                         id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: !$this->model,
-                        type: InputTypeEnum::PASSWORD->value,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
                     ),
                 ],
             ),
@@ -74,25 +80,28 @@ class UserForm extends Form implements Contract
                 id: 'profile',
                 label: trans('narsil-ui::ui.profile'),
                 elements: [
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                    new FieldData(
                         icon: 'circle-user',
                         id: User::LAST_NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
+                        ),
                     ),
-                    new InputData(
-                        autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                    new FieldData(
                         icon: 'circle-user',
                         id: User::FIRST_NAME,
                         required: true,
-                        type: InputTypeEnum::TEXT->value,
+                        input: new TextInputData(
+                            autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
+                        ),
                     ),
-                    new InputData(
-                        accept: 'image/*',
+                    new FieldData(
                         icon: 'image',
                         id: User::AVATAR,
-                        type: InputTypeEnum::FILE->value,
+                        input: new FileInputData(
+                            accept: 'image/*',
+                        ),
                     ),
                 ],
             ),
@@ -100,10 +109,11 @@ class UserForm extends Form implements Contract
                 id: User::RELATION_ROLES,
                 label: ModelService::getTableLabel(Role::TABLE),
                 elements: [
-                    new InputData(
+                    new FieldData(
                         id: Role::RELATION_PERMISSIONS,
-                        options: Role::options(),
-                        type: InputTypeEnum::CHECKBOX->value,
+                        input: new CheckboxInputData(
+                            options: Role::options(),
+                        ),
                     ),
                 ],
             ),

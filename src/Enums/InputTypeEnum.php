@@ -27,7 +27,10 @@ enum InputTypeEnum: string
     case NUMBER = 'number';
     case PASSWORD = 'password';
     case RADIO = 'radio';
+    case RANGE = 'range';
     case SELECT = 'select';
+    case SWITCH = 'switch';
     case TEXT = 'text';
+    case TEXTAREA = 'textarea';
     case TIME = 'time';
 }
