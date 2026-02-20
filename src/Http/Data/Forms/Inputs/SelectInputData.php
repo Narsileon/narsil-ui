@@ -15,6 +15,7 @@ use Narsil\Base\Http\Data\Forms\InputData;
  *
  * @property string $defaultValue The "default value" attribute of the input.
  * @property string $placeholder The "placeholder" attribute of the input.
+ * @property OptionData $options The "options" attribute of the input.
  */
 class SelectInputData extends InputData
 {
@@ -23,15 +24,18 @@ class SelectInputData extends InputData
     /**
      * @param string $defaultValue The "default value" attribute of the input.
      * @param string $placeholder The "placeholder" attribute of the input.
+     * @param OptionData $options The "options" attribute of the input.
      *
      * @return void
      */
     public function __construct(
         string $defaultValue = '',
         string $placeholder = '',
+        array $options = []
     )
     {
         $this->set('defaultValue', $defaultValue);
+        $this->set('options', $options);
         $this->set('placeholder', $placeholder);
 
         parent::__construct(InputTypeEnum::SELECT->value);
