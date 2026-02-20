@@ -6,7 +6,6 @@ import FormFieldLanguage from "./form-field-language";
 import FormLanguage from "./form-language";
 import FormProvider from "./form-provider";
 import FormRoot from "./form-root";
-import registry from "./registry";
 
 export {
   FormElement,
@@ -15,7 +14,6 @@ export {
   FormLanguage,
   FormProvider,
   FormRoot,
-  registry,
   useForm,
   useFormField,
 };

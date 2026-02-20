@@ -4,10 +4,10 @@ import { DataTableFilterForm, useDataTable } from "@narsil-ui/components/data-ta
 import { Icon } from "@narsil-ui/components/icon";
 import { InputContent } from "@narsil-ui/components/input";
 import {
-  InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
+  InputGroupRoot,
 } from "@narsil-ui/components/input-group";
 import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
@@ -39,7 +39,7 @@ function DataTableInput({ className, ...props }: DataTableInputProps) {
 
   return (
     <ButtonGroup className="grow justify-end">
-      <InputGroup className="max-w-3xs place-self-center transition-all duration-300 focus-within:max-w-lg">
+      <InputGroupRoot className="max-w-3xs place-self-center transition-all duration-300 focus-within:max-w-lg">
         <InputGroupAddon>
           <Icon name="search" />
         </InputGroupAddon>
@@ -56,7 +56,7 @@ function DataTableInput({ className, ...props }: DataTableInputProps) {
             </InputGroupButton>
           </InputGroupAddon>
         ) : null}
-      </InputGroup>
+      </InputGroupRoot>
       <Tooltip tooltip={filterLabel}>
         <DataTableFilterForm
           render={

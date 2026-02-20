@@ -1,10 +1,10 @@
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";
 
-function InputGroup({ className, ...props }: ComponentProps<"div">) {
+function InputGroupRoot({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      data-slot="input-group"
+      data-slot="input-group-root"
       role="group"
       className={cn(
         "group/input-group",
@@ -27,4 +27,4 @@ function InputGroup({ className, ...props }: ComponentProps<"div">) {
   );
 }
 
-export default InputGroup;
+export default InputGroupRoot;

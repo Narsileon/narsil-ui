@@ -61,14 +61,11 @@ class LoginForm extends Form implements Contract
 
                     ),
                     new FieldData(
-                        append: view('narsil-cms::components.link', [
-                            'label' => trans('narsil-cms::passwords.link'),
-                            'route' => route('password.request'),
-                        ])->render(),
                         id: User::PASSWORD,
                         required: true,
                         input: new PasswordInputData(
                             autoComplete: AutoCompleteEnum::CURRENT_PASSWORD->value,
+                            href: route('password.request'),
                         )
                     ),
                     new FieldData(

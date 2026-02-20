@@ -26,6 +26,20 @@ abstract class InputData extends Fluent
     public function __construct(string $type)
     {
         $this->set('type', $type);
+
+        static::registerTranslations();
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * @return void
+     */
+    public static function registerTranslations(): void
+    {
+        //
     }
 
     #endregion
