@@ -1,6 +1,7 @@
 import { FieldData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
 import InputCheckbox from "./input-checkbox";
+import InputFile from "./input-file";
 import InputPassword from "./input-password";
 import InputText from "./input-text";
 
@@ -19,6 +20,9 @@ const registry: Registry = {
   },
   ["checkbox"]: (props) => {
     return <InputCheckbox {...props} />;
+  },
+  ["file"]: (props) => {
+    return <InputFile {...props} />;
   },
   ["password"]: (props) => {
     return <InputPassword {...props} />;
