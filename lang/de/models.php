@@ -10,8 +10,8 @@ use Narsil\Base\Models\Users\UserConfiguration;
 #endregion
 
 return [
-    Permission::TABLE => 'permission|permissions',
-    Role::TABLE => 'role|roles',
-    User::TABLE => 'utilisateur|utilisateurs',
-    UserConfiguration::TABLE => 'paramètres',
+    Permission::TABLE => 'Berechtigung|Berechtigungen',
+    Role::TABLE => 'Rolle|Rollen',
+    User::TABLE => 'Benutzer|Benutzer',
+    UserConfiguration::TABLE => 'Einstellungen',
 ];

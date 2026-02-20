@@ -4,20 +4,20 @@ import { set } from "lodash-es";
 import { type ReactNode, useState } from "react";
 import { FormContext, type FormContextProps } from "./form-context";
 
-type FormProviderProps = FormContextProps & {
+type FormProviderProps = Partial<FormContextProps> & {
   steps?: FormStepData[];
   initialData?: Record<string, unknown>;
   render: (props: FormContextProps) => ReactNode;
 };
 
 function FormProvider({
-  action,
+  action = "#",
   defaultLanguage = "en",
   steps = [],
-  id,
+  id = "form",
   initialData = {},
   languages = [],
-  method,
+  method = "post",
   render,
 }: FormProviderProps) {
   const [formLanguage, setFormLanguage] = useState<string>("en");
