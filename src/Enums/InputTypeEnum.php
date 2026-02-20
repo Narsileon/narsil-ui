@@ -18,6 +18,7 @@ enum InputTypeEnum: string
 {
     use Enumerable;
 
+    case ARRAY = 'array';
     case CHECKBOX = 'checkbox';
     case COLOR = 'color';
     case DATE = 'date';

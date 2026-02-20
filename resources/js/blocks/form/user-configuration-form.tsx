@@ -7,13 +7,14 @@ import type { FormData } from "@narsil-ui/types";
 import { Fragment } from "react";
 import { route } from "ziggy-js";
 
-type ConfigurationFormProps = {
+type UserConfigurationFormProps = {
   form: FormData;
   onSuccess?: () => void;
 };
 
-function UserConfigurationForm({ form, onSuccess }: ConfigurationFormProps) {
+function UserConfigurationForm({ form, onSuccess }: UserConfigurationFormProps) {
   const { locale } = useTranslator();
+
   const { color, setColor } = useColorStore();
   const { radius, setRadius } = useRadiusStore();
 
