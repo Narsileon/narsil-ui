@@ -1,9 +1,11 @@
+import { Combobox } from "@narsil-ui/components/combobox";
+import { Slider } from "@narsil-ui/components/slider";
 import { FieldData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
-import InputCheckbox from "./input-checkbox";
-import InputFile from "./input-file";
-import InputPassword from "./input-password";
-import InputText from "./input-text";
+import CheckboxInput from "./checkbox-input";
+import FileInput from "./file-input";
+import PasswordInput from "./password-input";
+import TextInput from "./text-input";
 
 export type FieldProps = FieldData & {
   value: any;
@@ -19,16 +21,39 @@ const registry: Registry = {
     return <div />;
   },
   ["checkbox"]: (props) => {
-    return <InputCheckbox {...props} />;
+    return <CheckboxInput {...props} />;
   },
   ["file"]: (props) => {
-    return <InputFile {...props} />;
+    return <FileInput {...props} />;
   },
   ["password"]: (props) => {
-    return <InputPassword {...props} />;
+    return <PasswordInput {...props} />;
+  },
+  ["range"]: (props) => {
+    return (
+      <Slider
+        {...props.input}
+        id={props.id}
+        name={props.id}
+        value={props.value}
+        onValueChange={props.setValue}
+      />
+    );
+  },
+  ["select"]: (props) => {
+    return (
+      <Combobox
+        {...props.input}
+        id={props.id}
+        options={props.input.options}
+        required={props.required}
+        value={props.value}
+        setValue={props.setValue}
+      />
+    );
   },
   ["default"]: (props) => {
-    return <InputText {...props} />;
+    return <TextInput {...props} />;
   },
 };
 

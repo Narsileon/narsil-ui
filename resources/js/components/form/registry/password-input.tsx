@@ -11,7 +11,7 @@ import { useTranslator } from "@narsil-ui/components/translator";
 import { useState } from "react";
 import { FieldProps } from ".";
 
-function InputPassword({ id, input, readOnly, required, value, setValue }: FieldProps) {
+function PasswordInput({ id, input, readOnly, required, value, setValue }: FieldProps) {
   const { trans } = useTranslator();
 
   const [show, setShow] = useState(false);
@@ -42,18 +42,15 @@ function InputPassword({ id, input, readOnly, required, value, setValue }: Field
       </InputGroupAddon>
       {input.href ? (
         <Button
+          className="absolute -top-8 right-0 text-muted-foreground"
           nativeButton={false}
           size="link"
           variant="link"
-          render={
-            <Link className="absolute -top-8 right-0" href={input.href}>
-              {trans("ui.forgot_password")}
-            </Link>
-          }
+          render={<Link href={input.href}>{trans("ui.forgot_password")}</Link>}
         ></Button>
       ) : null}
     </InputGroupRoot>
   );
 }
 
-export default InputPassword;
+export default PasswordInput;

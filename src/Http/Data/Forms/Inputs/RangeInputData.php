@@ -16,7 +16,7 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @property integer $defaultValue The "default value" attribute of the input.
  * @property integer $max The "max" attribute of the input.
  * @property integer $min The "min" attribute of the input.
- * @property integer $step The "step" attribute of the input.
+ * @property float $step The "step" attribute of the input.
  */
 class RangeInputData extends InputData
 {
@@ -26,7 +26,7 @@ class RangeInputData extends InputData
      * @param integer $defaultValue The "default value" attribute of the input.
      * @param integer $max The "max" attribute of the input.
      * @param integer $min The "min" attribute of the input.
-     * @param integer $step The "step" attribute of the input.
+     * @param float $step The "step" attribute of the input.
      *
      * @return void
      */
@@ -34,7 +34,7 @@ class RangeInputData extends InputData
         int $defaultValue = 0,
         int $max = 100,
         int $min = 0,
-        int $step = 1,
+        float $step = 1,
     )
     {
         $this->set('defaultValue', $defaultValue);

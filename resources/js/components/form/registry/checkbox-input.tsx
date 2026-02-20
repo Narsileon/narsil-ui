@@ -2,7 +2,7 @@ import { Checkbox, Checkboxes } from "@narsil-ui/components/checkbox";
 import { isArray } from "lodash-es";
 import { FieldProps } from ".";
 
-function InputCheckbox({ id, input, readOnly, required, value, setValue }: FieldProps) {
+function CheckboxInput({ id, input, readOnly, required, value, setValue }: FieldProps) {
   if (input.options?.length > 0) {
     return (
       <Checkboxes
@@ -27,4 +27,4 @@ function InputCheckbox({ id, input, readOnly, required, value, setValue }: Field
   );
 }
 
-export default InputCheckbox;
+export default CheckboxInput;

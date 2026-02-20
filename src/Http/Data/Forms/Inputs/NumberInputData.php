@@ -14,7 +14,7 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @author Jonathan Rigaux
  *
  * @property integer $defaultValue The "default value" attribute of the input.
- * @property integer $step The "step" attribute of the input.
+ * @property float $step The "step" attribute of the input.
  * @property integer|null $max The "max" attribute of the input.
  * @property integer|null $min The "min" attribute of the input.
  */
@@ -24,7 +24,7 @@ class NumberInputData extends InputData
 
     /**
      * @param integer $defaultValue The "default value" attribute of the input.
-     * @param integer $step The "step" attribute of the input.
+     * @param float $step The "step" attribute of the input.
      * @param integer|null $max The "max" attribute of the input.
      * @param integer|null $min The "min" attribute of the input.
      *
@@ -32,7 +32,7 @@ class NumberInputData extends InputData
      */
     public function __construct(
         int $defaultValue = 0,
-        int $step = 1,
+        float $step = 1,
         ?int $max = null,
         ?int $min = null,
     )

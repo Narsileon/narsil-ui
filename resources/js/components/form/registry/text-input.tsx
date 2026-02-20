@@ -6,7 +6,7 @@ import {
 } from "@narsil-ui/components/input-group";
 import { FieldProps } from ".";
 
-function InputText({ icon, id, input, readOnly, required, value, setValue }: FieldProps) {
+function TextInput({ icon, id, input, readOnly, required, value, setValue }: FieldProps) {
   return (
     <InputGroupRoot>
       <InputGroupInput
@@ -27,4 +27,4 @@ function InputText({ icon, id, input, readOnly, required, value, setValue }: Fie
   );
 }
 
-export default InputText;
+export default TextInput;

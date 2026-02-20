@@ -7,7 +7,7 @@ import {
 import { useEffect, useState, type ChangeEvent } from "react";
 import { FieldProps } from ".";
 
-function InputFile({ icon, id, input, readOnly, required, value, setValue }: FieldProps) {
+function FileInput({ icon, id, input, readOnly, required, value, setValue }: FieldProps) {
   const [preview, setPreview] = useState<string | null>(null);
 
   useEffect(() => {
@@ -67,4 +67,4 @@ function InputFile({ icon, id, input, readOnly, required, value, setValue }: Fie
   );
 }
 
-export default InputFile;
+export default FileInput;
