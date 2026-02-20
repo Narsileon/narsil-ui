@@ -15,7 +15,7 @@ use Narsil\Base\Http\Data\Forms\InputData;
  *
  * @property boolean $defaultValue The "default value" attribute of the input.
  */
-class NumberInputData extends InputData
+class SwitchInputData extends InputData
 {
     #region CONSTRUCTOR
 
