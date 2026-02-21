@@ -35,13 +35,13 @@ class TwoFactorForm extends Form implements Contract
         $this
             ->action(route('two-factor.confirm'))
             ->method(RequestMethodEnum::POST->value)
-            ->submitLabel(trans('narsil-ui::ui.confirm'));
+            ->submitLabel(trans('narsil::ui.confirm'));
 
         app(TranslationsBag::class)
-            ->add('narsil-ui::descriptions.users.code')
-            ->add('narsil-ui::descriptions.users.recovery_codes')
-            ->add('narsil-ui::ui.recovery_codes')
-            ->add('narsil-ui::ui.two_factor');
+            ->add('narsil::descriptions.users.code')
+            ->add('narsil::descriptions.users.recovery_codes')
+            ->add('narsil::ui.recovery_codes')
+            ->add('narsil::ui.two_factor');
     }
 
     #endregion

@@ -35,11 +35,13 @@ abstract class Form extends Fluent implements Contract
         $this->set('model', $model);
 
         $defaultLanguage = Config::get('app.locale', 'en');
+        $languages = Config::get('narsil.locales', [$defaultLanguage]);
 
         $this
             ->defaultLanguage($defaultLanguage)
+            ->languages($languages)
             ->steps($this->getSteps())
-            ->submitLabel(trans('narsil-ui::ui.save'));
+            ->submitLabel(trans('narsil::ui.save'));
 
         static::registerTranslations();
     }
@@ -83,19 +85,19 @@ abstract class Form extends Fluent implements Contract
      */
     public function languages(array $locales): static
     {
-        $languageOptions = [];
+        $options = [];
 
         foreach ($locales as $locale)
         {
             $label = Str::ucfirst(Locale::getDisplayName($locale, App::getLocale()));
 
-            $languageOptions[] = new OptionData(
+            $options[] = new OptionData(
                 label: $label,
                 value: $locale
             );
         }
 
-        $this->set('languageOptions', $languageOptions);
+        $this->set('languages', $options);
 
         return $this;
     }
@@ -150,9 +152,17 @@ abstract class Form extends Fluent implements Contract
     protected static function registerTranslations(): void
     {
         app(TranslationsBag::class)
-            ->add('narsil-ui::blame.by')
-            ->add('narsil-ui::blame.created')
-            ->add('narsil-ui::blame.updated');
+            ->add('narsil::blame.by')
+            ->add('narsil::blame.created')
+            ->add('narsil::blame.updated')
+            ->add('narsil::ui.continue')
+            ->add('narsil::ui.create_another')
+            ->add('narsil::ui.default')
+            ->add('narsil::ui.delete')
+            ->add('narsil::ui.publish')
+            ->add('narsil::ui.save_as_new')
+            ->add('narsil::ui.translations')
+            ->add('narsil::ui.unpublish');
     }
 
     /**

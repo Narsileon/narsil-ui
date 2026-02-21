@@ -60,7 +60,6 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->mergeGuarded([
             self::EMAIL_VERIFIED_AT,
             self::ID,
-            self::PASSWORD,
             self::REMEMBER_TOKEN,
             self::TWO_FACTOR_CONFIRMED_AT,
             self::TWO_FACTOR_RECOVERY_CODES,

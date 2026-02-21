@@ -52,7 +52,7 @@ class UserForm extends Form implements Contract
         return [
             new FormStepData(
                 id: 'account',
-                label: trans('narsil-ui::ui.account'),
+                label: trans('narsil::ui.account'),
                 elements: [
                     new FieldData(
                         icon: 'email',
@@ -78,7 +78,7 @@ class UserForm extends Form implements Contract
             ),
             new FormStepData(
                 id: 'profile',
-                label: trans('narsil-ui::ui.profile'),
+                label: trans('narsil::ui.profile'),
                 elements: [
                     new FieldData(
                         icon: 'circle-user',
@@ -110,7 +110,7 @@ class UserForm extends Form implements Contract
                 label: ModelService::getTableLabel(Role::TABLE),
                 elements: [
                     new FieldData(
-                        id: Role::RELATION_PERMISSIONS,
+                        id: User::RELATION_ROLES,
                         input: new CheckboxInputData(
                             options: Role::options(),
                         ),

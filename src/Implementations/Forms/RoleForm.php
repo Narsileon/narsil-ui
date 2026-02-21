@@ -85,7 +85,7 @@ class RoleForm extends Form implements Contract
         return [
             new FormStepData(
                 id: 'definition',
-                label: trans('narsil-ui::ui.definition'),
+                label: trans('narsil::ui.definition'),
                 elements: [
                     new FieldData(
                         description: ModelService::getAttributeDescription(Role::TABLE, Role::NAME),

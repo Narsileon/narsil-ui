@@ -5,6 +5,7 @@ namespace Narsil\Base\Services;
 #region USE
 
 use Illuminate\Support\Str;
+use Narsil\Base\Enums\ModelEventEnum;
 use Narsil\Base\Helpers\Translator;
 
 #endregion
@@ -24,7 +25,7 @@ abstract class ModelService
      *
      * @return string
      */
-    public static function getAttributeDescription(string $table, string $attribute, array $replace = []): string
+    final public static function getAttributeDescription(string $table, string $attribute, array $replace = []): string
     {
         return Translator::trans("descriptions.$table.$attribute", $replace);
     }
@@ -55,6 +56,23 @@ abstract class ModelService
         }
 
         return $label;
+    }
+
+    /**
+     * @param string $model
+     * @param ModelEventEnum $event
+     *
+     * @return string
+     */
+    public static function getSuccessMessage(string $table, ModelEventEnum $event): string
+    {
+        $modelLabel = static::getModelLabel($table, false);
+        $tableLabel = static::getTableLabel($table, false);
+
+        return Translator::trans("toasts.success.$event->value", [
+            'model' => $modelLabel,
+            'table' => $tableLabel,
+        ]);
     }
 
     /**

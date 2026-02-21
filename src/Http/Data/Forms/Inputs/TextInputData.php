@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 #region USE
 
 use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
 #endregionx
@@ -47,6 +48,44 @@ class TextInputData extends InputData
         $this->set('placeholder', $placeholder);
 
         parent::__construct(InputTypeEnum::TEXT->value);
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function form(?string $prefix = null): array
+    {
+        return [
+            new FieldData(
+                id: 'defaultValue',
+                prefix: $prefix,
+                input: new TextInputData(),
+            ),
+            new FieldData(
+                id: 'placeholder',
+                prefix: $prefix,
+                input: new TextInputData(),
+            ),
+            new FieldData(
+                id: 'autoComplete',
+                prefix: $prefix,
+                input: new TextInputData(),
+            ),
+            new FieldData(
+                id: 'minLength',
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+            new FieldData(
+                id: 'maxLength',
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+        ];
     }
 
     #endregion

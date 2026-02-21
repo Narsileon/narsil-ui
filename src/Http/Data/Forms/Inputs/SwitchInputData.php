@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 #region USE
 
 use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
 #endregionx
@@ -31,6 +32,24 @@ class SwitchInputData extends InputData
         $this->set('defaultValue', $defaultValue);
 
         parent::__construct(InputTypeEnum::SWITCH->value);
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function form(?string $prefix = null): array
+    {
+        return [
+            new FieldData(
+                id: 'defaultValue',
+                prefix: $prefix,
+                input: new SwitchInputData(),
+            ),
+        ];
     }
 
     #endregion

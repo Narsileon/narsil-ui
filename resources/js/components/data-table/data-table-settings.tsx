@@ -122,7 +122,7 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
                 <div className="flex-1/2 pr-4">
                   {availableColumns.map((column) => {
                     const columnLabel = upperFirst(column.columnDef.header as string);
-                    const label = `${trans("tooltips.show")} '${columnLabel}'`;
+                    const label = `${trans("ui.show")} '${columnLabel}'`;
 
                     return (
                       <Tooltip tooltip={label} key={column.id}>
@@ -198,8 +198,8 @@ function SortableItem({ column, onRemove }: SortableItemProps) {
 
   const columnLabel = upperFirst(column.columnDef.header as string);
 
-  const hideColumnLabel = `${trans("tooltips.hide")} '${columnLabel}'`;
-  const moveColumnLabel = `${trans("tooltips.move")} '${columnLabel}'`;
+  const hideColumnLabel = `${trans("ui.hide")} '${columnLabel}'`;
+  const moveColumnLabel = `${trans("ui.move")} '${columnLabel}'`;
 
   return (
     <div

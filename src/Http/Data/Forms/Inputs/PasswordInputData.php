@@ -60,9 +60,9 @@ class PasswordInputData extends InputData
     public static function registerTranslations(): void
     {
         app(TranslationsBag::class)
-            ->add('narsil-ui::tooltips.hide')
-            ->add('narsil-ui::tooltips.show')
-            ->add('narsil-ui::ui.forgot_password');
+            ->add('narsil::ui.forgot_password')
+            ->add('narsil::ui.hide')
+            ->add('narsil::ui.show');
     }
 
     #endregion

@@ -26,6 +26,7 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @property string|null $label The label associated to the field.
  * @property string|null $description The description associated to the field.
  * @property string|null $icon The icon associated to the field.
+ * @property string|null $prefix The prefix associated to the field.
  * @property ConditionData[] $conditions The conditions associated to the field.
  */
 class FieldData extends Fluent
@@ -44,6 +45,7 @@ class FieldData extends Fluent
      * @param string|null $description The description associated to the field.
      * @param string|null $icon The icon associated to the field.
      * @param string|null $label The label associated to the field.
+     * @param string|null $prefix The prefix associated to the field.
      * @param ConditionData[] $conditions The conditions associated to the field.
      *
      * @return void
@@ -60,6 +62,7 @@ class FieldData extends Fluent
         ?string $description = null,
         ?string $icon = null,
         ?string $label = null,
+        ?string $prefix = null,
         ?array $conditions = [],
     )
     {
@@ -68,7 +71,7 @@ class FieldData extends Fluent
         $this->set('conditions', $conditions);
         $this->set('description', $description);
         $this->set('icon', $icon);
-        $this->set('id', $id);
+        $this->set('id', $prefix ? "$prefix.$id" : $id);
         $this->set('input', $input);
         $this->set('label', $label ?? Translator::trans("validation.attributes.$id"));
         $this->set('readOnly', $readOnly);

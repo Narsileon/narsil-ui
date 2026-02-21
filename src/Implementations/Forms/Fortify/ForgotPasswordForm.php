@@ -33,7 +33,7 @@ class ForgotPasswordForm extends Form implements Contract
         $this
             ->action(route('password.email'))
             ->method(RequestMethodEnum::POST->value)
-            ->submitLabel(trans('narsil-ui::ui.send'));
+            ->submitLabel(trans('narsil::ui.send'));
     }
 
     #endregion

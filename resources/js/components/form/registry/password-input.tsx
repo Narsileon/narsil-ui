@@ -16,7 +16,7 @@ function PasswordInput({ id, input, readOnly, required, value, setValue }: Field
 
   const [show, setShow] = useState(false);
 
-  const tooltip = show ? trans("tooltips.hide") : trans("tooltips.show");
+  const tooltip = show ? trans("ui.hide") : trans("ui.show");
 
   return (
     <InputGroupRoot className="relative">

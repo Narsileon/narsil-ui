@@ -1,25 +1,19 @@
 import { FieldDescription, FieldError, FieldLabel, FieldRoot } from "@narsil-ui/components/field";
 import { FormField, FormFieldLanguage } from "@narsil-ui/components/form";
 import { Icon } from "@narsil-ui/components/icon";
-import { FieldData, FieldsetData } from "@narsil-ui/types";
-import { type Registry } from "./registry";
+import type { FieldData, FieldsetData } from "@narsil-ui/types";
+import { type ReactNode } from "react";
+import { getField, type Registry } from "./registry";
 
 type FormElementProps = (FieldsetData | FieldData) & {
   registry?: Registry;
   onChange?: (value: unknown) => void;
+  render?: (fieldset: FieldsetData) => ReactNode;
 };
 
-function FormElement({ registry = {}, onChange, ...props }: FormElementProps) {
-  function getField<K extends keyof Registry>(name: K, props: any) {
-    const FieldComponent = registry[name] ?? registry.default;
-
-    return <FieldComponent {...props} />;
-  }
-
+function FormElement({ registry = {}, onChange, render, ...props }: FormElementProps) {
   if ("elements" in props) {
-    return getField("fieldset", {
-      ...props,
-    });
+    return render?.(props);
   }
 
   const { className, description, id, input, label, required, translatable, width } = props;
@@ -48,21 +42,23 @@ function FormElement({ registry = {}, onChange, ...props }: FormElementProps) {
                     <span>-</span>
                     <FormFieldLanguage
                       value={fieldLanguage}
-                      onValueChange={(value) => setFieldLanguage(value as string)}
+                      onValueChange={(value) => {
+                        setFieldLanguage(value as string);
+                      }}
                     />
                   </>
                 ) : null}
               </div>
             </div>
             {description ? <FieldDescription>{description}</FieldDescription> : null}
-            {getField(input.type, {
+            {getField(registry, input.type, {
               ...props,
               id: id,
               required: required,
               value: value,
               setValue: handleOnChange,
             })}
-            <FieldError>{error}</FieldError>
+            <FieldError match={!!error}>{error}</FieldError>
           </FieldRoot>
         );
       }}

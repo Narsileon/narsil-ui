@@ -8,7 +8,12 @@ function FormFieldLanguage({ ...props }: FormFieldLanguageProps) {
   const { languages } = useForm();
 
   return languages?.length > 0 ? (
-    <Select data-slot="form-language" options={languages} {...props} />
+    <Select
+      data-slot="form-language"
+      className="border-transparent pl-0 uppercase shadow-none"
+      options={languages}
+      {...props}
+    />
   ) : null;
 }
 

@@ -33,7 +33,7 @@ class ConfirmPasswordForm extends Form implements Contract
         $this
             ->action(route('password.confirm'))
             ->method(RequestMethodEnum::POST->value)
-            ->submitLabel(trans('narsil-ui::ui.confirm'));
+            ->submitLabel(trans('narsil::ui.confirm'));
     }
 
     #endregion

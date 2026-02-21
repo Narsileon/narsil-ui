@@ -13,5 +13,5 @@ return [
     Permission::TABLE => 'permission|permissions',
     Role::TABLE => 'role|roles',
     User::TABLE => 'utilisateur|utilisateurs',
-    UserConfiguration::TABLE => 'paramètres',
+    UserConfiguration::TABLE => 'paramètres|paramètres',
 ];

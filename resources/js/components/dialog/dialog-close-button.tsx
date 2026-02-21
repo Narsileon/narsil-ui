@@ -8,7 +8,7 @@ import { type ComponentProps } from "react";
 function DialogCloseButton({ className, ...props }: ComponentProps<typeof Dialog.Close>) {
   const { trans } = useTranslator();
 
-  const label = trans("tooltips.close", { fallback: "Close" });
+  const label = trans("ui.close", { fallback: "Close" });
 
   return (
     <Tooltip tooltip={label}>

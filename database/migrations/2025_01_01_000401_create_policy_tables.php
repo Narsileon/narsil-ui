@@ -85,7 +85,17 @@ return new class extends Migration
             $blueprint
                 ->timestamp(Permission::CREATED_AT);
             $blueprint
+                ->foreignId(Role::CREATED_BY)
+                ->nullable()
+                ->constrained(User::TABLE, User::ID)
+                ->nullOnDelete();
+            $blueprint
                 ->timestamp(Permission::UPDATED_AT);
+            $blueprint
+                ->foreignId(Role::UPDATED_BY)
+                ->nullable()
+                ->constrained(User::TABLE, User::ID)
+                ->nullOnDelete();
         });
     }
 

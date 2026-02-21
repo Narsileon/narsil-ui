@@ -13,7 +13,7 @@ type SortableHandleProps = ComponentProps<typeof Button> & {
 function SortableHandle({ className, isDragging = false, ...props }: SortableHandleProps) {
   const { trans } = useTranslator();
 
-  const label = trans("tooltips.move", { fallback: "Move" });
+  const label = trans("ui.move", { fallback: "Move" });
 
   return (
     <Tooltip hidden={isDragging} tooltip={label}>

@@ -35,6 +35,16 @@ abstract class InputData extends Fluent
     #region PUBLIC METHODS
 
     /**
+     * @param string|null $prefix
+     *
+     * @return array
+     */
+    public static function form(?string $prefix = null): array
+    {
+        return [];
+    }
+
+    /**
      * @return void
      */
     public static function registerTranslations(): void

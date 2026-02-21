@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 #region USE
 
 use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Support\TranslationsBag;
 
@@ -43,12 +44,26 @@ class CheckboxInputData extends InputData
     #region PUBLIC METHODS
 
     /**
+     * {@inheritDoc}
+     */
+    public static function form(?string $prefix = null): array
+    {
+        return [
+            new FieldData(
+                id: 'defaultValue',
+                prefix: $prefix,
+                input: new CheckboxInputData(),
+            ),
+        ];
+    }
+
+    /**
      * {@inheritdoc}
      */
     public static function registerTranslations(): void
     {
         app(TranslationsBag::class)
-            ->add('narsil-ui::ui.all');
+            ->add('narsil::ui.all');
     }
 
     #endregion

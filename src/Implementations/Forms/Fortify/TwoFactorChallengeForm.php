@@ -32,7 +32,7 @@ class TwoFactorChallengeForm extends Form implements Contract
         $this
             ->action(route('two-factor.login'))
             ->method(RequestMethodEnum::POST->value)
-            ->submitLabel(trans('narsil-ui::ui.confirm'));
+            ->submitLabel(trans('narsil::ui.confirm'));
     }
 
     #endregion

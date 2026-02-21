@@ -34,7 +34,7 @@ class UpdatePasswordForm extends Form implements Contract
             ->action(route('user-password.update'))
             ->method(RequestMethodEnum::PUT->value)
             ->submitIcon('save')
-            ->submitLabel(trans('narsil-ui::ui.save'));
+            ->submitLabel(trans('narsil::ui.save'));
     }
 
     #endregion

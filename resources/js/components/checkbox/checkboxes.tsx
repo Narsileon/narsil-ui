@@ -11,15 +11,15 @@ import { OptionData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
 
 type CheckboxesProps = {
-  options: OptionData<string>[];
-  values: string[];
-  onChange: (value: string[]) => void;
+  options: OptionData<number | string>[];
+  values: (number | string)[];
+  onChange: (value: (number | string)[]) => void;
 };
 
 function Checkboxes({ options = [], values, onChange }: CheckboxesProps) {
   const { trans } = useTranslator();
 
-  function toggleValue(value: string) {
+  function toggleValue(value: number | string) {
     if (values.includes(value)) {
       onChange(values.filter((x) => x !== value));
     } else {
@@ -28,7 +28,7 @@ function Checkboxes({ options = [], values, onChange }: CheckboxesProps) {
   }
 
   function renderCheckboxes(options: OptionData[]): ReactNode {
-    const checkboxes = options.flatMap((option) => option.value) as string[];
+    const checkboxes = options.flatMap((option) => option.value) as (number | string)[];
 
     const checkedCheckboxes = checkboxes.filter((value) => values.includes(value));
 
@@ -39,7 +39,7 @@ function Checkboxes({ options = [], values, onChange }: CheckboxesProps) {
       if (allChecked) {
         onChange(values.filter((value) => !checkboxes.includes(value)));
       } else {
-        onChange(Array.from(new Set<string>([...values, ...checkboxes])));
+        onChange(Array.from(new Set<number | string>([...values, ...checkboxes])));
       }
     };
 
@@ -57,16 +57,16 @@ function Checkboxes({ options = [], values, onChange }: CheckboxesProps) {
             </div>
           </TableCell>
         </TableRow>
-        {options.flatMap((option) => {
-          const checked = values.includes(option.value as string);
+        {options.flatMap((option, index) => {
+          const checked = values.includes(option.value as number | string);
 
           return (
-            <TableRow key={option.value as string}>
+            <TableRow key={index}>
               <TableCell>
                 <div className="flex items-center justify-start gap-2">
                   <Checkbox
                     checked={checked}
-                    onCheckedChange={() => toggleValue(option.value as string)}
+                    onCheckedChange={() => toggleValue(option.value as number | string)}
                   />
                   <label>{option.label as string}</label>
                 </div>

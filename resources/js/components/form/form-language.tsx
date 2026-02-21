@@ -60,7 +60,7 @@ function FormLanguage({ defaultValue, value, onValueChange, ...props }: FormLang
 
             {option.value === defaultLanguage ? (
               <Badge className="bg-background" variant="outline">
-                {trans("ui.default_language")}
+                {trans("ui.default")}
               </Badge>
             ) : null}
           </ToggleGroupItem>

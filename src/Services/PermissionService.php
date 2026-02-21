@@ -27,7 +27,7 @@ abstract class PermissionService
      */
     public static function getLabel(string $table, string $permission, ?string $locale = null): string
     {
-        return trans("narsil-ui::abilities.$permission", [
+        return trans("narsil::abilities.$permission", [
             'model' => ModelService::getModelLabel($table, false, $locale),
             'table' => ModelService::getTableLabel($table, false, $locale),
         ], $locale);

@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 #region USE
 
 use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
 #endregionx
@@ -43,6 +44,39 @@ class RangeInputData extends InputData
         $this->set('step', $step);
 
         parent::__construct(InputTypeEnum::RANGE->value);
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function form(?string $prefix = null): array
+    {
+        return [
+            new FieldData(
+                id: 'defaultValue',
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+            new FieldData(
+                id: 'min',
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+            new FieldData(
+                id: 'max',
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+            new FieldData(
+                id: 'step',
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+        ];
     }
 
     #endregion

@@ -2,9 +2,11 @@ import { Combobox } from "@narsil-ui/components/combobox";
 import { Slider } from "@narsil-ui/components/slider";
 import { FieldData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
+import ArrayInput from "./array-input";
 import CheckboxInput from "./checkbox-input";
 import FileInput from "./file-input";
 import PasswordInput from "./password-input";
+import TableInput from "./table-input";
 import TextInput from "./text-input";
 
 export type FieldProps = FieldData & {
@@ -17,8 +19,8 @@ export type Registry = {
 };
 
 const registry: Registry = {
-  ["fieldset"]: (props) => {
-    return <div />;
+  ["array"]: (props) => {
+    return <ArrayInput registry={registry} {...props} />;
   },
   ["checkbox"]: (props) => {
     return <CheckboxInput {...props} />;
@@ -52,9 +54,18 @@ const registry: Registry = {
       />
     );
   },
+  ["table"]: (props) => {
+    return <TableInput registry={registry} {...props} />;
+  },
   ["default"]: (props) => {
     return <TextInput {...props} />;
   },
 };
+
+export function getField<K extends keyof Registry>(registry: Registry, name: K, props: any) {
+  const FieldComponent = registry[name] ?? registry.default;
+
+  return <FieldComponent {...props} />;
+}
 
 export default registry;

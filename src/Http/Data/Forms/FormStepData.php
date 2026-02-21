@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms;
 #region USE
 
 use Illuminate\Support\Fluent;
+use Illuminate\Support\Str;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FieldsetData;
 
@@ -39,7 +40,7 @@ class FormStepData extends Fluent
     )
     {
         $this->set('id', $id);
-        $this->set('label', $label);
+        $this->set('label', Str::ucfirst($label));
         $this->set('description', $description);
         $this->set('elements', $elements);
     }

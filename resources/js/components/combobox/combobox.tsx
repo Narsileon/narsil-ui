@@ -1,5 +1,4 @@
 import { router } from "@inertiajs/react";
-import type { SelectOption } from "@narsil-cms/types";
 import { Button } from "@narsil-ui/components/button";
 import {
   ComboboxChip,
@@ -23,6 +22,7 @@ import { InputGroupInput } from "@narsil-ui/components/input-group";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { getTranslatableData, getUntranslatableData } from "@narsil-ui/lib/data";
 import { cn } from "@narsil-ui/lib/utils";
+import type { OptionData } from "@narsil-ui/types";
 import parse from "html-react-parser";
 import { isArray, isEmpty, isNumber, lowerCase } from "lodash-es";
 import { Fragment, useMemo, useRef, useState } from "react";
@@ -35,7 +35,7 @@ type ComboboxProps = {
   id: string;
   labelPath?: string;
   multiple?: boolean;
-  options: SelectOption[] | string[];
+  options: OptionData[] | string[];
   placeholder?: string;
   reload?: string;
   required?: boolean;
@@ -151,7 +151,7 @@ function Combobox({
                 return item as string;
               }
 
-              return getTranslatableData(option as SelectOption, labelPath, locale);
+              return getTranslatableData(option as OptionData, labelPath, locale);
             }
       }
       itemToStringValue={

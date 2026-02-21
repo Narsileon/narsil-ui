@@ -17,7 +17,10 @@ function ComboboxPopupInput({ className, clearable, disabled, ...props }: Combob
   const { trans } = useTranslator();
 
   return (
-    <InputGroupRoot className={cn("m-0", className)} {...props}>
+    <InputGroupRoot
+      className={cn("m-0 rounded-b-none border-t-0 border-r-0 border-l-0", className)}
+      {...props}
+    >
       <ComboboxInput
         placeholder={trans("placeholders.search")}
         render={<InputGroupInput disabled={disabled} />}

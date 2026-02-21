@@ -26,6 +26,7 @@ export type FieldsetData = {
   elements: Array<FieldsetData | FieldData>;
   id?: string | null;
   label?: string | null;
+  [key: string]: unknown;
 };
 
 export type FormData = {
@@ -51,7 +52,7 @@ export type FieldData = {
   description?: string | null;
   icon?: string | null;
   id: string;
-  label?: string | null;
+  label: string;
   readOnly?: boolean;
   required?: boolean;
   translatable: boolean;

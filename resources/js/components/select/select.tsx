@@ -28,7 +28,7 @@ function Select({ options, value, onValueChange, ...props }: SelectProps) {
   const { locale } = useTranslator();
 
   return (
-    <SelectRoot>
+    <SelectRoot onValueChange={onValueChange}>
       <SelectTrigger {...props}>
         <SelectValue>{value}</SelectValue>
         <SelectIcon />

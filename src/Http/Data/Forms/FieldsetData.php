@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms;
 #region USE
 
 use Illuminate\Support\Fluent;
+use Illuminate\Support\Str;
 use Narsil\Base\Http\Data\ConditionData;
 use Narsil\Base\Http\Data\Forms\FieldData;
 
@@ -43,7 +44,7 @@ class FieldsetData extends Fluent
     )
     {
         $this->set('id', $id);
-        $this->set('label', $label);
+        $this->set('label', Str::ucfirst($label));
         $this->set('description', $description);
         $this->set('elements', $elements);
         $this->set('conditions', $conditions);

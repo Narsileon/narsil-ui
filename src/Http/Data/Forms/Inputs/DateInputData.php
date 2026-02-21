@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 #region USE
 
 use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
 #endregionx
@@ -39,6 +40,34 @@ class DateInputData extends InputData
         $this->set('min', $min);
 
         parent::__construct(InputTypeEnum::DATE->value);
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function form(?string $prefix = null): array
+    {
+        return [
+            new FieldData(
+                id: 'defaultValue',
+                prefix: $prefix,
+                input: new DateInputData(),
+            ),
+            new FieldData(
+                id: 'min',
+                prefix: $prefix,
+                input: new DateInputData(),
+            ),
+            new FieldData(
+                id: 'max',
+                prefix: $prefix,
+                input: new DateInputData(),
+            ),
+        ];
     }
 
     #endregion

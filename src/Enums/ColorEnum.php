@@ -51,9 +51,9 @@ enum ColorEnum: string
 
         foreach (self::values() as $value)
         {
-            $label = view('narsil-ui::components.color-label', [
+            $label = view('narsil::components.color-label', [
                 'color' => $value,
-                'label' => trans("narsil-ui::colors.$value"),
+                'label' => trans("narsil::colors.$value"),
             ])->render();
 
             $options[] = new OptionData(
@@ -63,19 +63,6 @@ enum ColorEnum: string
         }
 
         return $options;
-    }
-
-    /**
-     * Get the values of the enum.
-     *
-     * @return string[]
-     */
-    public static function values(): array
-    {
-        return array_map(function ($case)
-        {
-            return $case->value;
-        }, self::cases());
     }
 
     #endregion

@@ -41,7 +41,7 @@ class UserConfigurationForm extends Form implements Contract
         $this
             ->action(route('user-configurations.update'))
             ->method(RequestMethodEnum::PUT->value)
-            ->submitLabel(trans('narsil-cms::ui.save'));
+            ->submitLabel(trans('narsil::ui.save'));
     }
 
     #endregion
@@ -53,7 +53,7 @@ class UserConfigurationForm extends Form implements Contract
      */
     protected function getSteps(): array
     {
-        $localeSelectOptions = static::getLocaleSelectOptions();
+        $localeOptions = static::getLocaleOptions();
 
         return [
             new FormStepData(
@@ -63,7 +63,7 @@ class UserConfigurationForm extends Form implements Contract
                         required: true,
                         input: new SelectInputData(
                             defaultValue: App::getLocale(),
-                            options: $localeSelectOptions,
+                            options: $localeOptions,
                         ),
                     ),
                     new FieldData(
@@ -98,7 +98,7 @@ class UserConfigurationForm extends Form implements Contract
      *
      * @return OptionData[]
      */
-    protected static function getLocaleSelectOptions(): array
+    protected static function getLocaleOptions(): array
     {
         $locales = ResourceBundle::getLocales('');
 

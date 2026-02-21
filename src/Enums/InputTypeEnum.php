@@ -4,6 +4,7 @@ namespace Narsil\Base\Enums;
 
 #region USE
 
+use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Traits\Enumerable;
 
 #endregion
@@ -31,7 +32,27 @@ enum InputTypeEnum: string
     case RANGE = 'range';
     case SELECT = 'select';
     case SWITCH = 'switch';
+    case TABLE = 'table';
     case TEXT = 'text';
     case TEXTAREA = 'textarea';
     case TIME = 'time';
+
+    #region PUBLIC METHODS
+
+    /**
+     * Get the enum value as an option.
+     *
+     * @param OperatorEnum $case
+     *
+     * @return OptionData
+     */
+    public static function option(OperatorEnum $case): OptionData
+    {
+        return new OptionData(
+            label: trans('narsil::inputs.' . $case->value),
+            value: $case->value
+        );
+    }
+
+    #endregion
 }

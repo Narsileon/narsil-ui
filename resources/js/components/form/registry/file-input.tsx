@@ -51,7 +51,6 @@ function FileInput({ icon, id, input, readOnly, required, value, setValue }: Fie
         name={id}
         readOnly={readOnly}
         required={required}
-        value={value}
         onChange={onChange}
       />
       {value && preview ? (

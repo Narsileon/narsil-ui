@@ -56,7 +56,7 @@ enum RichTextEditorEnum: string
         foreach (self::cases() as $case)
         {
             $options[] = new OptionData(
-                label: trans("narsil-ui::rich-text-editor.$case->value"),
+                label: trans("narsil::rich-text-editor.$case->value"),
                 value: $case->value
             );
         }

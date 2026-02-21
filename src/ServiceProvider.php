@@ -76,7 +76,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     protected function bootTranslations(): void
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'narsil-ui');
+        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'narsil');
     }
 
     /**
@@ -88,7 +88,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->loadViewsFrom([
             __DIR__ . '/../resources/views',
-        ], 'narsil-ui');
+        ], 'narsil');
     }
 
     #endregion

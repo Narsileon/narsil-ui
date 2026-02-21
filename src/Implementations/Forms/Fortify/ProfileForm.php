@@ -35,7 +35,7 @@ class ProfileForm extends Form implements Contract
             ->action(route('user-profile-information.update'))
             ->method(RequestMethodEnum::PUT->value)
             ->submitIcon('save')
-            ->submitLabel(trans('narsil-ui::ui.save'));
+            ->submitLabel(trans('narsil::ui.save'));
     }
 
     #endregion
