@@ -15,13 +15,13 @@ import {
 import { Icon } from "@narsil-ui/components/icon";
 import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
-import { RoutesData } from "@narsil-ui/types";
+import type { RoutesData, UniqueIdentifier } from "@narsil-ui/types";
 import { type Table } from "@tanstack/react-table";
 import { type ComponentProps } from "react";
 import { route } from "ziggy-js";
 
 type DataTableRowMenuProps = Omit<ComponentProps<typeof DropdownMenuTrigger>, "id"> & {
-  id?: number | string;
+  id?: UniqueIdentifier;
   modal?: boolean;
   routes: RoutesData;
   table?: Table<TableData>;

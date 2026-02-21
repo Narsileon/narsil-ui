@@ -84,3 +84,5 @@ export type TableStateData = {
   sorting: { id: string; desc: boolean }[];
   table_name: string;
 };
+
+export type UniqueIdentifier = number | string;

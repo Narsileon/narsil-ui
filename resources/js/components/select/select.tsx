@@ -15,7 +15,7 @@ import {
 import SelectList from "@narsil-ui/components/select/select-list";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { getTranslatableData, getUntranslatableData } from "@narsil-ui/lib/data";
-import { OptionData } from "@narsil-ui/types";
+import type { OptionData } from "@narsil-ui/types";
 import { type ComponentProps } from "react";
 
 type SelectProps = ComponentProps<typeof SelectTrigger> & {

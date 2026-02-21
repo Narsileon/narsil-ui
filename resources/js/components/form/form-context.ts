@@ -1,5 +1,5 @@
 import { type InertiaFormProps } from "@inertiajs/react";
-import { OptionData } from "@narsil-ui/types";
+import type { OptionData } from "@narsil-ui/types";
 import { createContext, useContext } from "react";
 
 export type FormContextProps = Partial<InertiaFormProps<Record<string, any>>> & {

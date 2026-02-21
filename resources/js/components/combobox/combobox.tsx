@@ -4,6 +4,7 @@ import {
   ComboboxChip,
   ComboboxChipRemove,
   ComboboxChips,
+  ComboboxClear,
   ComboboxEmpty,
   ComboboxInput,
   ComboboxList,
@@ -17,14 +18,13 @@ import {
   ComboboxValue,
   ComboboxVirtualList,
 } from "@narsil-ui/components/combobox";
-import ComboboxClear from "@narsil-ui/components/combobox/combobox-clear";
 import { InputGroupInput } from "@narsil-ui/components/input-group";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { getTranslatableData, getUntranslatableData } from "@narsil-ui/lib/data";
 import { cn } from "@narsil-ui/lib/utils";
-import type { OptionData } from "@narsil-ui/types";
+import type { OptionData, UniqueIdentifier } from "@narsil-ui/types";
 import parse from "html-react-parser";
-import { isArray, isEmpty, isNumber, lowerCase } from "lodash-es";
+import { isArray, isEmpty, lowerCase } from "lodash-es";
 import { Fragment, useMemo, useRef, useState } from "react";
 
 type ComboboxProps = {
@@ -40,9 +40,9 @@ type ComboboxProps = {
   reload?: string;
   required?: boolean;
   searchable?: boolean;
-  value: string | string[];
+  value: UniqueIdentifier | UniqueIdentifier[];
   valuePath?: string;
-  setValue: (value: string | string[]) => void;
+  setValue: (value: UniqueIdentifier | UniqueIdentifier[]) => void;
 };
 
 function Combobox({
@@ -67,8 +67,6 @@ function Combobox({
 
   if (multiple && !isArray(value)) {
     value = value ? [value] : [];
-  } else if (isNumber(value)) {
-    value = value.toString();
   }
 
   const anchor = useRef<HTMLDivElement>(null);
@@ -90,8 +88,8 @@ function Combobox({
     });
   }, [locale, options, searchValue]);
 
-  const selectedValues = useMemo<string[]>(() => {
-    return multiple ? (value as string[]) : value ? [value as string] : [];
+  const selectedValues = useMemo<UniqueIdentifier[]>(() => {
+    return multiple ? (value as UniqueIdentifier[]) : value ? [value as UniqueIdentifier] : [];
   }, [value, multiple]);
 
   const selectedOptions = useMemo(() => {
@@ -100,7 +98,7 @@ function Combobox({
     );
   }, [options, selectedValues, valuePath]);
 
-  function onSelect(selectedValue: string) {
+  function onSelect(selectedValue: UniqueIdentifier) {
     if (!selectedValue) {
       return;
     }

@@ -1,6 +1,6 @@
 import { replaceLastPath } from "@narsil-cms/lib/utils";
 import { useForm } from "@narsil-ui/components/form";
-import { FieldData } from "@narsil-ui/types";
+import type { FieldData } from "@narsil-ui/types";
 import { cloneDeep, get, isObject, unset } from "lodash-es";
 import { type ReactNode, useEffect, useState } from "react";
 import { FormFieldContext } from "./form-field-context";

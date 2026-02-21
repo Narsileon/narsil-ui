@@ -3,7 +3,7 @@ import { FormElement, FormProvider, FormRoot, registry } from "@narsil-ui/compon
 import { useTranslator } from "@narsil-ui/components/translator";
 import { useColorStore } from "@narsil-ui/stores/color-store";
 import { useRadiusStore } from "@narsil-ui/stores/radius-store";
-import type { FormData } from "@narsil-ui/types";
+import type { FormData, UniqueIdentifier } from "@narsil-ui/types";
 import { Fragment } from "react";
 import { route } from "ziggy-js";
 
@@ -18,7 +18,7 @@ function UserConfigurationForm({ form, onSuccess }: UserConfigurationFormProps) 
   const { color, setColor } = useColorStore();
   const { radius, setRadius } = useRadiusStore();
 
-  function handleChange(id: string, value: number | string) {
+  function handleChange(id: string, value: UniqueIdentifier) {
     switch (id) {
       case "color":
         setColor(value as string);
@@ -64,7 +64,7 @@ function UserConfigurationForm({ form, onSuccess }: UserConfigurationFormProps) 
                         {...element}
                         registry={registry}
                         onChange={(value) =>
-                          handleChange(element.id as string, value as number | string)
+                          handleChange(element.id as string, value as UniqueIdentifier)
                         }
                         key={index}
                       />

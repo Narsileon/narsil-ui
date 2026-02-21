@@ -1,5 +1,5 @@
 import { useForm } from "@inertiajs/react";
-import { FieldData, FieldsetData, FormStepData } from "@narsil-ui/types";
+import type { FieldData, FieldsetData, FormStepData } from "@narsil-ui/types";
 import { set } from "lodash-es";
 import { type ReactNode, useState } from "react";
 import { FormContext, type FormContextProps } from "./form-context";

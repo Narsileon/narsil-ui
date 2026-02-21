@@ -1,6 +1,6 @@
 import { type TableData, DataTableRowMenu } from "@narsil-ui/components/data-table";
-import { RoutesData } from "@narsil-ui/types";
-import { ColumnDef } from "@tanstack/react-table";
+import type { RoutesData } from "@narsil-ui/types";
+import { type ColumnDef } from "@tanstack/react-table";
 
 function getMenuColumn(routes: RoutesData): ColumnDef<TableData> {
   return {

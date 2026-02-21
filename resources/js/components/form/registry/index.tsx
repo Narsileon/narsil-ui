@@ -1,6 +1,6 @@
 import { Combobox } from "@narsil-ui/components/combobox";
 import { Slider } from "@narsil-ui/components/slider";
-import { FieldData } from "@narsil-ui/types";
+import type { FieldData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
 import ArrayInput from "./array-input";
 import CheckboxInput from "./checkbox-input";
