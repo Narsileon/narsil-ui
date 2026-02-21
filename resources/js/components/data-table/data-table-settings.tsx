@@ -8,7 +8,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { router } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
-import { Data, useDataTable } from "@narsil-ui/components/data-table";
+import { useDataTable, type TableData } from "@narsil-ui/components/data-table";
 import {
   DialogBackdrop,
   DialogBody,
@@ -53,7 +53,7 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
     .getAllLeafColumns()
     .filter((column) => !column.getIsVisible() && column.getCanHide());
 
-  function handleActivate(column: Column<Data, unknown>) {
+  function handleActivate(column: Column<TableData, unknown>) {
     column.toggleVisibility(true);
 
     const filteredOrder = columnOrder.filter((id) => id !== column.id);
@@ -68,7 +68,7 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
     handleColumnOrder(newOrder);
   }
 
-  function handleDeactivate(column: Column<Data, unknown>) {
+  function handleDeactivate(column: Column<TableData, unknown>) {
     column.toggleVisibility(false);
 
     const newOrder = columnOrder.filter((id) => id !== column.id);
@@ -185,8 +185,8 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
 export default DataTableSettings;
 
 type SortableItemProps = {
-  column: Column<Data, unknown>;
-  onRemove: (c: Column<Data, unknown>) => void;
+  column: Column<TableData, unknown>;
+  onRemove: (c: Column<TableData, unknown>) => void;
 };
 
 function SortableItem({ column, onRemove }: SortableItemProps) {

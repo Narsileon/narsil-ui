@@ -2,7 +2,6 @@ import { Button } from "@narsil-ui/components/button";
 import { ButtonGroup } from "@narsil-ui/components/button-group";
 import { DataTableFilterForm, useDataTable } from "@narsil-ui/components/data-table";
 import { Icon } from "@narsil-ui/components/icon";
-import { InputContent } from "@narsil-ui/components/input";
 import {
   InputGroupAddon,
   InputGroupButton,
@@ -14,7 +13,7 @@ import { useTranslator } from "@narsil-ui/components/translator";
 import { debounce } from "lodash-es";
 import { useEffect, useMemo, useState, type ComponentProps } from "react";
 
-type DataTableInputProps = ComponentProps<typeof InputContent>;
+type DataTableInputProps = ComponentProps<typeof InputGroupInput>;
 
 function DataTableInput({ className, ...props }: DataTableInputProps) {
   const { trans } = useTranslator();

@@ -1,5 +1,5 @@
 import { router } from "@inertiajs/react";
-import { TableData } from "@narsil-ui/types";
+import type { TableStateData } from "@narsil-ui/types";
 import {
   getCoreRowModel,
   TableState,
@@ -10,14 +10,14 @@ import {
 } from "@tanstack/react-table";
 import { useRef, useState, type ReactNode } from "react";
 import { route } from "ziggy-js";
-import { type Data } from ".";
+import { type TableData } from ".";
 import { DataTableContext } from "./data-table-context";
 
-type DataTableProviderProps = Partial<Omit<TableOptions<Data>, "columns" | "initialState">> & {
+type DataTableProviderProps = Partial<Omit<TableOptions<TableData>, "columns" | "initialState">> & {
   children: ReactNode;
-  columns: ColumnDef<Data>[];
-  data: Data[];
-  initialState: TableData;
+  columns: ColumnDef<TableData>[];
+  data: TableData[];
+  initialState: TableStateData;
 };
 
 function DataTableProvider({
@@ -40,7 +40,7 @@ function DataTableProvider({
   state,
   ...props
 }: DataTableProviderProps) {
-  const ref = useRef<TableData>(null);
+  const ref = useRef<TableStateData>(null);
 
   const [tableState, setTableState] = useState<Partial<TableState>>({
     columnFilters: initialState.column_filters,
@@ -86,7 +86,7 @@ function DataTableProvider({
     });
   }
 
-  const dataTable = useReactTable<Data>({
+  const dataTable = useReactTable<TableData>({
     ...props,
     columnResizeMode: columnResizeMode,
     columns: columns,
