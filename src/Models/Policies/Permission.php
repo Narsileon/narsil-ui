@@ -133,7 +133,7 @@ class Permission extends Model
                         return new OptionData(
                             label: $permission->{self::LABEL},
                             value: $permission->{self::ID},
-                        );
+                        )->name($permission->{self::NAME});
                     })
                     ->all();
             });

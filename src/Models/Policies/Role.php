@@ -131,7 +131,7 @@ class Role extends Model
                         return new OptionData(
                             label: $role->{self::LABEL},
                             value: $role->{self::ID},
-                        );
+                        )->name($role->{self::NAME});
                     })
                     ->all();
             });

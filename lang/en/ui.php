@@ -2,6 +2,7 @@
 
 return [
     'account'         => 'Account',
+    'all'             => 'All',
     'cancel'          => 'Cancel',
     'confirm'         => 'Confirm',
     'create'          => 'Create',

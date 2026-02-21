@@ -6,6 +6,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Support\TranslationsBag;
 
 #endregionx
 
@@ -35,6 +36,19 @@ class CheckboxInputData extends InputData
         $this->set('options', $options);
 
         parent::__construct(InputTypeEnum::CHECKBOX->value);
+    }
+
+    #endregion
+
+    #region PUBLIC METHODS
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function registerTranslations(): void
+    {
+        app(TranslationsBag::class)
+            ->add('narsil-ui::ui.all');
     }
 
     #endregion
