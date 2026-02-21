@@ -1,3 +1,4 @@
+import FormBlame from "./form-blame";
 import useForm from "./form-context";
 import FormElement from "./form-element";
 import FormField from "./form-field";
@@ -9,6 +10,7 @@ import FormRoot from "./form-root";
 import registry from "./registry";
 
 export {
+  FormBlame,
   FormElement,
   FormField,
   FormFieldLanguage,

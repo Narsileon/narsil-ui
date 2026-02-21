@@ -13,6 +13,7 @@ use Locale;
 use Narsil\Base\Contracts\Form as Contract;
 use Narsil\Base\Http\Data\Forms\FieldStepData;
 use Narsil\Base\Http\Data\OptionData;
+use Narsil\Base\Support\TranslationsBag;
 
 #endregion
 
@@ -39,6 +40,8 @@ abstract class Form extends Fluent implements Contract
             ->defaultLanguage($defaultLanguage)
             ->steps($this->getSteps())
             ->submitLabel(trans('narsil-ui::ui.save'));
+
+        static::registerTranslations();
     }
 
     #endregion
@@ -140,6 +143,17 @@ abstract class Form extends Fluent implements Contract
     #endregion
 
     #region PROTECTED METHODS
+
+    /**
+     * @return void
+     */
+    protected static function registerTranslations(): void
+    {
+        app(TranslationsBag::class)
+            ->add('narsil-ui::blame.by')
+            ->add('narsil-ui::blame.created')
+            ->add('narsil-ui::blame.updated');
+    }
 
     /**
      * @return FieldStepData[]

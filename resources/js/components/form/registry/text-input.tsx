@@ -10,6 +10,7 @@ function TextInput({ icon, id, input, readOnly, required, value, setValue }: Fie
   return (
     <InputGroupRoot>
       <InputGroupInput
+        disabled={readOnly ?? undefined}
         {...input}
         id={id}
         name={id}

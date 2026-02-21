@@ -18,7 +18,7 @@ function InputGroupRoot({ className, ...props }: ComponentProps<"div">) {
         "has-[>[data-align=inline-end]]:[&>input]:pr-1.5",
         "has-[>[data-align=inline-start]]:[&>input]:pl-1.5",
         "has-[>textarea]:h-auto",
-        "has-disabled:bg-input/50 has-disabled:opacity-50 dark:has-disabled:bg-input/80",
+        "has-disabled:bg-input/50 dark:has-disabled:bg-input/80",
         "in-data-[slot=combobox-content]:focus-within:border-inherit in-data-[slot=combobox-content]:focus-within:ring-0",
         className,
       )}
