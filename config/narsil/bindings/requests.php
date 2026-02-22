@@ -11,6 +11,7 @@ return [
     |
     */
 
+    \Narsil\Base\Contracts\Requests\AssetFormRequest::class => \Narsil\Base\Implementations\Requests\AssetFormRequest::class,
     \Narsil\Base\Contracts\Requests\PermissionFormRequest::class => \Narsil\Base\Implementations\Requests\PermissionFormRequest::class,
     \Narsil\Base\Contracts\Requests\RoleFormRequest::class => \Narsil\Base\Implementations\Requests\RoleFormRequest::class,
     \Narsil\Base\Contracts\Requests\UserBookmarkFormRequest::class => \Narsil\Base\Implementations\Requests\UserBookmarkFormRequest::class,

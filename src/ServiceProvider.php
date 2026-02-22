@@ -36,6 +36,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/forms.php', 'narsil.bindings.forms');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/requests.php', 'narsil.bindings.requests');
+        $this->mergeConfigFrom(__DIR__ . '/../config/narsil/bindings/resources.php', 'narsil.bindings.resources');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/locales.php', 'narsil.locales');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/morphs.php', 'narsil.models.morphs');
         $this->mergeConfigFrom(__DIR__ . '/../config/narsil/models/observers.php', 'narsil.models.observers');

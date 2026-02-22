@@ -3,6 +3,16 @@ import { PaginationLinks, PaginationMeta } from "@narsil-ui/components/paginatio
 import { type IconName } from "@narsil-ui/registries/icons";
 import { type ColumnDef } from "@tanstack/react-table";
 
+export type AuthData = {
+  avatar: string;
+  email: string;
+  first_name: string;
+  full_name: string;
+  id: number;
+  last_name: string;
+  two_factor_confirmed_at: string;
+};
+
 export type BookmarkData = {
   name: string;
   url: string;

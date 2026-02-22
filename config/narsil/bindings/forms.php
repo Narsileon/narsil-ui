@@ -11,6 +11,7 @@ return [
     |
     */
 
+    \Narsil\Base\Contracts\Forms\AssetForm::class => \Narsil\Base\Implementations\Forms\AssetForm::class,
     \Narsil\Base\Contracts\Forms\PermissionForm::class => \Narsil\Base\Implementations\Forms\PermissionForm::class,
     \Narsil\Base\Contracts\Forms\RoleForm::class => \Narsil\Base\Implementations\Forms\RoleForm::class,
     \Narsil\Base\Contracts\Forms\UserForm::class => \Narsil\Base\Implementations\Forms\UserForm::class,
