@@ -21,7 +21,7 @@ import {
   TableWrapper,
 } from "@narsil-ui/components/table";
 import { cn } from "@narsil-ui/lib/utils";
-import type { DataTableCollection } from "@narsil-ui/types";
+import type { DataTableCollection, UniqueIdentifier } from "@narsil-ui/types";
 import { flexRender } from "@tanstack/react-table";
 import { upperFirst } from "lodash-es";
 import { ComponentProps } from "react";
@@ -44,7 +44,7 @@ function DataTable({ className, collection, ...props }: DataTableProps) {
     }
   }
 
-  function handleEdit(identifier: number | string) {
+  function handleEdit(identifier: UniqueIdentifier) {
     if (collection.meta.routes.edit) {
       router.get(
         route(collection.meta.routes.edit, {

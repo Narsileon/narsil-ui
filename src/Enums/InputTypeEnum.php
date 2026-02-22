@@ -30,6 +30,7 @@ enum InputTypeEnum: string
     case PASSWORD = 'password';
     case RADIO = 'radio';
     case RANGE = 'range';
+    case RICH_TEXT_EDITOR = 'rich-text-editor';
     case SELECT = 'select';
     case SWITCH = 'switch';
     case TABLE = 'table';

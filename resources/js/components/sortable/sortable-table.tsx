@@ -13,7 +13,7 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useFormField } from "@narsil-ui/components/form";
-import { getField, type Registry } from "@narsil-ui/components/form/registry";
+import { getField, type Registry } from "@narsil-ui/components/form/inputs";
 import { Label } from "@narsil-ui/components/label";
 import { SortableTableItem, type SortableData } from "@narsil-ui/components/sortable";
 import {

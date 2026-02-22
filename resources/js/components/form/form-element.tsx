@@ -3,7 +3,7 @@ import { FormField, FormFieldLanguage } from "@narsil-ui/components/form";
 import { Icon } from "@narsil-ui/components/icon";
 import type { FieldData, FieldsetData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
-import { getField, type Registry } from "./registry";
+import { getField, type Registry } from "./inputs";
 
 type FormElementProps = (FieldsetData | FieldData) & {
   registry?: Registry;

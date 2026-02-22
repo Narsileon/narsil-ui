@@ -9,7 +9,7 @@ import FormMenu from "./form-menu";
 import FormProvider from "./form-provider";
 import FormRoot from "./form-root";
 import FormSave from "./form-save";
-import registry from "./registry";
+import registry from "./inputs";
 
 export {
   FormBlame,

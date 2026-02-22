@@ -18,6 +18,7 @@ return [
     InputTypeEnum::PASSWORD->value => 'Password',
     InputTypeEnum::RADIO->value => 'Radio',
     InputTypeEnum::RANGE->value => 'Range',
+    InputTypeEnum::RICH_TEXT_EDITOR->value => 'Rich Text Editor',
     InputTypeEnum::SELECT->value => 'Select',
     InputTypeEnum::SWITCH->value => 'Switch',
     InputTypeEnum::TABLE->value => 'Table',
