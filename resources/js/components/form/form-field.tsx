@@ -1,7 +1,6 @@
-import { replaceLastPath } from "@narsil-cms/lib/utils";
 import { useForm } from "@narsil-ui/components/form";
 import type { FieldData } from "@narsil-ui/types";
-import { cloneDeep, get, isObject, unset } from "lodash-es";
+import { cloneDeep, concat, get, initial, isObject, toPath, unset } from "lodash-es";
 import { type ReactNode, useEffect, useState } from "react";
 import { FormFieldContext } from "./form-field-context";
 
@@ -57,6 +56,12 @@ function FormField({ conditions, id, input, render, translatable }: FormFieldPro
     }
 
     return value;
+  }
+
+  function replaceLastPath(path: string, last: string) {
+    const parts = toPath(path);
+
+    return concat(initial(parts), last).join(".");
   }
 
   useEffect(() => {

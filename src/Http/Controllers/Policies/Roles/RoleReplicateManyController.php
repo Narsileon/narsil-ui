@@ -12,7 +12,6 @@ use Narsil\Base\Http\Controllers\RedirectController;
 use Narsil\Base\Http\Requests\ReplicateManyRequest;
 use Narsil\Base\Models\Policies\Role;
 use Narsil\Base\Services\ModelService;
-use Narsil\Cms\Services\RoleService;
 
 #endregion
 
@@ -41,7 +40,7 @@ class RoleReplicateManyController extends RedirectController
 
         foreach ($roles as $role)
         {
-            RoleService::replicate($role);
+            RoleReplicateController::replicate($role);
         }
 
         return back()

@@ -68,7 +68,7 @@ function UserSettings({
       </TabsPanel>
       {auth ? (
         <TabsPanel value="security">
-          <UserTwoFactor form={twoFactorForm} />
+          <UserTwoFactor auth={auth} form={twoFactorForm} />
           <Separator />
           <UserSessions />
         </TabsPanel>
