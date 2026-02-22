@@ -1,0 +1,69 @@
+<?php
+
+namespace Narsil\Base\Http\Controllers\Fortify;
+
+#region USE
+
+use Illuminate\Http\Request;
+use Inertia\Response;
+use Narsil\Base\Contracts\Forms\Fortify\TwoFactorChallengeForm;
+use Narsil\Base\Http\Controllers\RenderController;
+
+#endregion
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ */
+class TwoFactorChallengeController extends RenderController
+{
+    #region PUBLIC METHODS
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function __invoke(Request $request): Response
+    {
+        $form = $this->getForm();
+
+        return $this->render('narsil/base::fortify/form', [
+            'form' => $form,
+        ]);
+    }
+
+    #endregion
+
+    #region PROTECTED METHODS
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function getDescription(): string
+    {
+        return trans('narsil::ui.two_factor');
+    }
+
+    /**
+     * Get the associated form.
+     *
+     * @return TwoFactorChallengeForm
+     */
+    protected function getForm(): TwoFactorChallengeForm
+    {
+        $form = app(TwoFactorChallengeForm::class);
+
+        return $form;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected function getTitle(): string
+    {
+        return trans('narsil::ui.two_factor');
+    }
+
+    #endregion
+}

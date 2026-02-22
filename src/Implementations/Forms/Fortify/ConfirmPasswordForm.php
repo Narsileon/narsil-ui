@@ -31,6 +31,7 @@ class ConfirmPasswordForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('confirm-password-form')
             ->action(route('password.confirm'))
             ->method(RequestMethodEnum::POST->value)
             ->submitLabel(trans('narsil::ui.confirm'));

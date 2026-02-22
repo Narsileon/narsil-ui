@@ -33,6 +33,7 @@ class RegisterForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('register-form')
             ->action(route('register'))
             ->method(RequestMethodEnum::POST->value)
             ->submitLabel(trans('narsil::ui.register'));

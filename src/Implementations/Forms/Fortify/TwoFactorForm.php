@@ -33,6 +33,7 @@ class TwoFactorForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('two-factor-form')
             ->action(route('two-factor.confirm'))
             ->method(RequestMethodEnum::POST->value)
             ->submitLabel(trans('narsil::ui.confirm'));

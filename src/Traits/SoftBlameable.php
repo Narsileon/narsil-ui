@@ -7,7 +7,7 @@ namespace Narsil\Base\Traits;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Auth;
-use Narsil\Cms\Models\User;
+use Narsil\Base\Models\User;
 
 #endregion
 

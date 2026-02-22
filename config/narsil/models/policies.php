@@ -13,5 +13,6 @@ return [
 
     \Narsil\Base\Models\Policies\Permission::class => \Narsil\Base\Policies\PermissionPolicy::class,
     \Narsil\Base\Models\Policies\Role::class => \Narsil\Base\Policies\RolePolicy::class,
+    \Narsil\Base\Models\Storages\Asset::class => \Narsil\Base\Policies\AssetPolicy::class,
     \Narsil\Base\Models\User::class => \Narsil\Base\Policies\UserPolicy::class,
 ];

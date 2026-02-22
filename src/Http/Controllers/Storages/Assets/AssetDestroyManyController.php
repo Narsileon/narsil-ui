@@ -1,0 +1,46 @@
+<?php
+
+namespace Narsil\Base\Http\Controllers\Storages\Assets;
+
+#region USE
+
+use Illuminate\Http\RedirectResponse;
+use Narsil\Base\Enums\AbilityEnum;
+use Narsil\Base\Enums\ModelEventEnum;
+use Narsil\Base\Http\Controllers\RedirectController;
+use Narsil\Base\Http\Requests\DestroyManyRequest;
+use Narsil\Base\Models\Storages\Asset;
+use Narsil\Base\Services\ModelService;
+
+#endregion
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ */
+class AssetDestroyManyController extends RedirectController
+{
+    #region PUBLIC METHODS
+
+    /**
+     * @param DestroyManyRequest $request
+     *
+     * @return RedirectResponse
+     */
+    public function __invoke(DestroyManyRequest $request): RedirectResponse
+    {
+        $this->authorize(AbilityEnum::DELETE_ANY, Asset::class);
+
+        $ids = $request->validated(DestroyManyRequest::IDS);
+
+        Asset::query()
+            ->whereIn(Asset::UUID, $ids)
+            ->delete();
+
+        return $this
+            ->redirect(route('assets.index'))
+            ->with('success', ModelService::getSuccessMessage(Asset::TABLE, ModelEventEnum::DELETED_MANY));
+    }
+
+    #endregion
+}

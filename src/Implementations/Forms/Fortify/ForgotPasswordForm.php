@@ -31,6 +31,7 @@ class ForgotPasswordForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('forgot-password-form')
             ->action(route('password.email'))
             ->method(RequestMethodEnum::POST->value)
             ->submitLabel(trans('narsil::ui.send'));

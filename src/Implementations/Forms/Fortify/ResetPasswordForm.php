@@ -32,6 +32,7 @@ class ResetPasswordForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('reset-password-form')
             ->action(route('password.update'))
             ->method(RequestMethodEnum::POST->value)
             ->submitLabel(trans('narsil::ui.reset'));

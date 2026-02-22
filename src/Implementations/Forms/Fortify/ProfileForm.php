@@ -32,6 +32,7 @@ class ProfileForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('profile-form')
             ->action(route('user-profile-information.update'))
             ->method(RequestMethodEnum::PUT->value)
             ->submitIcon('save')

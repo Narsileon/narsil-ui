@@ -33,6 +33,7 @@ class LoginForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('login-form')
             ->action(route('login'))
             ->method(RequestMethodEnum::POST->value)
             ->submitLabel(trans('narsil::ui.log_in'));

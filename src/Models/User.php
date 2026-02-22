@@ -12,14 +12,17 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
+use Narsil\Base\Casts\ImageCast;
 use Narsil\Base\Models\Policies\Permission;
 use Narsil\Base\Models\Policies\Role;
 use Narsil\Base\Models\Policies\UserPermission;
 use Narsil\Base\Models\Policies\UserRole;
 use Narsil\Base\Models\Users\Session;
+use Narsil\Base\Models\Users\UserBookmark;
 use Narsil\Base\Models\Users\UserConfiguration;
 use Narsil\Base\Traits\AuditLoggable;
 use Narsil\Base\Traits\Blameable;
+use Narsil\Base\Traits\HasDatetimes;
 use Narsil\Base\Traits\HasPermissions;
 use Narsil\Base\Traits\HasRoles;
 
@@ -33,6 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use AuditLoggable;
     use Blameable;
+    use HasDatetimes;
     use HasPermissions;
     use HasRoles;
     use Notifiable;
@@ -52,6 +56,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ]);
 
         $this->mergeCasts([
+            self::AVATAR => ImageCast::class . ':avatars',
             self::EMAIL_VERIFIED_AT => 'datetime',
             self::ENABLED => 'boolean',
             self::PASSWORD => 'hashed',
@@ -214,6 +219,13 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var string
      */
+    final public const RELATION_BOOKMARKS = 'bookmarks';
+
+    /**
+     * The name of the "configuration" relation.
+     *
+     * @var string
+     */
     final public const RELATION_CONFIGURATION = 'configuration';
 
     /**
@@ -230,6 +242,21 @@ class User extends Authenticatable implements MustVerifyEmail
     #region PUBLIC METHODS
 
     #region • RELATIONSHIPS
+
+    /**
+     * Get the associated bookmarks.
+     *
+     * @return HasMany
+     */
+    final public function bookmarks(): HasMany
+    {
+        return $this
+            ->hasMany(
+                UserBookmark::class,
+                UserBookmark::USER_ID,
+                self::ID
+            );
+    }
 
     /**
      * Get the associated configuration.

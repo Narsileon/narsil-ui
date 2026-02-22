@@ -1,0 +1,60 @@
+<?php
+
+namespace Narsil\Base\Http\Controllers;
+
+#region USE
+
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
+
+#endregion
+
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ */
+abstract class RedirectController
+{
+    use AuthorizesRequests;
+
+    #region CONSTANTS
+
+    /**
+     * The "back" parameter.
+     *
+     * @var string
+     */
+    protected const BACK = '_back';
+
+    /**
+     * The "to" parameter.
+     *
+     * @var string
+     */
+    protected const TO = '_to';
+
+    #endregion
+
+    #region PROTECTED METHODS
+
+    /**
+     * @param string|null $to
+     * @param mixed $data
+     *
+     * @return RedirectResponse
+     */
+    protected function redirect(?string $to = null, mixed $data = []): RedirectResponse
+    {
+        $to = request(self::TO, $to);
+
+        if (!$to || request()->get(self::BACK))
+        {
+            return back()
+                ->with('data', $data);
+        }
+
+        return redirect($to);
+    }
+
+    #endregion
+}

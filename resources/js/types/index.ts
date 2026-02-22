@@ -3,6 +3,12 @@ import { PaginationLinks, PaginationMeta } from "@narsil-ui/components/paginatio
 import { type IconName } from "@narsil-ui/registries/icons";
 import { type ColumnDef } from "@tanstack/react-table";
 
+export type BookmarkData = {
+  name: string;
+  url: string;
+  uuid: string;
+};
+
 export type ConditionData = {
   handle: string;
   operator: string;

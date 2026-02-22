@@ -21,7 +21,7 @@ return [
         'logged_out_current'   => 'You have been successfully logged out from this device.',
         'logged_out_others'    => 'You have been successfully logged out from other devices.',
         'logged_out'           => 'You have been successfully logged out.',
-        'password_confirmed'   => 'Your password has been successfully cconfirmed.',
+        'password_confirmed'   => 'Your password has been successfully confirmed.',
         'password_updated'     => 'Your password has been successfully updated.',
         'profile_updated'      => 'Your profile has been successfully updated.',
         'two_factor_confirmed' => 'Your two factor authentication has been successfully confirmed.',

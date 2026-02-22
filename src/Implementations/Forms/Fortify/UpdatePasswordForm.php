@@ -31,6 +31,7 @@ class UpdatePasswordForm extends Form implements Contract
         parent::__construct();
 
         $this
+            ->id('update-password-form')
             ->action(route('user-password.update'))
             ->method(RequestMethodEnum::PUT->value)
             ->submitIcon('save')
