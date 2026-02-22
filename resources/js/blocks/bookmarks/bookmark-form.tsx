@@ -6,7 +6,7 @@ import {
   CardRoot,
   CardTitle,
 } from "@narsil-ui/components/card";
-import { FormElement, FormProvider, FormRoot, registry } from "@narsil-ui/components/form";
+import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form";
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { BookmarkData, FormData } from "@narsil-ui/types";
 import { Fragment } from "react";
@@ -23,15 +23,17 @@ type BookmarkFormProps = {
 function BookmarkForm({ bookmark, form, title, fetchBookmarks, setBookmark }: BookmarkFormProps) {
   const { trans } = useTranslator();
 
+  const initialData = {
+    name: bookmark?.name,
+  };
+
   return (
     <FormProvider
       id={form.id}
       action={route("user-bookmarks.update", bookmark.uuid)}
+      initialData={initialData}
       method="patch"
       steps={form.steps}
-      initialData={{
-        name: bookmark?.name,
-      }}
       render={() => {
         return (
           <CardRoot>
@@ -53,7 +55,7 @@ function BookmarkForm({ bookmark, form, title, fetchBookmarks, setBookmark }: Bo
                   return (
                     <Fragment key={index}>
                       {step.elements?.map((element, index) => {
-                        return <FormElement {...element} registry={registry} key={index} />;
+                        return <FormElement {...element} key={index} />;
                       })}
                     </Fragment>
                   );

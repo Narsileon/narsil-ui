@@ -1,17 +1,18 @@
 import { FieldDescription, FieldError, FieldLabel, FieldRoot } from "@narsil-ui/components/field";
-import { FormField, FormFieldLanguage } from "@narsil-ui/components/form";
+import { FormField, FormFieldLanguage, useForm } from "@narsil-ui/components/form";
 import { Icon } from "@narsil-ui/components/icon";
 import type { FieldData, FieldsetData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
-import { getField, type Registry } from "./inputs";
+import { getField } from "./inputs";
 
 type FormElementProps = (FieldsetData | FieldData) & {
-  registry?: Registry;
   onChange?: (value: unknown) => void;
   render?: (fieldset: FieldsetData) => ReactNode;
 };
 
-function FormElement({ registry = {}, onChange, render, ...props }: FormElementProps) {
+function FormElement({ onChange, render, ...props }: FormElementProps) {
+  const { registry } = useForm();
+
   if ("elements" in props) {
     return render?.(props);
   }

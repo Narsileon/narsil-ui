@@ -1,6 +1,7 @@
 import { type InertiaFormProps } from "@inertiajs/react";
 import type { OptionData } from "@narsil-ui/types";
 import { createContext, useContext } from "react";
+import { Registry } from "./inputs";
 
 export type FormContextProps = Partial<InertiaFormProps<Record<string, any>>> & {
   action: string;
@@ -9,6 +10,7 @@ export type FormContextProps = Partial<InertiaFormProps<Record<string, any>>> & 
   id: string;
   languages: OptionData[];
   method: string;
+  registry: Registry;
   setFormLanguage: (value: string) => void;
 };
 

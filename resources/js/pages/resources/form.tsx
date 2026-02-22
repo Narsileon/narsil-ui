@@ -1,8 +1,3 @@
-import { RevisionSelect } from "@narsil-cms/blocks/revision-select";
-import { Status } from "@narsil-cms/blocks/status";
-import { FormCountry, FormSteps } from "@narsil-cms/components/form";
-import FormPublish from "@narsil-cms/components/form/form-publish";
-import type { Revision, User } from "@narsil-cms/types";
 import { Button } from "@narsil-ui/components/button";
 import { DialogBody, DialogClose, DialogFooter } from "@narsil-ui/components/dialog";
 import {
@@ -13,7 +8,7 @@ import {
   FormProvider,
   FormRoot,
   FormSave,
-  registry,
+  FormTabs,
 } from "@narsil-ui/components/form";
 import { Heading } from "@narsil-ui/components/heading";
 import { Icon } from "@narsil-ui/components/icon";
@@ -21,25 +16,23 @@ import { SectionContent, SectionRoot } from "@narsil-ui/components/section";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { useModalStore, type ModalData } from "@narsil-ui/stores/modal-store";
-import type { FormData, FormStepData, OptionData } from "@narsil-ui/types";
+import type { FormData, FormStepData, OptionData, UserData } from "@narsil-ui/types";
 import { isEmpty } from "lodash-es";
 
 type FormProps = {
   countries?: OptionData[];
   data?: {
     created_at?: string;
-    creator?: User;
-    editor?: User;
+    creator?: UserData;
+    editor?: UserData;
     updated_at?: string;
     [key: string]: unknown;
   };
   form: FormData;
   modal?: ModalData;
-  publish?: FormData;
-  revisions?: Revision[];
 };
 
-function ResourceForm({ countries, data, form, modal, publish, revisions }: FormProps) {
+function ResourceForm({ data, form, modal }: FormProps) {
   const { trans } = useTranslator();
   const { closeTopModal } = useModalStore();
 
@@ -72,23 +65,25 @@ function ResourceForm({ countries, data, form, modal, publish, revisions }: Form
   const sidebarContent = sidebar ? (
     <>
       {sidebar.elements?.map((element, index) => {
-        return <FormElement {...element} registry={registry} key={index} />;
+        return <FormElement {...element} key={index} />;
       })}
     </>
   ) : null;
+
+  const initialData = {
+    _back: modal !== undefined,
+    ...data,
+  };
 
   return (
     <FormProvider
       id={modal ? `${id}_${modal.id}` : id}
       action={action}
-      steps={steps}
       defaultLanguage={defaultLanguage}
+      initialData={initialData}
       languages={languages}
       method={method}
-      initialData={{
-        _back: modal !== undefined,
-        ...data,
-      }}
+      steps={steps}
       render={({ formLanguage, setFormLanguage }) => {
         return (
           <FormRoot
@@ -108,7 +103,7 @@ function ResourceForm({ countries, data, form, modal, publish, revisions }: Form
             {modal ? (
               <>
                 <DialogBody className="col-span-full h-full p-0">
-                  <FormSteps steps={standardTabs} />
+                  <FormTabs steps={standardTabs} />
                 </DialogBody>
                 <DialogFooter className="col-span-full h-fit border-t">
                   <DialogClose render={<Button variant="ghost">{trans("ui.cancel")}</Button>} />
@@ -128,7 +123,7 @@ function ResourceForm({ countries, data, form, modal, publish, revisions }: Form
                   )}
                 >
                   <SectionContent>
-                    <FormSteps steps={standardTabs} />
+                    <FormTabs steps={standardTabs} />
                   </SectionContent>
                 </SectionRoot>
                 <SectionRoot
@@ -148,20 +143,7 @@ function ResourceForm({ countries, data, form, modal, publish, revisions }: Form
                         />
                         {routes?.destroy && method !== "post" ? <FormMenu routes={routes} /> : null}
                       </div>
-                      {revisions ? (
-                        <Status
-                          className={cn(
-                            "w-6",
-                            "hover:w-10",
-                            "transition-[width] delay-100 duration-300",
-                          )}
-                          draft={!!data?.has_draft}
-                          published={!!data?.has_published_revision}
-                          saved={!!data?.has_new_revision}
-                        />
-                      ) : null}
                     </div>
-                    {publish ? <FormPublish form={publish} /> : null}
                     {data?.created_at ? (
                       <div className="grid items-start gap-4 border-b p-4">
                         {data?.created_at ? (
@@ -182,18 +164,6 @@ function ResourceForm({ countries, data, form, modal, publish, revisions }: Form
                             ) : null}
                           </div>
                         ) : null}
-                        {revisions ? <RevisionSelect revisions={revisions} /> : null}
-                      </div>
-                    ) : null}
-                    {countries ? (
-                      <div className="grid gap-1 border-b p-2">
-                        <div className="flex items-center justify-start gap-2 pl-2.5">
-                          <Icon className="size-4" name="globe" />
-                          <Heading level="h3" variant="discreet">
-                            {trans("ui.countries")}
-                          </Heading>
-                        </div>
-                        <FormCountry className="pr-2" countries={countries} />
                       </div>
                     ) : null}
                     {languages?.length > 0 ? (

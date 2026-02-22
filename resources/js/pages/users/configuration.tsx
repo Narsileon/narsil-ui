@@ -1,5 +1,5 @@
 import { router } from "@inertiajs/react";
-import { FormElement, FormProvider, FormRoot, registry } from "@narsil-ui/components/form";
+import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form";
 import { Heading } from "@narsil-ui/components/heading";
 import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/components/section";
 import { useTranslator } from "@narsil-ui/components/translator";
@@ -48,6 +48,12 @@ function UserConfiguration({ userConfigurationForm }: UserConfigurationProps) {
     }
   }
 
+  const initialData = {
+    color: color,
+    language: locale,
+    radius: radius,
+  };
+
   return (
     <SectionRoot>
       <SectionHeader className="border-b">
@@ -57,13 +63,9 @@ function UserConfiguration({ userConfigurationForm }: UserConfigurationProps) {
         <FormProvider
           id={userConfigurationForm.id}
           action={userConfigurationForm.action}
+          initialData={initialData}
           method={userConfigurationForm.method}
           steps={userConfigurationForm.steps}
-          initialData={{
-            color: color,
-            language: locale,
-            radius: radius,
-          }}
           render={() => {
             return (
               <FormRoot className="gap-4">
@@ -74,7 +76,6 @@ function UserConfiguration({ userConfigurationForm }: UserConfigurationProps) {
                         return (
                           <FormElement
                             {...element}
-                            registry={registry}
                             onChange={(value) =>
                               handleChange(element.id as string, value as UniqueIdentifier)
                             }

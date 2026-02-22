@@ -20,7 +20,7 @@ export type Registry = {
 
 const registry: Registry = {
   ["array"]: (props) => {
-    return <ArrayInput registry={registry} {...props} />;
+    return <ArrayInput {...props} />;
   },
   ["checkbox"]: (props) => {
     return <CheckboxInput {...props} />;
@@ -55,7 +55,7 @@ const registry: Registry = {
     );
   },
   ["table"]: (props) => {
-    return <TableInput registry={registry} {...props} />;
+    return <TableInput {...props} />;
   },
   ["default"]: (props) => {
     return <TextInput {...props} />;

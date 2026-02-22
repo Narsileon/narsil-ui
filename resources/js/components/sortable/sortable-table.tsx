@@ -12,8 +12,8 @@ import {
   type DragStartEvent,
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { useFormField } from "@narsil-ui/components/form";
-import { getField, type Registry } from "@narsil-ui/components/form/inputs";
+import { useForm, useFormField } from "@narsil-ui/components/form";
+import { getField } from "@narsil-ui/components/form/inputs";
 import { Label } from "@narsil-ui/components/label";
 import { SortableTableItem, type SortableData } from "@narsil-ui/components/sortable";
 import {
@@ -33,18 +33,17 @@ import { createPortal } from "react-dom";
 
 type SortableTableProps = {
   columns: FieldData[];
-  registry: Registry;
   rows: SortableData[];
   setRows: (rows: SortableData[]) => void;
 };
 
-function SortableTable({ columns, registry, rows, setRows }: SortableTableProps) {
+function SortableTable({ columns, rows, setRows }: SortableTableProps) {
   if (isEmpty(rows)) {
     rows = [];
   }
-
   const { trans } = useTranslator();
 
+  const { registry } = useForm();
   const { fieldLanguage } = useFormField();
 
   const [active, setActive] = useState<SortableData | null>(null);

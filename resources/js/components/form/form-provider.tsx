@@ -3,10 +3,12 @@ import type { FieldData, FieldsetData, FormStepData } from "@narsil-ui/types";
 import { set } from "lodash-es";
 import { type ReactNode, useState } from "react";
 import { FormContext, type FormContextProps } from "./form-context";
+import registry, { Registry } from "./inputs";
 
 type FormProviderProps = Partial<FormContextProps> & {
   steps?: FormStepData[];
   initialData?: Record<string, unknown>;
+  registry?: Registry;
   render: (props: FormContextProps) => ReactNode;
 };
 
@@ -18,6 +20,7 @@ function FormProvider({
   initialData = {},
   languages = [],
   method = "post",
+  registry: overrides = {},
   render,
 }: FormProviderProps) {
   const [formLanguage, setFormLanguage] = useState<string>("en");
@@ -70,6 +73,7 @@ function FormProvider({
     languages: languages,
     method: method,
     processing: processing,
+    registry: Object.assign(overrides, registry),
     cancel: cancel,
     clearErrors: clearErrors,
     patch: patch,

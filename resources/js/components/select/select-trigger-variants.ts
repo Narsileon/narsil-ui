@@ -9,8 +9,7 @@ const selectTriggerVariants = cva(
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5",
     "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20",
     "dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
-    "dark:hover:bg-input/50",
-    "data-[size=default]:h-9 data-[size=sm]:h-8",
+    "data-[size=default]:h-9 data-[size=sm]:h-7",
     "data-[size=sm]:rounded-[min(var(--radius-md),10px)]",
     "data-placeholder:text-muted-foreground",
     "disabled:cursor-not-allowed disabled:opacity-50",
@@ -20,7 +19,7 @@ const selectTriggerVariants = cva(
       variant: {
         default: cn(
           "border border-input p-2 shadow-sm",
-          "dark:bg-input/30 dark:hover:bg-input/50",
+          "hover:bg-accent hover:text-accent-foreground",
           "focus-visible:border-shine",
           "data-[state=open]:border-shine",
         ),
@@ -31,7 +30,9 @@ const selectTriggerVariants = cva(
           "data-[state=open]:border-shine",
         ),
         inline: cn(
-          "px-1 focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
+          "px-1",
+          "hover:bg-accent hover:text-accent-foreground",
+          "focus-visible:bg-accent",
         ),
       },
     },

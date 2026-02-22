@@ -9,7 +9,7 @@ import {
   CardRoot,
   CardTitle,
 } from "@narsil-ui/components/card";
-import { FormElement, FormProvider, FormRoot, registry } from "@narsil-ui/components/form";
+import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form";
 import { Heading } from "@narsil-ui/components/heading";
 import { Icon } from "@narsil-ui/components/icon";
 import { Label } from "@narsil-ui/components/label";
@@ -130,7 +130,7 @@ function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
                           return (
                             <Fragment key={index}>
                               {step.elements?.map((element, index) => {
-                                return <FormElement {...element} registry={registry} key={index} />;
+                                return <FormElement {...element} key={index} />;
                               })}
                             </Fragment>
                           );

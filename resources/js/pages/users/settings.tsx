@@ -2,14 +2,14 @@ import { Icon } from "@narsil-ui/components/icon";
 import { Separator } from "@narsil-ui/components/separator";
 import { TabsList, TabsPanel, TabsRoot, TabsTab } from "@narsil-ui/components/tabs";
 import { useTranslator } from "@narsil-ui/components/translator";
-import { AuthData, FormData } from "@narsil-ui/types";
+import type { FormData, UserData } from "@narsil-ui/types";
 import UserConfiguration from "./configuration";
 import UserProfile from "./profile";
 import UserSessions from "./sessions";
 import UserTwoFactor from "./two-factor";
 
 type UserSettingsProps = {
-  auth: AuthData;
+  auth: UserData;
   profileForm: FormData;
   twoFactorForm: FormData;
   updatePasswordForm: FormData;

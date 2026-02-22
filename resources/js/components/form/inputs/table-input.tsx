@@ -1,20 +1,8 @@
 import { SortableTable } from "@narsil-ui/components/sortable";
-import { type FieldProps, Registry } from ".";
+import { type FieldProps } from ".";
 
-type TableInputProps = FieldProps & {
-  registry: Registry;
-};
-
-function TableInput({ input, registry, value, setValue }: TableInputProps) {
-  return (
-    <SortableTable
-      {...input}
-      columns={input.columns}
-      rows={value}
-      registry={registry}
-      setRows={setValue}
-    />
-  );
+function TableInput({ input, value, setValue }: FieldProps) {
+  return <SortableTable {...input} columns={input.columns} rows={value} setRows={setValue} />;
 }
 
 export default TableInput;

@@ -9,6 +9,7 @@ import FormMenu from "./form-menu";
 import FormProvider from "./form-provider";
 import FormRoot from "./form-root";
 import FormSave from "./form-save";
+import FormTabs from "./form-tabs";
 import registry from "./inputs";
 
 export {
@@ -21,6 +22,7 @@ export {
   FormProvider,
   FormRoot,
   FormSave,
+  FormTabs,
   registry,
   useForm,
   useFormField,

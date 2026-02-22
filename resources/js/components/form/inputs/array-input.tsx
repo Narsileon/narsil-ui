@@ -1,13 +1,9 @@
 import { FormElement } from "@narsil-ui/components/form";
 import { SortableList } from "@narsil-ui/components/sortable";
 import type { FieldData, FieldsetData } from "@narsil-ui/types";
-import { type FieldProps, Registry } from ".";
+import { type FieldProps } from ".";
 
-type ArrayInputProps = FieldProps & {
-  registry: Registry;
-};
-
-function ArrayInput({ id, input, registry, value, setValue }: ArrayInputProps) {
+function ArrayInput({ id, input, value, setValue }: FieldProps) {
   const form = input.form as (FieldData | FieldsetData)[];
 
   return (
@@ -22,9 +18,7 @@ function ArrayInput({ id, input, registry, value, setValue }: ArrayInputProps) {
             {form?.map((element) => {
               const elementId = `${id}.${index}.${element.id}`;
 
-              return (
-                <FormElement {...element} id={elementId} registry={registry} key={element.id} />
-              );
+              return <FormElement {...element} id={elementId} key={element.id} />;
             })}
           </>
         );

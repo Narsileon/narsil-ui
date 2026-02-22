@@ -1,15 +1,15 @@
 import { Button } from "@narsil-ui/components/button";
-import { FormElement, FormProvider, FormRoot, registry } from "@narsil-ui/components/form";
+import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form";
 import { Heading } from "@narsil-ui/components/heading";
 import { Icon } from "@narsil-ui/components/icon";
 import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/components/section";
 import { Separator } from "@narsil-ui/components/separator";
 import { useTranslator } from "@narsil-ui/components/translator";
-import type { AuthData, FormData } from "@narsil-ui/types";
+import type { FormData, UserData } from "@narsil-ui/types";
 import { Fragment } from "react";
 
 type UserProfileProps = {
-  auth?: AuthData;
+  auth?: UserData;
   profileForm: FormData;
   updatePasswordForm: FormData;
 };
@@ -17,18 +17,20 @@ type UserProfileProps = {
 function UserProfile({ auth, profileForm, updatePasswordForm }: UserProfileProps) {
   const { trans } = useTranslator();
 
+  const initialData = {
+    avatar: auth?.avatar,
+    first_name: auth?.first_name,
+    last_name: auth?.last_name,
+  };
+
   return (
     <>
       <FormProvider
         id={profileForm.id}
         action={profileForm.action}
-        steps={profileForm.steps}
+        initialData={initialData}
         method={profileForm.method}
-        initialData={{
-          avatar: auth?.avatar,
-          first_name: auth?.first_name,
-          last_name: auth?.last_name,
-        }}
+        steps={profileForm.steps}
         render={() => {
           return (
             <SectionRoot>
@@ -45,7 +47,7 @@ function UserProfile({ auth, profileForm, updatePasswordForm }: UserProfileProps
                     return (
                       <Fragment key={index}>
                         {step.elements?.map((element, index) => {
-                          return <FormElement {...element} registry={registry} key={index} />;
+                          return <FormElement {...element} key={index} />;
                         })}
                       </Fragment>
                     );
@@ -60,8 +62,8 @@ function UserProfile({ auth, profileForm, updatePasswordForm }: UserProfileProps
       <FormProvider
         id={updatePasswordForm.id}
         action={updatePasswordForm.action}
-        steps={updatePasswordForm.steps}
         method={updatePasswordForm.method}
+        steps={updatePasswordForm.steps}
         render={({ reset, setDefaults }) => {
           return (
             <SectionRoot>
@@ -86,7 +88,7 @@ function UserProfile({ auth, profileForm, updatePasswordForm }: UserProfileProps
                     return (
                       <Fragment key={index}>
                         {step.elements?.map((element, index) => {
-                          return <FormElement {...element} registry={registry} key={index} />;
+                          return <FormElement {...element} key={index} />;
                         })}
                       </Fragment>
                     );

@@ -10,8 +10,9 @@ function FormFieldLanguage({ ...props }: FormFieldLanguageProps) {
   return languages?.length > 0 ? (
     <Select
       data-slot="form-language"
-      className="border-transparent pl-0 uppercase shadow-none"
+      className="uppercase"
       options={languages}
+      variant="inline"
       {...props}
     />
   ) : null;
