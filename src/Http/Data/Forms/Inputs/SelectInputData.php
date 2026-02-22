@@ -16,6 +16,7 @@ use Narsil\Base\Support\TranslationsBag;
  * @author Jonathan Rigaux
  *
  * @property string $defaultValue The "default value" attribute of the input.
+ * @property boolean $multiple The "multiple" attribute of the input.
  * @property string $placeholder The "placeholder" attribute of the input.
  * @property OptionData $options The "options" attribute of the input.
  */
@@ -25,6 +26,7 @@ class SelectInputData extends InputData
 
     /**
      * @param string $defaultValue The "default value" attribute of the input.
+     * @param boolean $multiple The "multiple" attribute of the input.
      * @param string $placeholder The "placeholder" attribute of the input.
      * @param OptionData $options The "options" attribute of the input.
      *
@@ -32,11 +34,13 @@ class SelectInputData extends InputData
      */
     public function __construct(
         string $defaultValue = '',
+        bool $multiple = false,
         string $placeholder = '',
         array $options = []
     )
     {
         $this->set('defaultValue', $defaultValue);
+        $this->set('multiple', $multiple);
         $this->set('options', $options);
         $this->set('placeholder', $placeholder);
 
@@ -53,6 +57,11 @@ class SelectInputData extends InputData
     public static function form(?string $prefix = null): array
     {
         return [
+            new FieldData(
+                id: 'multiple',
+                prefix: $prefix,
+                input: new SwitchInputData(),
+            ),
             new FieldData(
                 id: 'options',
                 input: new TableInputData(
