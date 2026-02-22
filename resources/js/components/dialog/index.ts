@@ -4,7 +4,6 @@
 import DialogBackdrop from "./dialog-backdrop";
 import DialogBody from "./dialog-body";
 import DialogClose from "./dialog-close";
-import DialogCloseButton from "./dialog-close-button";
 import DialogDescription from "./dialog-description";
 import DialogFooter from "./dialog-footer";
 import DialogHeader from "./dialog-header";
@@ -19,7 +18,6 @@ export {
   DialogBackdrop,
   DialogBody,
   DialogClose,
-  DialogCloseButton,
   DialogDescription,
   DialogFooter,
   DialogHeader,

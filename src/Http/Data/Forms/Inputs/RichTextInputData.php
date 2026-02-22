@@ -67,7 +67,7 @@ class RichTextInputData extends InputData
             new FieldData(
                 id: 'modules',
                 prefix: $prefix,
-                input: new SelectInputData(
+                input: new CheckboxInputData(
                     options: RichTextEditorEnum::options(),
                 ),
             ),

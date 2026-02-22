@@ -67,7 +67,7 @@ class DataTableCollection extends ResourceCollection
         $this->tableData->applySorting($query);
 
         $paginated = $query->paginate(
-            perPage: $this->tanStackTable->{TanStackTable::PAGE_SIZE} ?? 10,
+            perPage: $tanStackTable->{TanStackTable::PAGE_SIZE} ?? 10,
             page: request(self::PAGE, 1),
         );
 

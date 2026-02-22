@@ -55,7 +55,6 @@ class SelectInputData extends InputData
         return [
             new FieldData(
                 id: 'options',
-                prefix: $prefix,
                 input: new TableInputData(
                     columns: [
                         new FieldData(

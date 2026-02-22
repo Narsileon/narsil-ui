@@ -1,5 +1,9 @@
 import { Dialog } from "@base-ui/react/dialog";
-import { DialogCloseButton } from "@narsil-ui/components/dialog";
+import { Button } from "@narsil-ui/components/button";
+import { DialogClose } from "@narsil-ui/components/dialog";
+import { Icon } from "@narsil-ui/components/icon";
+import { Tooltip } from "@narsil-ui/components/tooltip";
+import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type VariantProps } from "class-variance-authority";
 import { type ComponentProps } from "react";
@@ -15,6 +19,10 @@ function DialogPopup({
   VariantProps<typeof dialogPopupVariants> & {
     showCloseButton?: boolean;
   }) {
+  const { trans } = useTranslator();
+
+  const closeLabel = trans("ui.close", { fallback: "Close" });
+
   return (
     <Dialog.Popup
       data-slot="dialog-popup"
@@ -30,7 +38,19 @@ function DialogPopup({
         Dialog
       </span>
       {children}
-      {showCloseButton ? <DialogCloseButton className="absolute top-4 right-4" /> : null}
+      {showCloseButton ? (
+        <Tooltip tooltip={closeLabel}>
+          <DialogClose
+            className="absolute top-3 right-3"
+            render={
+              <Button size="icon-sm" variant="ghost">
+                <Icon name="x" />
+                <span className="sr-only">{closeLabel}</span>
+              </Button>
+            }
+          />
+        </Tooltip>
+      ) : null}
     </Dialog.Popup>
   );
 }
