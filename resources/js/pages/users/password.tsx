@@ -4,43 +4,43 @@ import { Heading } from "@narsil-ui/components/heading";
 import { Icon } from "@narsil-ui/components/icon";
 import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/components/section";
 import { useTranslator } from "@narsil-ui/components/translator";
-import type { FormData, UserData } from "@narsil-ui/types";
+import type { FormData } from "@narsil-ui/types";
 import { Fragment } from "react";
 
-type UserProfileProps = {
-  auth: UserData;
-  profileForm: FormData;
+type UserPasswordProps = {
+  updatePasswordForm: FormData;
 };
 
-function UserProfile({ auth, profileForm }: UserProfileProps) {
+function UserPassword({ updatePasswordForm }: UserPasswordProps) {
   const { trans } = useTranslator();
-
-  const initialData = {
-    avatar: auth?.avatar,
-    first_name: auth?.first_name,
-    last_name: auth?.last_name,
-  };
 
   return (
     <FormProvider
-      id={profileForm.id}
-      action={profileForm.action}
-      initialData={initialData}
-      method={profileForm.method}
-      steps={profileForm.steps}
-      render={() => {
+      id={updatePasswordForm.id}
+      action={updatePasswordForm.action}
+      method={updatePasswordForm.method}
+      steps={updatePasswordForm.steps}
+      render={({ reset, setDefaults }) => {
         return (
           <SectionRoot>
             <SectionHeader className="border-b">
-              <Heading level="h2">{trans("ui.account")}</Heading>
-              <Button form={profileForm.id} type="submit">
-                {profileForm.submitIcon && <Icon name={profileForm.submitIcon} />}
-                {profileForm.submitLabel}
+              <Heading level="h2">{trans("ui.password")}</Heading>
+              <Button form={updatePasswordForm.id} type="submit">
+                {updatePasswordForm.submitIcon && <Icon name={updatePasswordForm.submitIcon} />}
+                {updatePasswordForm.submitLabel}
               </Button>
             </SectionHeader>
             <SectionContent>
-              <FormRoot className="grid-cols-12 gap-4">
-                {profileForm.steps.map((step, index) => {
+              <FormRoot
+                className="grid-cols-12 gap-4"
+                options={{
+                  onSuccess: () => {
+                    reset?.();
+                    setDefaults?.();
+                  },
+                }}
+              >
+                {updatePasswordForm.steps.map((step, index) => {
                   return (
                     <Fragment key={index}>
                       {step.elements?.map((element, index) => {
@@ -58,4 +58,4 @@ function UserProfile({ auth, profileForm }: UserProfileProps) {
   );
 }
 
-export default UserProfile;
+export default UserPassword;

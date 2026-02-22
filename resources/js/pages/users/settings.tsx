@@ -4,6 +4,7 @@ import { TabsList, TabsPanel, TabsRoot, TabsTab } from "@narsil-ui/components/ta
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { FormData, UserData } from "@narsil-ui/types";
 import UserConfiguration from "./configuration";
+import UserPassword from "./password";
 import UserProfile from "./profile";
 import UserSessions from "./sessions";
 import UserTwoFactor from "./two-factor";
@@ -57,7 +58,9 @@ function UserSettings({
       </TabsList>
       {auth ? (
         <TabsPanel value="account">
-          <UserProfile profileForm={profileForm} updatePasswordForm={updatePasswordForm} />
+          <UserProfile auth={auth} profileForm={profileForm} />
+          <Separator />
+          <UserPassword updatePasswordForm={updatePasswordForm} />
         </TabsPanel>
       ) : null}
       <TabsPanel value="configuration">
