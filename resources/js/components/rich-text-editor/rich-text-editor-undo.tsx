@@ -21,7 +21,9 @@ function RichTextEditorUndo({ editor, ...props }: RichTextEditorUndoProps) {
     },
   });
 
-  const label = trans("rich-text-editor.undo", { fallback: "Undo" });
+  const label = trans("rich-text-editor.undo", {
+    fallback: "Undo",
+  });
 
   return (
     <Tooltip tooltip={label}>

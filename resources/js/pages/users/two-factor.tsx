@@ -88,10 +88,17 @@ function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
     }
   }
 
+  const recoveryCodesLabel = trans("ui.recovery_codes", {
+    fallback: "Recovery codes",
+  });
+  const securityLabel = trans("ui.security", {
+    fallback: "Security",
+  });
+
   return (
     <SectionRoot>
       <SectionHeader className="border-b">
-        <Heading level="h2">{trans("ui.security")}</Heading>
+        <Heading level="h2">{securityLabel}</Heading>
       </SectionHeader>
       <SectionContent>
         <div className="grid gap-4">
@@ -149,7 +156,7 @@ function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
           {!active && enabled && recoveryCodes ? (
             <CardRoot>
               <CardHeader className="grid-cols-2 items-center border-b">
-                <CardTitle>{trans("ui.recovery_codes")}</CardTitle>
+                <CardTitle>{recoveryCodesLabel}</CardTitle>
                 <Tooltip tooltip={trans("ui.copy_clipboard")}>
                   <Button
                     aria-label={trans("ui.copy_clipboard")}

@@ -148,7 +148,9 @@ function SortableList({ items, labelKey, render, setItems }: SortableListProps) 
           onAdd(crypto.randomUUID());
         }}
       >
-        {trans("ui.add")}
+        {trans("ui.add", {
+          fallback: "Add",
+        })}
       </Button>
     </div>
   );

@@ -34,7 +34,12 @@ function DataTableInput({ className, ...props }: DataTableInputProps) {
     debouncedSetValue(value);
   }, [value, debouncedSetValue]);
 
-  const filterLabel = trans("data-table.filters", { fallback: "Filters" });
+  const filterLabel = trans("data-table.filters", {
+    fallback: "Filters",
+  });
+  const placeholderLabel = trans("placeholders.search", {
+    fallback: "Search...",
+  });
 
   return (
     <ButtonGroup className="grow justify-end">
@@ -43,7 +48,7 @@ function DataTableInput({ className, ...props }: DataTableInputProps) {
           <Icon name="search" />
         </InputGroupAddon>
         <InputGroupInput
-          placeholder={trans("placeholders.search")}
+          placeholder={placeholderLabel}
           value={value}
           onChange={(event) => setValue(event.target.value)}
           {...props}

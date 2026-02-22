@@ -22,7 +22,9 @@ function RichTextEditorUnderline({ editor, ...props }: RichTextEditorUnderlinePr
     },
   });
 
-  const label = trans("rich-text-editor.underline", { fallback: "Underline" });
+  const label = trans("rich-text-editor.underline", {
+    fallback: "Underline",
+  });
 
   return (
     <Tooltip tooltip={label}>

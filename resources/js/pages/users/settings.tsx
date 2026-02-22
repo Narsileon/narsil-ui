@@ -25,23 +25,33 @@ function UserSettings({
 }: UserSettingsProps) {
   const { trans } = useTranslator();
 
+  const accoutLabel = trans("ui.account", {
+    fallback: "Account",
+  });
+  const personalizationLabel = trans("ui.personalization", {
+    fallback: "Personalization",
+  });
+  const securityLabel = trans("ui.security", {
+    fallback: "Security",
+  });
+
   return (
     <TabsRoot defaultValue={auth ? "account" : "configuration"} orientation="vertical">
       <TabsList className="border-b px-4 md:p-0">
         {auth ? (
           <TabsTab value="account">
             <Icon name="user-edit" />
-            {trans("ui.account")}
+            {accoutLabel}
           </TabsTab>
         ) : null}
         <TabsTab value="configuration">
           <Icon name="settings" />
-          {trans("ui.personalization")}
+          {personalizationLabel}
         </TabsTab>
         {auth ? (
           <TabsTab value="security">
             <Icon name="shield" />
-            {trans("ui.security")}
+            {securityLabel}
           </TabsTab>
         ) : null}
       </TabsList>

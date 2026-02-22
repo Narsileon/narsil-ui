@@ -53,7 +53,7 @@ function Checkboxes({ options = [], values, onChange }: CheckboxesProps) {
                 indeterminate={someChecked}
                 onCheckedChange={toggleAll}
               />
-              <label>{trans("ui.all")}</label>
+              <label>{trans("ui.all", { fallback: "All" })}</label>
             </div>
           </TableCell>
         </TableRow>

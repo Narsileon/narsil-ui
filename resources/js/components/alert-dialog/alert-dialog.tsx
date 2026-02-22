@@ -34,6 +34,19 @@ function AlertDialog({
   const { setAlertDialog } = useAlertDialog();
   const { trans } = useTranslator();
 
+  const defaultTitle = trans("dialogs.titles.default", {
+    fallback: "Confirmation",
+  });
+  const defaultDescription = trans("dialogs.descriptions.default", {
+    fallback: "Are you sure you want to do this?",
+  });
+  const defaultAction = trans("ui.confirm", {
+    fallback: "Confirm",
+  });
+  const defaultCancel = trans("ui.cancel", {
+    fallback: "Cancel",
+  });
+
   return (
     <AlertDialogRoot {...props}>
       <AlertDialogTrigger>{children}</AlertDialogTrigger>
@@ -41,9 +54,9 @@ function AlertDialog({
         <AlertDialogBackdrop />
         <AlertDialogPopup>
           <AlertDialogHeader>
-            <AlertDialogTitle>{title ?? trans("dialogs.titles.default")}</AlertDialogTitle>
+            <AlertDialogTitle>{title ? title : defaultTitle}</AlertDialogTitle>
             <AlertDialogDescription>
-              {description ?? trans("dialogs.descriptions.default")}
+              {description ? description : defaultDescription}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -59,7 +72,7 @@ function AlertDialog({
                     }}
                     key={index}
                   >
-                    {action.children ?? trans("ui.confirm")}
+                    {action.children ?? defaultAction}
                   </AlertDialogAction>
                 );
               })}
@@ -72,7 +85,7 @@ function AlertDialog({
                 setAlertDialog(null);
               }}
             >
-              {cancel?.children ?? trans("ui.cancel")}
+              {cancel?.children ?? defaultCancel}
             </AlertDialogCancel>
           </AlertDialogFooter>
         </AlertDialogPopup>

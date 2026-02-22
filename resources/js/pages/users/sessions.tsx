@@ -16,7 +16,11 @@ function UserSessions() {
         <Heading level="h2">{trans("ui.sessions")}</Heading>
       </SectionHeader>
       <SectionContent className="grid gap-4">
-        <p>{trans("sessions.sign_out_current.description")}</p>
+        <p>
+          {trans("sessions.sign_out_current.description", {
+            fallback: "Sign out of this device.",
+          })}
+        </p>
         <DialogClose
           render={
             <Button variant="outline">
@@ -26,13 +30,19 @@ function UserSessions() {
                 })}
                 method="delete"
               >
-                {trans("sessions.sign_out_current.label")}
+                {trans("sessions.sign_out_current.label", {
+                  fallback: "Sign out",
+                })}
               </Link>
             </Button>
           }
         />
         <Separator />
-        <p>{trans("sessions.sign_out_elsewhere.description")}</p>
+        <p>
+          {trans("sessions.sign_out_elsewhere.description", {
+            fallback: "Sign out of all devices, excluding this one.",
+          })}
+        </p>
         <Button variant="outline">
           <Link
             href={route("sessions.delete", {
@@ -41,7 +51,9 @@ function UserSessions() {
             method="delete"
             preserveState={true}
           >
-            {trans("sessions.sign_out_elsewhere.label")}
+            {trans("sessions.sign_out_elsewhere.label", {
+              fallback: "Sign out elsewhere",
+            })}
           </Link>
         </Button>
         <Separator />
@@ -56,7 +68,9 @@ function UserSessions() {
                 method="delete"
                 preserveState={true}
               >
-                {trans("sessions.sign_out_everywhere.label")}
+                {trans("sessions.sign_out_everywhere.label", {
+                  fallback: "Sign out everywhere",
+                })}
               </Link>
             </Button>
           }

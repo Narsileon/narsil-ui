@@ -57,7 +57,9 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
             <Form id={FORM_ID} className="flex flex-col gap-4" onSubmit={onSubmit}>
               <FieldRoot>
                 <FieldLabel required={true}>
-                  {trans("data-table.column", { fallback: "Column" })}
+                  {trans("data-table.column", {
+                    fallback: "Column",
+                  })}
                 </FieldLabel>
                 <Combobox
                   id="id"
@@ -84,7 +86,9 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
                 <>
                   <FieldRoot>
                     <FieldLabel required={true}>
-                      {trans("data-table.operator", { fallback: "Operator" })}
+                      {trans("data-table.operator", {
+                        fallback: "Operator",
+                      })}
                     </FieldLabel>
                     <Combobox
                       id="operator"
@@ -99,7 +103,9 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
                   </FieldRoot>
                   <FieldRoot>
                     <FieldLabel required={true}>
-                      {trans("data-table.filter", { fallback: "Filter" })}
+                      {trans("data-table.filter", {
+                        fallback: "Filter",
+                      })}
                     </FieldLabel>
                     <Input
                       id="value"
@@ -118,12 +124,16 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
                 <PopoverClose
                   render={
                     <Button variant="secondary">
-                      {trans("ui.cancel", { fallback: "Cancel" })}
+                      {trans("ui.cancel", {
+                        fallback: "Cancel",
+                      })}
                     </Button>
                   }
                 />
                 <Button form={FORM_ID} variant="primary" type="submit">
-                  {trans("ui.apply", { fallback: "Apply" })}
+                  {trans("ui.apply", {
+                    fallback: "Apply",
+                  })}
                 </Button>
               </div>
             </Form>

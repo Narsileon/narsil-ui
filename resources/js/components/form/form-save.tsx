@@ -138,7 +138,9 @@ function FormSave({ routes, submitLabel, ...props }: FormSaveProps) {
               {routes?.unpublish ? (
                 <DropdownMenuItem onClick={saveAndPublish}>
                   <Icon name="eye" />
-                  {`${submitLabel} & ${trans("ui.publish")}`}
+                  {`${submitLabel} & ${trans("ui.publish", {
+                    fallback: "Publish",
+                  })}`}
                   <KbdGroup className="ml-auto">
                     <Kbd>Ctrl</Kbd>
                     <Kbd>P</Kbd>
@@ -147,7 +149,9 @@ function FormSave({ routes, submitLabel, ...props }: FormSaveProps) {
               ) : null}
               <DropdownMenuItem onClick={saveAndContinue}>
                 <Icon name="save-and-continue" />
-                {`${submitLabel} & ${trans("ui.continue")}`}
+                {`${submitLabel} & ${trans("ui.continue", {
+                  fallback: "Continue",
+                })}`}
                 <KbdGroup className="ml-auto">
                   <Kbd>Ctrl</Kbd>
                   <Kbd>S</Kbd>
@@ -156,7 +160,9 @@ function FormSave({ routes, submitLabel, ...props }: FormSaveProps) {
               {routes?.create ? (
                 <DropdownMenuItem onClick={saveAndCreate}>
                   <Icon name="save-and-add" />
-                  {`${submitLabel} & ${trans("ui.create_another")}`}
+                  {`${submitLabel} & ${trans("ui.create_another", {
+                    fallback: "Create another",
+                  })}`}
                   <KbdGroup className="ml-auto">
                     <Kbd>Ctrl</Kbd>
                     <Kbd>Shift</Kbd>
@@ -169,7 +175,9 @@ function FormSave({ routes, submitLabel, ...props }: FormSaveProps) {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={saveAsNew}>
                     <Icon name="plus" />
-                    {trans("ui.save_as_new")}
+                    {trans("ui.save_as_new", {
+                      fallback: "Save as new",
+                    })}
                     <KbdGroup className="ml-auto">
                       <Kbd>Ctrl</Kbd>
                       <Kbd>D</Kbd>

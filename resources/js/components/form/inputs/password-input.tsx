@@ -16,7 +16,17 @@ function PasswordInput({ id, input, readOnly, required, value, setValue }: Field
 
   const [show, setShow] = useState(false);
 
-  const tooltip = show ? trans("ui.hide") : trans("ui.show");
+  const forgotPasswordLabel = trans("ui.forgot-password", {
+    fallback: "Forgot your password?",
+  });
+  const hideLabel = trans("ui.hide", {
+    fallback: "Hide",
+  });
+  const showLabel = trans("ui.show", {
+    fallback: "Show",
+  });
+
+  const tooltip = show ? hideLabel : showLabel;
 
   return (
     <InputGroupRoot className="relative">
@@ -46,7 +56,7 @@ function PasswordInput({ id, input, readOnly, required, value, setValue }: Field
           nativeButton={false}
           size="link"
           variant="link"
-          render={<Link href={input.href}>{trans("ui.forgot_password")}</Link>}
+          render={<Link href={input.href}>{forgotPasswordLabel}</Link>}
         ></Button>
       ) : null}
     </InputGroupRoot>

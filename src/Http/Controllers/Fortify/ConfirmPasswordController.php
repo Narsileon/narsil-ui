@@ -62,7 +62,7 @@ class ConfirmPasswordController extends RenderController
      */
     protected function getTitle(): string
     {
-        return trans('narsil-cms::ui.confirm_password');
+        return trans('narsil::ui.confirm_password');
     }
 
     #endregion

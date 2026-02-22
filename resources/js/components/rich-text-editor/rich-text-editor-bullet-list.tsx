@@ -21,7 +21,9 @@ function RichTextEditorBulletList({ editor, ...props }: RichTextEditorBulletList
     },
   });
 
-  const label = trans("rich-text-editor.bullet_list", { fallback: "Bullet list" });
+  const label = trans("rich-text-editor.bullet_list", {
+    fallback: "Bullet list",
+  });
 
   return (
     <Tooltip tooltip={label}>

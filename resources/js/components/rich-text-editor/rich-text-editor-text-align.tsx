@@ -22,16 +22,24 @@ function RichTextEditorTextAlign({
   if (!label) {
     switch (alignment) {
       case "left":
-        label = trans("rich-text-editor.align_left", { fallback: "Align left" });
+        label = trans("rich-text-editor.align_left", {
+          fallback: "Align left",
+        });
         break;
       case "center":
-        label = trans("rich-text-editor.align_center", { fallback: "Align center" });
+        label = trans("rich-text-editor.align_center", {
+          fallback: "Align center",
+        });
         break;
       case "right":
-        label = trans("rich-text-editor.align_right", { fallback: "Align right" });
+        label = trans("rich-text-editor.align_right", {
+          fallback: "Align right",
+        });
         break;
       case "justify":
-        label = trans("rich-text-editor.justify", { fallback: "Justify" });
+        label = trans("rich-text-editor.justify", {
+          fallback: "Justify",
+        });
         break;
     }
   }

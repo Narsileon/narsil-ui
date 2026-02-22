@@ -3,14 +3,15 @@ import { useForm } from "@narsil-ui/components/form";
 import { ToggleGroupItem, ToggleGroupRoot } from "@narsil-ui/components/toggle-group";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
-import { useMemo, type ComponentProps } from "react";
+import { useMemo } from "react";
 
-type FormLanguageProps = Omit<ComponentProps<typeof ToggleGroupRoot>, "type"> & {
+type FormLanguageProps = {
+  className?: string;
   value: string;
   onValueChange: (value: string) => void;
 };
 
-function FormLanguage({ defaultValue, value, onValueChange, ...props }: FormLanguageProps) {
+function FormLanguage({ className, value, onValueChange }: FormLanguageProps) {
   const { trans } = useTranslator();
 
   const { defaultLanguage, languages } = useForm();
@@ -29,11 +30,11 @@ function FormLanguage({ defaultValue, value, onValueChange, ...props }: FormLang
 
   return (
     <ToggleGroupRoot
+      className={className}
       defaultValue={[currentOption.value as string]}
       multiple={false}
       orientation="vertical"
       spacing={1}
-      {...props}
     >
       {orderedOptions.map((option, index) => {
         return (

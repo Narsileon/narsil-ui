@@ -58,11 +58,9 @@ function BookmarkList({
   const addLabel = trans("ui.add", {
     fallback: "Add",
   });
-
   const deleteLabel = trans("ui.delete", {
     fallback: "Delete",
   });
-
   const editLabel = trans("ui.edit", {
     fallback: "Edit",
   });
@@ -133,7 +131,11 @@ function BookmarkList({
             })}
           </ul>
         ) : (
-          <p className="text-muted-foreground">{trans("bookmarks.empty")}</p>
+          <p className="text-muted-foreground">
+            {trans("bookmarks.empty", {
+              fallback: "You haven't added any bookmarks yet. Click on the star to add one.",
+            })}
+          </p>
         )}
       </CardContent>
     </CardRoot>

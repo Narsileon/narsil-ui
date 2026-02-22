@@ -57,11 +57,11 @@ function Bookmarks({ breadcrumb, ...props }: BookmarksProps) {
 
   return (
     <PopoverRoot open={open} onOpenChange={onOpenChange}>
-      <Tooltip tooltip={trans("bookmarks.menu")}>
+      <Tooltip tooltip={title}>
         <PopoverTrigger
           {...props}
           render={
-            <Button aria-label={trans("bookmarks.menu")} size="icon" variant="ghost">
+            <Button aria-label={title} size="icon" variant="ghost">
               <Icon fill="currentColor" name="star" />
             </Button>
           }

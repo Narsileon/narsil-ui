@@ -23,7 +23,9 @@ function RichTextEditorItalic({ editor, ...props }: RichTextEditorItalicProps) {
     },
   });
 
-  const label = trans("rich-text-editor.italic", { fallback: "Italic" });
+  const label = trans("rich-text-editor.italic", {
+    fallback: "Italic",
+  });
 
   return (
     <Tooltip tooltip={label}>

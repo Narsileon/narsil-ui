@@ -47,8 +47,12 @@ export type FieldsetData = {
 
 export type FormData = {
   action: string;
-  method: string;
+  autoSave: boolean;
+  defaultLanguage: string;
   id: string;
+  languages: OptionData[];
+  method: string;
+  routes: RoutesData;
   steps: FormStepData[];
   submitIcon?: string | null;
   submitLabel: string;

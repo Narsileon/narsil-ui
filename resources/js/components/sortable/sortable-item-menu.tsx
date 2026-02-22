@@ -28,14 +28,27 @@ function SortableItemMenu({
 }: SortableItemMenuProps) {
   const { trans } = useTranslator();
 
+  const deleteLabel = trans("ui.delete", {
+    fallback: "Delete",
+  });
+  const menuLabel = trans("ui.menu", {
+    fallback: "Menu",
+  });
+  const moveUpLabel = trans("ui.move_up", {
+    fallback: "Move Up",
+  });
+  const moveDownLabel = trans("ui.move_down", {
+    fallback: "Move Down",
+  });
+
   return (
     <DropdownMenuRoot>
-      <Tooltip tooltip={trans("ui.menu")}>
+      <Tooltip tooltip={menuLabel}>
         <DropdownMenuTrigger
           {...props}
           render={
             <Button
-              aria-label={trans("ui.menu")}
+              aria-label={menuLabel}
               size="icon-sm"
               variant="ghost-secondary"
               onClick={(event) => event.stopPropagation()}
@@ -50,18 +63,18 @@ function SortableItemMenu({
           <DropdownMenuPopup onClick={(event) => event.stopPropagation()}>
             <DropdownMenuItem disabled={!onMoveUp} onClick={onMoveUp}>
               <Icon name="move-up" />
-              {trans("ui.move_up")}
+              {moveUpLabel}
             </DropdownMenuItem>
             <DropdownMenuItem disabled={!onMoveDown} onClick={onMoveDown}>
               <Icon name="move-down" />
-              {trans("ui.move_down")}
+              {moveDownLabel}
             </DropdownMenuItem>
             {onRemove ? (
               <>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={onRemove}>
                   <Icon name="trash" />
-                  {trans("ui.delete")}
+                  {deleteLabel}
                 </DropdownMenuItem>
               </>
             ) : null}

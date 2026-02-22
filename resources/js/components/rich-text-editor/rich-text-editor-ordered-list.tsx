@@ -21,7 +21,9 @@ function RichTextEditorOrderedList({ editor, ...props }: RichTextEditorOrderedLi
     },
   });
 
-  const label = trans("rich-text-editor.ordered_list", { fallback: "Ordered list" });
+  const label = trans("rich-text-editor.ordered_list", {
+    fallback: "Ordered list",
+  });
 
   return (
     <Tooltip tooltip={label}>

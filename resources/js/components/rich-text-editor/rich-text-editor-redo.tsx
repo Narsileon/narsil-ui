@@ -21,7 +21,9 @@ function RichTextEditorRedo({ editor, ...props }: RichTextEditorRedoProps) {
     },
   });
 
-  const label = trans("rich-text-editor.redo", { fallback: "Redo" });
+  const label = trans("rich-text-editor.redo", {
+    fallback: "Redo",
+  });
 
   return (
     <Tooltip tooltip={label}>

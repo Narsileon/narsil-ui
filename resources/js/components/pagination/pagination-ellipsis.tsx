@@ -6,7 +6,9 @@ import { type ComponentProps } from "react";
 function PaginationEllipsis({ className, ...props }: ComponentProps<"span">) {
   const { trans } = useTranslator();
 
-  const label = trans("pagination.more", { fallback: "More" });
+  const label = trans("pagination.more", {
+    fallback: "More",
+  });
 
   return (
     <span

@@ -58,6 +58,10 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
     return keys?.some((key) => modules?.includes(key));
   }
 
+  const headingsLabel = trans("ui.headings", {
+    fallback: "Headings",
+  });
+
   return (
     <div
       className={cn(
@@ -89,12 +93,8 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
           <DropdownMenuRoot>
             <DropdownMenuTrigger
               render={
-                <Tooltip tooltip={trans("rich-text-editor.headings")}>
-                  <Button
-                    aria-label={trans("rich-text-editor.headings")}
-                    size="icon"
-                    variant="ghost"
-                  >
+                <Tooltip tooltip={headingsLabel}>
+                  <Button aria-label={headingsLabel} size="icon" variant="ghost">
                     <Icon name="heading" />
                   </Button>
                 </Tooltip>
