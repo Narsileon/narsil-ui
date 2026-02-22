@@ -58,17 +58,17 @@ function UserSettings({
       </TabsList>
       {auth ? (
         <TabsPanel value="account">
-          <UserProfile auth={auth} profileForm={profileForm} />
+          <UserProfile auth={auth} form={profileForm} />
           <Separator />
-          <UserPassword updatePasswordForm={updatePasswordForm} />
+          <UserPassword form={updatePasswordForm} />
         </TabsPanel>
       ) : null}
       <TabsPanel value="configuration">
-        <UserConfiguration userConfigurationForm={userConfigurationForm} />
+        <UserConfiguration form={userConfigurationForm} />
       </TabsPanel>
       {auth ? (
         <TabsPanel value="security">
-          <UserTwoFactor twoFactorForm={twoFactorForm} />
+          <UserTwoFactor form={twoFactorForm} />
           <Separator />
           <UserSessions />
         </TabsPanel>

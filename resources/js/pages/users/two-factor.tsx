@@ -22,10 +22,10 @@ import { Fragment, useState } from "react";
 import { route } from "ziggy-js";
 
 type UserTwoFactorProps = {
-  twoFactorForm: FormData;
+  form: FormData;
 };
 
-function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
+function UserTwoFactor({ form }: UserTwoFactorProps) {
   const { add } = Toast.useToastManager();
   const { trans } = useTranslator();
 
@@ -108,10 +108,10 @@ function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
           </div>
           {!active && enabled && qrCode ? (
             <FormProvider
-              id={twoFactorForm.id}
-              action={twoFactorForm.action}
-              method={twoFactorForm.method}
-              steps={twoFactorForm.steps}
+              id={form.id}
+              action={form.action}
+              method={form.method}
+              steps={form.steps}
               render={({ setError }) => {
                 return (
                   <FormRoot
@@ -126,7 +126,7 @@ function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
                   >
                     <CardRoot>
                       <CardContent className="grid-cols-12">
-                        {twoFactorForm.steps.map((step, index) => {
+                        {form.steps.map((step, index) => {
                           return (
                             <Fragment key={index}>
                               {step.elements?.map((element, index) => {
@@ -143,8 +143,8 @@ function UserTwoFactor({ twoFactorForm }: UserTwoFactorProps) {
                         />
                       </CardContent>
                       <CardFooter className="justify-end border-t">
-                        <Button form={twoFactorForm.id} type="submit">
-                          {twoFactorForm.submitLabel}
+                        <Button form={form.id} type="submit">
+                          {form.submitLabel}
                         </Button>
                       </CardFooter>
                     </CardRoot>

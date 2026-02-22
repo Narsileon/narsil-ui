@@ -8,26 +8,26 @@ import type { FormData } from "@narsil-ui/types";
 import { Fragment } from "react";
 
 type UserPasswordProps = {
-  updatePasswordForm: FormData;
+  form: FormData;
 };
 
-function UserPassword({ updatePasswordForm }: UserPasswordProps) {
+function UserPassword({ form }: UserPasswordProps) {
   const { trans } = useTranslator();
 
   return (
     <FormProvider
-      id={updatePasswordForm.id}
-      action={updatePasswordForm.action}
-      method={updatePasswordForm.method}
-      steps={updatePasswordForm.steps}
+      id={form.id}
+      action={form.action}
+      method={form.method}
+      steps={form.steps}
       render={({ reset, setDefaults }) => {
         return (
           <SectionRoot>
             <SectionHeader className="border-b">
               <Heading level="h2">{trans("ui.password")}</Heading>
-              <Button form={updatePasswordForm.id} type="submit">
-                {updatePasswordForm.submitIcon && <Icon name={updatePasswordForm.submitIcon} />}
-                {updatePasswordForm.submitLabel}
+              <Button form={form.id} type="submit">
+                {form.submitIcon && <Icon name={form.submitIcon} />}
+                {form.submitLabel}
               </Button>
             </SectionHeader>
             <SectionContent>
@@ -40,7 +40,7 @@ function UserPassword({ updatePasswordForm }: UserPasswordProps) {
                   },
                 }}
               >
-                {updatePasswordForm.steps.map((step, index) => {
+                {form.steps.map((step, index) => {
                   return (
                     <Fragment key={index}>
                       {step.elements?.map((element, index) => {

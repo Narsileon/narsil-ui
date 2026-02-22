@@ -11,10 +11,10 @@ import { Fragment } from "react";
 import { route } from "ziggy-js";
 
 type UserConfigurationProps = {
-  userConfigurationForm: FormData;
+  form: FormData;
 };
 
-function UserConfiguration({ userConfigurationForm }: UserConfigurationProps) {
+function UserConfiguration({ form }: UserConfigurationProps) {
   const { reloadTopModal } = useModalStore();
   const { trans } = useTranslator();
 
@@ -61,15 +61,15 @@ function UserConfiguration({ userConfigurationForm }: UserConfigurationProps) {
       </SectionHeader>
       <SectionContent>
         <FormProvider
-          id={userConfigurationForm.id}
-          action={userConfigurationForm.action}
+          id={form.id}
+          action={form.action}
           initialData={initialData}
-          method={userConfigurationForm.method}
-          steps={userConfigurationForm.steps}
+          method={form.method}
+          steps={form.steps}
           render={() => {
             return (
               <FormRoot className="gap-4">
-                {userConfigurationForm.steps.map((step, index) => {
+                {form.steps.map((step, index) => {
                   return (
                     <Fragment key={index}>
                       {step.elements?.map((element, index) => {

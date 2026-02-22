@@ -9,10 +9,10 @@ import { Fragment } from "react";
 
 type UserProfileProps = {
   auth: UserData;
-  profileForm: FormData;
+  form: FormData;
 };
 
-function UserProfile({ auth, profileForm }: UserProfileProps) {
+function UserProfile({ auth, form }: UserProfileProps) {
   const { trans } = useTranslator();
 
   const initialData = {
@@ -23,24 +23,24 @@ function UserProfile({ auth, profileForm }: UserProfileProps) {
 
   return (
     <FormProvider
-      id={profileForm.id}
-      action={profileForm.action}
+      id={form.id}
+      action={form.action}
       initialData={initialData}
-      method={profileForm.method}
-      steps={profileForm.steps}
+      method={form.method}
+      steps={form.steps}
       render={() => {
         return (
           <SectionRoot>
             <SectionHeader className="border-b">
               <Heading level="h2">{trans("ui.account")}</Heading>
-              <Button form={profileForm.id} type="submit">
-                {profileForm.submitIcon && <Icon name={profileForm.submitIcon} />}
-                {profileForm.submitLabel}
+              <Button form={form.id} type="submit">
+                {form.submitIcon && <Icon name={form.submitIcon} />}
+                {form.submitLabel}
               </Button>
             </SectionHeader>
             <SectionContent>
               <FormRoot className="grid-cols-12 gap-4">
-                {profileForm.steps.map((step, index) => {
+                {form.steps.map((step, index) => {
                   return (
                     <Fragment key={index}>
                       {step.elements?.map((element, index) => {
