@@ -8,7 +8,7 @@ function InputGroupRoot({ className, ...props }: ComponentProps<"div">) {
       role="group"
       className={cn(
         "group/input-group",
-        "relative flex h-9 w-full min-w-0 items-center rounded-md border border-input transition-colors outline-none dark:bg-input/30",
+        "relative flex h-9 w-full min-w-0 items-center overflow-hidden rounded-md border border-input transition-colors outline-none dark:bg-input/30",
         "has-[[data-slot][aria-invalid=true]]:border-destructive has-[[data-slot][aria-invalid=true]]:ring-[3px] has-[[data-slot][aria-invalid=true]]:ring-destructive/20 dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40",
         "has-[[data-slot=input-group-control]:focus-visible]:border-shine",
         "has-[>[data-align=block-end]]:[&>input]:pt-3",
