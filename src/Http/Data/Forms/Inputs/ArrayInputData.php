@@ -31,7 +31,7 @@ class ArrayInputData extends InputData
      * @return void
      */
     public function __construct(
-        array $form,
+        array $form = [],
         array $defaultValue = [],
         string $labelKey = 'label',
     )

@@ -29,7 +29,7 @@ class TableInputData extends InputData
      * @return void
      */
     public function __construct(
-        array $columns,
+        array $columns = [],
         array $defaultValue = [],
     )
     {
