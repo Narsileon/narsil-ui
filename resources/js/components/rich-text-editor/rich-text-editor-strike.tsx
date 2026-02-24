@@ -22,9 +22,7 @@ function RichTextEditorStrike({ editor, ...props }: RichTextEditorStrikeProps) {
     },
   });
 
-  const label = trans("rich-text-editor.strike", {
-    fallback: "Strike",
-  });
+  const label = trans("rich-text-editor.strike");
 
   return (
     <Tooltip tooltip={label}>

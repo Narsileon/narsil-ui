@@ -111,12 +111,12 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
         <DialogBackdrop />
         <DialogPopup className="h-3/4 md:max-h-3/4 md:max-w-3xl">
           <DialogHeader className="border-b">
-            <DialogTitle>{trans("ui.settings", { fallback: "Settings" })}</DialogTitle>
+            <DialogTitle>{trans("ui.settings")}</DialogTitle>
           </DialogHeader>
           <DialogBody className="grow flex-row">
             <SectionRoot className="flex-1/3 shrink-0">
               <SectionHeader>
-                <Heading>{trans("data-table.columns", { fallback: "Columns" })}</Heading>
+                <Heading>{trans("data-table.columns")}</Heading>
               </SectionHeader>
               <SectionContent className="grid grid-cols-2 divide-x">
                 <div className="flex-1/2 pr-4">
@@ -173,7 +173,7 @@ function DataTableSettings({ ...props }: DataTableSettingsProps) {
                 );
               }}
             >
-              {trans("ui.reset", { fallback: "Reset" })}
+              {trans("ui.reset")}
             </Button>
           </DialogFooter>
         </DialogPopup>

@@ -22,9 +22,7 @@ function RichTextEditorBold({ editor, ...props }: RichTextEditorBoldProps) {
     },
   });
 
-  const label = trans("rich-text-editor.bold", {
-    fallback: "Bold",
-  });
+  const label = trans("rich-text-editor.bold");
 
   return (
     <Tooltip tooltip={label}>

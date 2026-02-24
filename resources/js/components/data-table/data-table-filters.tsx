@@ -25,7 +25,7 @@ function DataTableFilters({ className, ...props }: ComponentProps<"ul">) {
           <li key={index}>
             <Badge className="cursor-pointer pr-0">
               <span>{column.columnDef.header as string}</span>
-              <span>{trans(`operators.${operator}`, { fallback: operator })}</span>
+              <span>{trans(`operators.${operator}`)}</span>
               <span>{value}</span>
               <Button
                 variant="ghost-secondary"

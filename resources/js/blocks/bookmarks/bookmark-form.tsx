@@ -64,9 +64,7 @@ function BookmarkForm({ bookmark, form, title, fetchBookmarks, setBookmark }: Bo
             </CardContent>
             <CardFooter className="justify-between border-t">
               <Button variant="secondary" onClick={() => setBookmark(null)}>
-                {trans("ui.cancel", {
-                  fallback: "Cancel",
-                })}
+                {trans("ui.cancel")}
               </Button>
               <Button form={form.id} type="submit">
                 {form.submitLabel}

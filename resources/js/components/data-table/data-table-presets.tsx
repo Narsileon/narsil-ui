@@ -28,7 +28,7 @@ function DataTablePresets({ ...props }: DataTableSettingsProps) {
           );
         }}
       >
-        {trans("ui.reset", { fallback: "reset" })}
+        {trans("ui.reset")}
       </Button>
     </div>
   );

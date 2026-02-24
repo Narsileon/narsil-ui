@@ -22,7 +22,7 @@ function RichTextEditorHeading({ editor, level, ...props }: RichTextEditorHeadin
     },
   });
 
-  const label = trans(`rich-text-editor.heading_${level}`, { fallback: `Heading ${level}` });
+  const label = trans(`rich-text-editor.heading_${level}`);
 
   return (
     <Tooltip tooltip={label}>

@@ -58,9 +58,7 @@ function RichTextEditorToolbar({ className, modules = [], ...props }: RichTextEd
     return keys?.some((key) => modules?.includes(key));
   }
 
-  const headingsLabel = trans("ui.headings", {
-    fallback: "Headings",
-  });
+  const headingsLabel = trans("ui.headings");
 
   return (
     <div

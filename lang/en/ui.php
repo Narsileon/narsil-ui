@@ -2,6 +2,7 @@
 
 return [
     'account'          => 'Account',
+    'add_child'        => 'Add a child',
     'add'              => 'Add',
     'all'              => 'All',
     'back'             => 'Back',

@@ -2,6 +2,7 @@
 
 return [
     'account'          => 'Compte',
+    'add_child'        => 'Ajouter un enfant',
     'add'              => 'Ajouter',
     'all'              => 'Tout',
     'back'             => 'Retour',

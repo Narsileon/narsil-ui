@@ -86,12 +86,8 @@ function UserTwoFactor({ auth, form }: UserTwoFactorProps) {
     }
   }
 
-  const recoveryCodesLabel = trans("ui.recovery_codes", {
-    fallback: "Recovery codes",
-  });
-  const securityLabel = trans("ui.security", {
-    fallback: "Security",
-  });
+  const recoveryCodesLabel = trans("ui.recovery_codes");
+  const securityLabel = trans("ui.security");
 
   return (
     <SectionRoot>

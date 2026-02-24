@@ -22,9 +22,7 @@ function RichTextEditorSuperscript({ editor, ...props }: RichTextEditorSuperscri
     },
   });
 
-  const label = trans("rich-text-editor.superscript", {
-    fallback: "Superscript",
-  });
+  const label = trans("rich-text-editor.superscript");
 
   return (
     <Tooltip tooltip={label}>

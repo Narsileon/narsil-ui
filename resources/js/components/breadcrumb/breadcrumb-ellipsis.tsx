@@ -6,7 +6,7 @@ import { type ComponentProps } from "react";
 function BreadcrumbEllipsis({ children, className, ...props }: ComponentProps<"span">) {
   const { trans } = useTranslator();
 
-  const label = trans("pagination.more", { fallback: "More" });
+  const label = trans("pagination.more");
 
   return (
     <span

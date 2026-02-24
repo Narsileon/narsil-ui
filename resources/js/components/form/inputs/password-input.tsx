@@ -16,15 +16,9 @@ function PasswordInput({ id, input, readOnly, required, value, setValue }: Field
 
   const [show, setShow] = useState(false);
 
-  const forgotPasswordLabel = trans("ui.forgot-password", {
-    fallback: "Forgot your password?",
-  });
-  const hideLabel = trans("ui.hide", {
-    fallback: "Hide",
-  });
-  const showLabel = trans("ui.show", {
-    fallback: "Show",
-  });
+  const forgotPasswordLabel = trans("ui.forgot-password");
+  const hideLabel = trans("ui.hide");
+  const showLabel = trans("ui.show");
 
   const tooltip = show ? hideLabel : showLabel;
 

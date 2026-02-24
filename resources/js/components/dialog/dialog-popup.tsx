@@ -21,7 +21,7 @@ function DialogPopup({
   }) {
   const { trans } = useTranslator();
 
-  const closeLabel = trans("ui.close", { fallback: "Close" });
+  const closeLabel = trans("ui.close");
 
   return (
     <Dialog.Popup

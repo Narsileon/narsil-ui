@@ -19,13 +19,12 @@ function DataTableSelection({ className, meta, ...props }: DataTableSelectionPro
     <span data-slot="data-table-selection" className={cn("truncate", className)} {...props}>
       {selected > 0
         ? trans("data-table.selection", {
-            fallback: ":selected of :total rows selected",
             replacements: {
               selected: selected,
               total: meta.total,
             },
           })
-        : trans("data-table.selection_empty", { fallback: "No row selected" })}
+        : trans("data-table.selection_empty")}
     </span>
   );
 }

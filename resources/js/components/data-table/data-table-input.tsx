@@ -34,12 +34,8 @@ function DataTableInput({ className, ...props }: DataTableInputProps) {
     debouncedSetValue(value);
   }, [value, debouncedSetValue]);
 
-  const filterLabel = trans("data-table.filters", {
-    fallback: "Filters",
-  });
-  const placeholderLabel = trans("placeholders.search", {
-    fallback: "Search...",
-  });
+  const filterLabel = trans("data-table.filters");
+  const placeholderLabel = trans("placeholders.search");
 
   return (
     <ButtonGroup className="grow justify-end">

@@ -26,15 +26,9 @@ function UserSettings({
 }: UserSettingsProps) {
   const { trans } = useTranslator();
 
-  const accoutLabel = trans("ui.account", {
-    fallback: "Account",
-  });
-  const personalizationLabel = trans("ui.personalization", {
-    fallback: "Personalization",
-  });
-  const securityLabel = trans("ui.security", {
-    fallback: "Security",
-  });
+  const accoutLabel = trans("ui.account");
+  const personalizationLabel = trans("ui.personalization");
+  const securityLabel = trans("ui.security");
 
   return (
     <TabsRoot defaultValue={auth ? "account" : "configuration"} orientation="vertical">

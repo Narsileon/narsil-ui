@@ -10,7 +10,7 @@ function DataTablePageSize({ ...props }: ComponentProps<"div">) {
 
   const [pageSize, setPageSize] = useState((table.getState().pagination.pageSize ?? 10).toString());
 
-  const label = trans("data-table.pagination", { fallback: "Rows per page" });
+  const label = trans("data-table.pagination");
 
   return (
     <div data-slot="data-table-page-size" {...props}>

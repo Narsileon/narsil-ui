@@ -201,12 +201,7 @@ function Combobox({
                 <ComboboxInput
                   className="h-7 p-0"
                   placeholder={
-                    isEmpty(value)
-                      ? (placeholder ??
-                        trans("placeholders.search", {
-                          fallback: "Search...",
-                        }))
-                      : undefined
+                    isEmpty(value) ? (placeholder ?? trans("placeholders.search")) : undefined
                   }
                   render={<InputGroupInput disabled={disabled} />}
                 />
@@ -225,9 +220,7 @@ function Combobox({
               {parse(
                 getTranslatableData(selectedOptions[0], labelPath, locale) ||
                   placeholder ||
-                  trans("placeholders.choose", {
-                    fallback: "Choose...",
-                  }),
+                  trans("placeholders.choose"),
               )}
             </Button>
           }

@@ -22,9 +22,7 @@ function RichTextEditorSubscript({ editor, ...props }: RichTextEditorSubscriptPr
     },
   });
 
-  const label = trans("rich-text-editor.subscript", {
-    fallback: "Subscript",
-  });
+  const label = trans("rich-text-editor.subscript");
 
   return (
     <Tooltip tooltip={label}>

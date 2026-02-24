@@ -56,11 +56,7 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
           <PopoverPopup>
             <Form id={FORM_ID} className="flex flex-col gap-4" onSubmit={onSubmit}>
               <FieldRoot>
-                <FieldLabel required={true}>
-                  {trans("data-table.column", {
-                    fallback: "Column",
-                  })}
-                </FieldLabel>
+                <FieldLabel required={true}>{trans("data-table.column")}</FieldLabel>
                 <Combobox
                   id="id"
                   options={columns.map((column) => {
@@ -85,11 +81,7 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
               {column ? (
                 <>
                   <FieldRoot>
-                    <FieldLabel required={true}>
-                      {trans("data-table.operator", {
-                        fallback: "Operator",
-                      })}
-                    </FieldLabel>
+                    <FieldLabel required={true}>{trans("data-table.operator")}</FieldLabel>
                     <Combobox
                       id="operator"
                       displayValue={false}
@@ -102,11 +94,7 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
                     />
                   </FieldRoot>
                   <FieldRoot>
-                    <FieldLabel required={true}>
-                      {trans("data-table.filter", {
-                        fallback: "Filter",
-                      })}
-                    </FieldLabel>
+                    <FieldLabel required={true}>{trans("data-table.filter")}</FieldLabel>
                     <Input
                       id="value"
                       required={true}
@@ -121,19 +109,9 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
               ) : null}
               <Separator />
               <div className="flex items-center justify-between">
-                <PopoverClose
-                  render={
-                    <Button variant="secondary">
-                      {trans("ui.cancel", {
-                        fallback: "Cancel",
-                      })}
-                    </Button>
-                  }
-                />
+                <PopoverClose render={<Button variant="secondary">{trans("ui.cancel")}</Button>} />
                 <Button form={FORM_ID} variant="primary" type="submit">
-                  {trans("ui.apply", {
-                    fallback: "Apply",
-                  })}
+                  {trans("ui.apply")}
                 </Button>
               </div>
             </Form>

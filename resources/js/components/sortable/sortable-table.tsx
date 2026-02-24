@@ -185,9 +185,7 @@ function SortableTable({ columns, rows, setRows }: SortableTableProps) {
                   onAdd(crypto.randomUUID());
                 }}
               >
-                {trans("ui.add", {
-                  fallback: "Add",
-                })}
+                {trans("ui.add")}
               </SortableTableItem>
             </TableBody>
             {createPortal(

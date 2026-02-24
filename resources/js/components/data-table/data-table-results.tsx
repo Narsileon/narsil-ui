@@ -10,11 +10,8 @@ type DataTableResultProps = ComponentProps<"span"> & {
 function DataTableResults({ className, meta, ...props }: DataTableResultProps) {
   const { trans } = useTranslator();
 
-  const emptyLabel = trans("data-table.empty", {
-    fallback: "No results",
-  });
+  const emptyLabel = trans("data-table.empty");
   const resultsLabel = trans("data-table.results", {
-    fallback: "Page :current_page of :last_page",
     replacements: {
       current_page: meta.current_page,
       last_page: meta.last_page,

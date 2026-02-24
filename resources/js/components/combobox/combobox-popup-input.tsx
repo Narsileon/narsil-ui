@@ -16,9 +16,7 @@ type ComboboxPopupInputProps = ComponentProps<typeof InputGroupRoot> & {
 function ComboboxPopupInput({ className, clearable, disabled, ...props }: ComboboxPopupInputProps) {
   const { trans } = useTranslator();
 
-  const placeholderLabel = trans("placeholders.search", {
-    fallback: "Search...",
-  });
+  const placeholderLabel = trans("placeholders.search");
 
   return (
     <InputGroupRoot

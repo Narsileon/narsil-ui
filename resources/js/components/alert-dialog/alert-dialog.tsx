@@ -34,18 +34,10 @@ function AlertDialog({
   const { setAlertDialog } = useAlertDialog();
   const { trans } = useTranslator();
 
-  const defaultTitle = trans("dialogs.titles.default", {
-    fallback: "Confirmation",
-  });
-  const defaultDescription = trans("dialogs.descriptions.default", {
-    fallback: "Are you sure you want to do this?",
-  });
-  const defaultAction = trans("ui.confirm", {
-    fallback: "Confirm",
-  });
-  const defaultCancel = trans("ui.cancel", {
-    fallback: "Cancel",
-  });
+  const defaultTitle = trans("dialogs.titles.default");
+  const defaultDescription = trans("dialogs.descriptions.default");
+  const defaultAction = trans("ui.confirm");
+  const defaultCancel = trans("ui.cancel");
 
   return (
     <AlertDialogRoot {...props}>

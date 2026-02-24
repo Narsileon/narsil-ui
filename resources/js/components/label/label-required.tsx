@@ -10,9 +10,7 @@ type LabelRequiredProps = ComponentProps<"span"> & {
 function LabelRequired({ className, ...props }: LabelRequiredProps) {
   const { trans } = useTranslator();
 
-  const label = trans("ui.required", {
-    fallback: "This field is required.",
-  });
+  const label = trans("ui.required");
 
   return (
     <Tooltip tooltip={label}>

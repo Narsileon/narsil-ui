@@ -20,18 +20,10 @@ type PaginationProps = ComponentProps<typeof PaginationRoot> & {
 function Pagination({ links, metaLinks, ...props }: PaginationProps) {
   const { trans } = useTranslator();
 
-  const firstPageLabel = trans("pagination.first_page", {
-    fallback: "First",
-  });
-  const prevPageLabel = trans("pagination.previous_page", {
-    fallback: "Previous",
-  });
-  const nextPageLabel = trans("pagination.next_page", {
-    fallback: "Next",
-  });
-  const lastPageLabel = trans("pagination.last_page", {
-    fallback: "Last",
-  });
+  const firstPageLabel = trans("pagination.first_page");
+  const prevPageLabel = trans("pagination.previous_page");
+  const nextPageLabel = trans("pagination.next_page");
+  const lastPageLabel = trans("pagination.last_page");
 
   return (
     <PaginationRoot {...props}>

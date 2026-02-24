@@ -28,18 +28,10 @@ function SortableItemMenu({
 }: SortableItemMenuProps) {
   const { trans } = useTranslator();
 
-  const deleteLabel = trans("ui.delete", {
-    fallback: "Delete",
-  });
-  const menuLabel = trans("ui.menu", {
-    fallback: "Menu",
-  });
-  const moveUpLabel = trans("ui.move_up", {
-    fallback: "Move Up",
-  });
-  const moveDownLabel = trans("ui.move_down", {
-    fallback: "Move Down",
-  });
+  const deleteLabel = trans("ui.delete");
+  const menuLabel = trans("ui.menu");
+  const moveUpLabel = trans("ui.move_up");
+  const moveDownLabel = trans("ui.move_down");
 
   return (
     <DropdownMenuRoot>
