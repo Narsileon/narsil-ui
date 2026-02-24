@@ -1,13 +1,6 @@
-import { Combobox } from "@narsil-ui/components/combobox";
-import { Slider } from "@narsil-ui/components/slider";
+import { dynamic } from "@narsil-ui/lib/dynamic";
 import type { FieldData } from "@narsil-ui/types";
 import { type ReactNode } from "react";
-import ArrayInput from "./array-input";
-import CheckboxInput from "./checkbox-input";
-import FileInput from "./file-input";
-import PasswordInput from "./password-input";
-import TableInput from "./table-input";
-import TextInput from "./text-input";
 
 export type FieldProps = FieldData & {
   value: any;
@@ -17,6 +10,17 @@ export type FieldProps = FieldData & {
 export type Registry = {
   [K in FieldProps["input"]["type"]]: (props: FieldProps) => ReactNode;
 };
+
+const ArrayInput = dynamic(() => import("./array-input"));
+const CheckboxInput = dynamic(() => import("./checkbox-input"));
+const Combobox = dynamic(() => import("@narsil-ui/components/combobox/combobox"));
+const FileInput = dynamic(() => import("./file-input"));
+const PasswordInput = dynamic(() => import("./password-input"));
+const RichTextEditor = dynamic(() => import("./rich-text-editor"));
+const RangeInput = dynamic(() => import("./range-input"));
+const SwitchInput = dynamic(() => import("./switch-input"));
+const TableInput = dynamic(() => import("./table-input"));
+const TextInput = dynamic(() => import("./text-input"));
 
 const registry: Registry = {
   ["array"]: (props) => {
@@ -32,15 +36,10 @@ const registry: Registry = {
     return <PasswordInput {...props} />;
   },
   ["range"]: (props) => {
-    return (
-      <Slider
-        {...props.input}
-        id={props.id}
-        name={props.id}
-        value={props.value}
-        onValueChange={props.setValue}
-      />
-    );
+    return <RangeInput {...props} />;
+  },
+  ["rich-text-editor"]: (props) => {
+    return <RichTextEditor {...props} />;
   },
   ["select"]: (props) => {
     return (
@@ -54,6 +53,9 @@ const registry: Registry = {
       />
     );
   },
+  ["switch"]: (props) => {
+    return <SwitchInput {...props} />;
+  },
   ["table"]: (props) => {
     return <TableInput {...props} />;
   },
@@ -62,9 +64,8 @@ const registry: Registry = {
   },
 };
 
-export function getField<K extends keyof Registry>(registry: Registry, name: K, props: any) {
+export function getField<K extends keyof Registry>(registry: Registry, name: K, props: FieldProps) {
   const FieldComponent = registry[name] ?? registry.default;
-
   return <FieldComponent {...props} />;
 }
 

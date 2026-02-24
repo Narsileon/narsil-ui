@@ -5,21 +5,26 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@narsil-ui/components/slider";
-import { useMemo, type ComponentProps } from "react";
+import { useMemo } from "react";
+import { FieldProps } from ".";
 
-function Slider({
-  defaultValue,
-  value,
-  min = 0,
-  max = 100,
-  ...props
-}: ComponentProps<typeof SliderRoot>) {
+function RangeInput({ id, input, value, setValue }: FieldProps) {
+  const { defaultValue = 0, min = 0, max = 100, ...props } = input;
+
   const computedValue = useMemo(() => {
     return Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max];
   }, [value, defaultValue, min, max]);
 
   return (
-    <SliderRoot defaultValue={defaultValue} value={value} min={min} max={max} {...props}>
+    <SliderRoot
+      {...props}
+      id={id}
+      defaultValue={defaultValue}
+      value={value}
+      min={min}
+      max={max}
+      onValueChange={setValue}
+    >
       <SliderControl>
         <SliderTrack>
           <SliderIndicator />
@@ -32,4 +37,4 @@ function Slider({
   );
 }
 
-export default Slider;
+export default RangeInput;

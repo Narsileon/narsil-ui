@@ -1,6 +1,5 @@
 // https://tiptap.dev/docs
 
-import RichTextEditor from "./rich-text-editor";
 import RichTextEditorBold from "./rich-text-editor-bold";
 import RichTextEditorBulletList from "./rich-text-editor-bullet-list";
 import RichTextEditorContent from "./rich-text-editor-content";
@@ -19,7 +18,6 @@ import RichTextEditorUnderline from "./rich-text-editor-underline";
 import RichTextEditorUndo from "./rich-text-editor-undo";
 
 export {
-  RichTextEditor,
   RichTextEditorBold,
   RichTextEditorBulletList,
   RichTextEditorContent,
