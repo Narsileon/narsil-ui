@@ -1,3 +1,4 @@
+import { Skeleton } from "@narsil-ui/components/skeleton";
 import { lazy, Suspense, type ComponentType } from "react";
 
 type DynamicImport<T> = () => Promise<{ default: ComponentType<T> }>;
@@ -7,7 +8,7 @@ type DynamicOptions = {
 };
 
 function dynamic<T extends object = {}>(importer: DynamicImport<T>, options: DynamicOptions = {}) {
-  const { loading: Loading = () => <div /> } = options;
+  const { loading: Loading = () => <Skeleton className="h-9" /> } = options;
 
   const LazyComponent = lazy(importer);
 
