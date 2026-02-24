@@ -9,6 +9,7 @@ return [
     'empty'              => 'Keine Ergebnisse',
     'filter'             => 'Filter',
     'filters'            => 'Filter',
+    'operator'           => 'Operator',
     'pagination'         => 'Zeilen pro Seite',
     'results'            => 'Seite :current_page von :last_page',
     'row'                => 'Zeile',

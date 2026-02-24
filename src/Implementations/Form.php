@@ -160,6 +160,7 @@ abstract class Form extends Fluent implements Contract
             ->add('narsil::ui.default')
             ->add('narsil::ui.delete')
             ->add('narsil::ui.publish')
+            ->add('narsil::ui.required')
             ->add('narsil::ui.save_as_new')
             ->add('narsil::ui.translations')
             ->add('narsil::ui.unpublish');

@@ -145,12 +145,15 @@ class DataTableCollection extends ResourceCollection
     protected function registerTranslations(): void
     {
         app(TranslationsBag::class)
+            ->add('narsil::data-table.column')
             ->add('narsil::data-table.columns')
             ->add('narsil::data-table.delete_selected')
             ->add('narsil::data-table.deselect_all')
             ->add('narsil::data-table.duplicate_selected')
             ->add('narsil::data-table.empty')
+            ->add('narsil::data-table.filter')
             ->add('narsil::data-table.filters')
+            ->add('narsil::data-table.operator')
             ->add('narsil::data-table.pagination')
             ->add('narsil::data-table.results')
             ->add('narsil::data-table.select_all')
@@ -165,6 +168,7 @@ class DataTableCollection extends ResourceCollection
             ->add('narsil::pagination.previous_page')
             ->add('narsil::placeholders.choose')
             ->add('narsil::placeholders.search')
+            ->add('narsil::ui.apply')
             ->add('narsil::ui.cancel')
             ->add('narsil::ui.confirm')
             ->add('narsil::ui.create')
