@@ -14,29 +14,40 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property string|null $accept The "accept" attribute of the input.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property string $accept The value of the "accept" attribute.
  */
 class FileInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param string|null $accept The "accept" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $accept The value of the "accept" attribute.
      *
      * @return void
      */
     public function __construct(
         string $defaultValue = '',
-        ?string $accept = null,
+        string $accept = '*',
     )
     {
-        $this->set('accept', $accept);
-        $this->set('defaultValue', $defaultValue);
+        $this->set(self::ACCEPT, $accept);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
 
         parent::__construct(InputTypeEnum::FILE->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "accept" attribute.
+     *
+     * @var string
+     */
+    public const ACCEPT = 'accept';
 
     #endregion
 
@@ -45,11 +56,11 @@ class FileInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'accept',
+                id: self::ACCEPT,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),

@@ -15,18 +15,18 @@ import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-ki
 import { Button } from "@narsil-ui/components/button";
 import { SortableListItem, type SortableData } from "@narsil-ui/components/sortable";
 import { useTranslator } from "@narsil-ui/components/translator";
-import { isEmpty } from "lodash-es";
+import { isEmpty, set } from "lodash-es";
 import { useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 
 type SortableListProps = {
   items: SortableData[];
-  labelKey: string;
+  labelPath: string;
   setItems: (items: SortableData[]) => void;
   render?: (item: SortableData, index: number) => ReactNode;
 };
 
-function SortableList({ items, labelKey, render, setItems }: SortableListProps) {
+function SortableList({ items, labelPath, render, setItems }: SortableListProps) {
   if (isEmpty(items)) {
     items = [];
   }
@@ -42,7 +42,11 @@ function SortableList({ items, labelKey, render, setItems }: SortableListProps) 
   );
 
   function onAdd(uuid: string) {
-    setItems([...items, { uuid: uuid, [labelKey]: "" }]);
+    const item = { uuid };
+
+    set(item, labelPath, "");
+
+    setItems([...items, item]);
   }
 
   function onDragCancel({}: DragCancelEvent) {
@@ -119,7 +123,7 @@ function SortableList({ items, labelKey, render, setItems }: SortableListProps) 
                 <SortableListItem
                   index={index}
                   item={item}
-                  labelKey={labelKey}
+                  labelPath={labelPath}
                   onMoveDown={index < items.length - 1 ? () => onMoveDown(item.uuid) : undefined}
                   onMoveUp={index !== 0 ? () => onMoveUp(item.uuid) : undefined}
                   onRemove={() => onRemove(item.uuid)}
@@ -134,7 +138,7 @@ function SortableList({ items, labelKey, render, setItems }: SortableListProps) 
         {createPortal(
           <DragOverlay>
             {active ? (
-              <SortableListItem item={active} labelKey={labelKey}>
+              <SortableListItem item={active} labelPath={labelPath}>
                 {render?.(active, 0)}
               </SortableListItem>
             ) : null}

@@ -7,6 +7,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Support\TranslationsBag;
+use Narsil\Cms\Http\Data\Forms\FieldData;
 
 #endregionx
 
@@ -14,45 +15,96 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property integer $minLength The "min length" attribute of the input.
- * @property integer|null $autoComplete The "auto complete" attribute of the input.
- * @property integer|null $href The "href" attribute of the input.
- * @property integer|null $maxLength The "max length" attribute of the input.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property string $autoComplete The value of the "auto complete" attribute.
+ * @property string|null $href The value of the "href" attribute.
+ * @property integer|null $maxLength The value of the "max length" attribute.
+ * @property integer $minLength The value of the "min length" attribute.
  */
 class PasswordInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param integer $minLength The "min length" attribute of the input.
-     * @param integer|null $autoComplete The "auto complete" attribute of the input.
-     * @param integer|null $href The "href" attribute of the input.
-     * @param integer|null $maxLength The "max length" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $autoComplete The value of the "auto complete" attribute.
+     * @param string|null $href The value of the "href" attribute.
+     * @param integer|null $maxLength The value of the "max length" attribute.
+     * @param integer $minLength The value of the "min length" attribute.
      *
      * @return void
      */
     public function __construct(
         string $defaultValue = '',
-        int $minLength = 8,
-        ?string $autoComplete = null,
+        string $autoComplete = 'off',
         ?string $href = null,
         ?int $maxLength = null,
+        int $minLength = 8,
     )
     {
-        $this->set('autoComplete', $autoComplete);
-        $this->set('defaultValue', $defaultValue);
-        $this->set('href', $href);
-        $this->set('max', $maxLength);
-        $this->set('min', $minLength);
+        $this->set(self::AUTO_COMPLETE, $autoComplete);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::HREF, $href);
+        $this->set(self::MAX_LENGTH, $maxLength);
+        $this->set(self::MIN_LENGTH, $minLength);
 
         parent::__construct(InputTypeEnum::PASSWORD->value);
     }
 
     #endregion
 
+     #region CONSTANTS
+
+    /**
+     * The name of the "auto complete" attribute.
+     *
+     * @var string
+     */
+    public const AUTO_COMPLETE = 'autoComplete';
+
+    /**
+     * The name of the "href" attribute.
+     *
+     * @var string
+     */
+    public const HREF = 'href';
+
+    /**
+     * The name of the "max length" attribute.
+     *
+     * @var string
+     */
+    public const MAX_LENGTH = 'maxLength';
+
+    /**
+     * The name of the "min length" attribute.
+     *
+     * @var string
+     */
+    public const MIN_LENGTH = 'minLength';
+
+    #endregion
+
     #region PUBLIC METHODS
+
+    /**
+     * {@inheritDoc}
+     */
+    public static function getInputForm(?string $prefix = null): array
+    {
+        return [
+            new FieldData(
+                id: self::MIN_LENGTH,
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+            new FieldData(
+                id: self::MAX_LENGTH,
+                prefix: $prefix,
+                input: new NumberInputData(),
+            ),
+        ];
+    }
 
     /**
      * {@inheritdoc}

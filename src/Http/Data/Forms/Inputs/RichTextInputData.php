@@ -16,18 +16,18 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property string $placeholder The "placeholder" attribute of the input.
- * @property array $modules The "modules" attribute of the input.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property string $placeholder The value of the "placeholder" attribute.
+ * @property array $modules The value of the "modules" attribute.
  */
 class RichTextInputData extends InputData
 {
        #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param string $placeholder The "placeholder" attribute of the input.
-     * @param array $modules The "modules" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $placeholder The value of the "placeholder" attribute.
+     * @param array $modules The value of the "modules" attribute.
      *
      * @return void
      */
@@ -37,12 +37,30 @@ class RichTextInputData extends InputData
         array $modules = [],
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('placeholder', $placeholder);
-        $this->set('modules', $modules);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::PLACEHOLDER, $placeholder);
+        $this->set(self::MODULES, $modules);
 
         parent::__construct(InputTypeEnum::RICH_TEXT_EDITOR->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "modules" attribute.
+     *
+     * @var string
+     */
+    public const MODULES = 'modules';
+
+    /**
+     * The name of the "placeholder" attribute.
+     *
+     * @var string
+     */
+    public const PLACEHOLDER = 'placeholder';
 
     #endregion
 
@@ -51,21 +69,21 @@ class RichTextInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new RichTextInputData(),
             ),
             new FieldData(
-                id: 'placeholder',
+                id: self::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'modules',
+                id: self::MODULES,
                 prefix: $prefix,
                 input: new CheckboxInputData(
                     options: RichTextEditorEnum::options(),

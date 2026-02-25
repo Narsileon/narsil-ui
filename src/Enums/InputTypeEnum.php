@@ -26,6 +26,8 @@ enum InputTypeEnum: string
     case DATETIME = 'datetime-local';
     case EMAIL = 'email';
     case FILE = 'file';
+    case HIDDEN = 'hidden';
+    case MONTH = 'month';
     case NUMBER = 'number';
     case PASSWORD = 'password';
     case RADIO = 'radio';
@@ -37,6 +39,7 @@ enum InputTypeEnum: string
     case TEXT = 'text';
     case TEXTAREA = 'textarea';
     case TIME = 'time';
+    case WEEK = 'week';
 
     #region PUBLIC METHODS
 

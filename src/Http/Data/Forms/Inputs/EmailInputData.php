@@ -14,37 +14,62 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property bool $multiple The "multiple" attribute of the input.
- * @property string $placeholder The "placeholder" attribute of the input.
- * @property string|null $autoComplete The "auto complete" attribute of the input.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property string $autoComplete The value of the "auto complete" attribute.
+ * @property boolean $multiple The value of the "multiple" attribute.
+ * @property string $placeholder The value of the "placeholder" attribute.
  */
 class EmailInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param bool $multiple The "multiple" attribute of the input.
-     * @param string $placeholder The "placeholder" attribute of the input.
-     * @param string|null $autoComplete The "auto complete" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $autoComplete The value of the "auto complete" attribute.
+     * @param boolean $multiple The value of the "multiple" attribute.
+     * @param string $placeholder The value of the "placeholder" attribute.
      *
      * @return void
      */
     public function __construct(
         string $defaultValue = '',
+        string $autoComplete = 'off',
         bool $multiple = false,
         string $placeholder = '',
-        ?string $autoComplete = null,
     )
     {
-        $this->set('autoComplete', $autoComplete);
-        $this->set('defaultValue', $defaultValue);
-        $this->set('multiple', $multiple);
-        $this->set('placeholder', $placeholder);
+        $this->set(self::AUTO_COMPLETE, $autoComplete);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::MULTIPLE, $multiple);
+        $this->set(self::PLACEHOLDER, $placeholder);
 
         parent::__construct(InputTypeEnum::EMAIL->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "auto complete" attribute.
+     *
+     * @var string
+     */
+    public const AUTO_COMPLETE = 'autoComplete';
+
+    /**
+     * The name of the "multiple" attribute.
+     *
+     * @var string
+     */
+    public const MULTIPLE = 'multiple';
+
+    /**
+     * The name of the "placeholder" attribute.
+     *
+     * @var string
+     */
+    public const PLACEHOLDER = 'placeholder';
 
     #endregion
 
@@ -53,26 +78,26 @@ class EmailInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new EmailInputData(),
             ),
             new FieldData(
-                id: 'placeholder',
+                id: self::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'autoComplete',
+                id: self::AUTO_COMPLETE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'multiple',
+                id: self::MULTIPLE,
                 prefix: $prefix,
                 input: new SwitchInputData(),
             ),

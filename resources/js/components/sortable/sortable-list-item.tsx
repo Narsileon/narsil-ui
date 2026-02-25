@@ -26,7 +26,7 @@ type SortableListItemProps = Pick<
   children: ReactNode;
   index?: number;
   item: SortableData;
-  labelKey: string;
+  labelPath: string;
   onItemChange?: (value: SortableData) => void;
 };
 
@@ -34,7 +34,7 @@ function SortableListItem({
   children,
   index,
   item,
-  labelKey,
+  labelPath,
   onMoveDown,
   onMoveUp,
   onRemove,
@@ -55,7 +55,7 @@ function SortableListItem({
     id: item.uuid,
   });
 
-  const title = getTranslatableData(item, labelKey, locale);
+  const title = getTranslatableData(item, labelPath, locale);
   const label = open ? trans("ui.collapse") : trans("ui.expand");
 
   return (

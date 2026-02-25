@@ -15,16 +15,16 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property boolean $defaultValue The "default value" attribute of the input.
- * @property OptionData[]|null $options The "options" attribute of the input.
+ * @property boolean $defaultValue The value of the "default value" attribute.
+ * @property OptionData[]|null $options The value of the "options" attribute.
  */
 class CheckboxInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param boolean $defaultValue The "default value" attribute of the input.
-     * @param OptionData[]|null $options The "options" attribute of the input.
+     * @param boolean $defaultValue The value of the "default value" attribute.
+     * @param OptionData[]|null $options The value of the "options" attribute.
      *
      * @return void
      */
@@ -33,11 +33,22 @@ class CheckboxInputData extends InputData
         ?array $options = null,
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('options', $options);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::OPTIONS, $options);
 
         parent::__construct(InputTypeEnum::CHECKBOX->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "options" attribute.
+     *
+     * @var string
+     */
+    public const OPTIONS = 'options';
 
     #endregion
 
@@ -46,11 +57,11 @@ class CheckboxInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new CheckboxInputData(),
             ),

@@ -15,29 +15,40 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property FieldData[] $columns The "columns" attribute of the input.
- * @property array $defaultValue The "default value" attribute of the input.
+ * @property array $defaultValue The value of the "default value" attribute.
+ * @property FieldData[] $columns The value of the "columns" attribute.
  */
 class TableInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param FieldData[] $columns The "columns" attribute of the input.
-     * @param array $defaultValue The "default value" attribute of the input.
+     * @param array $defaultValue The value of the "default value" attribute.
+     * @param FieldData[] $columns The value of the "columns" attribute.
      *
      * @return void
      */
     public function __construct(
-        array $columns = [],
         array $defaultValue = [],
+        array $columns = [],
     )
     {
-        $this->set('columns', $columns);
-        $this->set('defaultValue', $defaultValue);
+        $this->set(self::COLUMNS, $columns);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
 
         parent::__construct(InputTypeEnum::TABLE->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "columns" attribute.
+     *
+     * @var string
+     */
+    public const COLUMNS = 'columns';
 
     #endregion
 

@@ -14,36 +14,32 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property integer $defaultValue The value of the "default value" attribute.
- * @property integer $max The value of the "max" attribute.
- * @property integer $min The value of the "min" attribute.
- * @property float $step The value of the "step" attribute.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property string $max The value of the "max" attribute.
+ * @property string $min The value of the "min" attribute.
  */
-class RangeInputData extends InputData
+class MonthInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param integer $defaultValue The value of the "default value" attribute.
-     * @param integer $max The value of the "max" attribute.
-     * @param integer $min The value of the "min" attribute.
-     * @param float $step The value of the "step" attribute.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $max The value of the "max" attribute.
+     * @param string $min The value of the "min" attribute.
      *
      * @return void
      */
     public function __construct(
-        int $defaultValue = 0,
-        int $max = 100,
-        int $min = 0,
-        float $step = 1,
+        string $defaultValue = '',
+        string $max = '',
+        string $min = '',
     )
     {
         $this->set(self::DEFAULT_VALUE, $defaultValue);
         $this->set(self::MAX, $max);
         $this->set(self::MIN, $min);
-        $this->set(self::STEP, $step);
 
-        parent::__construct(InputTypeEnum::RANGE->value);
+        parent::__construct(InputTypeEnum::DATETIME->value);
     }
 
     #endregion
@@ -64,13 +60,6 @@ class RangeInputData extends InputData
      */
     public const MIN = 'min';
 
-    /**
-     * The name of the "step" attribute.
-     *
-     * @var string
-     */
-    public const STEP = 'step';
-
     #endregion
 
     #region PUBLIC METHODS
@@ -84,22 +73,17 @@ class RangeInputData extends InputData
             new FieldData(
                 id: self::DEFAULT_VALUE,
                 prefix: $prefix,
-                input: new NumberInputData(),
+                input: new MonthInputData(),
             ),
             new FieldData(
                 id: self::MIN,
                 prefix: $prefix,
-                input: new NumberInputData(),
+                input: new MonthInputData(),
             ),
             new FieldData(
                 id: self::MAX,
                 prefix: $prefix,
-                input: new NumberInputData(),
-            ),
-            new FieldData(
-                id: self::STEP,
-                prefix: $prefix,
-                input: new NumberInputData(),
+                input: new MonthInputData(),
             ),
         ];
     }

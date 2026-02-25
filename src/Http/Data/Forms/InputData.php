@@ -12,39 +12,61 @@ use Illuminate\Support\Fluent;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $type The type of the input.
+ * @property string $type The value of the "type" attribute.
  */
 abstract class InputData extends Fluent
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $type The type of the input.
+     * @param string $type The value of the "type" attribute.
      *
      * @return void
      */
     public function __construct(string $type)
     {
-        $this->set('type', $type);
+        $this->set(self::TYPE, $type);
 
         static::registerTranslations();
     }
 
     #endregion
 
+    #region CONSTANTS
+
+    /**
+     * The name of the "default value" attribute.
+     *
+     * @var string
+     */
+    final public const DEFAULT_VALUE = 'defaultValue';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'type';
+
+    #endregion
+
     #region PUBLIC METHODS
 
     /**
+     * Get the form of the input.
+     *
      * @param string|null $prefix
      *
-     * @return array
+     * @return InputData[]
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [];
     }
 
     /**
+     * Register the translations for the input.
+     *
      * @return void
      */
     public static function registerTranslations(): void

@@ -14,16 +14,16 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property string $placeholder The "placeholder" attribute of the input.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property string $placeholder The value of the "placeholder" attribute.
  */
 class TextareaInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param string $placeholder The "placeholder" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $placeholder The value of the "placeholder" attribute.
      *
      * @return void
      */
@@ -32,11 +32,22 @@ class TextareaInputData extends InputData
         string $placeholder = '',
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('placeholder', $placeholder);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::PLACEHOLDER, $placeholder);
 
         parent::__construct(InputTypeEnum::TEXTAREA->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "placeholder" attribute.
+     *
+     * @var string
+     */
+    public const PLACEHOLDER = 'placeholder';
 
     #endregion
 
@@ -45,16 +56,16 @@ class TextareaInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'placeholder',
+                id: self::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),

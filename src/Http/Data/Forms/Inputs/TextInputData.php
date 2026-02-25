@@ -14,41 +14,75 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property integer $maxLength The "max length" attribute of the input.
- * @property integer $minLength The "min length" attribute of the input.
- * @property string $placeholder The "placeholder" attribute of the input.
- * @property integer|null $autoComplete The "auto complete" attribute of the input.
+ * @property string $defaultValue The value of The value of the "default value" attribute.
+ * @property string $autoComplete The value of The value of the "auto complete" attribute.
+ * @property integer $maxLength The value of The value of the "max length" attribute of theut.
+ * @property integer $minLength The value of The value of the "min length" attribute.
+ * @property string $placeholder The value of The value of the "placeholder" attribute.
  */
 class TextInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param integer $maxLength The "max length" attribute of the input.
-     * @param integer $minLength The "min length" attribute of the input.
-     * @param string $placeholder The "placeholder" attribute of the input.
-     * @param integer|null $autoComplete The "auto complete" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param string $autoComplete The value of the "auto complete" attribute.
+     * @param integer $maxLength The value of the "max length" attribute.
+     * @param integer $minLength The value of the "min length" attribute.
+     * @param string $placeholder The value of the "placeholder" attribute.
+     *
      *
      * @return void
      */
     public function __construct(
         string $defaultValue = '',
+        string $autoComplete = 'off',
         int $maxLength = 255,
         int $minLength = 0,
         string $placeholder = '',
-        ?string $autoComplete = null,
+
     )
     {
-        $this->set('autoComplete', $autoComplete);
-        $this->set('defaultValue', $defaultValue);
-        $this->set('maxLength', $maxLength);
-        $this->set('minLength', $minLength);
-        $this->set('placeholder', $placeholder);
+        $this->set(self::AUTO_COMPLETE, $autoComplete);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::MAX_LENGTH, $maxLength);
+        $this->set(self::MIN_LENGTH, $minLength);
+        $this->set(self::PLACEHOLDER, $placeholder);
 
         parent::__construct(InputTypeEnum::TEXT->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "auto complete" attribute.
+     *
+     * @var string
+     */
+    public const AUTO_COMPLETE = 'autoComplete';
+
+    /**
+     * The name of the "max length" attribute.
+     *
+     * @var string
+     */
+    public const MAX_LENGTH = 'maxLength';
+
+    /**
+     * The name of the "min length" attribute.
+     *
+     * @var string
+     */
+    public const MIN_LENGTH = 'minLength';
+
+    /**
+     * The name of the "placeholder" attribute.
+     *
+     * @var string
+     */
+    public const PLACEHOLDER = 'placeholder';
 
     #endregion
 
@@ -57,31 +91,31 @@ class TextInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'placeholder',
+                id: self::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'autoComplete',
+                id: self::AUTO_COMPLETE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: 'minLength',
+                id: self::MIN_LENGTH,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: 'maxLength',
+                id: self::MAX_LENGTH,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),

@@ -15,33 +15,51 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property FieldData[] $form The "form" attribute of the input.
- * @property array $defaultValue The "default value" attribute of the input.
- * @property string $labelKey The "labelKey" attribute of the input.
+ * @property array $defaultValue The value of the "default value" attribute.
+ * @property string $labelPath The value of the "label path" attribute.
+ * @property array<FieldsetData|FieldData> $elements The value of the "elements" attribute.
  */
 class ArrayInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param FieldData[] $form The "form" attribute of the input.
-     * @param array $defaultValue The "default value" attribute of the input.
-     * @param string $labelKey The "labelKey" attribute of the input.
+     * @param array $defaultValue The value of the "default value" attribute.
+     * @param string $labelPath The value of the "label path" attribute.
+     * @param array<FieldsetData|FieldData> $elements The value of the "elements" attribute.
      *
      * @return void
      */
     public function __construct(
-        array $form = [],
         array $defaultValue = [],
-        string $labelKey = 'label',
+        string $labelPath = 'label',
+        array $elements = [],
     )
     {
         $this->set('defaultValue', $defaultValue);
-        $this->set('form', $form);
-        $this->set('labelKey', $labelKey);
+        $this->set('elements', $elements);
+        $this->set('labelPath', $labelPath);
 
         parent::__construct(InputTypeEnum::ARRAY->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "elements" attribute.
+     *
+     * @var string
+     */
+    public const ELEMENTS = 'elements';
+
+    /**
+     * The name of the "options" attribute.
+     *
+     * @var string
+     */
+    public const LABEL_PATH = 'labelPath';
 
     #endregion
 

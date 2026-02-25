@@ -14,37 +14,62 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property integer $defaultValue The "default value" attribute of the input.
- * @property float $step The "step" attribute of the input.
- * @property integer|null $max The "max" attribute of the input.
- * @property integer|null $min The "min" attribute of the input.
+ * @property integer $defaultValue The value of the "default value" attribute.
+ * @property integer|null $max The value of the "max" attribute.
+ * @property integer|null $min The value of the "min" attribute.
+ * @property float $step The value of the "step" attribute.
  */
 class NumberInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param integer $defaultValue The "default value" attribute of the input.
-     * @param float $step The "step" attribute of the input.
-     * @param integer|null $max The "max" attribute of the input.
-     * @param integer|null $min The "min" attribute of the input.
+     * @param integer $defaultValue The value of the "default value" attribute.
+     * @param integer|null $max The value of the "max" attribute.
+     * @param integer|null $min The value of the "min" attribute.
+     * @param float $step The value of the "step" attribute.
      *
      * @return void
      */
     public function __construct(
         int $defaultValue = 0,
-        float $step = 1,
         ?int $max = null,
         ?int $min = null,
+        float $step = 1,
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('max', $max);
-        $this->set('min', $min);
-        $this->set('step', $step);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::MAX, $max);
+        $this->set(self::MIN, $min);
+        $this->set(self::STEP, $step);
 
         parent::__construct(InputTypeEnum::NUMBER->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "max" attribute.
+     *
+     * @var string
+     */
+    public const MAX = 'max';
+
+    /**
+     * The name of the "min" attribute.
+     *
+     * @var string
+     */
+    public const MIN = 'min';
+
+    /**
+     * The name of the "step" attribute.
+     *
+     * @var string
+     */
+    public const STEP = 'step';
 
     #endregion
 
@@ -53,26 +78,26 @@ class NumberInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: 'min',
+                id: self::MIN,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: 'max',
+                id: self::MAX,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: 'step',
+                id: self::STEP,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),

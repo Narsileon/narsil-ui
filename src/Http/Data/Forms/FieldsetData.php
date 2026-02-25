@@ -15,23 +15,22 @@ use Narsil\Base\Http\Data\Forms\FieldData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- *
- * @property string|null $id The handle of the fieldset.
- * @property string|null $label The label of the fieldset.
- * @property string|null $description The description of the fieldset.
- * @property array<FieldsetData|FieldData> $elements The elements of the fieldset.
- * @property ConditionData[] $conditions The conditions of the fieldset.
+ * @property string|null $id The value of the "id" attribute.
+ * @property string|null $label The value of the "label" attribute.
+ * @property string|null $description The value of the "description" attribute.
+ * @property array<FieldsetData|FieldData> $elements The value of the "elements" attribute.
+ * @property ConditionData[] $conditions The value of the "conditions" attribute.
  */
 class FieldsetData extends Fluent
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string|null $id
-     * @param string|null $label
-     * @param string|null $description
-     * @param array<FieldsetData|InputData> $elements
-     * @param ConditionData[] $conditions
+     * @param string|null $id The value of the "id" attribute.
+     * @param string|null $label The value of the "label" attribute.
+     * @param string|null $description The value of the "description" attribute.
+     * @param array<FieldsetData|InputData> $elements The value of the "elements" attribute.
+     * @param ConditionData[] $conditions The value of the "conditions" attribute.
      *
      * @return void
      */
@@ -43,12 +42,51 @@ class FieldsetData extends Fluent
         public array $conditions = [],
     )
     {
-        $this->set('id', $id);
-        $this->set('label', Str::ucfirst($label));
-        $this->set('description', $description);
-        $this->set('elements', $elements);
-        $this->set('conditions', $conditions);
+        $this->set(self::CONDITIONS, $conditions);
+        $this->set(self::DESCRIPTION, $description);
+        $this->set(self::ELEMENTS, $elements);
+        $this->set(self::ID, $id);
+        $this->set(self::LABEL, Str::ucfirst($label));
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "conditions" attribute.
+     *
+     * @var string
+     */
+    final public const CONDITIONS = 'conditions';
+
+    /**
+     * The name of the "description" attribute.
+     *
+     * @var string
+     */
+    final public const DESCRIPTION = 'description';
+
+    /**
+     * The name of the "elements" attribute.
+     *
+     * @var string
+     */
+    final public const ELEMENTS = 'elements';
+
+    /**
+     * The name of the "id" attribute.
+     *
+     * @var string
+     */
+    final public const ID = 'id';
+
+    /**
+     * The name of the "label" attribute.
+     *
+     * @var string
+     */
+    final public const LABEL = 'label';
 
     #endregion
 }

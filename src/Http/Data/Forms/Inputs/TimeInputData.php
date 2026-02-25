@@ -14,33 +14,51 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string|null $defaultValue The "default value" attribute of the input.
- * @property string|null $max The "max" attribute of the input.
- * @property string|null $min The "min" attribute of the input.
+ * @property string $defaultValue The value of The value of the "default value" attribute.
+ * @property string $max The value of The value of the "max" attribute.
+ * @property string $min The value of The value of the "min" attribute.
  */
 class TimeInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string|null $defaultValue The "default value" attribute of the input.
-     * @param string|null $max The "max" attribute of the input.
-     * @param string|null $min The "min" attribute of the input.
+     * @param string $defaultValue The value of The value of the "default value" attribute.
+     * @param string $max The value of The value of the "max" attribute.
+     * @param string $min The value of The value of the "min" attribute.
      *
      * @return void
      */
     public function __construct(
-        ?string $defaultValue = null,
-        ?string $max = null,
-        ?string $min = null,
+        string $defaultValue = '',
+        string $max = '',
+        string $min = '',
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('max', $max);
-        $this->set('min', $min);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::MAX, $max);
+        $this->set(self::MIN, $min);
 
         parent::__construct(InputTypeEnum::TIME->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "max" attribute.
+     *
+     * @var string
+     */
+    public const MAX = 'max';
+
+    /**
+     * The name of the "min" attribute.
+     *
+     * @var string
+     */
+    public const MIN = 'min';
 
     #endregion
 
@@ -49,21 +67,21 @@ class TimeInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new TimeInputData(),
             ),
             new FieldData(
-                id: 'min',
+                id: self::MIN,
                 prefix: $prefix,
                 input: new TimeInputData(),
             ),
             new FieldData(
-                id: 'max',
+                id: self::MAX,
                 prefix: $prefix,
                 input: new TimeInputData(),
             ),

@@ -4,18 +4,18 @@ import type { FieldData, FieldsetData } from "@narsil-ui/types";
 import { type FieldProps } from ".";
 
 function ArrayInput({ id, input, value, setValue }: FieldProps) {
-  const form = input.form as (FieldData | FieldsetData)[];
+  const elements = input.elements as (FieldData | FieldsetData)[];
 
   return (
     <SortableList
       {...input}
       items={value}
-      labelKey={input.labelKey}
+      labelPath={input.labelPath}
       setItems={setValue}
       render={(item, index) => {
         return (
           <>
-            {form?.map((element) => {
+            {elements?.map((element) => {
               const elementId = `${id}.${index}.${element.id}`;
 
               return <FormElement {...element} id={elementId} key={element.id} />;

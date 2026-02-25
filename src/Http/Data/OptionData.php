@@ -13,7 +13,7 @@ use Illuminate\Support\Fluent;
  * @author Jonathan Rigaux
  *
  * @property string|array $label The label of the option.
- * @property string $value The value of the option.
+ * @property mixed $value The value of the option.
  */
 class OptionData extends Fluent
 {
@@ -30,9 +30,27 @@ class OptionData extends Fluent
         mixed $value,
     )
     {
-        $this->set('label', $label);
-        $this->set('value', $value);
+        $this->set(self::LABEL, $label);
+        $this->set(self::VALUE, $value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "label" attribute.
+     *
+     * @var string
+     */
+    final public const LABEL = 'label';
+
+    /**
+     * The name of the "value" attribute.
+     *
+     * @var string
+     */
+    final public const VALUE = 'value';
 
     #endregion
 }

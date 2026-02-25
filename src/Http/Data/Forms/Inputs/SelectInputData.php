@@ -7,6 +7,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Support\TranslationsBag;
 
 #endregionx
@@ -15,20 +16,20 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The "default value" attribute of the input.
- * @property boolean $multiple The "multiple" attribute of the input.
- * @property string $placeholder The "placeholder" attribute of the input.
- * @property OptionData $options The "options" attribute of the input.
+ * @property string $defaultValue The value of the "default value" attribute.
+ * @property boolean $multiple The value of the "multiple" attribute.
+ * @property string $placeholder The value of the "placeholder" attribute.
+ * @property OptionData $options The value of the "options" attribute.
  */
 class SelectInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $defaultValue The "default value" attribute of the input.
-     * @param boolean $multiple The "multiple" attribute of the input.
-     * @param string $placeholder The "placeholder" attribute of the input.
-     * @param OptionData $options The "options" attribute of the input.
+     * @param string $defaultValue The value of the "default value" attribute.
+     * @param boolean $multiple The value of the "multiple" attribute.
+     * @param string $placeholder The value of the "placeholder" attribute.
+     * @param OptionData $options The value of the "options" attribute.
      *
      * @return void
      */
@@ -39,13 +40,38 @@ class SelectInputData extends InputData
         array $options = []
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('multiple', $multiple);
-        $this->set('options', $options);
-        $this->set('placeholder', $placeholder);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::MULTIPLE, $multiple);
+        $this->set(self::OPTIONS, $options);
+        $this->set(self::PLACEHOLDER, $placeholder);
 
         parent::__construct(InputTypeEnum::SELECT->value);
     }
+
+    #endregion
+
+    #region CONSTANTS
+
+    /**
+     * The name of the "multiple" attribute.
+     *
+     * @var string
+     */
+    public const MULTIPLE = 'multiple';
+
+    /**
+     * The name of the "options" attribute.
+     *
+     * @var string
+     */
+    public const OPTIONS = 'options';
+
+    /**
+     * The name of the "placeholder" attribute.
+     *
+     * @var string
+     */
+    public const PLACEHOLDER = 'placeholder';
 
     #endregion
 
@@ -54,25 +80,25 @@ class SelectInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'multiple',
+                id: self::MULTIPLE,
                 prefix: $prefix,
                 input: new SwitchInputData(),
             ),
             new FieldData(
-                id: 'options',
+                id: self::OPTIONS,
                 input: new TableInputData(
                     columns: [
                         new FieldData(
-                            id: 'value',
+                            id: OptionData::VALUE,
                             required: true,
                             input: new TextInputData(),
                         ),
                         new FieldData(
-                            id: 'label',
+                            id: OptionData::LABEL,
                             required: true,
                             translatable: true,
                             input: new TextInputData(),

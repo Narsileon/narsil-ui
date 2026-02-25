@@ -14,14 +14,14 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property boolean $defaultValue The "default value" attribute of the input.
+ * @property boolean $defaultValue The value of the "default value" attribute.
  */
 class SwitchInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
-     * @param boolean $defaultValue The "default value" attribute of the input.
+     * @param boolean $defaultValue The value of the "default value" attribute.
      *
      * @return void
      */
@@ -29,7 +29,7 @@ class SwitchInputData extends InputData
         bool $defaultValue = false,
     )
     {
-        $this->set('defaultValue', $defaultValue);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
 
         parent::__construct(InputTypeEnum::SWITCH->value);
     }
@@ -41,11 +41,11 @@ class SwitchInputData extends InputData
     /**
      * {@inheritDoc}
      */
-    public static function form(?string $prefix = null): array
+    public static function getInputForm(?string $prefix = null): array
     {
         return [
             new FieldData(
-                id: 'defaultValue',
+                id: self::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new SwitchInputData(),
             ),
