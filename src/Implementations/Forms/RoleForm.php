@@ -88,14 +88,14 @@ class RoleForm extends Form implements Contract
                 label: trans('narsil::ui.definition'),
                 elements: [
                     new FieldData(
-                        description: ModelService::getAttributeDescription(Role::TABLE, Role::NAME),
                         id: Role::NAME,
+                        description: ModelService::getAttributeDescription(Role::TABLE, Role::NAME),
                         required: true,
                         input: new TextInputData(),
                     ),
                     new FieldData(
-                        description: ModelService::getAttributeDescription(Role::TABLE, Role::LABEL),
                         id: Role::LABEL,
+                        description: ModelService::getAttributeDescription(Role::TABLE, Role::LABEL),
                         required: true,
                         translatable: true,
                         input: new TextInputData(),

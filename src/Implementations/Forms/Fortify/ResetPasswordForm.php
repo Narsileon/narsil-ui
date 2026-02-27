@@ -51,8 +51,8 @@ class ResetPasswordForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
-                        icon: 'email',
                         id: User::EMAIL,
+                        icon: 'email',
                         required: true,
                         input: new EmailInputData(),
                     ),

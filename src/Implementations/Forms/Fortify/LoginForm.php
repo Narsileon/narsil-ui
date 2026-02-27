@@ -52,8 +52,8 @@ class LoginForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
-                        icon: 'email',
                         id: User::EMAIL,
+                        icon: 'email',
                         required: true,
                         input: new EmailInputData(
                             autoComplete: AutoCompleteEnum::EMAIL->value,
@@ -70,8 +70,8 @@ class LoginForm extends Form implements Contract
                         )
                     ),
                     new FieldData(
-                        className: 'flex-row-reverse justify-end',
                         id: User::REMEMBER,
+                        className: 'flex-row-reverse justify-end',
                         input: new CheckboxInputData()
                     ),
                 ],

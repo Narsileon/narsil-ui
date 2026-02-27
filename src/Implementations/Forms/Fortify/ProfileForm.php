@@ -52,24 +52,24 @@ class ProfileForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
-                        icon: 'circle-user',
                         id: User::LAST_NAME,
+                        icon: 'circle-user',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
                         ),
                     ),
                     new FieldData(
-                        icon: 'circle-user',
                         id: User::FIRST_NAME,
+                        icon: 'circle-user',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
                         ),
                     ),
                     new FieldData(
-                        icon: 'image',
                         id: User::AVATAR,
+                        icon: 'image',
                         input: new FileInputData(
                             accept: 'image/*',
                         ),

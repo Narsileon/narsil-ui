@@ -49,16 +49,16 @@ class TwoFactorChallengeForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
-                        icon: 'circle-check',
                         id: 'code',
+                        icon: 'circle-check',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,
                         ),
                     ),
                     new FieldData(
-                        icon: 'circle-check',
                         id: 'recovery_code',
+                        icon: 'circle-check',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,

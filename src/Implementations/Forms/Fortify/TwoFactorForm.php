@@ -58,9 +58,9 @@ class TwoFactorForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
+                        id: 'code',
                         description: ModelService::getAttributeDescription(User::TABLE, 'code'),
                         icon: 'circle-check',
-                        id: 'code',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::ONE_TIME_CODE->value,

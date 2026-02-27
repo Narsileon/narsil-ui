@@ -52,40 +52,40 @@ class RegisterForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
-                        icon: 'email',
                         id: User::EMAIL,
+                        icon: 'email',
                         required: true,
                         input: new EmailInputData(),
                     ),
                     new FieldData(
-                        className: 'col-span-6',
                         id: User::PASSWORD,
-                        required: true,
-                        input: new PasswordInputData(
-                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
-                        ),
-                    ),
-                    new FieldData(
                         className: 'col-span-6',
-                        id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
                         required: true,
                         input: new PasswordInputData(
                             autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
                         ),
                     ),
                     new FieldData(
+                        id: User::ATTRIBUTE_PASSWORD_CONFIRMATION,
+                        className: 'col-span-6',
+                        required: true,
+                        input: new PasswordInputData(
+                            autoComplete: AutoCompleteEnum::NEW_PASSWORD->value,
+                        ),
+                    ),
+                    new FieldData(
+                        id: User::FIRST_NAME,
                         className: 'col-span-6',
                         icon: 'circle-user',
-                        id: User::FIRST_NAME,
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
                         ),
                     ),
                     new FieldData(
+                        id: User::LAST_NAME,
                         className: 'col-span-6',
                         icon: 'circle-user',
-                        id: User::LAST_NAME,
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::FAMILY_NAME->value,

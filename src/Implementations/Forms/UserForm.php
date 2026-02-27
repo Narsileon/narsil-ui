@@ -55,8 +55,8 @@ class UserForm extends Form implements Contract
                 label: trans('narsil::ui.account'),
                 elements: [
                     new FieldData(
-                        icon: 'email',
                         id: User::EMAIL,
+                        icon: 'email',
                         required: true,
                         input: new EmailInputData(),
                     ),
@@ -81,24 +81,24 @@ class UserForm extends Form implements Contract
                 label: trans('narsil::ui.profile'),
                 elements: [
                     new FieldData(
-                        icon: 'circle-user',
                         id: User::LAST_NAME,
+                        icon: 'circle-user',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::FAMILY_NAME->value,
                         ),
                     ),
                     new FieldData(
-                        icon: 'circle-user',
                         id: User::FIRST_NAME,
+                        icon: 'circle-user',
                         required: true,
                         input: new TextInputData(
                             autoComplete: AutoCompleteEnum::GIVEN_NAME->value,
                         ),
                     ),
                     new FieldData(
-                        icon: 'image',
                         id: User::AVATAR,
+                        icon: 'image',
                         input: new FileInputData(
                             accept: 'image/*',
                         ),

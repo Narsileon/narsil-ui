@@ -47,15 +47,15 @@ class PermissionForm extends Form implements Contract
             new FormStepData(
                 elements: [
                     new FieldData(
-                        description: ModelService::getAttributeDescription(Permission::TABLE, Permission::NAME),
                         id: Permission::NAME,
+                        description: ModelService::getAttributeDescription(Permission::TABLE, Permission::NAME),
                         readOnly: true,
                         required: true,
                         input: new TextInputData(),
                     ),
                     new FieldData(
-                        description: ModelService::getAttributeDescription(Permission::TABLE, Permission::LABEL),
                         id: Permission::LABEL,
+                        description: ModelService::getAttributeDescription(Permission::TABLE, Permission::LABEL),
                         required: true,
                         translatable: true,
                         input: new TextInputData(),
