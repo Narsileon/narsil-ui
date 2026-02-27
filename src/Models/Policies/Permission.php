@@ -24,7 +24,7 @@ use Narsil\Base\Traits\HasTranslations;
  * @version 1.0.0
  * @author Jonathan Rigaux
  */
-#[ObservedBy([ModelObserver::class])]
+#[ObservedBy(ModelObserver::class)]
 class Permission extends Model
 {
     use AuditLoggable;
