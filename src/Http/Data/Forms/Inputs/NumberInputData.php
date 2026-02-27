@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
@@ -43,7 +42,7 @@ class NumberInputData extends InputData
         $this->set(self::MIN, $min);
         $this->set(self::STEP, $step);
 
-        parent::__construct(InputTypeEnum::NUMBER->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -55,21 +54,28 @@ class NumberInputData extends InputData
      *
      * @var string
      */
-    public const MAX = 'max';
+    final public const MAX = 'max';
 
     /**
      * The name of the "min" attribute.
      *
      * @var string
      */
-    public const MIN = 'min';
+    final public const MIN = 'min';
 
     /**
      * The name of the "step" attribute.
      *
      * @var string
      */
-    public const STEP = 'step';
+    final public const STEP = 'step';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'number';
 
     #endregion
 
@@ -82,22 +88,22 @@ class NumberInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: self::MIN,
+                id: static::MIN,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: self::MAX,
+                id: static::MAX,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: self::STEP,
+                id: static::STEP,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),

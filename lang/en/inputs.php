@@ -2,27 +2,44 @@
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\Inputs\ArrayInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\ColorInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DateInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RadioInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RangeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RichTextInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SelectInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SwitchInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TableInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextareaInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TimeInputData;
 
 #endregion
 
 return [
-    InputTypeEnum::ARRAY->value => 'Array',
-    InputTypeEnum::CHECKBOX->value => 'Checkbox',
-    InputTypeEnum::COLOR->value => 'Color',
-    InputTypeEnum::DATE->value => 'Date',
-    InputTypeEnum::DATETIME->value => 'Datetime',
-    InputTypeEnum::EMAIL->value => 'Email',
-    InputTypeEnum::FILE->value => 'File',
-    InputTypeEnum::NUMBER->value => 'Number',
-    InputTypeEnum::PASSWORD->value => 'Password',
-    InputTypeEnum::RADIO->value => 'Radio',
-    InputTypeEnum::RANGE->value => 'Range',
-    InputTypeEnum::RICH_TEXT_EDITOR->value => 'Rich Text Editor',
-    InputTypeEnum::SELECT->value => 'Select',
-    InputTypeEnum::SWITCH->value => 'Switch',
-    InputTypeEnum::TABLE->value => 'Table',
-    InputTypeEnum::TEXT->value => 'Text',
-    InputTypeEnum::TEXTAREA->value => 'Textarea',
-    InputTypeEnum::TIME->value => 'Time',
+    ArrayInputData::TYPE    => 'Array',
+    CheckboxInputData::TYPE => 'Checkbox',
+    ColorInputData::TYPE    => 'Color',
+    DateInputData::TYPE     => 'Date',
+    DatetimeInputData::TYPE => 'Datetime',
+    EmailInputData::TYPE    => 'Email',
+    FileInputData::TYPE     => 'File',
+    NumberInputData::TYPE   => 'Number',
+    PasswordInputData::TYPE => 'Password',
+    RadioInputData::TYPE    => 'Radio',
+    RangeInputData::TYPE    => 'Range',
+    RichTextInputData::TYPE => 'Rich Text',
+    SelectInputData::TYPE   => 'Select',
+    SwitchInputData::TYPE   => 'Switch',
+    TableInputData::TYPE    => 'Table',
+    TextInputData::TYPE     => 'Text',
+    TextareaInputData::TYPE => 'Textarea',
+    TimeInputData::TYPE     => 'Time',
 ];

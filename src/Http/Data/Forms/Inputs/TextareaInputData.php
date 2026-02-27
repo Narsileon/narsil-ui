@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
@@ -35,7 +34,7 @@ class TextareaInputData extends InputData
         $this->set(self::DEFAULT_VALUE, $defaultValue);
         $this->set(self::PLACEHOLDER, $placeholder);
 
-        parent::__construct(InputTypeEnum::TEXTAREA->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -47,7 +46,14 @@ class TextareaInputData extends InputData
      *
      * @var string
      */
-    public const PLACEHOLDER = 'placeholder';
+    final public const PLACEHOLDER = 'placeholder';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'textarea';
 
     #endregion
 
@@ -60,12 +66,12 @@ class TextareaInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::PLACEHOLDER,
+                id: static::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),

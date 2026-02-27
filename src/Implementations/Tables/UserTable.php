@@ -4,7 +4,9 @@ namespace Narsil\Base\Implementations\Tables;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Http\Data\TanStackTables\ColumnDefData;
 use Narsil\Base\Implementations\Table;
 use Narsil\Base\Models\Policies\Permission;
@@ -42,45 +44,45 @@ class UserTable extends Table
         return [
             new ColumnDefData(
                 id: User::ID,
-                type: InputTypeEnum::NUMBER,
+                type: NumberInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: User::EMAIL,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: User::FIRST_NAME,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: User::LAST_NAME,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 enableColumnFilter: false,
                 header: ModelService::getTableLabel(Role::TABLE),
                 id: User::COUNT_ROLES,
-                type: InputTypeEnum::NUMBER,
+                type: NumberInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 enableColumnFilter: false,
                 header: ModelService::getTableLabel(Permission::TABLE),
                 id: User::COUNT_PERMISSIONS,
-                type: InputTypeEnum::NUMBER,
+                type: NumberInputData::TYPE,
             ),
             new ColumnDefData(
                 id: User::CREATED_AT,
-                type: InputTypeEnum::DATETIME,
+                type: DatetimeInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: User::UPDATED_AT,
-                type: InputTypeEnum::DATETIME,
+                type: DatetimeInputData::TYPE,
                 visibility: true,
             ),
         ];

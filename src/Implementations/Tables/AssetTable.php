@@ -4,7 +4,8 @@ namespace Narsil\Base\Implementations\Tables;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Http\Data\TanStackTables\ColumnDefData;
 use Narsil\Base\Implementations\Table;
 use Narsil\Base\Models\Storages\Asset;
@@ -39,22 +40,22 @@ class AssetTable extends Table
         return [
             new ColumnDefData(
                 id: Asset::UUID,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: Asset::PATH,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: Asset::CREATED_AT,
-                type: InputTypeEnum::DATETIME,
+                type: DatetimeInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: Asset::UPDATED_AT,
-                type: InputTypeEnum::DATETIME,
+                type: DatetimeInputData::TYPE,
                 visibility: true,
             ),
         ];

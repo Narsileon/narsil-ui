@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Support\TranslationsBag;
@@ -36,7 +35,7 @@ class TableInputData extends InputData
         $this->set(self::COLUMNS, $columns);
         $this->set(self::DEFAULT_VALUE, $defaultValue);
 
-        parent::__construct(InputTypeEnum::TABLE->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -48,7 +47,14 @@ class TableInputData extends InputData
      *
      * @var string
      */
-    public const COLUMNS = 'columns';
+    final public const COLUMNS = 'columns';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'table';
 
     #endregion
 

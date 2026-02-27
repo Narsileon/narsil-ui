@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
@@ -49,7 +48,7 @@ class TextInputData extends InputData
         $this->set(self::MIN_LENGTH, $minLength);
         $this->set(self::PLACEHOLDER, $placeholder);
 
-        parent::__construct(InputTypeEnum::TEXT->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -61,28 +60,35 @@ class TextInputData extends InputData
      *
      * @var string
      */
-    public const AUTO_COMPLETE = 'autoComplete';
+    final public const AUTO_COMPLETE = 'autoComplete';
 
     /**
      * The name of the "max length" attribute.
      *
      * @var string
      */
-    public const MAX_LENGTH = 'maxLength';
+    final public const MAX_LENGTH = 'maxLength';
 
     /**
      * The name of the "min length" attribute.
      *
      * @var string
      */
-    public const MIN_LENGTH = 'minLength';
+    final public const MIN_LENGTH = 'minLength';
 
     /**
      * The name of the "placeholder" attribute.
      *
      * @var string
      */
-    public const PLACEHOLDER = 'placeholder';
+    final public const PLACEHOLDER = 'placeholder';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'text';
 
     #endregion
 
@@ -95,27 +101,27 @@ class TextInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::PLACEHOLDER,
+                id: static::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::AUTO_COMPLETE,
+                id: static::AUTO_COMPLETE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::MIN_LENGTH,
+                id: static::MIN_LENGTH,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: self::MAX_LENGTH,
+                id: static::MAX_LENGTH,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),

@@ -4,7 +4,9 @@ namespace Narsil\Base\Implementations\Tables;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
 use Narsil\Base\Http\Data\TanStackTables\ColumnDefData;
 use Narsil\Base\Implementations\Table;
 use Narsil\Base\Models\Policies\Permission;
@@ -42,40 +44,40 @@ class PermissionTable extends Table
         return [
             new ColumnDefData(
                 id: Permission::ID,
-                type: InputTypeEnum::NUMBER,
+                type: NumberInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: Permission::NAME,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: Permission::LABEL,
-                type: InputTypeEnum::TEXT,
+                type: TextInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 enableColumnFilter: false,
                 header: ModelService::getTableLabel(Role::TABLE),
                 id: Permission::COUNT_ROLES,
-                type: InputTypeEnum::NUMBER,
+                type: NumberInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 enableColumnFilter: false,
                 header: ModelService::getTableLabel(User::TABLE),
                 id: Permission::COUNT_USERS,
-                type: InputTypeEnum::NUMBER,
+                type: NumberInputData::TYPE,
             ),
             new ColumnDefData(
                 id: Permission::CREATED_AT,
-                type: InputTypeEnum::DATETIME,
+                type: DatetimeInputData::TYPE,
                 visibility: true,
             ),
             new ColumnDefData(
                 id: Permission::UPDATED_AT,
-                type: InputTypeEnum::DATETIME,
+                type: DatetimeInputData::TYPE,
                 visibility: true,
             ),
         ];

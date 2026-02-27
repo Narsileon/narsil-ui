@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Support\TranslationsBag;
@@ -36,7 +35,7 @@ class CheckboxInputData extends InputData
         $this->set(self::DEFAULT_VALUE, $defaultValue);
         $this->set(self::OPTIONS, $options);
 
-        parent::__construct(InputTypeEnum::CHECKBOX->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -48,7 +47,14 @@ class CheckboxInputData extends InputData
      *
      * @var string
      */
-    public const OPTIONS = 'options';
+    final public const OPTIONS = 'options';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'checkbox';
 
     #endregion
 
@@ -61,7 +67,7 @@ class CheckboxInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new CheckboxInputData(),
             ),

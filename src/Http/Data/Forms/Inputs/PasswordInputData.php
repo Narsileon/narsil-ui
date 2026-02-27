@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Support\TranslationsBag;
 use Narsil\Cms\Http\Data\Forms\FieldData;
@@ -48,7 +47,7 @@ class PasswordInputData extends InputData
         $this->set(self::MAX_LENGTH, $maxLength);
         $this->set(self::MIN_LENGTH, $minLength);
 
-        parent::__construct(InputTypeEnum::PASSWORD->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -60,28 +59,35 @@ class PasswordInputData extends InputData
      *
      * @var string
      */
-    public const AUTO_COMPLETE = 'autoComplete';
+    final public const AUTO_COMPLETE = 'autoComplete';
 
     /**
      * The name of the "href" attribute.
      *
      * @var string
      */
-    public const HREF = 'href';
+    final public const HREF = 'href';
 
     /**
      * The name of the "max length" attribute.
      *
      * @var string
      */
-    public const MAX_LENGTH = 'maxLength';
+    final public const MAX_LENGTH = 'maxLength';
 
     /**
      * The name of the "min length" attribute.
      *
      * @var string
      */
-    public const MIN_LENGTH = 'minLength';
+    final public const MIN_LENGTH = 'minLength';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'password';
 
     #endregion
 
@@ -94,12 +100,12 @@ class PasswordInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::MIN_LENGTH,
+                id: static::MIN_LENGTH,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),
             new FieldData(
-                id: self::MAX_LENGTH,
+                id: static::MAX_LENGTH,
                 prefix: $prefix,
                 input: new NumberInputData(),
             ),

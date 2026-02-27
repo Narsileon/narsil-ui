@@ -73,7 +73,9 @@ function SortableList({ items, labelPath, render, setItems }: SortableListProps)
   function onDragStart({ active }: DragStartEvent) {
     const item = items.find((item) => item.uuid === active.id);
 
-    setActive(item as SortableData);
+    if (item) {
+      setActive(item);
+    }
   }
 
   function onMoveUp(uuid: string) {

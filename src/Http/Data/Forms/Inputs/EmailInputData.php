@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
@@ -43,7 +42,7 @@ class EmailInputData extends InputData
         $this->set(self::MULTIPLE, $multiple);
         $this->set(self::PLACEHOLDER, $placeholder);
 
-        parent::__construct(InputTypeEnum::EMAIL->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -55,21 +54,28 @@ class EmailInputData extends InputData
      *
      * @var string
      */
-    public const AUTO_COMPLETE = 'autoComplete';
+    final public const AUTO_COMPLETE = 'autoComplete';
 
     /**
      * The name of the "multiple" attribute.
      *
      * @var string
      */
-    public const MULTIPLE = 'multiple';
+    final public const MULTIPLE = 'multiple';
 
     /**
      * The name of the "placeholder" attribute.
      *
      * @var string
      */
-    public const PLACEHOLDER = 'placeholder';
+    final public const PLACEHOLDER = 'placeholder';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'email';
 
     #endregion
 
@@ -82,22 +88,22 @@ class EmailInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new EmailInputData(),
             ),
             new FieldData(
-                id: self::PLACEHOLDER,
+                id: static::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::AUTO_COMPLETE,
+                id: static::AUTO_COMPLETE,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::MULTIPLE,
+                id: static::MULTIPLE,
                 prefix: $prefix,
                 input: new SwitchInputData(),
             ),

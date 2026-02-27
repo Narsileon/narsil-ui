@@ -6,9 +6,17 @@ namespace Narsil\Base\Http\Data\TanStackTables;
 
 use Illuminate\Support\Fluent;
 use Illuminate\Support\Str;
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\OperatorEnum;
 use Narsil\Base\Helpers\Translator;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DateInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\MonthInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RangeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SwitchInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\WeekInputData;
 
 #endregion
 
@@ -17,7 +25,7 @@ use Narsil\Base\Helpers\Translator;
  * @author Jonathan Rigaux
  *
  * @property string $id The id of the column.
- * @property InputTypeEnum $type The type of the column.
+ * @property string $type The type of the column.
  * @property string|null $accessorKey The accessor key of the column.
  * @property string|null $header The header of the column.
  * @property boolean $enableColumnFilter The filterability of the column.
@@ -29,7 +37,7 @@ class ColumnDefData extends Fluent
 
     /**
      * @param string $id
-     * @param InputTypeEnum $type
+     * @param string $type
      * @param string|null $accessorKey
      * @param string|null $header
      * @param boolean $enableColumnFilter
@@ -39,7 +47,7 @@ class ColumnDefData extends Fluent
      */
     public function __construct(
         string $id,
-        InputTypeEnum $type,
+        string $type,
         ?string $accessorKey = null,
         ?string $header = null,
         bool $enableColumnFilter = true,
@@ -63,8 +71,8 @@ class ColumnDefData extends Fluent
         $this->set('visibility', $visibility);
 
         $this->set('meta', [
-            'operators' => $this->getOperators($type->value),
-            'type' => $type->value,
+            'operators' => $this->getOperators($type),
+            'type' => $type,
         ]);
     }
 
@@ -115,15 +123,18 @@ class ColumnDefData extends Fluent
 
         switch ($type)
         {
-            case InputTypeEnum::CHECKBOX->value:
+            case CheckboxInputData::TYPE:
+            case SwitchInputData::TYPE:
                 $operators = [
                     OperatorEnum::option(OperatorEnum::EQUALS),
                     OperatorEnum::option(OperatorEnum::NOT_EQUALS),
                 ];
                 break;
-            case InputTypeEnum::DATE->value:
-            case InputTypeEnum::DATETIME->value:
-            case InputTypeEnum::TIME->value:
+            case DateInputData::TYPE:
+            case DatetimeInputData::TYPE:
+            case MonthInputData::TYPE:
+            case TimeInputData::TYPE:
+            case WeekInputData::TYPE:
                 $operators = [
                     OperatorEnum::option(OperatorEnum::EQUALS),
                     OperatorEnum::option(OperatorEnum::NOT_EQUALS),
@@ -133,7 +144,8 @@ class ColumnDefData extends Fluent
                     OperatorEnum::option(OperatorEnum::AFTER_OR_EQUAL),
                 ];
                 break;
-            case InputTypeEnum::NUMBER->value:
+            case NumberInputData::TYPE:
+            case RangeInputData::TYPE:
                 $operators = [
                     OperatorEnum::option(OperatorEnum::EQUALS),
                     OperatorEnum::option(OperatorEnum::NOT_EQUALS),
@@ -144,7 +156,6 @@ class ColumnDefData extends Fluent
 
                 ];
                 break;
-            case InputTypeEnum::TEXT->value:
             default:
                 $operators = [
                     OperatorEnum::option(OperatorEnum::EQUALS),

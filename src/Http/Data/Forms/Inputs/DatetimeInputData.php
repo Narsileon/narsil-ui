@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
@@ -39,7 +38,7 @@ class DatetimeInputData extends InputData
         $this->set(self::MAX, $max);
         $this->set(self::MIN, $min);
 
-        parent::__construct(InputTypeEnum::DATETIME->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -51,14 +50,21 @@ class DatetimeInputData extends InputData
      *
      * @var string
      */
-    public const MAX = 'max';
+    final public const MAX = 'max';
 
     /**
      * The name of the "min" attribute.
      *
      * @var string
      */
-    public const MIN = 'min';
+    final public const MIN = 'min';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'datetime-local';
 
     #endregion
 
@@ -71,17 +77,17 @@ class DatetimeInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new DatetimeInputData(),
             ),
             new FieldData(
-                id: self::MIN,
+                id: static::MIN,
                 prefix: $prefix,
                 input: new DatetimeInputData(),
             ),
             new FieldData(
-                id: self::MAX,
+                id: static::MAX,
                 prefix: $prefix,
                 input: new DatetimeInputData(),
             ),

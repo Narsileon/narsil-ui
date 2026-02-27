@@ -46,7 +46,7 @@ abstract class InputData extends Fluent
      *
      * @var string
      */
-    final public const TYPE = 'type';
+    public const TYPE = 'type';
 
     #endregion
 

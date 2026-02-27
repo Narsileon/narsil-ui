@@ -6,6 +6,7 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
+use Narsil\Base\Support\TranslationsBag;
 
 #endregionx
 
@@ -14,29 +15,25 @@ use Narsil\Base\Http\Data\Forms\InputData;
  * @author Jonathan Rigaux
  *
  * @property string $defaultValue The value of the "default value" attribute.
- * @property string $max The value of the "max" attribute.
- * @property string $min The value of the "min" attribute.
+ * @property boolean $alpha The value of the "alpha" attribute.
  */
-class DateInputData extends InputData
+class ColorInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
      * @param string $defaultValue The value of the "default value" attribute.
-     * @param string $max The value of the "max" attribute.
-     * @param string $min The value of the "min" attribute.
+     * @param boolean $alpha The value of the "alpha" attribute.
      *
      * @return void
      */
     public function __construct(
         string $defaultValue = '',
-        string $max = '',
-        string $min = '',
+        bool $alpha = false,
     )
     {
+        $this->set(self::ALPHA, $alpha);
         $this->set(self::DEFAULT_VALUE, $defaultValue);
-        $this->set(self::MAX, $max);
-        $this->set(self::MIN, $min);
 
         parent::__construct(static::TYPE);
     }
@@ -46,25 +43,18 @@ class DateInputData extends InputData
     #region CONSTANTS
 
     /**
-     * The name of the "max" attribute.
+     * The name of the "alpha" attribute.
      *
      * @var string
      */
-    final public const MAX = 'max';
-
-    /**
-     * The name of the "min" attribute.
-     *
-     * @var string
-     */
-    final public const MIN = 'min';
+    final public const ALPHA = 'alpha';
 
     /**
      * The name of the "type" attribute.
      *
      * @var string
      */
-    final public const TYPE = 'date';
+    final public const TYPE = 'color';
 
     #endregion
 
@@ -79,19 +69,23 @@ class DateInputData extends InputData
             new FieldData(
                 id: static::DEFAULT_VALUE,
                 prefix: $prefix,
-                input: new DateInputData(),
+                input: new ColorInputData(),
             ),
             new FieldData(
-                id: static::MIN,
+                id: static::ALPHA,
                 prefix: $prefix,
-                input: new DateInputData(),
-            ),
-            new FieldData(
-                id: static::MAX,
-                prefix: $prefix,
-                input: new DateInputData(),
+                input: new SwitchInputData(),
             ),
         ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function registerTranslations(): void
+    {
+        app(TranslationsBag::class)
+            ->add('narsil::ui.all');
     }
 
     #endregion

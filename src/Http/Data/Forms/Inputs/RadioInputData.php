@@ -7,7 +7,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Http\Data\OptionData;
-use Narsil\Base\Support\TranslationsBag;
 
 #endregionx
 
@@ -15,34 +14,26 @@ use Narsil\Base\Support\TranslationsBag;
  * @version 1.0.0
  * @author Jonathan Rigaux
  *
- * @property string $defaultValue The value of the "default value" attribute.
- * @property boolean $multiple The value of the "multiple" attribute.
- * @property string $placeholder The value of the "placeholder" attribute.
+ * @property boolean $defaultValue The value of the "default value" attribute.
  * @property OptionData $options The value of the "options" attribute.
  */
-class SelectInputData extends InputData
+class RadioInputData extends InputData
 {
     #region CONSTRUCTOR
 
     /**
      * @param string $defaultValue The value of the "default value" attribute.
-     * @param boolean $multiple The value of the "multiple" attribute.
-     * @param string $placeholder The value of the "placeholder" attribute.
      * @param OptionData $options The value of the "options" attribute.
      *
      * @return void
      */
     public function __construct(
-        string $defaultValue = '',
-        bool $multiple = false,
-        string $placeholder = '',
+        bool $defaultValue = false,
         array $options = []
     )
     {
         $this->set(self::DEFAULT_VALUE, $defaultValue);
-        $this->set(self::MULTIPLE, $multiple);
         $this->set(self::OPTIONS, $options);
-        $this->set(self::PLACEHOLDER, $placeholder);
 
         parent::__construct(static::TYPE);
     }
@@ -52,13 +43,6 @@ class SelectInputData extends InputData
     #region CONSTANTS
 
     /**
-     * The name of the "multiple" attribute.
-     *
-     * @var string
-     */
-    final public const MULTIPLE = 'multiple';
-
-    /**
      * The name of the "options" attribute.
      *
      * @var string
@@ -66,20 +50,11 @@ class SelectInputData extends InputData
     final public const OPTIONS = 'options';
 
     /**
-     * The name of the "placeholder" attribute.
-     *
-     * @var string
-     */
-    final public const PLACEHOLDER = 'placeholder';
-
-    /**
      * The name of the "type" attribute.
      *
      * @var string
      */
-    final public const TYPE = 'select';
-
-    #endregion
+    final public const TYPE = 'radio';
 
     #region PUBLIC METHODS
 
@@ -89,11 +64,6 @@ class SelectInputData extends InputData
     public static function getInputForm(?string $prefix = null): array
     {
         return [
-            new FieldData(
-                id: static::MULTIPLE,
-                prefix: $prefix,
-                input: new SwitchInputData(),
-            ),
             new FieldData(
                 id: static::OPTIONS,
                 input: new TableInputData(
@@ -113,16 +83,6 @@ class SelectInputData extends InputData
                 ),
             ),
         ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function registerTranslations(): void
-    {
-        app(TranslationsBag::class)
-            ->add('narsil::placeholders.choose')
-            ->add('narsil::placeholders.search');
     }
 
     #endregion

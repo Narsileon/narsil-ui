@@ -2,27 +2,44 @@
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\Inputs\ArrayInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\ColorInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DateInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RadioInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RangeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RichTextInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SelectInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SwitchInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TableInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextareaInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TimeInputData;
 
 #endregion
 
 return [
-    InputTypeEnum::ARRAY->value => 'Array',
-    InputTypeEnum::CHECKBOX->value => 'Kontrollkästchen',
-    InputTypeEnum::COLOR->value => 'Farbe',
-    InputTypeEnum::DATE->value => 'Datum',
-    InputTypeEnum::DATETIME->value => 'Datum & Uhrzeit',
-    InputTypeEnum::EMAIL->value => 'E-Mail',
-    InputTypeEnum::FILE->value => 'Datei',
-    InputTypeEnum::NUMBER->value => 'Zahl',
-    InputTypeEnum::PASSWORD->value => 'Passwort',
-    InputTypeEnum::RADIO->value => 'Optionsfeld',
-    InputTypeEnum::RANGE->value => 'Bereich',
-    InputTypeEnum::RICH_TEXT_EDITOR->value => 'Rich Text Editor',
-    InputTypeEnum::SELECT->value => 'Auswahl',
-    InputTypeEnum::SWITCH->value => 'Schalter',
-    InputTypeEnum::TABLE->value => 'Tabelle',
-    InputTypeEnum::TEXT->value => 'Text',
-    InputTypeEnum::TEXTAREA->value => 'Textbereich',
-    InputTypeEnum::TIME->value => 'Uhrzeit',
+    ArrayInputData::TYPE    => 'Array',
+    CheckboxInputData::TYPE => 'Kontrollkästchen',
+    ColorInputData::TYPE    => 'Farbe',
+    DateInputData::TYPE     => 'Datum',
+    DatetimeInputData::TYPE => 'Datum & Uhrzeit',
+    EmailInputData::TYPE    => 'E-Mail',
+    FileInputData::TYPE     => 'Datei',
+    NumberInputData::TYPE   => 'Zahl',
+    PasswordInputData::TYPE => 'Passwort',
+    RadioInputData::TYPE    => 'Optionsfeld',
+    RangeInputData::TYPE    => 'Bereich',
+    RichTextInputData::TYPE => 'Rich-Text',
+    SelectInputData::TYPE   => 'Auswahlliste',
+    SwitchInputData::TYPE   => 'Schalter',
+    TableInputData::TYPE    => 'Tabelle',
+    TextInputData::TYPE     => 'Text',
+    TextareaInputData::TYPE => 'Textbereich',
+    TimeInputData::TYPE     => 'Uhrzeit',
 ];

@@ -38,7 +38,7 @@ const registry: Registry = {
   ["range"]: (props) => {
     return <RangeInput {...props} />;
   },
-  ["rich-text-editor"]: (props) => {
+  ["rich-text"]: (props) => {
     return <RichTextEditor {...props} />;
   },
   ["select"]: (props) => {

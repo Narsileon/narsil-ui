@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 
@@ -35,7 +34,7 @@ class FileInputData extends InputData
         $this->set(self::ACCEPT, $accept);
         $this->set(self::DEFAULT_VALUE, $defaultValue);
 
-        parent::__construct(InputTypeEnum::FILE->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -47,7 +46,14 @@ class FileInputData extends InputData
      *
      * @var string
      */
-    public const ACCEPT = 'accept';
+    final public const ACCEPT = 'accept';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'file';
 
     #endregion
 
@@ -60,7 +66,7 @@ class FileInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::ACCEPT,
+                id: static::ACCEPT,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),

@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Enums\RichTextEditorEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
@@ -41,7 +40,7 @@ class RichTextInputData extends InputData
         $this->set(self::PLACEHOLDER, $placeholder);
         $this->set(self::MODULES, $modules);
 
-        parent::__construct(InputTypeEnum::RICH_TEXT_EDITOR->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -53,14 +52,21 @@ class RichTextInputData extends InputData
      *
      * @var string
      */
-    public const MODULES = 'modules';
+    final public const MODULES = 'modules';
 
     /**
      * The name of the "placeholder" attribute.
      *
      * @var string
      */
-    public const PLACEHOLDER = 'placeholder';
+    final public const PLACEHOLDER = 'placeholder';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'rich-text';
 
     #endregion
 
@@ -73,17 +79,17 @@ class RichTextInputData extends InputData
     {
         return [
             new FieldData(
-                id: self::DEFAULT_VALUE,
+                id: static::DEFAULT_VALUE,
                 prefix: $prefix,
                 input: new RichTextInputData(),
             ),
             new FieldData(
-                id: self::PLACEHOLDER,
+                id: static::PLACEHOLDER,
                 prefix: $prefix,
                 input: new TextInputData(),
             ),
             new FieldData(
-                id: self::MODULES,
+                id: static::MODULES,
                 prefix: $prefix,
                 input: new CheckboxInputData(
                     options: RichTextEditorEnum::options(),

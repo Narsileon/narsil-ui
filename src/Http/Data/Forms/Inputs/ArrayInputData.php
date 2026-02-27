@@ -4,7 +4,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\InputData;
 use Narsil\Base\Support\TranslationsBag;
@@ -36,11 +35,11 @@ class ArrayInputData extends InputData
         array $elements = [],
     )
     {
-        $this->set('defaultValue', $defaultValue);
-        $this->set('elements', $elements);
-        $this->set('labelPath', $labelPath);
+        $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::ELEMENTS, $elements);
+        $this->set(self::LABEL_PATH, $labelPath);
 
-        parent::__construct(InputTypeEnum::ARRAY->value);
+        parent::__construct(static::TYPE);
     }
 
     #endregion
@@ -52,14 +51,21 @@ class ArrayInputData extends InputData
      *
      * @var string
      */
-    public const ELEMENTS = 'elements';
+    final public const ELEMENTS = 'elements';
 
     /**
      * The name of the "options" attribute.
      *
      * @var string
      */
-    public const LABEL_PATH = 'labelPath';
+    final public const LABEL_PATH = 'labelPath';
+
+    /**
+     * The name of the "type" attribute.
+     *
+     * @var string
+     */
+    final public const TYPE = 'array';
 
     #endregion
 

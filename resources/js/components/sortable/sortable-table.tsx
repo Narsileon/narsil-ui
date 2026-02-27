@@ -13,7 +13,7 @@ import {
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useForm, useFormField } from "@narsil-ui/components/form";
-import { getField } from "@narsil-ui/components/form/inputs";
+import { FieldProps, getField } from "@narsil-ui/components/form/inputs";
 import { Label } from "@narsil-ui/components/label";
 import { SortableTableItem, type SortableData } from "@narsil-ui/components/sortable";
 import {
@@ -162,14 +162,14 @@ function SortableTable({ columns, rows, setRows }: SortableTableProps) {
                       return (
                         <TableCell className="px-0.5 py-0" key={index}>
                           {getField(registry, column.input.type, {
-                            input: column.input,
                             id: columnId,
+                            input: column.input,
                             required: column.required,
                             value: value,
                             setValue: (value) => {
                               onUpdate(row.uuid, columnId, value);
                             },
-                          })}
+                          } as FieldProps)}
                         </TableCell>
                       );
                     })}

@@ -2,27 +2,44 @@
 
 #region USE
 
-use Narsil\Base\Enums\InputTypeEnum;
+use Narsil\Base\Http\Data\Forms\Inputs\ArrayInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\ColorInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DateInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RadioInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RangeInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\RichTextInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SelectInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\SwitchInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TableInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextareaInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\TimeInputData;
 
 #endregion
 
 return [
-    InputTypeEnum::ARRAY->value => 'Tableau',
-    InputTypeEnum::CHECKBOX->value => 'Case à cocher',
-    InputTypeEnum::COLOR->value => 'Couleur',
-    InputTypeEnum::DATE->value => 'Date',
-    InputTypeEnum::DATETIME->value => 'Date et heure',
-    InputTypeEnum::EMAIL->value => 'E-mail',
-    InputTypeEnum::FILE->value => 'Fichier',
-    InputTypeEnum::NUMBER->value => 'Nombre',
-    InputTypeEnum::PASSWORD->value => 'Mot de passe',
-    InputTypeEnum::RADIO->value => 'Bouton radio',
-    InputTypeEnum::RANGE->value => 'Plage',
-    InputTypeEnum::RICH_TEXT_EDITOR->value => 'Editeur de texte enrichi',
-    InputTypeEnum::SELECT->value => 'Sélection',
-    InputTypeEnum::SWITCH->value => 'Interrupteur',
-    InputTypeEnum::TABLE->value => 'Table',
-    InputTypeEnum::TEXT->value => 'Texte',
-    InputTypeEnum::TEXTAREA->value => 'Zone de texte',
-    InputTypeEnum::TIME->value => 'Heure',
+    ArrayInputData::TYPE    => 'Tableau',
+    CheckboxInputData::TYPE => 'Case à cocher',
+    ColorInputData::TYPE    => 'Couleur',
+    DateInputData::TYPE     => 'Date',
+    DatetimeInputData::TYPE => 'Date et heure',
+    EmailInputData::TYPE    => 'E-mail',
+    FileInputData::TYPE     => 'Fichier',
+    NumberInputData::TYPE   => 'Nombre',
+    PasswordInputData::TYPE => 'Mot de passe',
+    RadioInputData::TYPE    => 'Bouton radio',
+    RangeInputData::TYPE    => 'Plage',
+    RichTextInputData::TYPE => 'Texte enrichi',
+    SelectInputData::TYPE   => 'Liste déroulante',
+    SwitchInputData::TYPE   => 'Interrupteur',
+    TableInputData::TYPE    => 'Tableau',
+    TextInputData::TYPE     => 'Texte',
+    TextareaInputData::TYPE => 'Zone de texte',
+    TimeInputData::TYPE     => 'Heure',
 ];
