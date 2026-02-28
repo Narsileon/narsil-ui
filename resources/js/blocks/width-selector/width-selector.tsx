@@ -25,7 +25,7 @@ function WidthSelector({
       onMouseLeave={() => setWidth(value ?? defaultValue)}
       {...props}
     >
-      <ul className="flex h-6 flex-row divide-x divide-input overflow-hidden rounded-md border">
+      <ul className="flex h-6 flex-row divide-x divide-border overflow-hidden rounded-md border">
         {options.map((option, index) => {
           return (
             <li key={index}>

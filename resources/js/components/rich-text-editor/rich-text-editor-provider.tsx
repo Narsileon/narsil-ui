@@ -59,8 +59,8 @@ function RichTextEditorProvider({
       attributes: {
         class: cn(
           "prose max-w-none whitespace-normal! text-foreground",
-          "rounded-md rounded-t-none bg-background px-3 py-2 ring-offset-background",
-          "focus-visible:border-shine",
+          "rounded-md rounded-t-none bg-accent/50 px-3 py-2 ring-offset-background",
+          "focus-visible:bg-accent",
           "disabled:cursor-not-allowed disabled:opacity-50",
           "[&>h1]:text-4xl",
           "[&>h2]:text-3xl",

@@ -6,11 +6,11 @@ function Textarea({ className, ...props }: ComponentProps<"textarea">) {
     <textarea
       data-slot="textarea"
       className={cn(
-        "flex field-sizing-content min-h-16 w-full rounded-md border border-input bg-transparent px-3 py-2 shadow-sm transition-[color,box-shadow] outline-none placeholder:text-muted-foreground",
+        "flex field-sizing-content min-h-16 w-full rounded-md border bg-accent/50 px-3 py-2 shadow-sm transition-[color,box-shadow] outline-none placeholder:text-muted-foreground",
         "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
-        "dark:bg-input/30 dark:aria-invalid:ring-destructive/40",
+        "dark:aria-invalid:ring-destructive/40",
         "disabled:cursor-not-allowed disabled:opacity-50",
-        "focus-within:border-shine focus-visible:border-shine",
+        "focus-within:bg-accent focus-visible:bg-accent",
         className,
       )}
       {...props}

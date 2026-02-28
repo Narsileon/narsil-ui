@@ -213,10 +213,7 @@ function Combobox({
       ) : (
         <ComboboxTrigger
           render={
-            <Button
-              variant="outline"
-              className={cn("w-full justify-between font-normal", className)}
-            >
+            <Button variant="input" className={cn("w-full justify-between font-normal", className)}>
               {parse(
                 getTranslatableData(selectedOptions[0], labelPath, locale) ||
                   placeholder ||

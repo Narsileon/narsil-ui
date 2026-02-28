@@ -12,6 +12,7 @@ function FormFieldLanguage({ ...props }: FormFieldLanguageProps) {
       data-slot="form-language"
       className="uppercase"
       options={languages}
+      size="sm"
       variant="inline"
       {...props}
     />

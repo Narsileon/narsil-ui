@@ -19,14 +19,15 @@ const buttonVariants = cva(
           "focus-visible:bg-destructive",
           "hover:bg-destructive",
         ),
+        input: cn("border-border bg-accent/50", "focus-visible:bg-accent", "hover:bg-accent"),
         link: cn("text-primary underline-offset-4", "hover:underline"),
         ghost: cn(
           "focus-visible:bg-accent focus-visible:text-accent-foreground",
           "hover:bg-accent hover:text-accent-foreground",
         ),
         outline: cn(
-          "border border-input bg-background shadow-sm",
-          "focus-visible:border-shine",
+          "border-border bg-background",
+          "focus-visible:bg-accent",
           "hover:bg-accent hover:text-accent-foreground",
         ),
         primary: cn(
