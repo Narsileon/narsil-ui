@@ -19,7 +19,6 @@
   --color-popover: var(--popover);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
-  --color-ring: var(--ring);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-sidebar: var(--sidebar);
@@ -51,7 +50,6 @@
   --primary-foreground: var(--color-zinc-50);
   --primary: var(--color-zinc-900);
   --radius: 0.5rem;
-  --ring: var(--color-zinc-400);
   --secondary-foreground: var(--color-zinc-950);
   --secondary: var(--color-zinc-300);
   --sidebar: var(--color-zinc-100);
@@ -72,7 +70,6 @@
   --popover: var(--color-zinc-950);
   --primary-foreground: var(--color-zinc-950);
   --primary: var(--color-zinc-100);
-  --ring: var(--color-zinc-600);
   --secondary-foreground: var(--color-zinc-50);
   --secondary: var(--color-zinc-700);
   --sidebar: var(--color-zinc-900);

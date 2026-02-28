@@ -98,7 +98,7 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
                     <Input
                       id="value"
                       required={true}
-                      type={column.columnDef.meta?.input_type}
+                      type={column.columnDef.meta?.type}
                       value={data.value}
                       onValueChange={(value) => {
                         setData("value", value);

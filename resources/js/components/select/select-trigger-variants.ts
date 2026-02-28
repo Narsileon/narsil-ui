@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 
 const selectTriggerVariants = cva(
   cn(
-    "flex w-fit cursor-pointer items-center justify-between gap-1.5 rounded-md bg-transparent text-sm whitespace-nowrap transition-colors outline-none select-none",
+    "flex w-fit cursor-pointer items-center justify-between gap-1.5 rounded-md border border-transparent bg-transparent text-sm whitespace-nowrap ring-1 ring-transparent transition-all outline-none select-none",
     "[&_svg:not([class*='size-'])]:size-4",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0",
     "*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5",
@@ -18,21 +18,19 @@ const selectTriggerVariants = cva(
     variants: {
       variant: {
         default: cn(
-          "border p-2 shadow-sm",
+          "border-border p-2 shadow-sm",
           "hover:bg-accent hover:text-accent-foreground",
           "focus-visible:bg-accent",
-          "data-[state=open]:bg-accent",
         ),
         secondary: cn(
-          "border border-secondary bg-secondary/80 p-2 text-secondary-foreground",
+          "border-secondary bg-secondary/80 p-2 text-secondary-foreground",
           "focus-visible:bg-secondary",
           "hover:bg-secondary",
-          "data-[state=open]:bg-secondary",
         ),
         inline: cn(
-          "px-1",
+          "border-transparent px-1",
           "hover:bg-accent hover:text-accent-foreground",
-          "focus-visible:bg-accent",
+          "focus-visible:border-primary focus-visible:bg-accent/50 focus-visible:text-accent-foreground focus-visible:ring-primary",
         ),
       },
     },

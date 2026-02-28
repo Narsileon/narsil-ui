@@ -4,11 +4,10 @@ import { cva } from "class-variance-authority";
 const buttonVariants = cva(
   cn(
     "group/button",
-    "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-clip-padding font-medium whitespace-nowrap transition-all duration-300 outline-none select-none",
+    "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md border border-transparent bg-clip-padding font-medium whitespace-nowrap ring-1 ring-transparent transition-all duration-300 outline-none select-none",
     "aria-disabled:pointer-events-none aria-disabled:opacity-50",
-    "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+    "aria-invalid:border-destructive aria-invalid:ring-destructive/20",
     "disabled:pointer-events-none disabled:opacity-50",
-    "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   ),
   {
@@ -19,8 +18,12 @@ const buttonVariants = cva(
           "focus-visible:bg-destructive",
           "hover:bg-destructive",
         ),
-        input: cn("border-border bg-accent/50", "focus-visible:bg-accent", "hover:bg-accent"),
-        link: cn("text-primary underline-offset-4", "hover:underline"),
+        input: cn(
+          "border-border bg-accent/50",
+          "focus-visible:border-primary focus-visible:ring-primary",
+          "hover:bg-accent",
+        ),
+        link: cn("text-primary underline-offset-4", "focus-visible:underline", "hover:underline"),
         ghost: cn(
           "focus-visible:bg-accent focus-visible:text-accent-foreground",
           "hover:bg-accent hover:text-accent-foreground",
@@ -31,19 +34,19 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground",
         ),
         primary: cn(
-          "bg-radial from-primary/80 to-primary text-primary-foreground",
+          "bg-radial from-primary/80 to-primary text-primary-foreground transition-all",
           "focus-visible:bg-primary",
           "hover:from-primary/90",
           "[&_svg]:text-primary-foreground",
         ),
         secondary: cn(
-          "bg-secondary/80 text-secondary-foreground",
+          "bg-secondary/80 text-secondary-foreground transition-all",
           "focus-visible:bg-secondary",
           "hover:bg-secondary",
           "[&_svg]:text-secondary-foreground",
         ),
         sidebar: cn(
-          "peer/menu-button w-full justify-start truncate rounded-md p-2 text-left ring-ring outline-hidden transition-[width,height,padding]",
+          "peer/menu-button w-full justify-start truncate rounded-md p-2 text-left outline-hidden transition-[width,height,padding]",
           "active:bg-accent active:text-accent-foreground",
           "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",
           "data-[state=open]:hover:bg-accent data-[state=open]:hover:text-accent-foreground",

@@ -6,10 +6,11 @@ function NavigationMenuLink({ className, ...props }: NavigationMenu.Link.Props) 
     <NavigationMenu.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "flex items-center gap-2 rounded-lg p-2 transition-all outline-none",
+        "flex items-center gap-2 rounded-lg p-2 ring-2 ring-transparent transition-all",
         "[&_svg:not([class*='size-'])]:size-4",
+        "[&_a]:outline-none",
         "data-active:text-primary",
-        "focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1",
+        "focus-within:text-primary",
         "hover:text-primary",
         "in-data-[slot=navigation-menu-content]:rounded-md",
         className,

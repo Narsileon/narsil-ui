@@ -34,16 +34,18 @@ function CalendarRoot({
       classNames={{
         button_next: cn(
           buttonVariants({
+            size: "icon-sm",
             variant: buttonVariant,
           }),
-          "size-(--cell-size) p-0 select-none aria-disabled:opacity-50",
+          "select-none aria-disabled:opacity-50",
           defaultClassNames.button_next,
         ),
         button_previous: cn(
           buttonVariants({
+            size: "icon-sm",
             variant: buttonVariant,
           }),
-          "size-(--cell-size) p-0 select-none aria-disabled:opacity-50",
+          "select-none aria-disabled:opacity-50",
           defaultClassNames.button_previous,
         ),
         caption_label: cn(
@@ -53,15 +55,16 @@ function CalendarRoot({
           defaultClassNames.caption_label,
         ),
         day: cn(
-          "group/day relative aspect-square h-full w-full p-0 text-center select-none",
-          "[&:first-child[data-selected=true]_button]:rounded-l-md",
-          "[&:last-child[data-selected=true]_button]:rounded-r-md",
+          "group/day relative aspect-square size-full cursor-pointer p-1 text-center leading-5 select-none",
+          "hover:rounded-full hover:bg-accent",
+          "[&:first-child[data-selected=true]_button]:rounded-l-full",
+          "[&:last-child[data-selected=true]_button]:rounded-r-full",
           defaultClassNames.day,
         ),
         disabled: cn("text-muted-foreground opacity-50", defaultClassNames.disabled),
         dropdown: cn("absolute inset-0 bg-popover opacity-0", defaultClassNames.dropdown),
         dropdown_root: cn(
-          "relative rounded-md border shadow-sm has-focus:border-ring has-focus:ring-2 has-focus:ring-ring/50",
+          "relative rounded-md border shadow-sm has-focus:border-primary has-focus:ring-1 has-focus:ring-primary",
           defaultClassNames.dropdown_root,
         ),
         dropdowns: cn(
@@ -89,10 +92,10 @@ function CalendarRoot({
         root: cn("w-fit", defaultClassNames.root),
         table: "w-full border-collapse",
         today: cn(
-          "rounded-md bg-accent text-accent-foreground data-[selected=true]:rounded-none",
+          "rounded-full bg-accent text-accent-foreground data-[selected=true]:rounded-none",
           defaultClassNames.today,
         ),
-        week: cn("mt-2 flex w-full", defaultClassNames.week),
+        week: cn("mt-2 flex h-7 w-full gap-x-1", defaultClassNames.week),
         weekday: cn(
           "flex-1 rounded-md text-[0.8rem] font-normal text-muted-foreground select-none",
           defaultClassNames.weekday,

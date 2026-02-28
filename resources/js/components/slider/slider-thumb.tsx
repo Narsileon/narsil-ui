@@ -9,11 +9,11 @@ function SliderThumb({ className, ...props }: SliderThumbProps) {
     <Slider.Thumb
       data-slot="slider-thumb"
       className={cn(
-        "relative block size-4 shrink-0 cursor-pointer rounded-full border border-ring bg-white ring-ring/50 transition-[color,box-shadow] select-none",
-        "active:ring-[3px]",
+        "relative block size-4 shrink-0 cursor-pointer rounded-full border bg-white ring-1 ring-transparent transition-[color,box-shadow] select-none",
+        "active:ring-primary",
         "disabled:pointer-events-none disabled:opacity-50",
-        "focus-visible:ring-[3px] focus-visible:outline-hidden",
-        "hover:ring-[3px]",
+        "focus-visible:ring-primary",
+        "hover:ring-primary",
         className,
       )}
       {...props}
