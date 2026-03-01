@@ -30,7 +30,7 @@ const buttonVariants = cva(
         ),
         outline: cn(
           "border-border bg-background",
-          "focus-visible:bg-accent",
+          "focus-visible:border-primary focus-visible:bg-accent focus-visible:ring-primary",
           "hover:bg-accent hover:text-accent-foreground",
         ),
         primary: cn(

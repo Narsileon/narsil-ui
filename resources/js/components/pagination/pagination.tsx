@@ -105,7 +105,7 @@ function Pagination({ links, metaLinks, ...props }: PaginationProps) {
           <Tooltip tooltip={lastPageLabel}>
             <PaginationLink
               aria-label={lastPageLabel}
-              className="rounded-none"
+              className="rounded-l-none"
               disabled={links.next === null}
               render={
                 <Link

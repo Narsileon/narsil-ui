@@ -18,7 +18,7 @@ function PaginationLink({
     <Button
       data-slot="pagination-link"
       data-active={active}
-      className={cn(active && "bg-accent dark:bg-accent", className)}
+      className={cn(active && "bg-accent", className)}
       aria-current={active ? "page" : undefined}
       disabled={disabled}
       size={size}
