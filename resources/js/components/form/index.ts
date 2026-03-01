@@ -1,4 +1,5 @@
 import FormBlame from "./form-blame";
+import FormBlock from "./form-block";
 import useForm from "./form-context";
 import FormElement from "./form-element";
 import FormField from "./form-field";
@@ -14,6 +15,7 @@ import registry from "./inputs";
 
 export {
   FormBlame,
+  FormBlock,
   FormElement,
   FormField,
   FormFieldLanguage,
