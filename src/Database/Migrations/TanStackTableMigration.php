@@ -1,5 +1,7 @@
 <?php
 
+namespace Narsil\Base\Database\Migrations;
+
 #region USE
 
 use Illuminate\Database\Migrations\Migration;
@@ -9,9 +11,38 @@ use Narsil\Base\Models\Users\TanStackTable;
 
 #endregion
 
-return new class extends Migration
+/**
+ * @version 1.0.0
+ * @author Jonathan Rigaux
+ */
+class TanStackTableMigration extends Migration
 {
-    #region PUBLIC METHODS‚
+    #region CONSTRUCTOR
+
+    /**
+     * @param string $schema
+     *
+     * @return void
+     */
+    public function __construct(string $schema)
+    {
+        $this->schema = $schema;
+    }
+
+    #endregion
+
+    #region PROPERTIES
+
+    /**
+     * The name of the schema.
+     *
+     * @var string
+     */
+    protected readonly string $schema;
+
+    #endreigon
+
+    #region PUBLIC METHODS
 
     /**
      * Run the migrations.
@@ -20,9 +51,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(TanStackTable::TABLE))
+
+        if (!Schema::hasTable($this->schema . '.' . TanStackTable::TABLE))
         {
-            $this->createTanSTackTablesTable();
+            $this->createTanStackTablesTable($this->schema);
         }
     }
 
@@ -33,21 +65,23 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(TanStackTable::TABLE);
+        Schema::dropIfExists($this->schema . '.' . TanStackTable::TABLE);
     }
 
     #endregion
 
-    #region PRIVATE METHODS
+    #region PROTECTED METHODS
 
     /**
      * Create the TanStack tables table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createTanSTackTablesTable(): void
+    protected function createTanStackTablesTable(string $schema): void
     {
-        Schema::create(TanStackTable::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . TanStackTable::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->uuid(TanStackTable::UUID)

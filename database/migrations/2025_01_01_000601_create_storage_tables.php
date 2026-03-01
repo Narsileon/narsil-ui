@@ -6,11 +6,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Narsil\Base\Models\Storages\Asset;
+use Narsil\Base\Traits\HasSchemas;
 
 #endregion
 
 return new class extends Migration
 {
+    use HasSchemas;
+
     #region PUBLIC METHODS
 
     /**
@@ -20,9 +23,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(Asset::TABLE))
+        $schema = $this->getDefaultSchema();
+
+        if (!Schema::hasTable("$schema." . Asset::TABLE))
         {
-            $this->createAssetsTable();
+            $this->createAssetsTable($schema);
         }
     }
 
@@ -33,7 +38,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(Asset::TABLE);
+        $schema = $this->getDefaultSchema();
+
+        Schema::dropIfExists("$schema." . Asset::TABLE);
     }
 
     #endregion
@@ -43,11 +50,13 @@ return new class extends Migration
     /**
      * Create the assets table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createAssetsTable(): void
+    private function createAssetsTable(string $schema): void
     {
-        Schema::create(Asset::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . Asset::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->uuid(Asset::UUID)

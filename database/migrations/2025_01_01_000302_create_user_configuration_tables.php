@@ -10,11 +10,14 @@ use Narsil\Base\Enums\ColorEnum;
 use Narsil\Base\Enums\ThemeEnum;
 use Narsil\Base\Models\User;
 use Narsil\Base\Models\Users\UserConfiguration;
+use Narsil\Base\Traits\HasSchemas;
 
 #endregion
 
 return new class extends Migration
 {
+    use HasSchemas;
+
     #region PUBLIC METHODS
 
     /**
@@ -24,9 +27,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(UserConfiguration::TABLE))
+        $schema = $this->getDefaultSchema();
+
+        if (!Schema::hasTable("$schema." . UserConfiguration::TABLE))
         {
-            $this->createUserConfigurationsTable();
+            $this->createUserConfigurationsTable($schema);
         }
     }
 
@@ -37,7 +42,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(UserConfiguration::TABLE);
+        $schema = $this->getDefaultSchema();
+
+        Schema::dropIfExists("$schema." . UserConfiguration::TABLE);
     }
 
     #endregion
@@ -47,11 +54,16 @@ return new class extends Migration
     /**
      * Create the user configurations table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createUserConfigurationsTable(): void
+    private function createUserConfigurationsTable(string $schema): void
     {
-        Schema::create(UserConfiguration::TABLE, function (Blueprint $blueprint)
+        $defaultLanguage = Config::get('app.locale', 'en');
+        $defaultSchema = $this->getDefaultSchema();
+
+        Schema::create("$schema." . UserConfiguration::TABLE, function (Blueprint $blueprint) use ($defaultLanguage, $defaultSchema)
         {
             $blueprint
                 ->uuid(UserConfiguration::UUID)
@@ -61,8 +73,11 @@ return new class extends Migration
                 ->constrained(User::TABLE, User::ID)
                 ->cascadeOnDelete();
             $blueprint
+                ->string(UserConfiguration::SCHEMA)
+                ->default($defaultSchema);
+            $blueprint
                 ->string(UserConfiguration::LANGUAGE)
-                ->default(Config::get('app.locale'));
+                ->default($defaultLanguage);
             $blueprint
                 ->string(UserConfiguration::COLOR)
                 ->default(ColorEnum::GRAY->value);

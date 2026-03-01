@@ -74,6 +74,13 @@ class UserConfiguration extends Model
     final public const RADIUS = 'radius';
 
     /**
+     * The name of the "schema" column.
+     *
+     * @var string
+     */
+    final public const SCHEMA = 'schema';
+
+    /**
      * The name of the "theme" column.
      *
      * @var string

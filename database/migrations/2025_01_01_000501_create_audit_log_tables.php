@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Schema;
 use Narsil\Base\Enums\ModelEventEnum;
 use Narsil\Base\Models\AuditLog;
 use Narsil\Base\Models\User;
+use Narsil\Base\Traits\HasSchemas;
 
 #endregion
 
 return new class extends Migration
 {
+    use HasSchemas;
+
     #region PUBLIC METHODS
 
     /**
@@ -22,9 +25,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(AuditLog::TABLE))
+        $schema = $this->getDefaultSchema();
+
+        if (!Schema::hasTable("$schema." . AuditLog::TABLE))
         {
-            $this->createAuditLogsTable();
+            $this->createAuditLogsTable($schema);
         }
     }
 
@@ -35,7 +40,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(AuditLog::TABLE);
+        $schema = $this->getDefaultSchema();
+
+        Schema::dropIfExists("$schema." . AuditLog::TABLE);
     }
 
     #endregion
@@ -45,11 +52,13 @@ return new class extends Migration
     /**
      * Create the audit logs table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createAuditLogsTable(): void
+    private function createAuditLogsTable(string $schema): void
     {
-        Schema::create(AuditLog::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . AuditLog::TABLE, function (Blueprint $blueprint) use ($schema)
         {
             $blueprint
                 ->uuid(AuditLog::UUID)
@@ -61,7 +70,7 @@ return new class extends Migration
             $blueprint
                 ->foreignId(AuditLog::USER_ID)
                 ->nullable()
-                ->constrained(User::TABLE, User::ID);
+                ->constrained("$schema." . User::TABLE, User::ID);
             $blueprint
                 ->enum(AuditLog::EVENT, ModelEventEnum::values());
             $blueprint

@@ -7,11 +7,14 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Narsil\Base\Models\Caches\Cache;
 use Narsil\Base\Models\Caches\CacheLock;
+use Narsil\Base\Traits\HasSchemas;
 
 #endregion
 
 return new class extends Migration
 {
+    use HasSchemas;
+
     #region PUBLIC METHODS
 
     /**
@@ -21,13 +24,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(Cache::TABLE))
+        $schema = $this->getDefaultSchema();
+
+        if (!Schema::hasTable("$schema." . Cache::TABLE))
         {
-            $this->createCacheTable();
+            $this->createCacheTable($schema);
         }
-        if (!Schema::hasTable(CacheLock::TABLE))
+        if (!Schema::hasTable("$schema." . CacheLock::TABLE))
         {
-            $this->createCacheLocksTable();
+            $this->createCacheLocksTable($schema);
         }
     }
 
@@ -38,8 +43,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(CacheLock::TABLE);
-        Schema::dropIfExists(Cache::TABLE);
+        $schema = $this->getDefaultSchema();
+
+        Schema::dropIfExists("$schema." . CacheLock::TABLE);
+        Schema::dropIfExists("$schema." . Cache::TABLE);
     }
 
     #endregion
@@ -49,11 +56,13 @@ return new class extends Migration
     /**
      * Create the cache table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createCacheTable(): void
+    private function createCacheTable(string $schema): void
     {
-        Schema::create(Cache::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . Cache::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->string(Cache::KEY)
@@ -68,11 +77,13 @@ return new class extends Migration
     /**
      * Create the cache locks table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createCacheLocksTable(): void
+    private function createCacheLocksTable(string $schema): void
     {
-        Schema::create(CacheLock::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . CacheLock::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->string(CacheLock::KEY)

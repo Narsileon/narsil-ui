@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Schema;
 use Narsil\Base\Models\Jobs\FailedJob;
 use Narsil\Base\Models\Jobs\Job;
 use Narsil\Base\Models\Jobs\JobBatch;
+use Narsil\Base\Traits\HasSchemas;
 
 #endregion
 
 return new class extends Migration
 {
+    use HasSchemas;
+
     #region PUBLIC METHODS
 
     /**
@@ -22,17 +25,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(Job::TABLE))
+        $schema = $this->getDefaultSchema();
+
+        if (!Schema::hasTable("$schema." . Job::TABLE))
         {
-            $this->createJobsTable();
+            $this->createJobsTable($schema);
         }
-        if (!Schema::hasTable(JobBatch::TABLE))
+        if (!Schema::hasTable("$schema." . JobBatch::TABLE))
         {
-            $this->createJobBatchesTable();
+            $this->createJobBatchesTable($schema);
         }
-        if (!Schema::hasTable(FailedJob::TABLE))
+        if (!Schema::hasTable("$schema." . FailedJob::TABLE))
         {
-            $this->createFailedJobsTable();
+            $this->createFailedJobsTable($schema);
         }
     }
 
@@ -43,9 +48,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(FailedJob::TABLE);
-        Schema::dropIfExists(JobBatch::TABLE);
-        Schema::dropIfExists(Job::TABLE);
+        $schema = $this->getDefaultSchema();
+
+        Schema::dropIfExists("$schema." . FailedJob::TABLE);
+        Schema::dropIfExists("$schema." . JobBatch::TABLE);
+        Schema::dropIfExists("$schema." . Job::TABLE);
     }
 
     #endregion
@@ -55,11 +62,13 @@ return new class extends Migration
     /**
      * Create the failed jobs table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createFailedJobsTable(): void
+    private function createFailedJobsTable(string $schema): void
     {
-        Schema::create(FailedJob::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . FailedJob::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->id(FailedJob::ID);
@@ -83,11 +92,13 @@ return new class extends Migration
     /**
      * Create the job batches table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createJobBatchesTable(): void
+    private function createJobBatchesTable(string $schema): void
     {
-        Schema::create(JobBatch::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . JobBatch::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->string(JobBatch::ID)
@@ -119,11 +130,13 @@ return new class extends Migration
     /**
      * Create the jobs table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createJobsTable(): void
+    private function createJobsTable(string $schema): void
     {
-        Schema::create(Job::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . Job::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->id(Job::ID);

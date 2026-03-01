@@ -8,11 +8,14 @@ use Illuminate\Support\Facades\Schema;
 use Narsil\Base\Models\User;
 use Narsil\Base\Models\Users\PasswordResetToken;
 use Narsil\Base\Models\Users\Session;
+use Narsil\Base\Traits\HasSchemas;
 
 #endregion
 
 return new class extends Migration
 {
+    use HasSchemas;
+
     #region PUBLIC METHODS
 
     /**
@@ -22,17 +25,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        if (!Schema::hasTable(User::TABLE))
+        $schema = $this->getDefaultSchema();
+
+        if (!Schema::hasTable("$schema." . User::TABLE))
         {
-            $this->createUsersTable();
+            $this->createUsersTable($schema);
         }
-        if (!Schema::hasTable(PasswordResetToken::TABLE))
+        if (!Schema::hasTable("$schema." . PasswordResetToken::TABLE))
         {
-            $this->createPasswordResetTokensTable();
+            $this->createPasswordResetTokensTable($schema);
         }
-        if (!Schema::hasTable(Session::TABLE))
+        if (!Schema::hasTable("$schema." . Session::TABLE))
         {
-            $this->createSessionsTable();
+            $this->createSessionsTable($schema);
         }
     }
 
@@ -43,9 +48,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(Session::TABLE);
-        Schema::dropIfExists(PasswordResetToken::TABLE);
-        Schema::dropIfExists(User::TABLE);
+        $schema = $this->getDefaultSchema();
+
+        Schema::dropIfExists("$schema." . Session::TABLE);
+        Schema::dropIfExists("$schema." . PasswordResetToken::TABLE);
+        Schema::dropIfExists("$schema." . User::TABLE);
     }
 
     #endregion
@@ -55,11 +62,13 @@ return new class extends Migration
     /**
      * Create the password reset tokens table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createPasswordResetTokensTable(): void
+    private function createPasswordResetTokensTable(string $schema): void
     {
-        Schema::create(PasswordResetToken::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . PasswordResetToken::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->string(PasswordResetToken::EMAIL)
@@ -75,11 +84,13 @@ return new class extends Migration
     /**
      * Create the sessions table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createSessionsTable(): void
+    private function createSessionsTable(string $schema): void
     {
-        Schema::create(Session::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . Session::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->string(Session::ID)
@@ -106,11 +117,13 @@ return new class extends Migration
     /**
      * Create the users table.
      *
+     * @param string $schema
+     *
      * @return void
      */
-    private function createUsersTable(): void
+    private function createUsersTable(string $schema): void
     {
-        Schema::create(User::TABLE, function (Blueprint $blueprint)
+        Schema::create("$schema." . User::TABLE, function (Blueprint $blueprint)
         {
             $blueprint
                 ->id(User::ID);
@@ -158,17 +171,17 @@ return new class extends Migration
                 ->nullable();
         });
 
-        Schema::table(User::TABLE, function (Blueprint $blueprint)
+        Schema::table("$schema." . User::TABLE, function (Blueprint $blueprint) use ($schema)
         {
             $blueprint
                 ->foreign(User::CREATED_BY)
                 ->references(User::ID)
-                ->on(User::TABLE)
+                ->on("$schema." . User::TABLE)
                 ->nullOnDelete();
             $blueprint
                 ->foreign(User::UPDATED_BY)
                 ->references(User::ID)
-                ->on(User::TABLE)
+                ->on("$schema." . User::TABLE)
                 ->nullOnDelete();
         });
     }
