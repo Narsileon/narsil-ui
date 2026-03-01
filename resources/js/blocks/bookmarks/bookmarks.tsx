@@ -55,13 +55,15 @@ function Bookmarks({ breadcrumb, ...props }: BookmarksProps) {
     fetchBookmarks();
   }, [open]);
 
+  const menuLabel = trans("bookmarks.menu");
+
   return (
     <PopoverRoot open={open} onOpenChange={onOpenChange}>
-      <Tooltip tooltip={title}>
+      <Tooltip tooltip={menuLabel}>
         <PopoverTrigger
           {...props}
           render={
-            <Button aria-label={title} size="icon" variant="ghost">
+            <Button aria-label={menuLabel} size="icon" variant="ghost">
               <Icon fill="currentColor" name="star" />
             </Button>
           }
