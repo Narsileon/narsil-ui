@@ -57,6 +57,11 @@ class UserConfigurationUpdateController extends RedirectController
             Session::put(UserConfiguration::RADIUS, $radius);
         }
 
+        if ($schema = Arr::get($attributes, UserConfiguration::SCHEMA))
+        {
+            Session::put(UserConfiguration::SCHEMA, $schema);
+        }
+
         if ($theme = Arr::get($attributes, UserConfiguration::THEME))
         {
             Session::put(UserConfiguration::THEME, $theme);

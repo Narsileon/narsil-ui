@@ -13,6 +13,7 @@ function FormFieldLanguage({ ...props }: FormFieldLanguageProps) {
       className="uppercase"
       options={languages}
       size="sm"
+      trigger="value"
       variant="inline"
       {...props}
     />
