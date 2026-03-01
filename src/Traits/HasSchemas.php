@@ -34,6 +34,18 @@ trait HasSchemas
      */
     protected function getDefaultSchema(): string
     {
+        $schemas = $this->getSchemas();
+
+        $fallbackSchema = $this->getFallbackSchema();
+
+        return array_first($schemas) ?? $fallbackSchema;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getFallbackSchema(): string
+    {
         return Config::get('database.connections.pgsql.search_path', 'public');
     }
 
@@ -42,7 +54,18 @@ trait HasSchemas
      */
     protected function getSchemas(): array
     {
-        return Config::get('narsil.schemas', []);
+        $fallbackSchema = $this->getFallbackSchema();
+
+        $schemas = Config::get('narsil.schemas', [
+            $fallbackSchema
+        ]);
+
+        if (empty($schemas))
+        {
+            $schemas[] = $fallbackSchema;
+        }
+
+        return $schemas;
     }
 
     /**
@@ -52,16 +75,16 @@ trait HasSchemas
      */
     protected function setSearchPath(string $schema): void
     {
-        $defaultSchema = $this->getDefaultSchema();
+        $fallbackSchema = $this->getFallbackSchema();
 
         $schemas = $this->getSchemas();
 
         if (!in_array($schema, $schemas))
         {
-            $schema = $defaultSchema;
+            $schema = $fallbackSchema;
         }
 
-        DB::statement("SET search_path TO $schema, $defaultSchema");
+        DB::statement("SET search_path TO $schema, $fallbackSchema");
 
         Session::put(UserConfiguration::SCHEMA, $schema);
     }

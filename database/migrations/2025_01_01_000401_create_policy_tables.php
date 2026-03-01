@@ -28,7 +28,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $schema = $this->getDefaultSchema();
+        $schema = $this->getFallbackSchema();
 
         if (!Schema::hasTable("$schema." . Permission::TABLE))
         {
@@ -59,7 +59,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        $schema = $this->getDefaultSchema();
+        $schema = $this->getFallbackSchema();
 
         Schema::dropIfExists("$schema." . UserPermission::TABLE);
         Schema::dropIfExists("$schema." . UserRole::TABLE);

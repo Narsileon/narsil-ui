@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $schema = $this->getDefaultSchema();
+        $schema = $this->getFallbackSchema();
 
         if (!Schema::hasTable("$schema." . Job::TABLE))
         {
@@ -48,7 +48,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        $schema = $this->getDefaultSchema();
+        $schema = $this->getFallbackSchema();
 
         Schema::dropIfExists("$schema." . FailedJob::TABLE);
         Schema::dropIfExists("$schema." . JobBatch::TABLE);

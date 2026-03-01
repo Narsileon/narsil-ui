@@ -25,7 +25,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $schema = $this->getDefaultSchema();
+        $schema = $this->getFallbackSchema();
 
         if (!Schema::hasTable("$schema." . User::TABLE))
         {
@@ -48,7 +48,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        $schema = $this->getDefaultSchema();
+        $schema = $this->getFallbackSchema();
 
         Schema::dropIfExists("$schema." . Session::TABLE);
         Schema::dropIfExists("$schema." . PasswordResetToken::TABLE);
