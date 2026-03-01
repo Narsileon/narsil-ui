@@ -44,7 +44,7 @@ function DataTableProvider({
 
   const [tableState, setTableState] = useState<Partial<TableState>>({
     columnFilters: initialState.column_filters,
-    columnOrder: initialState.column_order,
+    columnOrder: getColumnOrder(),
     columnVisibility: initialState.column_visibility,
     globalFilter: initialState.global_filter,
     pagination: {
@@ -55,6 +55,24 @@ function DataTableProvider({
     sorting: initialState.sorting,
     ...state,
   });
+
+  function getColumnOrder() {
+    const columnIds = columns
+      .map((column) => {
+        return column.id!;
+      })
+      .filter(Boolean);
+
+    const validColumns = initialState.column_order.filter((id) => {
+      return columnIds.includes(id);
+    });
+
+    const missingColumns = columnIds.filter((id) => {
+      return !validColumns.includes(id);
+    });
+
+    return [...validColumns, ...missingColumns];
+  }
 
   function handleStateChange(updater: Updater<TableState>) {
     setTableState((old) => {
