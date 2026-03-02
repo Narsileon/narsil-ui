@@ -40,7 +40,7 @@ class TanStackTableMigration extends Migration
      */
     protected readonly string $schema;
 
-    #endreigon
+    #endregion
 
     #region PUBLIC METHODS
 
