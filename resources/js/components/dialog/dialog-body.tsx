@@ -6,7 +6,7 @@ function DialogBody({ className, ...props }: ComponentProps<"div">) {
     <div
       data-slot="dialog-body"
       className={cn(
-        "flex w-full flex-col gap-4 overflow-hidden overflow-y-auto p-4 text-center sm:text-left",
+        "grid w-full gap-4 overflow-hidden overflow-y-auto p-4 text-center sm:text-left",
         className,
       )}
       {...props}

@@ -4,6 +4,7 @@
 import TabsList from "./tabs-list";
 import TabsPanel from "./tabs-panel";
 import TabsRoot from "./tabs-root";
+import TabsSeparator from "./tabs-separator";
 import TabsTab from "./tabs-tab";
 
-export { TabsList, TabsPanel, TabsRoot, TabsTab };
+export { TabsList, TabsPanel, TabsRoot, TabsSeparator, TabsTab };

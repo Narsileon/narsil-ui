@@ -10,12 +10,7 @@ function TabsRoot({ className, orientation, ...props }: Tabs.Root.Props) {
   return (
     <Tabs.Root
       data-slot="tabs-root"
-      className={cn(
-        "group/tabs",
-        "flex gap-2",
-        "data-[orientation=horizontal]:flex-col",
-        className,
-      )}
+      className={cn("group/tabs", "flex", "data-[orientation=horizontal]:flex-col", className)}
       orientation={orientation}
       {...props}
     />

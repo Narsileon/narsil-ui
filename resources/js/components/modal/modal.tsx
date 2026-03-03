@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from "@narsil-ui/components/dialog";
 import { useTranslator } from "@narsil-ui/components/translator";
+import { cn } from "@narsil-ui/lib/utils";
 import { type ModalData } from "@narsil-ui/stores/modal-store";
 import { useEffect, useState, type ComponentProps, type ComponentType } from "react";
 
@@ -65,12 +66,16 @@ function Modal({ modal, onClose, ...props }: ModalProps) {
     <DialogRoot open={true} onOpenChange={(open) => !open && onClose()}>
       <DialogPortal>
         <DialogBackdrop />
-        <DialogPopup className="overflow-hidden" variant={modal.variant} {...props}>
+        <DialogPopup
+          className={cn("overflow-hidden", modal.variant === "default" && "md:min-h-1/2")}
+          variant={modal.variant}
+          {...props}
+        >
           <DialogHeader className="border-b">
             <DialogTitle>{modal.props.title}</DialogTitle>
           </DialogHeader>
           <DialogDescription className="sr-only">{modal.props.description}</DialogDescription>
-          <DialogBody className="p-0">
+          <DialogBody className="grow p-0">
             {Component ? <Component modal={modal} {...modal.props} /> : null}
           </DialogBody>
         </DialogPopup>

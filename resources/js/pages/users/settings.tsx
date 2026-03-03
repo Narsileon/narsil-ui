@@ -1,6 +1,6 @@
 import { Icon } from "@narsil-ui/components/icon";
 import { Separator } from "@narsil-ui/components/separator";
-import { TabsList, TabsPanel, TabsRoot, TabsTab } from "@narsil-ui/components/tabs";
+import { TabsList, TabsPanel, TabsRoot, TabsSeparator, TabsTab } from "@narsil-ui/components/tabs";
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { FormData, UserData } from "@narsil-ui/types";
 import UserConfiguration from "./configuration";
@@ -32,7 +32,7 @@ function UserSettings({
 
   return (
     <TabsRoot defaultValue={auth ? "account" : "configuration"} orientation="vertical">
-      <TabsList className="border-b px-4 md:p-0">
+      <TabsList className="px-4 md:p-0">
         {auth ? (
           <TabsTab value="account">
             <Icon name="user-edit" />
@@ -50,6 +50,7 @@ function UserSettings({
           </TabsTab>
         ) : null}
       </TabsList>
+      <TabsSeparator />
       {auth ? (
         <TabsPanel value="account">
           <UserProfile auth={auth} form={profileForm} />

@@ -6,9 +6,9 @@ function TabsTab({ className, ...props }: Tabs.Tab.Props) {
     <Tabs.Tab
       data-slot="tabs-trigger"
       className={cn(
-        "inline-flex h-9 shrink-0 cursor-pointer items-center gap-2 rounded-md border border-transparent px-3 py-2 whitespace-nowrap text-foreground transition-[color,box-shadow]",
+        "inline-flex h-9 shrink-0 cursor-pointer items-center gap-2 rounded-md border border-transparent px-3 py-2 whitespace-nowrap text-foreground ring-2 ring-transparent transition-all outline-none",
         "disabled:pointer-events-none disabled:opacity-50",
-        "focus-visible:bg-accent",
+        "focus-visible:ring-primary",
         "hover:bg-accent hover:text-accent-foreground",
         "data-[orientation=horizontal]:justify-center data-[orientation=vertical]:justify-start",
         "data-[orientation=vertical]:w-full",
