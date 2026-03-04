@@ -1,6 +1,7 @@
 // https://ui.shadcn.com/docs/components/base/combobox
 // https://base-ui.com/react/components/combobox
 
+import AsyncCombobox from "./aync-combobox";
 import Combobox from "./combobox";
 import ComboboxChip from "./combobox-chip";
 import ComboboxChipRemove from "./combobox-chip-remove";
@@ -27,6 +28,7 @@ import ComboboxVirtualItem from "./combobox-virtual-item";
 import ComboboxVirtualList from "./combobox-virtual-list";
 
 export {
+  AsyncCombobox,
   Combobox,
   ComboboxChip,
   ComboboxChipRemove,

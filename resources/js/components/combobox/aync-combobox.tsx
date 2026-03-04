@@ -1,4 +1,3 @@
-import { router } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
 import {
   ComboboxChip,
@@ -16,7 +15,6 @@ import {
   ComboboxRoot,
   ComboboxTrigger,
   ComboboxValue,
-  ComboboxVirtualList,
 } from "@narsil-ui/components/combobox";
 import { InputGroupInput } from "@narsil-ui/components/input-group";
 import { useTranslator } from "@narsil-ui/components/translator";
@@ -24,46 +22,45 @@ import { getTranslatableData, getUntranslatableData } from "@narsil-ui/lib/data"
 import { cn } from "@narsil-ui/lib/utils";
 import type { OptionData, UniqueIdentifier } from "@narsil-ui/types";
 import parse from "html-react-parser";
-import { isArray, isEmpty, lowerCase } from "lodash-es";
-import { Fragment, useMemo, useRef, useState } from "react";
+import { debounce, isArray, isEmpty, lowerCase } from "lodash-es";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { route } from "ziggy-js";
 
-type ComboboxProps = {
+type AsyncComboboxProps = {
   className?: string;
   clearable?: boolean;
   disabled?: boolean;
   displayValue?: boolean;
+  fetchParams?: Record<string, any>;
+  fetchRoute: string;
   id: string;
   labelPath?: string;
+  minSearchLength?: number;
   multiple?: boolean;
-  options: OptionData[] | string[];
   placeholder?: string;
-  reload?: string;
   required?: boolean;
-  searchable?: boolean;
   value: UniqueIdentifier | UniqueIdentifier[];
   valuePath?: string;
   setValue: (value: UniqueIdentifier | UniqueIdentifier[]) => void;
 };
 
-function Combobox({
+function AsyncCombobox({
   className,
   clearable = false,
   disabled,
   displayValue = true,
-  id,
+  fetchParams = {},
+  fetchRoute,
   labelPath = "label",
+  minSearchLength = 3,
   multiple = false,
-  options = [],
   placeholder,
   required,
-  reload,
   value,
   valuePath = "value",
   setValue,
-}: ComboboxProps) {
+}: AsyncComboboxProps) {
   const { locale, trans } = useTranslator();
-
-  const virtualized = options.length > 50;
 
   if (multiple && !isArray(value)) {
     value = value ? [value] : [];
@@ -71,12 +68,14 @@ function Combobox({
 
   const anchor = useRef<HTMLDivElement>(null);
 
-  const [open, setOpen] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState<string>("");
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState<OptionData[]>([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const filteredItems = useMemo(() => {
-    if (!searchValue) {
-      return options;
+    if (!searchValue || searchValue.length < minSearchLength) {
+      return [];
     }
 
     const searchedLabel = lowerCase(searchValue);
@@ -98,83 +97,84 @@ function Combobox({
     );
   }, [options, selectedValues, valuePath]);
 
+  async function fetchOptions(search?: string) {
+    if (!search || search.length < minSearchLength) {
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const url = new URL(route(fetchRoute, fetchParams), window.location.origin);
+
+      url.searchParams.set("search", search);
+
+      const response = await fetch(url.toString(), {
+        headers: { Accept: "application/json" },
+      });
+
+      const data = await response.json();
+
+      setOptions((prev) => {
+        const merged = [...prev, ...(data ?? [])];
+
+        const seen = new Set<UniqueIdentifier>();
+
+        return merged.filter((item) => {
+          const value = getUntranslatableData(item, valuePath);
+
+          if (seen.has(value)) {
+            return false;
+          }
+
+          seen.add(value);
+
+          return true;
+        });
+      });
+    } catch (error) {
+      console.error("AsyncCombobox fetch error:", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const debouncedFetch = useMemo(() => debounce(fetchOptions, 400), []);
+
+  useEffect(() => {
+    if (open) {
+      debouncedFetch(searchValue);
+    }
+  }, [open, searchValue]);
+
   function onSelect(selectedValue: UniqueIdentifier) {
     if (!selectedValue) {
       return;
     }
 
     if (multiple) {
-      if (Array.isArray(selectedValue)) {
-        setValue(selectedValue);
-      } else if (selectedValues.includes(selectedValue)) {
+      if (selectedValues.includes(selectedValue)) {
         setValue(selectedValues.filter((x) => x !== selectedValue));
       } else {
         setValue([...selectedValues, selectedValue]);
       }
     } else {
-      if (selectedValue === value) {
-        if (!clearable) {
-          setOpen(false);
-
-          return;
-        }
-        setValue("");
-      } else {
-        setValue(selectedValue);
-      }
+      setValue(selectedValue);
+      setOpen(false);
     }
-
-    if (reload) {
-      router.reload({ data: { [id]: selectedValue }, only: [reload] });
-    }
-
-    setOpen(false);
-  }
-
-  function findOptionByValue(value: string) {
-    return options.find((option) => getUntranslatableData(option, valuePath) === value);
   }
 
   return (
     <ComboboxRoot
       filteredItems={filteredItems}
       items={options}
-      itemToStringLabel={
-        multiple
-          ? () => ""
-          : (item) => {
-              const option = findOptionByValue(item as string);
-
-              if (!option) {
-                return item as string;
-              }
-
-              return getTranslatableData(option as OptionData, labelPath, locale);
-            }
-      }
-      itemToStringValue={
-        multiple
-          ? () => ""
-          : (item) => {
-              const option = findOptionByValue(item as string);
-
-              if (!option) {
-                return item as string;
-              }
-
-              return getUntranslatableData(option, valuePath);
-            }
-      }
       multiple={multiple ? undefined : false}
       onInputValueChange={setSearchValue}
       onOpenChange={setOpen}
       open={open}
-      onValueChange={(value) => {
-        onSelect(value as string);
-      }}
+      onValueChange={(value) => onSelect(value as string)}
       required={required}
       value={value}
-      virtualized={virtualized}
     >
       {multiple ? (
         <ComboboxChips ref={anchor}>
@@ -189,6 +189,7 @@ function Combobox({
                   if (!option) {
                     return null;
                   }
+
                   const optionLabel = getTranslatableData(option, labelPath, locale);
 
                   return (
@@ -228,41 +229,22 @@ function Combobox({
                 disabled={disabled}
               />
             )}
+            {loading && <div className="p-2 text-sm text-muted-foreground">...</div>}
             <ComboboxEmpty>{trans("pagination.pages_empty")}</ComboboxEmpty>
             <ComboboxList>
-              {virtualized ? (
-                <ComboboxVirtualList
-                  enabled={open}
-                  filteredItems={filteredItems}
-                  render={({ item, ...props }: any) => {
-                    const optionLabel = getTranslatableData(item, labelPath, locale);
-                    const optionValue = getUntranslatableData(item, valuePath);
+              {(item) => {
+                const optionLabel = getTranslatableData(item, labelPath, locale);
+                const optionValue = getUntranslatableData(item, valuePath);
 
-                    return (
-                      <ComboboxListItem
-                        displayValue={displayValue}
-                        label={optionLabel}
-                        value={optionValue}
-                        {...props}
-                      />
-                    );
-                  }}
-                />
-              ) : (
-                (item) => {
-                  const optionLabel = getTranslatableData(item, labelPath, locale);
-                  const optionValue = getUntranslatableData(item, valuePath);
-
-                  return (
-                    <ComboboxListItem
-                      displayValue={displayValue}
-                      label={optionLabel}
-                      value={optionValue}
-                      key={optionValue}
-                    />
-                  );
-                }
-              )}
+                return (
+                  <ComboboxListItem
+                    displayValue={displayValue}
+                    label={optionLabel}
+                    value={optionValue}
+                    key={optionValue}
+                  />
+                );
+              }}
             </ComboboxList>
           </ComboboxPopup>
         </ComboboxPositioner>
@@ -271,4 +253,4 @@ function Combobox({
   );
 }
 
-export default Combobox;
+export default AsyncCombobox;
