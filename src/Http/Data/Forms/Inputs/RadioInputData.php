@@ -15,7 +15,7 @@ use Narsil\Base\Http\Data\OptionData;
  * @author Jonathan Rigaux
  *
  * @property boolean $defaultValue The value of the "default value" attribute.
- * @property OptionData $options The value of the "options" attribute.
+ * @property OptionData[] $options The value of the "options" attribute.
  */
 class RadioInputData extends InputData
 {
@@ -23,7 +23,7 @@ class RadioInputData extends InputData
 
     /**
      * @param string $defaultValue The value of the "default value" attribute.
-     * @param OptionData $options The value of the "options" attribute.
+     * @param OptionData[] $options The value of the "options" attribute.
      *
      * @return void
      */

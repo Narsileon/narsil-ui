@@ -18,7 +18,7 @@ use Narsil\Base\Support\TranslationsBag;
  * @property string $defaultValue The value of the "default value" attribute.
  * @property boolean $multiple The value of the "multiple" attribute.
  * @property string $placeholder The value of the "placeholder" attribute.
- * @property OptionData $options The value of the "options" attribute.
+ * @property OptionData[] $options The value of the "options" attribute.
  */
 class SelectInputData extends InputData
 {
@@ -28,7 +28,7 @@ class SelectInputData extends InputData
      * @param string $defaultValue The value of the "default value" attribute.
      * @param boolean $multiple The value of the "multiple" attribute.
      * @param string $placeholder The value of the "placeholder" attribute.
-     * @param OptionData $options The value of the "options" attribute.
+     * @param OptionData[] $options The value of the "options" attribute.
      *
      * @return void
      */

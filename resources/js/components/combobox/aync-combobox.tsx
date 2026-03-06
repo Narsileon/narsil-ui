@@ -34,6 +34,7 @@ type AsyncComboboxProps = {
   fetchParams?: Record<string, any>;
   fetchRoute: string;
   id: string;
+  initialOptions?: OptionData[];
   labelPath?: string;
   minSearchLength?: number;
   multiple?: boolean;
@@ -51,6 +52,7 @@ function AsyncCombobox({
   displayValue = true,
   fetchParams = {},
   fetchRoute,
+  initialOptions = [],
   labelPath = "label",
   minSearchLength = 3,
   multiple = false,
@@ -70,7 +72,7 @@ function AsyncCombobox({
 
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [options, setOptions] = useState<OptionData[]>([]);
+  const [options, setOptions] = useState<OptionData[]>(initialOptions);
   const [searchValue, setSearchValue] = useState("");
 
   const filteredItems = useMemo(() => {
