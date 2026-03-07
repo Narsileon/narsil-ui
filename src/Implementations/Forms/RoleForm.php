@@ -5,7 +5,6 @@ namespace Narsil\Base\Implementations\Forms;
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Narsil\Base\Contracts\Forms\RoleForm as Contract;
 use Narsil\Base\Http\Data\Forms\FieldData;
@@ -16,6 +15,7 @@ use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Policies\Permission;
 use Narsil\Base\Models\Policies\Role;
+use Narsil\Base\Services\FormService;
 use Narsil\Base\Services\ModelService;
 use Narsil\Base\Services\RouteService;
 
@@ -83,7 +83,7 @@ class RoleForm extends Form implements Contract
      */
     protected function getPermissionElements(): array
     {
-        $options = $this->getPermissionOptions();
+        $options = FormService::getOptions(Permission::class);
 
         return $options
             ->groupBy(function (OptionData $option)
@@ -105,19 +105,6 @@ class RoleForm extends Form implements Contract
             })
             ->values()
             ->toArray();
-    }
-
-    /**
-     * @return Collection<OptionData>
-     */
-    protected function getPermissionOptions(): Collection
-    {
-        return Permission::query()
-            ->get()
-            ->map(function (Permission $permission)
-            {
-                return $permission->toOption();
-            });
     }
 
     #endregion
