@@ -53,36 +53,6 @@ abstract class Form extends Fluent implements Contract
     /**
      * {@inheritDoc}
      */
-    public function action(string $action): static
-    {
-        $this->set('action', $action);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function defaultLanguage(string $defaultLanguage): static
-    {
-        $this->set('defaultLanguage', $defaultLanguage);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function id(string $id): static
-    {
-        $this->set('id', $id);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function languages(array $locales): static
     {
         $options = [];
@@ -98,46 +68,6 @@ abstract class Form extends Fluent implements Contract
         }
 
         $this->set('languages', $options);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function method(string $method): static
-    {
-        $this->set('method', $method);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function routes(array $routes): static
-    {
-        $this->set('routes', $routes);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function submitIcon(?string $submitIcon): static
-    {
-        $this->set('submitIcon', $submitIcon);
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function submitLabel(string $submitLabel): static
-    {
-        $this->set('submitLabel', $submitLabel);
 
         return $this;
     }

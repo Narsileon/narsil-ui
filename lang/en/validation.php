@@ -215,6 +215,7 @@ return [
         'id'                      => 'ID',
         'identifier'              => 'identifier',
         'label'                   => 'label',
+        'labelPath'               => 'label path',
         'language'                => 'language',
         'last_name'               => 'last name',
         'max'                     => 'max',
@@ -251,5 +252,6 @@ return [
         'updated_by'              => 'updated by',
         'uuid'                    => 'UUID',
         'value'                   => 'value',
+        'valuePath'               => 'value path',
     ],
 ];
