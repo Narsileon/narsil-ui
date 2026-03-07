@@ -15,6 +15,8 @@ use Narsil\Base\Support\TranslationsBag;
  * @author Jonathan Rigaux
  *
  * @property boolean $defaultValue The value of the "default value" attribute.
+ * @property string $labelPath The value of the "label path" attribute.
+ * @property string $valuePath The value of the "value path" attribute.
  * @property OptionData[]|null $options The value of the "options" attribute.
  */
 class CheckboxInputData extends InputData
@@ -29,10 +31,14 @@ class CheckboxInputData extends InputData
      */
     public function __construct(
         bool $defaultValue = false,
+        string $labelPath = 'label',
+        string $valuePath = 'value',
         ?array $options = null,
     )
     {
         $this->set(self::DEFAULT_VALUE, $defaultValue);
+        $this->set(self::LABEL_PATH, $labelPath);
+        $this->set(self::VALUE_PATH, $valuePath);
         $this->set(self::OPTIONS, $options);
 
         parent::__construct(static::TYPE);
@@ -43,11 +49,25 @@ class CheckboxInputData extends InputData
     #region CONSTANTS
 
     /**
+     * The name of the "label path" attribute.
+     *
+     * @var string
+     */
+    final public const LABEL_PATH = 'labelPath';
+
+    /**
      * The name of the "options" attribute.
      *
      * @var string
      */
     final public const OPTIONS = 'options';
+
+    /**
+     * The name of the "value path" attribute.
+     *
+     * @var string
+     */
+    final public const VALUE_PATH = 'valuePath';
 
     /**
      * The name of the "type" attribute.

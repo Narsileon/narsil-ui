@@ -5,6 +5,7 @@ namespace Narsil\Base\Implementations\Forms;
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Narsil\Base\Contracts\Forms\UserForm as Contract;
 use Narsil\Base\Enums\AutoCompleteEnum;
 use Narsil\Base\Http\Data\Forms\FieldData;
@@ -14,6 +15,7 @@ use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\TextInputData;
+use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Policies\Role;
 use Narsil\Base\Models\User;
@@ -49,6 +51,8 @@ class UserForm extends Form implements Contract
      */
     protected function getSteps(): array
     {
+        $roleOptions = $this->getRoleOptions();
+
         return [
             new FormStepData(
                 id: 'account',
@@ -112,12 +116,25 @@ class UserForm extends Form implements Contract
                     new FieldData(
                         id: User::RELATION_ROLES,
                         input: new CheckboxInputData(
-                            options: Role::options(),
+                            options: $roleOptions->toArray(),
                         ),
                     ),
                 ],
             ),
         ];
+    }
+
+    /**
+     * @return Collection<OptionData>
+     */
+    protected function getRoleOptions(): Collection
+    {
+        return Role::query()
+            ->get()
+            ->map(function (Role $role)
+            {
+                return $role->toOption();
+            });
     }
 
     #endregion

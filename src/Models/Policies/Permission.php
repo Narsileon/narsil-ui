@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Cache;
 use Narsil\Base\Http\Data\OptionData;
+use Narsil\Base\Interfaces\Searchable;
 use Narsil\Base\Models\User;
 use Narsil\Base\Observers\ModelObserver;
 use Narsil\Base\Traits\AuditLoggable;
 use Narsil\Base\Traits\Blameable;
 use Narsil\Base\Traits\HasDatetimes;
+use Narsil\Base\Traits\HasIdentifier;
 use Narsil\Base\Traits\HasRoles;
 use Narsil\Base\Traits\HasTranslations;
 
@@ -25,11 +26,12 @@ use Narsil\Base\Traits\HasTranslations;
  * @author Jonathan Rigaux
  */
 #[ObservedBy(ModelObserver::class)]
-class Permission extends Model
+class Permission extends Model implements Searchable
 {
     use AuditLoggable;
     use Blameable;
     use HasDatetimes;
+    use HasIdentifier;
     use HasRoles;
     use HasTranslations;
 
@@ -115,28 +117,17 @@ class Permission extends Model
 
     #region PUBLIC METHODS
 
-        #region PUBLIC METHODS
-
     /**
-     * Get the permissions as options.
-     *
-     * @return OptionData[]
+     * {@inheritDoc}
      */
-    public static function options(): array
+    public function toOption(): OptionData
     {
-        return Cache::tags([self::TABLE])
-            ->rememberForever('options', function ()
-            {
-                return self::all()
-                    ->map(function (Permission $permission)
-                    {
-                        return new OptionData(
-                            label: $permission->{self::LABEL},
-                            value: $permission->{self::ID},
-                        )->name($permission->{self::NAME});
-                    })
-                    ->all();
-            });
+        return new OptionData(
+            label: $this->{self::LABEL},
+            value: $this->{self::ID},
+        )
+            ->identifier($this->{self::ATTRIBUTE_IDENTIFIER})
+            ->name($this->{self::NAME});
     }
 
     #endregion

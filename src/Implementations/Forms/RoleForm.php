@@ -5,6 +5,7 @@ namespace Narsil\Base\Implementations\Forms;
 #region USE
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Narsil\Base\Contracts\Forms\RoleForm as Contract;
 use Narsil\Base\Http\Data\Forms\FieldData;
@@ -43,39 +44,6 @@ class RoleForm extends Form implements Contract
     #region PROTECTED METHODS
 
     /**
-     * @return array
-     */
-    protected function getPermissionElements(): array
-    {
-        $permissionOptions = Permission::options();
-
-        $groupedPermissionOptions = collect($permissionOptions)->groupBy(function (OptionData $option)
-        {
-            $key = Str::beforeLast($option->{Permission::NAME}, '_');
-
-            return ModelService::getTableLabel($key);
-        });
-
-        return $groupedPermissionOptions
-            ->sortBy(function ($options, $group)
-            {
-                return $group;
-            })
-            ->map(function ($options, $group)
-            {
-                return new FieldData(
-                    id: Role::RELATION_PERMISSIONS,
-                    label: $group,
-                    input: new CheckboxInputData(
-                        options: $options->toArray(),
-                    ),
-                );
-            })
-            ->values()
-            ->toArray();
-    }
-
-    /**
      * {@inheritDoc}
      */
     protected function getSteps(): array
@@ -108,6 +76,48 @@ class RoleForm extends Form implements Contract
                 elements: $permissionElements,
             ),
         ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getPermissionElements(): array
+    {
+        $options = $this->getPermissionOptions();
+
+        return $options
+            ->groupBy(function (OptionData $option)
+            {
+                $key = Str::beforeLast($option->{Permission::NAME}, '_');
+
+                return ModelService::getTableLabel($key);
+            })
+            ->sortKeys()
+            ->map(function ($options, $group)
+            {
+                return new FieldData(
+                    id: Role::RELATION_PERMISSIONS,
+                    label: $group,
+                    input: new CheckboxInputData(
+                        options: $options->toArray(),
+                    ),
+                );
+            })
+            ->values()
+            ->toArray();
+    }
+
+    /**
+     * @return Collection<OptionData>
+     */
+    protected function getPermissionOptions(): Collection
+    {
+        return Permission::query()
+            ->get()
+            ->map(function (Permission $permission)
+            {
+                return $permission->toOption();
+            });
     }
 
     #endregion
