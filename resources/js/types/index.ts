@@ -42,6 +42,7 @@ export type FormData = {
   id: string;
   languages: OptionData[];
   method: string;
+  options: Record<string, OptionData[]>;
   routes: RoutesData;
   steps: FormStepData[];
   submitIcon?: string | null;

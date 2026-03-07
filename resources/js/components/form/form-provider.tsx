@@ -20,6 +20,7 @@ function FormProvider({
   initialData = {},
   languages = [],
   method = "post",
+  options = {},
   registry: overrides = {},
   render,
 }: FormProviderProps) {
@@ -72,6 +73,7 @@ function FormProvider({
     isDirty: isDirty,
     languages: languages,
     method: method,
+    options: options,
     processing: processing,
     registry: Object.assign(overrides, registry),
     cancel: cancel,

@@ -47,7 +47,7 @@ abstract class RedirectController
     {
         $to = request(self::TO, $to);
 
-        if (!$to || request()->get(self::BACK))
+        if (!$to || request()->input(self::BACK))
         {
             return back()
                 ->with('data', $data);

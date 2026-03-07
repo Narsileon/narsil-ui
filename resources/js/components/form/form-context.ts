@@ -10,6 +10,7 @@ export type FormContextProps = Partial<InertiaFormProps<Record<string, any>>> & 
   id: string;
   languages: OptionData[];
   method: string;
+  options: Record<string, OptionData[]>;
   registry: Registry;
   setFormLanguage: (value: string) => void;
 };

@@ -2,6 +2,7 @@ import { FieldDescription, FieldError, FieldLabel, FieldRoot } from "@narsil-ui/
 import { FormField, FormFieldLanguage, useForm } from "@narsil-ui/components/form";
 import { Icon } from "@narsil-ui/components/icon";
 import type { FieldData, FieldsetData } from "@narsil-ui/types";
+import { set } from "lodash-es";
 import { type ReactNode } from "react";
 import { getField } from "./inputs";
 
@@ -11,13 +12,19 @@ type FormElementProps = (FieldsetData | FieldData) & {
 };
 
 function FormElement({ onChange, render, ...props }: FormElementProps) {
-  const { registry } = useForm();
+  const { options, registry } = useForm();
 
   if ("elements" in props) {
     return render?.(props);
   }
 
   const { className, description, id, input, label, required, translatable, width } = props;
+
+  const initialOptions = options[id];
+
+  if (initialOptions) {
+    set(props, "input.initialOptions", initialOptions);
+  }
 
   return (
     <FormField
