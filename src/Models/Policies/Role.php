@@ -49,6 +49,7 @@ class Role extends Model implements Searchable
 
         $this->mergeGuarded([
             self::ID,
+            self::RELATION_PERMISSIONS,
         ]);
 
         parent::__construct($attributes);
