@@ -5,6 +5,7 @@ namespace Narsil\Base\Http\Collections;
 #region USE
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,14 @@ class DataTableCollection extends ResourceCollection
         $tanStackTable = TanStackTable::firstOrCreate([
             TanStackTable::USER_ID => Auth::id(),
             TanStackTable::TABLE_NAME => $table,
-        ])->refresh();
+        ], [
+            TanStackTable::SORTING => [
+                [
+                    'id' => Model::UPDATED_AT,
+                    'desc' => true
+                ],
+            ],
+        ]);
 
         $this->tableData = TableData::fromModel($tanStackTable);
 
