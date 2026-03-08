@@ -12,7 +12,6 @@ use Narsil\Base\Http\Data\Forms\FieldData;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property string|null $id The value of the "id" attribute.

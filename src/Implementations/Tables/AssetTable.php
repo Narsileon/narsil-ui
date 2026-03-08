@@ -13,7 +13,6 @@ use Narsil\Base\Models\Storages\Asset;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class AssetTable extends Table

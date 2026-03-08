@@ -21,7 +21,6 @@ use Narsil\Base\Http\Data\Forms\Inputs\WeekInputData;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property string $id The id of the column.

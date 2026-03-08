@@ -16,7 +16,6 @@ use Narsil\Base\Services\TableService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property string $table_name The name of the table.

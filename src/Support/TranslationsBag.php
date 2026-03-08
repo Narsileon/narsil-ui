@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 final class TranslationsBag

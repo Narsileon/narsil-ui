@@ -10,7 +10,6 @@ use Narsil\Base\Contracts\FormRequest as Contract;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 abstract class FormRequest extends BaseFormRequest implements Contract

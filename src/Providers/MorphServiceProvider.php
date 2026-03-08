@@ -13,7 +13,6 @@ use Illuminate\Support\ServiceProvider;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class MorphServiceProvider extends ServiceProvider

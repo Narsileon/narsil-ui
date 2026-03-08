@@ -10,7 +10,6 @@ use Narsil\Base\Contracts\Resource as Contract;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class Resource extends JsonResource implements Contract

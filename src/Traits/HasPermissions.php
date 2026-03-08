@@ -11,7 +11,6 @@ use Narsil\Base\Models\Policies\Role;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 trait HasPermissions

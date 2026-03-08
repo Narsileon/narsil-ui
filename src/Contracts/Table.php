@@ -9,7 +9,6 @@ use Narsil\Base\Http\Data\TanStackTables\ColumnDefData;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 interface Table

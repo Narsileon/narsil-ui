@@ -22,7 +22,6 @@ use Narsil\Base\Services\RouteService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class RoleForm extends Form implements Contract

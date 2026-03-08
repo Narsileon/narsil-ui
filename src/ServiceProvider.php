@@ -9,7 +9,6 @@ use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class ServiceProvider extends BaseServiceProvider
@@ -34,6 +33,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__ . '/../config/bindings/actions.php', 'narsil.bindings.actions');
         $this->mergeConfigFrom(__DIR__ . '/../config/bindings/forms.php', 'narsil.bindings.forms');
         $this->mergeConfigFrom(__DIR__ . '/../config/bindings/requests.php', 'narsil.bindings.requests');
         $this->mergeConfigFrom(__DIR__ . '/../config/bindings/resources.php', 'narsil.bindings.resources');

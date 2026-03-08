@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Config;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class WithoutSsrMiddleware

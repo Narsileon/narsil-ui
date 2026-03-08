@@ -21,7 +21,6 @@ use Narsil\Base\Support\TranslationsBag;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class UserConfigurationEditController extends RenderController

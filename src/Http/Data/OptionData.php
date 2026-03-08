@@ -9,7 +9,6 @@ use Illuminate\Support\Fluent;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property string|array $label The label of the option.

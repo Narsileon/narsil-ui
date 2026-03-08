@@ -14,7 +14,6 @@ use Illuminate\Queue\SerializesModels;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 abstract class Job implements ShouldQueue

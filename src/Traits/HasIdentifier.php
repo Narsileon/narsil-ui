@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 trait HasIdentifier

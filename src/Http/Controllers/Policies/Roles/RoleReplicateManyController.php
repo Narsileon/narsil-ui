@@ -6,6 +6,7 @@ namespace Narsil\Base\Http\Controllers\Policies\Roles;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Narsil\Base\Contracts\Actions\Roles\ReplicateRole;
 use Narsil\Base\Enums\AbilityEnum;
 use Narsil\Base\Enums\ModelEventEnum;
 use Narsil\Base\Http\Controllers\RedirectController;
@@ -16,7 +17,6 @@ use Narsil\Base\Services\ModelService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class RoleReplicateManyController extends RedirectController
@@ -40,7 +40,8 @@ class RoleReplicateManyController extends RedirectController
 
         foreach ($roles as $role)
         {
-            RoleReplicateController::replicate($role);
+            app(ReplicateRole::class)
+                ->run($role);
         }
 
         return back()

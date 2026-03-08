@@ -10,7 +10,6 @@ use Illuminate\Http\RedirectResponse;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 abstract class RedirectController

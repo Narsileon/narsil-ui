@@ -9,7 +9,6 @@ use Illuminate\Support\Fluent;
 #endregionx
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property string $type The value of the "type" attribute.

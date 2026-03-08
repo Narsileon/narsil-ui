@@ -6,6 +6,8 @@ namespace Narsil\Base\Http\Controllers\Users;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
+use Narsil\Base\Contracts\Actions\Users\SyncUserPermissions;
+use Narsil\Base\Contracts\Actions\Users\SyncUserRoles;
 use Narsil\Base\Contracts\Requests\UserFormRequest;
 use Narsil\Base\Enums\ModelEventEnum;
 use Narsil\Base\Http\Controllers\RedirectController;
@@ -15,7 +17,6 @@ use Narsil\Base\Services\ModelService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class UserUpdateController extends RedirectController
@@ -40,9 +41,10 @@ class UserUpdateController extends RedirectController
 
         $user->update($attributes);
 
-        $user
-            ->roles()
-            ->sync(Arr::get($attributes, User::RELATION_ROLES, []));
+        app(SyncUserRoles::class)
+            ->run($user, Arr::get($attributes, User::RELATION_ROLES, []));
+        app(SyncUserPermissions::class)
+            ->run($user, Arr::get($attributes, User::RELATION_PERMISSIONS, []));
 
         return $this
             ->redirect(route('users.index'))

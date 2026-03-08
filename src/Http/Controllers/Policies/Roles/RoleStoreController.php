@@ -6,6 +6,7 @@ namespace Narsil\Base\Http\Controllers\Policies\Roles;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Arr;
+use Narsil\Base\Contracts\Actions\Roles\SyncRolePermissions;
 use Narsil\Base\Contracts\Requests\RoleFormRequest;
 use Narsil\Base\Enums\ModelEventEnum;
 use Narsil\Base\Http\Controllers\RedirectController;
@@ -15,7 +16,6 @@ use Narsil\Base\Services\ModelService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class RoleStoreController extends RedirectController
@@ -33,9 +33,8 @@ class RoleStoreController extends RedirectController
 
         $role = Role::create($attributes);
 
-        $role
-            ->permissions()
-            ->sync(Arr::get($attributes, Role::RELATION_PERMISSIONS, []));
+        app(SyncRolePermissions::class)
+            ->run($role, Arr::get($attributes, Role::RELATION_PERMISSIONS, []));
 
         return $this
             ->redirect(route('roles.index'))

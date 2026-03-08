@@ -17,7 +17,6 @@ use Narsil\Base\Services\RouteService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class PermissionForm extends Form implements Contract

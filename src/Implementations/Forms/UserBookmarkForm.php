@@ -14,7 +14,6 @@ use Narsil\Base\Models\Users\UserBookmark;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class UserBookmarkForm extends Form implements Contract

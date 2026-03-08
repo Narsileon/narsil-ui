@@ -12,7 +12,6 @@ use Narsil\Base\Models\User;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class UserResource extends Resource implements Contract

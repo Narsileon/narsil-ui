@@ -196,6 +196,7 @@ return [
     'attributes' => [
         'accept'                  => 'accept',
         'address'                 => 'address',
+        'alt'                     => 'alt',
         'autoComplete'            => 'auto complete',
         'avatar'                  => 'avatar',
         'city'                    => 'city',
@@ -211,6 +212,7 @@ return [
         'description'             => 'description',
         'email_verified_at'       => 'email verified at',
         'email'                   => 'email',
+        'file'                    => 'file',
         'first_name'              => 'first name',
         'id'                      => 'ID',
         'identifier'              => 'identifier',

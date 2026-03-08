@@ -11,7 +11,6 @@ use Narsil\Base\Http\Data\OptionData;
 #endregionx
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property boolean $defaultValue The value of the "default value" attribute.

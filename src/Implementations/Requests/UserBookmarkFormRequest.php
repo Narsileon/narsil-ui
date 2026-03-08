@@ -12,7 +12,6 @@ use Narsil\Base\Validation\FormRule;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class UserBookmarkFormRequest extends FormRequest implements Contract

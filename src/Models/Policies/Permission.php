@@ -22,7 +22,6 @@ use Narsil\Base\Traits\HasTranslations;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 #[ObservedBy(ModelObserver::class)]

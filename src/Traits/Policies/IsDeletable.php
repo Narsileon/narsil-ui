@@ -12,7 +12,6 @@ use Narsil\Base\Services\PermissionService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 trait IsDeletable

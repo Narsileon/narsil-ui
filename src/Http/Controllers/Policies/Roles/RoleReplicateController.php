@@ -6,6 +6,7 @@ namespace Narsil\Base\Http\Controllers\Policies\Roles;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Narsil\Base\Contracts\Actions\Roles\ReplicateRole;
 use Narsil\Base\Enums\AbilityEnum;
 use Narsil\Base\Enums\ModelEventEnum;
 use Narsil\Base\Http\Controllers\RedirectController;
@@ -17,7 +18,6 @@ use Narsil\Base\Services\ModelService;
 #endregion
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  */
 class RoleReplicateController extends RedirectController
@@ -34,30 +34,12 @@ class RoleReplicateController extends RedirectController
     {
         $this->authorize(AbilityEnum::CREATE, Role::class);
 
-        static::replicate($role);
+        app(ReplicateRole::class)
+            ->run($role);
 
         return back()
             ->with('success', ModelService::getSuccessMessage(Role::TABLE, ModelEventEnum::REPLICATED));
     }
-
-    /**
-     * @param Role $role
-     *
-     * @return void
-     */
-    public static function replicate(Role $role): void
-    {
-        $replicated = $role->replicate();
-
-        $replicated
-            ->fill([
-                Role::NAME => DatabaseService::generateUniqueValue($replicated, Role::NAME, $role->{Role::NAME}),
-            ])
-            ->save();
-
-        $replicated->permissions()->sync($role->{Role::RELATION_PERMISSIONS}->pluck(Permission::ID)->toArray());
-    }
-
 
     #endregion
 }

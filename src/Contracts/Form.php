@@ -3,7 +3,6 @@
 namespace Narsil\Base\Contracts;
 
 /**
- * @version 1.0.0
  * @author Jonathan Rigaux
  *
  * @property string $action
