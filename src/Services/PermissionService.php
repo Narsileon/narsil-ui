@@ -43,7 +43,7 @@ abstract class PermissionService
      */
     public static function getName(string $table, AbilityEnum $ability): string
     {
-        return $table . '_' . $ability->value;
+        return $table . ':' . $ability->value;
     }
 
     #endregion

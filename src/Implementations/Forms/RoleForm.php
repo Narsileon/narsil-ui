@@ -88,7 +88,7 @@ class RoleForm extends Form implements Contract
         return $options
             ->groupBy(function (OptionData $option)
             {
-                $key = Str::beforeLast($option->{Permission::NAME}, '_');
+                $key = Str::beforeLast($option->{Permission::NAME}, ':');
 
                 return ModelService::getTableLabel($key);
             })
