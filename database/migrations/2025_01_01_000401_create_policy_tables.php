@@ -99,7 +99,8 @@ return new class extends Migration
                 ->constrained("$schema." . User::TABLE, User::ID)
                 ->nullOnDelete();
             $blueprint
-                ->timestamp(Permission::UPDATED_AT);
+                ->timestamp(Permission::UPDATED_AT)
+                ->index();
             $blueprint
                 ->foreignId(Role::UPDATED_BY)
                 ->nullable()
@@ -135,7 +136,8 @@ return new class extends Migration
                 ->constrained("$schema." . User::TABLE, User::ID)
                 ->nullOnDelete();
             $blueprint
-                ->timestamp(Role::UPDATED_AT);
+                ->timestamp(Role::UPDATED_AT)
+                ->index();
             $blueprint
                 ->foreignId(Role::UPDATED_BY)
                 ->nullable()

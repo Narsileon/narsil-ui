@@ -165,7 +165,8 @@ return new class extends Migration
                 ->bigInteger(User::CREATED_BY)
                 ->nullable();
             $blueprint
-                ->timestamp(User::UPDATED_AT);
+                ->timestamp(User::UPDATED_AT)
+                ->index();
             $blueprint
                 ->bigInteger(User::UPDATED_BY)
                 ->nullable();
