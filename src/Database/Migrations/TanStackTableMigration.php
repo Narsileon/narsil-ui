@@ -114,6 +114,7 @@ class TanStackTableMigration extends Migration
                 ->nullable();
             $blueprint
                 ->json(TanStackTable::SORTING)
+                ->default('[{"id":"updated_at","desc":true}]')
                 ->nullable();
             $blueprint
                 ->timestamps();

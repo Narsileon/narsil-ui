@@ -45,21 +45,12 @@ class DataTableCollection extends ResourceCollection
 
         $this->table = $template;
 
-        $tanStackTable = TanStackTable::query()
-            ->where(TanStackTable::USER_ID, Auth::id())
-            ->where(TanStackTable::TABLE_NAME, $table)
-            ->first();
+        $tanStackTable = TanStackTable::firstOrCreate([
+            TanStackTable::USER_ID => Auth::id(),
+            TanStackTable::TABLE_NAME => $table,
+        ])->refresh();
 
-        if ($tanStackTable)
-        {
-            $this->tableData = TableData::fromModel($tanStackTable);
-        }
-        else
-        {
-            $this->tableData = new TableData(
-                tableName: $table,
-            );
-        }
+        $this->tableData = TableData::fromModel($tanStackTable);
 
         $this->tableData->applyGlobalFilter($query);
         $this->tableData->applyColumnFilters($query);
