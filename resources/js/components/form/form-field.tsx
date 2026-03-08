@@ -119,7 +119,13 @@ function FormField({ conditions, id, input, render, translatable }: FormFieldPro
         onFieldChange: (value) => {
           const key = translatable ? `${id}.${fieldLanguage}` : id;
 
-          setData?.(key, value);
+          setData?.((data: Record<string, any>) => ({
+            ...data,
+            [id]: {
+              ...data[id],
+              [fieldLanguage]: value,
+            },
+          }));
         },
         setFieldLanguage: setFieldLanguage,
       })}
