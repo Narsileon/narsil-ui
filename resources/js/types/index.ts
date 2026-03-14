@@ -1,7 +1,4 @@
-import { type TableData } from "@narsil-ui/components/data-table";
-import { PaginationLinks, PaginationMeta } from "@narsil-ui/components/pagination";
 import { type IconName } from "@narsil-ui/registries/icons";
-import { type ColumnDef } from "@tanstack/react-table";
 
 export type BookmarkData = {
   name: string;
@@ -13,17 +10,6 @@ export type ConditionData = {
   handle: string;
   operator: string;
   value: string;
-};
-
-export type DataTableCollection<T = TableData> = {
-  data: T[];
-  links: PaginationLinks;
-  meta: PaginationMeta & {
-    columns: ColumnDef<T>[];
-    routes: RoutesData;
-    tableData: TableStateData;
-    [key: string]: unknown;
-  };
 };
 
 export type FieldsetData = {
@@ -83,17 +69,6 @@ export type OptionData<T = unknown> = {
 
 export type RoutesData = Record<string, string> & {
   parameters?: Record<string, unknown>;
-};
-
-export type TableStateData = {
-  column_filters: { id: string; value: unknown }[];
-  column_order: string[];
-  column_visibility: Record<string, boolean>;
-  global_filter: string;
-  page_size: number;
-  row_selection: Record<string, boolean>;
-  sorting: { id: string; desc: boolean }[];
-  table_name: string;
 };
 
 export type UniqueIdentifier = number | string;

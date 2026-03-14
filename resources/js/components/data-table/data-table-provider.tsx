@@ -1,5 +1,4 @@
 import { router } from "@inertiajs/react";
-import type { TableStateData } from "@narsil-ui/types";
 import {
   getCoreRowModel,
   TableState,
@@ -10,14 +9,16 @@ import {
 } from "@tanstack/react-table";
 import { useRef, useState, type ReactNode } from "react";
 import { route } from "ziggy-js";
-import { type TableData } from ".";
+import { type DataTableData, type DataTableState } from ".";
 import { DataTableContext } from "./data-table-context";
 
-type DataTableProviderProps = Partial<Omit<TableOptions<TableData>, "columns" | "initialState">> & {
+type DataTableProviderProps = Partial<
+  Omit<TableOptions<DataTableData>, "columns" | "initialState">
+> & {
   children: ReactNode;
-  columns: ColumnDef<TableData>[];
-  data: TableData[];
-  initialState: TableStateData;
+  columns: ColumnDef<DataTableData>[];
+  data: DataTableData[];
+  initialState: DataTableState;
 };
 
 function DataTableProvider({
@@ -40,7 +41,7 @@ function DataTableProvider({
   state,
   ...props
 }: DataTableProviderProps) {
-  const ref = useRef<TableStateData>(null);
+  const ref = useRef<DataTableState>(null);
 
   const [tableState, setTableState] = useState<Partial<TableState>>({
     columnFilters: initialState.column_filters,
@@ -78,7 +79,7 @@ function DataTableProvider({
     setTableState((old) => {
       const next = typeof updater === "function" ? updater(old as TableState) : updater;
 
-      const tableData = {
+      const state = {
         column_filters: next.columnFilters,
         column_order: next.columnOrder,
         column_visibility: next.columnVisibility,
@@ -90,10 +91,10 @@ function DataTableProvider({
         table_name: initialState.table_name,
       };
 
-      if (JSON.stringify(tableData) !== JSON.stringify(ref.current)) {
-        ref.current = tableData;
+      if (JSON.stringify(state) !== JSON.stringify(ref.current)) {
+        ref.current = state;
 
-        router.post(route("narsil.data-tables.save"), tableData, {
+        router.post(route("narsil.data-tables.save"), state as any, {
           preserveState: true,
           preserveScroll: true,
           replace: true,
@@ -104,7 +105,7 @@ function DataTableProvider({
     });
   }
 
-  const dataTable = useReactTable<TableData>({
+  const dataTable = useReactTable<DataTableData>({
     ...props,
     columnResizeMode: columnResizeMode,
     columns: columns,

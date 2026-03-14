@@ -4,7 +4,10 @@ namespace Narsil\Base\Implementations;
 
 #region USE
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Narsil\Base\Contracts\Table as Contract;
+use Narsil\Base\Models\Users\TanStackTable;
 use Narsil\Base\Services\RouteService;
 
 #endregion
@@ -72,6 +75,32 @@ abstract class Table implements Contract
         }
 
         return $columnVisibility;
+    }
+
+    /**
+     * @return Collection<TanStackTable>
+     */
+    public function presets(): Collection
+    {
+        return once(function ()
+        {
+            $presets = TanStackTable::query()
+                ->where(TanStackTable::TABLE_NAME, $this->name)
+                ->where(TanStackTable::USER_ID,  Auth::id())
+                ->get();
+
+            if ($presets->count() === 0)
+            {
+                TanStackTable::factory(
+                    [
+                        TanStackTable::USER_ID => Auth::id(),
+                        TanStackTable::TABLE_NAME => $this->name,
+                    ]
+                )->create();
+            }
+
+            return $presets;
+        });
     }
 
     /**

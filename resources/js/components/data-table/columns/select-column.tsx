@@ -1,9 +1,9 @@
 import { Checkbox } from "@narsil-ui/components/checkbox";
-import { type TableData } from "@narsil-ui/components/data-table";
+import { type DataTableData } from "@narsil-ui/components/data-table";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { ColumnDef } from "@tanstack/react-table";
 
-function getSelectColumn(): ColumnDef<TableData> {
+function getSelectColumn(): ColumnDef<DataTableData> {
   const { trans } = useTranslator();
 
   return {

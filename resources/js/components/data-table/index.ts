@@ -1,3 +1,6 @@
+import { type PaginationLinks, PaginationMeta } from "@narsil-ui/components/pagination";
+import type { RoutesData } from "@narsil-ui/types";
+import { type ColumnDef } from "@tanstack/react-table";
 import getMenuColumn from "./columns/menu-column";
 import getSelectColumn from "./columns/select-column";
 import DataTable from "./data-table";
@@ -13,9 +16,32 @@ import DataTableRowMenu from "./data-table-row-menu";
 import DataTableSelection from "./data-table-selection";
 import DataTableSettings from "./data-table-settings";
 
-type TableData = {
+type DataTableData = {
   id: number;
   [key: string]: unknown;
+};
+
+type DataTableCollection<T = DataTableData> = {
+  data: T[];
+  links: PaginationLinks;
+  meta: PaginationMeta & {
+    columns: ColumnDef<T>[];
+    presets: string[];
+    routes: RoutesData;
+    state: DataTableState;
+    [key: string]: unknown;
+  };
+};
+
+type DataTableState = {
+  column_filters: { id: string; value: unknown }[];
+  column_order: string[];
+  column_visibility: Record<string, boolean>;
+  global_filter: string;
+  page_size: number;
+  row_selection: Record<string, boolean>;
+  sorting: { id: string; desc: boolean }[];
+  table_name: string;
 };
 
 export {
@@ -35,4 +61,4 @@ export {
   useDataTable,
 };
 
-export type { TableData };
+export type { DataTableCollection, DataTableData, DataTableState };

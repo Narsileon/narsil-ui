@@ -4,7 +4,9 @@ namespace Narsil\Base\Contracts;
 
 #region USE
 
+use Illuminate\Support\Collection;
 use Narsil\Base\Http\Data\TanStackTables\ColumnDefData;
+use Narsil\Base\Models\Users\TanStackTable;
 
 #endregion
 
@@ -39,6 +41,13 @@ interface Table
      * @return array
      */
     public function columnVisibility(array $columns): array;
+
+    /**
+     * Get the presets associated with the table.
+     *
+     * @return Collection<TanStackTable>
+     */
+    public function presets(): Collection;
 
     /**
      * Get the routes associated with the table.

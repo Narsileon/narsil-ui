@@ -5,10 +5,8 @@ namespace Narsil\Base\Http\Collections;
 #region USE
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\Auth;
 use JsonSerializable;
 use Narsil\Base\Contracts\Table;
 use Narsil\Base\Enums\OperatorEnum;
@@ -28,15 +26,17 @@ class DataTableCollection extends ResourceCollection
     /**
      * @param Builder $query
      * @param string $table
+     * @param string|null $preset
      *
      * @return void
      */
     public function __construct(
         Builder $query,
         string $table,
+        ?string $preset = null
     )
     {
-        $template = app()->bound("tables.$table")
+        $this->table = app()->bound("tables.$table")
             ? app()->make("tables.$table", [
                 'table' => $table,
             ])
@@ -44,19 +44,12 @@ class DataTableCollection extends ResourceCollection
                 'table' => $table,
             ]);
 
-        $this->table = $template;
-
-        $tanStackTable = TanStackTable::firstOrCreate([
-            TanStackTable::USER_ID => Auth::id(),
-            TanStackTable::TABLE_NAME => $table,
-        ], [
-            TanStackTable::SORTING => [
-                [
-                    'id' => Model::UPDATED_AT,
-                    'desc' => true
-                ],
-            ],
-        ]);
+        $tanStackTable = $this->table->presets()
+            ->first(function ($item) use ($preset)
+            {
+                return $item->getAttribute(TanStackTable::NAME) === $preset
+                    || $item->getOriginal(TanStackTable::NAME) === null;
+            });
 
         $this->tableData = TableData::fromModel($tanStackTable);
 
@@ -127,8 +120,9 @@ class DataTableCollection extends ResourceCollection
         return [
             'meta' => [
                 'columns' => $columns,
+                'presets' => $this->table->presets()->pluck(TanStackTable::NAME)->toArray(),
                 'routes' => $this->table->routes(),
-                'tableData' => $this->tableData,
+                'state' => $this->tableData,
             ],
         ];
     }

@@ -4,9 +4,13 @@ namespace Narsil\Base\Models\Users;
 
 #region USE
 
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Narsil\Base\Database\Factories\TanStackTableFactory;
 use Narsil\Base\Models\User;
 use Narsil\Base\Traits\HasUuidPrimaryKey;
 
@@ -15,8 +19,10 @@ use Narsil\Base\Traits\HasUuidPrimaryKey;
 /**
  * @author Jonathan Rigaux
  */
+#[UseFactory(TanStackTableFactory::class)]
 class TanStackTable extends Model
 {
+    use HasFactory;
     use HasUuidPrimaryKey;
 
     #region CONSTRUCTOR
@@ -154,6 +160,29 @@ class TanStackTable extends Model
                 self::USER_ID,
                 User::class,
             );
+    }
+
+    #endregion
+
+    #endregion
+
+    #region PROTECTED METHODS
+
+    #region • ACCESSORS
+
+    /**
+     * Get the "extension" attribute.
+     *
+     * @return string
+     */
+    protected function extension(): Attribute
+    {
+        return Attribute::make(
+            get: function ($value)
+            {
+                return $value ?? trans('narsil::ui.default');
+            },
+        );
     }
 
     #endregion

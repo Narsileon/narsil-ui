@@ -1,7 +1,7 @@
 import { Link, router } from "@inertiajs/react";
 import { useAlertDialog } from "@narsil-ui/components/alert-dialog";
 import { Button } from "@narsil-ui/components/button";
-import { type TableData } from "@narsil-ui/components/data-table";
+import { type DataTableData } from "@narsil-ui/components/data-table";
 import {
   DropdownMenuItem,
   DropdownMenuPopup,
@@ -24,7 +24,7 @@ type DataTableRowMenuProps = Omit<ComponentProps<typeof DropdownMenuTrigger>, "i
   id?: UniqueIdentifier;
   modal?: boolean;
   routes: RoutesData;
-  table?: Table<TableData>;
+  table?: Table<DataTableData>;
 };
 
 function DataTableRowMenu({ id, modal = false, routes, table, ...props }: DataTableRowMenuProps) {

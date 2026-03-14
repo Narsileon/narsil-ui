@@ -1,7 +1,8 @@
 import { Link } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
 import {
-  type TableData,
+  type DataTableCollection,
+  type DataTableData,
   DataTable,
   DataTableProvider,
   getMenuColumn,
@@ -13,7 +14,6 @@ import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/component
 import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { useMinSm } from "@narsil-ui/hooks/use-breakpoints";
-import type { DataTableCollection } from "@narsil-ui/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { route } from "ziggy-js";
 
@@ -34,7 +34,7 @@ function ResourceIndex({ collection, title }: ResourceIndexProps) {
   const menuColumn = getMenuColumn(collection.meta.routes);
   const selectColumn = getSelectColumn();
 
-  const finalColumns: ColumnDef<TableData>[] = [
+  const finalColumns: ColumnDef<DataTableData>[] = [
     ...(collection.meta.selectable !== false ? [selectColumn] : []),
     ...collection.meta.columns,
     ...(hasMenu ? [menuColumn] : []),
@@ -43,7 +43,7 @@ function ResourceIndex({ collection, title }: ResourceIndexProps) {
     <DataTableProvider
       data={collection.data}
       columns={finalColumns}
-      initialState={collection.meta.tableData}
+      initialState={collection.meta.state}
     >
       <SectionRoot className="h-full animate-in gap-2 p-4 fade-in-0">
         <SectionHeader className="flex items-center justify-between gap-2">

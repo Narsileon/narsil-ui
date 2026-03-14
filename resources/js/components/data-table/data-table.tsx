@@ -8,6 +8,7 @@ import {
   DataTableSelection,
   DataTableSettings,
   useDataTable,
+  type DataTableCollection,
 } from "@narsil-ui/components/data-table";
 import { Icon } from "@narsil-ui/components/icon";
 import { Pagination } from "@narsil-ui/components/pagination";
@@ -21,7 +22,7 @@ import {
   TableWrapper,
 } from "@narsil-ui/components/table";
 import { cn } from "@narsil-ui/lib/utils";
-import type { DataTableCollection, UniqueIdentifier } from "@narsil-ui/types";
+import type { UniqueIdentifier } from "@narsil-ui/types";
 import { flexRender } from "@tanstack/react-table";
 import { upperFirst } from "lodash-es";
 import { ComponentProps } from "react";
