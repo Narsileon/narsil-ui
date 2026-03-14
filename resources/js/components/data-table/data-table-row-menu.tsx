@@ -43,7 +43,7 @@ function DataTableRowMenu({ id, modal = false, routes, table, ...props }: DataTa
           render={
             <Button
               aria-label={trans("ui.menu")}
-              size="icon-sm"
+              size="icon"
               variant="ghost-secondary"
               onClick={(event) => event.stopPropagation()}
             >

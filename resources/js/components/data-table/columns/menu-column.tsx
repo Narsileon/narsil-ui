@@ -21,7 +21,7 @@ function getMenuColumn(routes: RoutesData): ColumnDef<TableData> {
     enableHiding: false,
     enableSorting: false,
     meta: {
-      className: "min-w-12 w-12 max-w-12 sticky right-0 mask-l-from-85% mask-no-repeat",
+      className: "min-w-13 w-13 max-w-13 sticky right-0 mask-l-from-85% mask-no-repeat",
     },
   };
 }

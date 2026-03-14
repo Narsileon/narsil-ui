@@ -30,7 +30,7 @@ function DataTableHeadSort({ className, header, ...props }: DataTableHeadSortPro
       <Button
         aria-label={label}
         className={className}
-        size="icon-sm"
+        size="icon"
         variant="ghost-secondary"
         onClick={header.column.getToggleSortingHandler()}
         {...props}

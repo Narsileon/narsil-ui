@@ -71,6 +71,18 @@ const buttonVariants = cva(
         link: "",
       },
     },
+    compoundVariants: [
+      {
+        class: "rounded-full",
+        size: "icon",
+        variant: "ghost",
+      },
+      {
+        class: "rounded-full",
+        size: "icon",
+        variant: "ghost-secondary",
+      },
+    ],
     defaultVariants: {
       variant: "primary",
       size: "default",
