@@ -5,6 +5,7 @@ namespace Narsil\Base\Services;
 #region USE
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 use Locale;
 use Narsil\Base\Http\Data\OptionData;
 use ResourceBundle;
@@ -21,18 +22,29 @@ abstract class LocaleService
     /**
      * Get the country options.
      *
+     * @param string[] $countries
+     *
      * @return array<OptionData>
      */
-    public static function countryOptions(): array
+    public static function countryOptions(?array $countries = null): array
     {
-        return collect(ResourceBundle::getLocales(''))
-            ->map(function ($locale)
+        if ($countries)
+        {
+            $codes = collect($countries);
+        }
+        else
+        {
+            $codes = collect(ResourceBundle::getLocales(''))
+                ->map(function ($locale)
+                {
+                    return Locale::getRegion($locale);
+                });
+        }
+
+        return $codes
+            ->filter(function ($code)
             {
-                return Locale::getRegion($locale);
-            })
-            ->filter(function ($region)
-            {
-                return preg_match('/^[A-Z]{2}$/', $region);
+                return Str::length($code) === 2 && ctype_alpha($code);
             })
             ->unique()
             ->map(function ($code)
@@ -61,18 +73,29 @@ abstract class LocaleService
     /**
      * Get the language options.
      *
+     * @param string[] $languages
+     *
      * @return array<SelectOption>
      */
-    public static function languageOptions(): array
+    public static function languageOptions(?array $languages = null): array
     {
-        return collect(ResourceBundle::getLocales(''))
-            ->map(function ($locale)
-            {
-                return Locale::getPrimaryLanguage($locale);
-            })
+        if ($languages)
+        {
+            $codes = collect($languages);
+        }
+        else
+        {
+            $codes = collect(ResourceBundle::getLocales(''))
+                ->map(function ($locale)
+                {
+                    return Locale::getPrimaryLanguage($locale);
+                });
+        }
+
+        return $codes
             ->filter(function ($code)
             {
-                return preg_match('/^[a-z]{2}$/i', $code);
+                return Str::length($code) === 2 && ctype_alpha($code);
             })
             ->unique()
             ->map(function ($code)
@@ -97,7 +120,6 @@ abstract class LocaleService
             ->values()
             ->all();
     }
-
 
     #endregion
 }
