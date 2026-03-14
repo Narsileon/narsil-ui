@@ -53,6 +53,11 @@ class TanStackTableFormRequest extends FormRequest implements Contract
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
             ],
+            TanStackTable::PRESET_UUID => [
+                FormRule::STRING,
+                FormRule::SOMETIMES,
+                FormRule::NULLABLE,
+            ],
             TanStackTable::ROW_SELECTION => [
                 FormRule::ARRAY,
                 FormRule::SOMETIMES,
@@ -62,10 +67,6 @@ class TanStackTableFormRequest extends FormRequest implements Contract
                 FormRule::ARRAY,
                 FormRule::SOMETIMES,
                 FormRule::NULLABLE,
-            ],
-            TanStackTable::TABLE_NAME => [
-                FormRule::STRING,
-                FormRule::REQUIRED,
             ],
         ];
     }

@@ -41,7 +41,7 @@ function DataTableProvider({
   state,
   ...props
 }: DataTableProviderProps) {
-  const ref = useRef<DataTableState>(null);
+  const ref = useRef<Partial<DataTableState>>(null);
 
   const [tableState, setTableState] = useState<Partial<TableState>>({
     columnFilters: initialState.column_filters,
@@ -80,6 +80,7 @@ function DataTableProvider({
       const next = typeof updater === "function" ? updater(old as TableState) : updater;
 
       const state = {
+        _method: "patch",
         column_filters: next.columnFilters,
         column_order: next.columnOrder,
         column_visibility: next.columnVisibility,
@@ -88,15 +89,14 @@ function DataTableProvider({
         page_size: next.pagination?.pageSize,
         row_selection: next.rowSelection,
         sorting: next.sorting,
-        table_name: initialState.table_name,
       };
 
       if (JSON.stringify(state) !== JSON.stringify(ref.current)) {
         ref.current = state;
 
-        router.post(route("narsil.data-tables.save"), state as any, {
-          preserveState: true,
+        router.post(route("narsil.tables.update", initialState.uuid), state as any, {
           preserveScroll: true,
+          preserveState: true,
           replace: true,
         });
       }
@@ -128,7 +128,7 @@ function DataTableProvider({
   });
 
   return (
-    <DataTableContext.Provider value={{ table_name: initialState.table_name, ...dataTable }}>
+    <DataTableContext.Provider value={{ uuid: initialState.uuid, ...dataTable }}>
       {children}
     </DataTableContext.Provider>
   );

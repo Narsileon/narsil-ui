@@ -1,6 +1,13 @@
 import { Form } from "@base-ui/react";
 import { useForm } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
+import {
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardRoot,
+  CardTitle,
+} from "@narsil-ui/components/card";
 import { Combobox } from "@narsil-ui/components/combobox";
 import { useDataTable } from "@narsil-ui/components/data-table";
 import { FieldLabel, FieldRoot } from "@narsil-ui/components/field";
@@ -13,7 +20,6 @@ import {
   PopoverRoot,
   PopoverTrigger,
 } from "@narsil-ui/components/popover";
-import { Separator } from "@narsil-ui/components/separator";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { useState, type ComponentProps, type SubmitEvent } from "react";
 
@@ -53,68 +59,74 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
       <PopoverTrigger {...props} />
       <PopoverPortal>
         <PopoverPositioner>
-          <PopoverPopup>
-            <Form id={FORM_ID} className="flex flex-col gap-4" onSubmit={onSubmit}>
-              <FieldRoot>
-                <FieldLabel required={true}>{trans("data-table.column")}</FieldLabel>
-                <Combobox
-                  id="id"
-                  options={columns.map((column) => {
-                    return {
-                      value: column.id,
-                      label: column.columnDef.header as string,
-                    };
-                  })}
-                  required={true}
-                  value={data.id}
-                  setValue={(value) => {
-                    setColumn(columns.find((column) => column.id === value) ?? columns[0]);
-
-                    setData({
-                      id: value as string,
-                      operator: "",
-                      value: "",
-                    });
-                  }}
-                />
-              </FieldRoot>
-              {column ? (
-                <>
+          <PopoverPopup className="border-none p-0">
+            <CardRoot>
+              <CardHeader className="border-b">
+                <CardTitle>{trans("data-table.filters")}</CardTitle>
+              </CardHeader>
+              <CardContent className="gap-y-0">
+                <Form id={FORM_ID} className="flex flex-col gap-4" onSubmit={onSubmit}>
                   <FieldRoot>
-                    <FieldLabel required={true}>{trans("data-table.operator")}</FieldLabel>
+                    <FieldLabel required={true}>{trans("data-table.column")}</FieldLabel>
                     <Combobox
-                      id="operator"
-                      displayValue={false}
-                      options={column.columnDef.meta?.operators || []}
+                      id="id"
+                      options={columns.map((column) => {
+                        return {
+                          value: column.id,
+                          label: column.columnDef.header as string,
+                        };
+                      })}
                       required={true}
-                      value={data.operator}
+                      value={data.id}
                       setValue={(value) => {
-                        setData("operator", value as string);
+                        setColumn(columns.find((column) => column.id === value) ?? columns[0]);
+
+                        setData({
+                          id: value as string,
+                          operator: "",
+                          value: "",
+                        });
                       }}
                     />
                   </FieldRoot>
-                  <FieldRoot>
-                    <FieldLabel required={true}>{trans("data-table.filter")}</FieldLabel>
-                    <Input
-                      id="value"
-                      required={true}
-                      type={column.columnDef.meta?.type}
-                      value={data.value}
-                      onValueChange={(value) => {
-                        setData("value", value);
-                      }}
-                    />
-                  </FieldRoot>
-                </>
-              ) : null}
-              <Separator />
-              <div className="flex items-center justify-between">
+                  {column ? (
+                    <>
+                      <FieldRoot>
+                        <FieldLabel required={true}>{trans("data-table.operator")}</FieldLabel>
+                        <Combobox
+                          id="operator"
+                          displayValue={false}
+                          options={column.columnDef.meta?.operators || []}
+                          required={true}
+                          value={data.operator}
+                          setValue={(value) => {
+                            setData("operator", value as string);
+                          }}
+                        />
+                      </FieldRoot>
+                      <FieldRoot>
+                        <FieldLabel required={true}>{trans("data-table.filter")}</FieldLabel>
+                        <Input
+                          id="value"
+                          required={true}
+                          type={column.columnDef.meta?.type}
+                          value={data.value}
+                          onValueChange={(value) => {
+                            setData("value", value);
+                          }}
+                        />
+                      </FieldRoot>
+                    </>
+                  ) : null}
+                </Form>
+              </CardContent>
+              <CardFooter className="justify-between border-t">
                 <PopoverClose render={<Button variant="secondary">{trans("ui.cancel")}</Button>} />
                 <Button form={FORM_ID} variant="primary" type="submit">
                   {trans("ui.apply")}
                 </Button>
-              </div>
-            </Form>
+              </CardFooter>
+            </CardRoot>
           </PopoverPopup>
         </PopoverPositioner>
       </PopoverPortal>

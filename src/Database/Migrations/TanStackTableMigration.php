@@ -7,6 +7,7 @@ namespace Narsil\Base\Database\Migrations;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Narsil\Base\Models\User;
 use Narsil\Base\Models\Users\TanStackTable;
 
 #endregion
@@ -86,10 +87,18 @@ class TanStackTableMigration extends Migration
                 ->uuid(TanStackTable::UUID)
                 ->primary();
             $blueprint
-                ->bigInteger(TanStackTable::USER_ID);
+                ->foreignId(TanStackTable::USER_ID)
+                ->constrained(User::TABLE, User::ID)
+                ->cascadeOnDelete();
             $blueprint
                 ->string(TanStackTable::TABLE_NAME)
                 ->index();
+            $blueprint
+                ->uuid(TanStackTable::MASTER_UUID)
+                ->nullable();
+            $blueprint
+                ->uuid(TanStackTable::PRESET_UUID)
+                ->nullable();
             $blueprint
                 ->string(TanStackTable::NAME)
                 ->nullable()
@@ -117,6 +126,22 @@ class TanStackTableMigration extends Migration
                 ->nullable();
             $blueprint
                 ->timestamps();
+        });
+
+        Schema::table("$schema." . TanStackTable::TABLE, function (Blueprint $blueprint) use ($schema)
+        {
+            $blueprint
+                ->foreign(TanStackTable::MASTER_UUID)
+                ->nullable()
+                ->references(TanStackTable::UUID)
+                ->on($schema . '.' . TanStackTable::TABLE)
+                ->cascadeOnDelete();
+            $blueprint
+                ->foreign(TanStackTable::PRESET_UUID)
+                ->nullable()
+                ->references(TanStackTable::UUID)
+                ->on($schema . '.' . TanStackTable::TABLE)
+                ->nullOnDelete();
         });
     }
 

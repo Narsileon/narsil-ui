@@ -5,7 +5,7 @@ function CardFooter({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       data-slot="card-footer"
-      className={cn("flex items-center px-4 pb-4 [.border-t]:pt-4", className)}
+      className={cn("flex items-center px-4 pb-2 [.border-t]:pt-2", className)}
       {...props}
     />
   );

@@ -85,18 +85,22 @@ abstract class Table implements Contract
         return once(function ()
         {
             $presets = TanStackTable::query()
+                ->with([
+                    TanStackTable::RELATION_PRESET,
+                ])
                 ->where(TanStackTable::TABLE_NAME, $this->name)
                 ->where(TanStackTable::USER_ID,  Auth::id())
+                ->orderBy(TanStackTable::CREATED_AT)
                 ->get();
 
             if ($presets->count() === 0)
             {
-                TanStackTable::factory(
+                $presets->push(TanStackTable::factory(
                     [
                         TanStackTable::USER_ID => Auth::id(),
                         TanStackTable::TABLE_NAME => $this->name,
                     ]
-                )->create();
+                )->create());
             }
 
             return $presets;

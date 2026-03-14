@@ -6,7 +6,7 @@ function PopoverPopup({ className, ...props }: Popover.Popup.Props) {
     <Popover.Popup
       data-slot="popover-popup"
       className={cn(
-        "z-50 flex w-72 flex-col gap-2.5 rounded-lg bg-popover p-2.5 text-sm text-popover-foreground shadow-md ring-1 ring-foreground/10 outline-hidden duration-100",
+        "z-50 flex w-72 flex-col gap-2.5 rounded-lg border bg-popover p-2.5 text-sm text-popover-foreground shadow-md outline-hidden duration-100",
         "data-[side=bottom]:slide-in-from-top-2",
         "data-[side=inline-end]:slide-in-from-left-2",
         "data-[side=inline-start]:slide-in-from-right-2",

@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use JsonSerializable;
+use Narsil\Base\Contracts\Forms\TanStackTableForm;
 use Narsil\Base\Contracts\Table;
 use Narsil\Base\Enums\OperatorEnum;
-use Narsil\Base\Http\Data\TanStackTables\TableData;
+use Narsil\Base\Http\Data\TanStackTables\DataTableData;
+use Narsil\Base\Http\Data\TanStackTables\DataTablePreset;
 use Narsil\Base\Models\Users\TanStackTable;
 use Narsil\Base\Support\TranslationsBag;
 
@@ -26,14 +28,12 @@ class DataTableCollection extends ResourceCollection
     /**
      * @param Builder $query
      * @param string $table
-     * @param string|null $preset
      *
      * @return void
      */
     public function __construct(
         Builder $query,
         string $table,
-        ?string $preset = null
     )
     {
         $this->table = app()->bound("tables.$table")
@@ -44,14 +44,31 @@ class DataTableCollection extends ResourceCollection
                 'table' => $table,
             ]);
 
-        $tanStackTable = $this->table->presets()
-            ->first(function ($item) use ($preset)
+        $preset = request(self::PRESET);
+
+        $masterTable = $this->table->presets()
+            ->first(function ($item)
             {
-                return $item->getAttribute(TanStackTable::NAME) === $preset
-                    || $item->getOriginal(TanStackTable::NAME) === null;
+                return $item->getRawOriginal(TanStackTable::NAME) === null;
             });
 
-        $this->tableData = TableData::fromModel($tanStackTable);
+        if ($preset = request(self::PRESET))
+        {
+            $presetTable = $this->table->presets()
+                ->first(function ($item) use ($preset)
+                {
+                    return $item->{TanStackTable::UUID} === $preset;
+                });
+
+            if ($presetTable)
+            {
+                $masterTable->update([
+                    TanStackTable::PRESET_UUID => $presetTable->{TanStackTable::UUID},
+                ]);
+            }
+        }
+
+        $this->tableData = DataTableData::fromModel($masterTable->{TanStackTable::RELATION_PRESET} ?? $masterTable);
 
         $this->tableData->applyGlobalFilter($query);
         $this->tableData->applyColumnFilters($query);
@@ -76,6 +93,11 @@ class DataTableCollection extends ResourceCollection
      */
     public const PAGE = 'page';
 
+    /**
+     * @var string
+     */
+    public const PRESET = 'preset';
+
     #endregion
 
     #region PROPERTIES
@@ -86,9 +108,9 @@ class DataTableCollection extends ResourceCollection
     protected readonly Table $table;
 
     /**
-     * @var TableData
+     * @var DataTableData
      */
-    protected readonly TableData $tableData;
+    protected readonly DataTableData $tableData;
 
     /**
      * @var array<string,mixed>
@@ -116,11 +138,19 @@ class DataTableCollection extends ResourceCollection
     public function with($request): array
     {
         $columns = $this->table->columns();
+        $presets = $this->table->presets()
+            ->map(function ($preset)
+            {
+                return DataTablePreset::fromModel($preset);
+            });
 
         return [
             'meta' => [
                 'columns' => $columns,
-                'presets' => $this->table->presets()->pluck(TanStackTable::NAME)->toArray(),
+                'presets' => [
+                    'data' => $presets,
+                    'form' => TanStackTableForm::class,
+                ],
                 'routes' => $this->table->routes(),
                 'state' => $this->tableData,
             ],
@@ -147,6 +177,7 @@ class DataTableCollection extends ResourceCollection
             ->add('narsil::data-table.filters')
             ->add('narsil::data-table.operator')
             ->add('narsil::data-table.pagination')
+            ->add('narsil::data-table.preset')
             ->add('narsil::data-table.results')
             ->add('narsil::data-table.select_all')
             ->add('narsil::data-table.selection_empty')
@@ -170,6 +201,8 @@ class DataTableCollection extends ResourceCollection
             ->add('narsil::ui.hide')
             ->add('narsil::ui.menu')
             ->add('narsil::ui.move')
+            ->add('narsil::ui.move_down')
+            ->add('narsil::ui.move_up')
             ->add('narsil::ui.reset')
             ->add('narsil::ui.settings')
             ->add('narsil::ui.show')

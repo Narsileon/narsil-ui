@@ -11,6 +11,7 @@ return [
     'filters'            => 'Filters',
     'operator'           => 'Operator',
     'pagination'         => 'Rows per page',
+    'preset'             => 'Preset',
     'results'            => 'Page :current_page of :last_page',
     'row'                => 'Row',
     'rows'               => 'Rows',

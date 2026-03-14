@@ -87,6 +87,13 @@ class TanStackTable extends Model
     final public const GLOBAL_FILTER = 'global_filter';
 
     /**
+     * The name of the "master uuid" column.
+     *
+     * @var string
+     */
+    final public const MASTER_UUID = 'master_uuid';
+
+    /**
      * The name of the "name" column.
      *
      * @var string
@@ -99,6 +106,13 @@ class TanStackTable extends Model
      * @var string
      */
     final public const PAGE_SIZE = 'page_size';
+
+    /**
+     * The name of the "preset uuid" column.
+     *
+     * @var string
+     */
+    final public const PRESET_UUID = 'preset_uuid';
 
     /**
      * The name of the "row selection" column.
@@ -133,6 +147,20 @@ class TanStackTable extends Model
     #region • RELATIONS
 
     /**
+     * The name of the "master" relation.
+     *
+     * @var string
+     */
+    final public const RELATION_MASTER = 'master';
+
+    /**
+     * The name of the "preset" relation.
+     *
+     * @var string
+     */
+    final public const RELATION_PRESET = 'preset';
+
+    /**
      * The name of the "user" relation.
      *
      * @var string
@@ -146,6 +174,36 @@ class TanStackTable extends Model
     #region PUBLIC METHODS
 
     #region • RELATIONSHIPS
+
+    /**
+     * Get the associated master.
+     *
+     * @return BelongsTo
+     */
+    final public function master(): BelongsTo
+    {
+        return $this
+            ->belongsTo(
+                TanStackTable::class,
+                self::MASTER_UUID,
+                TanStackTable::UUID,
+            );
+    }
+
+    /**
+     * Get the associated preset.
+     *
+     * @return BelongsTo
+     */
+    final public function preset(): BelongsTo
+    {
+        return $this
+            ->belongsTo(
+                TanStackTable::class,
+                self::PRESET_UUID,
+                TanStackTable::UUID,
+            );
+    }
 
     /**
      * Get the associated user.
@@ -171,11 +229,11 @@ class TanStackTable extends Model
     #region • ACCESSORS
 
     /**
-     * Get the "extension" attribute.
+     * Get the "name" attribute.
      *
      * @return string
      */
-    protected function extension(): Attribute
+    protected function name(): Attribute
     {
         return Attribute::make(
             get: function ($value)

@@ -1,12 +1,13 @@
 import { router } from "@inertiajs/react";
 import {
+  DataTableColumns,
   DataTableFilters,
   DataTableHeadSort,
   DataTableInput,
   DataTablePageSize,
+  DataTablePresets,
   DataTableResults,
   DataTableSelection,
-  DataTableSettings,
   useDataTable,
   type DataTableCollection,
 } from "@narsil-ui/components/data-table";
@@ -60,8 +61,9 @@ function DataTable({ className, collection, ...props }: DataTableProps) {
   return (
     <div className={cn("flex flex-col gap-4", className)} {...props}>
       <div className="flex items-center justify-end gap-2">
+        <DataTablePresets presets={collection.meta.presets} />
         <DataTableInput />
-        <DataTableSettings />
+        <DataTableColumns />
       </div>
       <DataTableFilters />
       <TableWrapper>

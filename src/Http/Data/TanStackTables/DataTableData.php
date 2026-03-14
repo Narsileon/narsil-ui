@@ -18,7 +18,7 @@ use Narsil\Base\Services\TableService;
 /**
  * @author Jonathan Rigaux
  *
- * @property string $table_name The name of the table.
+ * @property string $uuid
  * @property array|null $column_filters The filters of the columns.
  * @property array|null $column_order The order of the columns.
  * @property array|null $column_visibility The visibility of the columns.
@@ -27,12 +27,12 @@ use Narsil\Base\Services\TableService;
  * @property array|null $row_selection The selected rows.
  * @property array|null $sorting The sorted columns.
  */
-class TableData extends Fluent
+class DataTableData extends Fluent
 {
     #region CONSTRUCTOR
 
     /**
-     * @param string $tableName
+     * @param string $uuid
      * @param array|null $columnFilters
      * @param array|null $columnOrder
      * @param array|null $columnVisibility
@@ -44,7 +44,7 @@ class TableData extends Fluent
      * @return void
      */
     public function __construct(
-        string $tableName,
+        string $uuid = '',
         ?array $columnFilters = null,
         ?array $columnOrder = null,
         ?array $columnVisibility = null,
@@ -54,14 +54,14 @@ class TableData extends Fluent
         ?array $sorting = null
     )
     {
-        $this->set('table_name', $tableName);
-        $this->set('column_filters', $columnFilters ?? []);
-        $this->set('column_order', $columnOrder ?? []);
-        $this->set('column_visibility', $columnVisibility ?? []);
-        $this->set('global_filter', $globalFilter ?? '');
-        $this->set('page_size', $pageSize ?? 10);
-        $this->set('row_selection', $rowSelection ?? []);
-        $this->set('sorting', $sorting ?? []);
+        $this->set(TanStackTable::COLUMN_FILTERS, $columnFilters ?? []);
+        $this->set(TanStackTable::COLUMN_ORDER, $columnOrder ?? []);
+        $this->set(TanStackTable::COLUMN_VISIBILITY, $columnVisibility ?? []);
+        $this->set(TanStackTable::GLOBAL_FILTER, $globalFilter ?? '');
+        $this->set(TanStackTable::PAGE_SIZE, $pageSize ?? 10);
+        $this->set(TanStackTable::ROW_SELECTION, $rowSelection ?? []);
+        $this->set(TanStackTable::SORTING, $sorting ?? []);
+        $this->set(TanStackTable::UUID, $uuid);
     }
 
     #endregion
@@ -71,12 +71,11 @@ class TableData extends Fluent
     /**
      * @param TanStackTable $tanStacktable
      *
-     * @return TableData
+     * @return DataTableData
      */
-    public static function fromModel(TanStackTable $tanStacktable): TableData
+    public static function fromModel(TanStackTable $tanStacktable): DataTableData
     {
-        return new TableData(
-            tableName: $tanStacktable?->{TanStackTable::TABLE_NAME},
+        return new DataTableData(
             columnFilters: $tanStacktable?->{TanStackTable::COLUMN_FILTERS},
             columnOrder: $tanStacktable?->{TanStackTable::COLUMN_ORDER},
             columnVisibility: $tanStacktable?->{TanStackTable::COLUMN_VISIBILITY},
@@ -84,6 +83,7 @@ class TableData extends Fluent
             pageSize: $tanStacktable?->{TanStackTable::PAGE_SIZE},
             rowSelection: $tanStacktable?->{TanStackTable::ROW_SELECTION},
             sorting: $tanStacktable?->{TanStackTable::SORTING},
+            uuid: $tanStacktable?->{TanStackTable::UUID},
         );
     }
 

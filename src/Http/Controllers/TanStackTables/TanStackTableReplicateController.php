@@ -16,27 +16,35 @@ use Narsil\Base\Models\Users\TanStackTable;
 /**
  * @author Jonathan Rigaux
  */
-class TanStackTableSaveController
+class TanStackTableReplicateController
 {
     #region PUBLIC METHODS
 
     /**
      * @param Request $request
+     * @param TanStackTable $table
      *
      * @return RedirectResponse
      */
-    public function __invoke(TanStackTableFormRequest $request): RedirectResponse
+    public function __invoke(TanStackTableFormRequest $request, TanStackTable $table): RedirectResponse
     {
         $attributes = $request->validated();
 
-        TanStackTable::updateOrCreate(
-            [
+        $master = $table->{TanStackTable::RELATION_MASTER} ?? $table;
+
+        $replicated = $table->replicate();
+
+        $replicated
+            ->fill([
+                TanStackTable::MASTER_UUID => $master->{TanStackTable::UUID},
                 TanStackTable::NAME => Arr::get($attributes, TanStackTable::NAME),
-                TanStackTable::TABLE_NAME => Arr::get($attributes, TanStackTable::TABLE_NAME),
                 TanStackTable::USER_ID => Auth::id(),
-            ],
-            $attributes
-        );
+            ])
+            ->save();
+
+        $master->update([
+            TanStackTable::PRESET_UUID => $replicated->{TanStackTable::UUID},
+        ]);
 
         return back();
     }

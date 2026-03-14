@@ -25,7 +25,7 @@ const buttonVariants = cva(
         ),
         link: cn("text-primary underline-offset-4", "focus-visible:underline", "hover:underline"),
         ghost: cn(
-          "focus-visible:bg-accent focus-visible:text-accent-foreground",
+          "focus-visible:border-primary focus-visible:ring-primary",
           "hover:bg-accent hover:text-accent-foreground",
         ),
         outline: cn(
@@ -41,7 +41,7 @@ const buttonVariants = cva(
         ),
         secondary: cn(
           "bg-secondary/80 text-secondary-foreground transition-all",
-          "focus-visible:bg-secondary",
+          "focus-visible:border-primary focus-visible:ring-primary",
           "hover:bg-secondary",
           "[&_svg]:text-secondary-foreground",
         ),
@@ -57,7 +57,7 @@ const buttonVariants = cva(
           "[&>span:last-child]:truncate [&>svg]:size-5",
         ),
         "ghost-secondary": cn(
-          "focus-visible:bg-secondary focus-visible:text-secondary-foreground",
+          "focus-visible:border-primary focus-visible:ring-primary",
           "hover:bg-secondary hover:text-secondary-foreground",
         ),
       },

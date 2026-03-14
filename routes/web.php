@@ -3,9 +3,10 @@
 #region USE
 
 use Illuminate\Support\Facades\Route;
+use Narsil\Base\Http\Controllers\Fetch\FetchFormController;
 use Narsil\Base\Http\Controllers\TanStackTables\TanStackTableDestroyController;
-use Narsil\Base\Http\Controllers\TanStackTables\TanStackTableLoadController;
-use Narsil\Base\Http\Controllers\TanStackTables\TanStackTableSaveController;
+use Narsil\Base\Http\Controllers\TanStackTables\TanStackTableReplicateController;
+use Narsil\Base\Http\Controllers\TanStackTables\TanStackTableUpdateController;
 
 #endregion
 
@@ -13,12 +14,16 @@ Route::middleware([
     'web',
     'auth',
     'verified',
-])->group(function ()
+])->prefix('narsil')->as('narsil.')->group(function ()
 {
-    Route::post('/narsil/data-tables/load', TanStackTableLoadController::class)
-        ->name('narsil.data-tables.load');
-    Route::post('/narsil/data-tables/save', TanStackTableSaveController::class)
-        ->name('narsil.data-tables.save');
-    Route::post('/narsil/data-tables/destroy', TanStackTableDestroyController::class)
-        ->name('narsil.data-tables.destroy');
+    Route::get('forms/{form}', FetchFormController::class)
+        ->name('forms.fetch');
+
+
+    Route::patch('tables/{table}', TanStackTableUpdateController::class)
+        ->name('tables.update');
+    Route::delete('tables/{table}', TanStackTableDestroyController::class)
+        ->name('tables.destroy');
+    Route::post('tables/{table}/replicate', TanStackTableReplicateController::class)
+        ->name('tables.replicate');
 });
