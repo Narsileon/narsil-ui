@@ -7,8 +7,6 @@ namespace Narsil\Base\Implementations\Forms;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
-use Locale;
 use Narsil\Base\Contracts\Forms\UserConfigurationForm as Contract;
 use Narsil\Base\Enums\ColorEnum;
 use Narsil\Base\Enums\RequestMethodEnum;
@@ -16,10 +14,9 @@ use Narsil\Base\Http\Data\Forms\FieldData;
 use Narsil\Base\Http\Data\Forms\FormStepData;
 use Narsil\Base\Http\Data\Forms\Inputs\RangeInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\SelectInputData;
-use Narsil\Base\Http\Data\OptionData;
 use Narsil\Base\Implementations\Form;
 use Narsil\Base\Models\Users\UserConfiguration;
-use ResourceBundle;
+use Narsil\Base\Services\LocaleService;
 
 #endregion
 
@@ -52,7 +49,7 @@ class UserConfigurationForm extends Form implements Contract
      */
     protected function getSteps(): array
     {
-        $localeOptions = static::getLocaleOptions();
+        $languages = Config::get('narsil.locales', []);
 
         return [
             new FormStepData(
@@ -62,7 +59,7 @@ class UserConfigurationForm extends Form implements Contract
                         required: true,
                         input: new SelectInputData(
                             defaultValue: App::getLocale(),
-                            options: $localeOptions,
+                            options: LocaleService::languageOptions($languages),
                         ),
                     ),
                     new FieldData(
@@ -86,46 +83,6 @@ class UserConfigurationForm extends Form implements Contract
                 ],
             ),
         ];
-    }
-
-    #endregion
-
-    #region PROTECTED METHODS
-
-    /**
-     * Get the locale select options.
-     *
-     * @return OptionData[]
-     */
-    protected static function getLocaleOptions(): array
-    {
-        $locales = ResourceBundle::getLocales('');
-
-        $allowedLocales = Config::get('narsil.locales', []);
-
-        $options = [];
-
-        foreach ($locales as $locale)
-        {
-            if (!in_array($locale, $allowedLocales))
-            {
-                continue;
-            }
-
-            $label = Str::ucfirst(Locale::getDisplayName($locale, App::getLocale()));
-
-            $options[] = new OptionData(
-                label: $label,
-                value: $locale
-            );
-        }
-
-        usort($options, function ($a, $b)
-        {
-            return strcmp($a->label, $b->label);
-        });
-
-        return $options;
     }
 
     #endregion
