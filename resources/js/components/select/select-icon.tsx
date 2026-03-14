@@ -5,14 +5,7 @@ function SelectIcon({ children, render, ...props }: Select.Icon.Props) {
   return (
     <Select.Icon
       data-slot="select-icon"
-      render={
-        render ?? (
-          <Icon
-            className="pointer-events-none size-4 text-muted-foreground"
-            name={"chevron-down"}
-          />
-        )
-      }
+      render={render ?? <Icon className="pointer-events-none size-4" name={"chevron-down"} />}
       {...props}
     />
   );
