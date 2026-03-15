@@ -1,5 +1,5 @@
 import { Field } from "@base-ui/react";
-import { Label } from "@narsil-ui/components/label";
+import { Label } from "@narsil-ui/blocks/label";
 import { cn } from "@narsil-ui/lib/utils";
 
 type FieldLabelProps = Field.Label.Props & {

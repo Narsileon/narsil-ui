@@ -11,7 +11,8 @@ import {
 } from "@narsil-ui/components/dropdown-menu";
 import { useForm } from "@narsil-ui/components/form";
 import { Icon } from "@narsil-ui/components/icon";
-import { Kbd, KbdGroup } from "@narsil-ui/components/kbd";
+import { Kbd } from "@narsil-ui/components/kbd";
+import { KbdGroup } from "@narsil-ui/components/kbd-group";
 import { Separator } from "@narsil-ui/components/separator";
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { RoutesData } from "@narsil-ui/types";

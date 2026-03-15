@@ -1,6 +1,6 @@
 import { Link, router } from "@inertiajs/react";
+import { useAlertDialog } from "@narsil-ui/blocks/alert-dialog";
 import { Tooltip } from "@narsil-ui/blocks/tooltip";
-import { useAlertDialog } from "@narsil-ui/components/alert-dialog";
 import { Button } from "@narsil-ui/components/button";
 import { type DataTableData } from "@narsil-ui/components/data-table";
 import {
