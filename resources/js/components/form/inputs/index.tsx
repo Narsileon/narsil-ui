@@ -69,4 +69,8 @@ export function getField<K extends keyof Registry>(registry: Registry, name: K, 
   return <FieldComponent {...props} />;
 }
 
+export function registerField(type: string, component: (props: FieldProps) => ReactNode) {
+  registry[type as keyof Registry] = component;
+}
+
 export default registry;
