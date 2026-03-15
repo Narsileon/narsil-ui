@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import { Icon } from "@narsil-ui/components/icon";
 import {
@@ -6,7 +7,6 @@ import {
   InputGroupInput,
   InputGroupRoot,
 } from "@narsil-ui/components/input-group";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { useState } from "react";
 import { FieldProps } from ".";

@@ -6,7 +6,7 @@ type AspectRatioProps = ComponentProps<"div"> & { ratio: number };
 function AspectRatio({ className, ratio, ...props }: AspectRatioProps) {
   return (
     <div
-      data-slot="aspect"
+      data-slot="aspect-ratio"
       className={cn("relative", "aspect-(--ratio)", className)}
       style={
         {

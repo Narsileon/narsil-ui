@@ -1,11 +1,11 @@
 import { Link, router } from "@inertiajs/react";
-import { type BreadcrumbData } from "@narsil-ui/components/breadcrumb";
+import { type BookmarkData } from "@narsil-ui/blocks/bookmarks";
+import { type BreadcrumbData } from "@narsil-ui/blocks/breadcrumb";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import { CardContent, CardHeader, CardRoot, CardTitle } from "@narsil-ui/components/card";
 import { Icon } from "@narsil-ui/components/icon";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
-import type { BookmarkData } from "@narsil-ui/types";
 import { route } from "ziggy-js";
 
 type BookmarkListProps = {

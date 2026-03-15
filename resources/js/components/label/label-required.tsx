@@ -1,4 +1,4 @@
-import { Tooltip } from "@narsil-ui/components/tooltip";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";

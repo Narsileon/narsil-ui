@@ -1,3 +1,4 @@
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import {
   DropdownMenuPopup,
@@ -22,7 +23,6 @@ import {
   RichTextEditorUndo,
 } from "@narsil-ui/components/rich-text-editor";
 import { Separator } from "@narsil-ui/components/separator";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { useCurrentEditor } from "@tiptap/react";

@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Icon } from "@narsil-ui/components/icon";
 import {
   PaginationContent,
@@ -7,7 +8,6 @@ import {
   PaginationLink,
   PaginationRoot,
 } from "@narsil-ui/components/pagination";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { type ComponentProps } from "react";
 import { type PaginationLinks, type PaginationMetaLink } from ".";

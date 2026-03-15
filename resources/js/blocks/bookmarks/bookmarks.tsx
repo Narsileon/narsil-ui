@@ -1,4 +1,6 @@
-import { type BreadcrumbData } from "@narsil-ui/components/breadcrumb";
+import { BookmarkForm, BookmarkList, type BookmarkData } from "@narsil-ui/blocks/bookmarks";
+import { type BreadcrumbData } from "@narsil-ui/blocks/breadcrumb";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import { Icon } from "@narsil-ui/components/icon";
 import {
@@ -8,14 +10,11 @@ import {
   PopoverRoot,
   PopoverTrigger,
 } from "@narsil-ui/components/popover";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
-import type { BookmarkData, FormData } from "@narsil-ui/types";
+import type { FormData } from "@narsil-ui/types";
 import { sortBy } from "lodash-es";
 import { useEffect, useState, type ComponentProps } from "react";
 import { route } from "ziggy-js";
-import BookmarkForm from "./bookmark-form";
-import BookmarkList from "./bookmark-list";
 
 type BookmarksProps = ComponentProps<typeof PopoverTrigger> & {
   breadcrumb: BreadcrumbData[];

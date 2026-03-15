@@ -1,3 +1,4 @@
+import { type BookmarkData } from "@narsil-ui/blocks/bookmarks";
 import { Button } from "@narsil-ui/components/button";
 import {
   CardContent,
@@ -8,7 +9,7 @@ import {
 } from "@narsil-ui/components/card";
 import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form";
 import { useTranslator } from "@narsil-ui/components/translator";
-import type { BookmarkData, FormData } from "@narsil-ui/types";
+import type { FormData } from "@narsil-ui/types";
 import { Fragment } from "react";
 import { route } from "ziggy-js";
 

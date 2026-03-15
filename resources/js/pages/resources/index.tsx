@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import {
   type DataTableCollection,
@@ -11,7 +12,6 @@ import {
 import { Heading } from "@narsil-ui/components/heading";
 import { Icon } from "@narsil-ui/components/icon";
 import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/components/section";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { useMinSm } from "@narsil-ui/hooks/use-breakpoints";
 import { ColumnDef } from "@tanstack/react-table";

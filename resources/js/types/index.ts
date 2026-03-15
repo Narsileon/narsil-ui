@@ -1,11 +1,5 @@
 import { type IconName } from "@narsil-ui/registries/icons";
 
-export type BookmarkData = {
-  name: string;
-  url: string;
-  uuid: string;
-};
-
 export type ConditionData = {
   handle: string;
   operator: string;

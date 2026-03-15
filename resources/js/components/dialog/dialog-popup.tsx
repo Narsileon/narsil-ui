@@ -1,8 +1,8 @@
 import { Dialog } from "@base-ui/react/dialog";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import { DialogClose } from "@narsil-ui/components/dialog";
 import { Icon } from "@narsil-ui/components/icon";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type VariantProps } from "class-variance-authority";

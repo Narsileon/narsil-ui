@@ -1,6 +1,6 @@
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Icon } from "@narsil-ui/components/icon";
 import { ToggleGroupItem, ToggleGroupRoot } from "@narsil-ui/components/toggle-group";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { themes, useThemeStore } from "@narsil-ui/stores/theme-store";
 import { useRef } from "react";

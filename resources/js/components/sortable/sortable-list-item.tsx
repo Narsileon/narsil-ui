@@ -1,5 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import { CardContent, CardHeader, CardRoot } from "@narsil-ui/components/card";
 import {
@@ -13,7 +14,6 @@ import {
   SortableItemMenu,
   type SortableData,
 } from "@narsil-ui/components/sortable";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { getTranslatableData } from "@narsil-ui/lib/data";
 import { cn } from "@narsil-ui/lib/utils";

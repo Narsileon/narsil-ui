@@ -1,3 +1,4 @@
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import { ButtonGroup } from "@narsil-ui/components/button-group";
 import { DataTableFilterForm, useDataTable } from "@narsil-ui/components/data-table";
@@ -8,7 +9,6 @@ import {
   InputGroupInput,
   InputGroupRoot,
 } from "@narsil-ui/components/input-group";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { debounce } from "lodash-es";
 import { useEffect, useMemo, useState, type ComponentProps } from "react";

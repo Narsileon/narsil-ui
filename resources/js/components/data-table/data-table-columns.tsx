@@ -7,6 +7,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { router } from "@inertiajs/react";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import {
   CardAction,
@@ -29,7 +30,6 @@ import {
 } from "@narsil-ui/components/popover";
 import { SortableHandle, SortableItemMenu } from "@narsil-ui/components/sortable";
 import { Switch } from "@narsil-ui/components/switch";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { type Column } from "@tanstack/react-table";
 import { upperFirst } from "lodash-es";

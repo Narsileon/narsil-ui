@@ -1,4 +1,4 @@
-import { AlertDialog } from "@narsil-ui/components/alert-dialog";
+import { AlertDialog } from "@narsil-ui/blocks/alert-dialog";
 import { type ComponentProps, createContext, useContext } from "react";
 
 export type AlertDialogContextProps = {

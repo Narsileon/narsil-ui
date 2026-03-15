@@ -1,4 +1,5 @@
 import { Link, router } from "@inertiajs/react";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { useAlertDialog } from "@narsil-ui/components/alert-dialog";
 import { Button } from "@narsil-ui/components/button";
 import { type DataTableData } from "@narsil-ui/components/data-table";
@@ -13,7 +14,6 @@ import {
 } from "@narsil-ui/components/dropdown-menu";
 import { Icon } from "@narsil-ui/components/icon";
 import { ModalLink } from "@narsil-ui/components/modal";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { RoutesData, UniqueIdentifier } from "@narsil-ui/types";
 import { type Table } from "@tanstack/react-table";

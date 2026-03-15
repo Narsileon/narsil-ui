@@ -1,5 +1,6 @@
 import { Toast } from "@base-ui/react/toast";
 import { router } from "@inertiajs/react";
+import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import {
   CardContent,
@@ -14,7 +15,6 @@ import { Icon } from "@narsil-ui/components/icon";
 import { Label } from "@narsil-ui/components/label";
 import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/components/section";
 import { Switch } from "@narsil-ui/components/switch";
-import { Tooltip } from "@narsil-ui/components/tooltip";
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { FormData, UserData } from "@narsil-ui/types";
 import { Fragment, useState } from "react";

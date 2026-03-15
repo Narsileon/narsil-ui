@@ -1,3 +1,4 @@
+import { useAlertDialog } from "@narsil-ui/blocks/alert-dialog";
 import {
   AlertDialogAction,
   AlertDialogBackdrop,
@@ -10,7 +11,6 @@ import {
   AlertDialogRoot,
   AlertDialogTitle,
   AlertDialogTrigger,
-  useAlertDialog,
 } from "@narsil-ui/components/alert-dialog";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { type ComponentProps } from "react";
