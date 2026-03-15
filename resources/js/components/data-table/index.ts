@@ -5,6 +5,7 @@ import getMenuColumn from "./columns/menu-column";
 import getSelectColumn from "./columns/select-column";
 import DataTable from "./data-table";
 import DataTableColumns from "./data-table-columns";
+import DataTableColumnsItem from "./data-table-columns-item";
 import useDataTable from "./data-table-context";
 import DataTableFilterForm from "./data-table-filter-form";
 import DataTableFilters from "./data-table-filters";
@@ -57,6 +58,7 @@ type DataTableState = {
 export {
   DataTable,
   DataTableColumns,
+  DataTableColumnsItem,
   DataTableFilterForm,
   DataTableFilters,
   DataTableHeadSort,

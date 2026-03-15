@@ -1,13 +1,6 @@
 import { closestCenter, DndContext, type DragEndEvent } from "@dnd-kit/core";
-import {
-  arrayMove,
-  SortableContext,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { arrayMove, SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { router } from "@inertiajs/react";
-import { Switch } from "@narsil-ui/blocks/switch";
 import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import {
@@ -18,7 +11,7 @@ import {
   CardRoot,
   CardTitle,
 } from "@narsil-ui/components/card";
-import { useDataTable, type DataTableData } from "@narsil-ui/components/data-table";
+import { DataTableColumnsItem, useDataTable } from "@narsil-ui/components/data-table";
 import { Icon } from "@narsil-ui/components/icon";
 import {
   PopoverClose,
@@ -29,10 +22,7 @@ import {
   PopoverRoot,
   PopoverTrigger,
 } from "@narsil-ui/components/popover";
-import { SortableHandle, SortableItemMenu } from "@narsil-ui/components/sortable";
 import { useTranslator } from "@narsil-ui/components/translator";
-import { type Column } from "@tanstack/react-table";
-import { upperFirst } from "lodash-es";
 import { useState, type ComponentProps } from "react";
 import { route } from "ziggy-js";
 
@@ -111,7 +101,7 @@ function DataTableColumns({ ...props }: DataTableColumnsProps) {
                   </PopoverClose>
                 </CardAction>
               </CardHeader>
-              <CardContent className="gap-y-0">
+              <CardContent className="max-h-96 gap-y-0 overflow-y-auto">
                 <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
                   <SortableContext
                     items={columns.map((column) => column.id)}
@@ -119,7 +109,7 @@ function DataTableColumns({ ...props }: DataTableColumnsProps) {
                   >
                     {columns.map((column, index) => {
                       return (
-                        <SortableItem
+                        <DataTableColumnsItem
                           column={column}
                           onMoveDown={
                             index < columns.length - 1 ? () => onMoveDown(column.id) : undefined
@@ -153,46 +143,3 @@ function DataTableColumns({ ...props }: DataTableColumnsProps) {
 }
 
 export default DataTableColumns;
-
-type SortableItemProps = Pick<
-  ComponentProps<typeof SortableItemMenu>,
-  "onMoveDown" | "onMoveUp"
-> & {
-  column: Column<DataTableData, unknown>;
-};
-
-function SortableItem({ column, onMoveDown, onMoveUp }: SortableItemProps) {
-  const { trans } = useTranslator();
-
-  const { attributes, isDragging, listeners, setNodeRef, transform, transition } = useSortable({
-    id: column.id,
-  });
-
-  const columnLabel = upperFirst(column.columnDef.header as string);
-
-  const moveColumnLabel = `${trans("ui.move")} '${columnLabel}'`;
-
-  return (
-    <div
-      className="flex h-9 items-center gap-2 overflow-hidden rounded-md border bg-background pr-1"
-      style={{
-        transform: CSS.Transform.toString(transform),
-        transition,
-      }}
-    >
-      <SortableHandle
-        ref={setNodeRef}
-        {...attributes}
-        {...listeners}
-        isDragging={isDragging}
-        label={moveColumnLabel}
-      />
-      <span className="grow">{columnLabel}</span>
-      <Switch
-        checked={column.getIsVisible()}
-        onCheckedChange={(value) => column.toggleVisibility(value)}
-      />
-      <SortableItemMenu onMoveUp={onMoveUp} onMoveDown={onMoveDown} />
-    </div>
-  );
-}
