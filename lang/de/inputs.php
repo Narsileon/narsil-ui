@@ -3,6 +3,7 @@
 #region USE
 
 use Narsil\Base\Http\Data\Forms\Inputs\ArrayInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\AssetInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\CheckboxInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\ColorInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\DateInputData;
@@ -25,6 +26,7 @@ use Narsil\Base\Http\Data\Forms\Inputs\TimeInputData;
 
 return [
     ArrayInputData::TYPE    => 'Array',
+    AssetInputData::TYPE    => 'Asset',
     CheckboxInputData::TYPE => 'Kontrollkästchen',
     ColorInputData::TYPE    => 'Farbe',
     DateInputData::TYPE     => 'Datum',
