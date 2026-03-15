@@ -1,4 +1,4 @@
-import { Checkbox } from "@narsil-ui/components/checkbox";
+import { Checkbox } from "@narsil-ui/blocks/checkbox";
 import { type DataTableData } from "@narsil-ui/components/data-table";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { ColumnDef } from "@tanstack/react-table";

@@ -1,5 +1,5 @@
+import { type PaginationMeta } from "@narsil-ui/blocks/pagination";
 import { useDataTable } from "@narsil-ui/components/data-table";
-import { type PaginationMeta } from "@narsil-ui/components/pagination";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";

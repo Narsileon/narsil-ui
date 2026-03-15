@@ -1,4 +1,4 @@
-import { type PaginationLinks, PaginationMeta } from "@narsil-ui/components/pagination";
+import { type PaginationLinks, PaginationMeta } from "@narsil-ui/blocks/pagination";
 import type { FormData, RoutesData } from "@narsil-ui/types";
 import { type ColumnDef } from "@tanstack/react-table";
 import getMenuColumn from "./columns/menu-column";

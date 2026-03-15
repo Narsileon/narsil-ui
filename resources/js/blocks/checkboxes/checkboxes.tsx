@@ -1,4 +1,4 @@
-import { Checkbox } from "@narsil-ui/components/checkbox";
+import { Checkbox } from "@narsil-ui/blocks/checkbox";
 import {
   TableBody,
   TableCell,

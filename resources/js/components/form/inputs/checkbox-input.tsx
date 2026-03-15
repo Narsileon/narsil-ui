@@ -1,4 +1,5 @@
-import { Checkbox, Checkboxes } from "@narsil-ui/components/checkbox";
+import { Checkbox } from "@narsil-ui/blocks/checkbox";
+import { Checkboxes } from "@narsil-ui/blocks/checkboxes";
 import { isArray } from "lodash-es";
 import { FieldProps } from ".";
 

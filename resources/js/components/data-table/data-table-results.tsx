@@ -1,4 +1,4 @@
-import { type PaginationMeta } from "@narsil-ui/components/pagination";
+import { type PaginationMeta } from "@narsil-ui/blocks/pagination";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { ComponentProps } from "react";

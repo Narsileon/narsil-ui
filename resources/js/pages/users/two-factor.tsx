@@ -1,6 +1,7 @@
 import { Toast } from "@base-ui/react/toast";
 import { router } from "@inertiajs/react";
 import { Label } from "@narsil-ui/blocks/label";
+import { Switch } from "@narsil-ui/blocks/switch";
 import { Tooltip } from "@narsil-ui/blocks/tooltip";
 import { Button } from "@narsil-ui/components/button";
 import {
@@ -14,7 +15,6 @@ import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form"
 import { Heading } from "@narsil-ui/components/heading";
 import { Icon } from "@narsil-ui/components/icon";
 import { SectionContent, SectionHeader, SectionRoot } from "@narsil-ui/components/section";
-import { Switch } from "@narsil-ui/components/switch";
 import { useTranslator } from "@narsil-ui/components/translator";
 import type { FormData, UserData } from "@narsil-ui/types";
 import { Fragment, useState } from "react";
