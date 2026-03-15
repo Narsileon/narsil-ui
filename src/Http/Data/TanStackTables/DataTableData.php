@@ -18,6 +18,7 @@ use Narsil\Base\Services\TableService;
 /**
  * @author Jonathan Rigaux
  *
+ * @property string $table
  * @property string $uuid
  * @property array|null $column_filters The filters of the columns.
  * @property array|null $column_order The order of the columns.
@@ -32,6 +33,7 @@ class DataTableData extends Fluent
     #region CONSTRUCTOR
 
     /**
+     * @param string $table
      * @param string $uuid
      * @param array|null $columnFilters
      * @param array|null $columnOrder
@@ -44,6 +46,7 @@ class DataTableData extends Fluent
      * @return void
      */
     public function __construct(
+        string $table = '',
         string $uuid = '',
         ?array $columnFilters = null,
         ?array $columnOrder = null,
@@ -54,6 +57,8 @@ class DataTableData extends Fluent
         ?array $sorting = null
     )
     {
+        $this->set('table', $table);
+
         $this->set(TanStackTable::COLUMN_FILTERS, $columnFilters ?? []);
         $this->set(TanStackTable::COLUMN_ORDER, $columnOrder ?? []);
         $this->set(TanStackTable::COLUMN_VISIBILITY, $columnVisibility ?? []);
@@ -83,6 +88,7 @@ class DataTableData extends Fluent
             pageSize: $tanStacktable?->{TanStackTable::PAGE_SIZE},
             rowSelection: $tanStacktable?->{TanStackTable::ROW_SELECTION},
             sorting: $tanStacktable?->{TanStackTable::SORTING},
+            table: $tanStacktable?->{TanStackTable::TABLE_NAME},
             uuid: $tanStacktable?->{TanStackTable::UUID},
         );
     }
@@ -159,7 +165,7 @@ class DataTableData extends Fluent
 
         $locale = App::getLocale();
 
-        $columns = TableService::getColumns($this->table_name);
+        $columns = TableService::getColumns($this->table);
 
         $columns->each(function ($column) use ($locale, $query)
         {

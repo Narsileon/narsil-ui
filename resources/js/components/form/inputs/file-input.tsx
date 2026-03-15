@@ -1,13 +1,20 @@
+import { FileUpload } from "@narsil-ui/components/file";
 import { Icon } from "@narsil-ui/components/icon";
 import {
   InputGroupAddon,
+  InputGroupButton,
   InputGroupInput,
   InputGroupRoot,
+  InputGroupText,
 } from "@narsil-ui/components/input-group";
-import { useEffect, useState, type ChangeEvent } from "react";
+import { cn } from "@narsil-ui/lib/utils";
+import { useEffect, useRef, useState, type ChangeEvent, type DragEvent } from "react";
 import { FieldProps } from ".";
 
 function FileInput({ icon, id, input, readOnly, required, value, setValue }: FieldProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const [dragging, setDragging] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,7 +30,7 @@ function FileInput({ icon, id, input, readOnly, required, value, setValue }: Fie
       return;
     }
 
-    if (value.type.startsWith("image/")) {
+    if (value instanceof File && value.type.startsWith("image/")) {
       const objectUrl = URL.createObjectURL(value);
 
       setPreview(objectUrl);
@@ -37,31 +44,104 @@ function FileInput({ icon, id, input, readOnly, required, value, setValue }: Fie
     setPreview(null);
   }, [value]);
 
-  function onChange(event: ChangeEvent<HTMLInputElement>) {
-    if (event.target.files && event.target.files.length > 0) {
-      setValue(event.target.files[0]);
+  function clearFile(event: React.MouseEvent) {
+    event.stopPropagation();
+
+    setValue(undefined);
+
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+
+    setPreview(null);
+  }
+
+  function handleFile(file?: File) {
+    if (!file) {
+      return;
+    }
+
+    setValue(file);
+
+    if (inputRef.current) {
+      const dataTransfer = new DataTransfer();
+
+      dataTransfer.items.add(file);
+
+      inputRef.current.files = dataTransfer.files;
     }
   }
 
+  function onChange(event: ChangeEvent<HTMLInputElement>) {
+    if (event.target.files?.length) {
+      handleFile(event.target.files[0]);
+    }
+  }
+
+  function onDragEnter() {
+    setDragging(true);
+  }
+
+  function onDragLeave() {
+    setDragging(false);
+  }
+
+  function onDragOver(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+  }
+
+  function onDrop(event: DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    setDragging(false);
+
+    const file = event.dataTransfer.files?.[0];
+
+    handleFile(file);
+  }
+
   return (
-    <InputGroupRoot>
+    <InputGroupRoot
+      className={cn(dragging && "border-primary bg-accent", (!value || preview) && "h-fit")}
+      onDragEnter={onDragEnter}
+      onDragLeave={onDragLeave}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+      onClick={() => inputRef.current?.click()}
+    >
+      {value ? (
+        <>
+          {preview ? (
+            <InputGroupAddon>
+              <img className="max-h-36 rounded-md object-contain" alt="preview" src={preview} />
+            </InputGroupAddon>
+          ) : (
+            <InputGroupAddon className="grow justify-start" align="inline-start">
+              <InputGroupText>{value instanceof File ? value.name : value}</InputGroupText>
+            </InputGroupAddon>
+          )}
+          {!readOnly && !required && (
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton size="icon-sm" onClick={clearFile}>
+                <Icon name="x" />
+              </InputGroupButton>
+            </InputGroupAddon>
+          )}
+        </>
+      ) : (
+        <FileUpload icon={icon as string} />
+      )}
       <InputGroupInput
         {...input}
+        ref={inputRef}
         id={id}
         name={id}
-        readOnly={readOnly}
+        type="file"
+        hidden={true}
         required={required}
         onChange={onChange}
       />
-      {value && preview ? (
-        <InputGroupAddon align="inline-end">
-          <img src={preview} className="size-5 rounded" />
-        </InputGroupAddon>
-      ) : icon ? (
-        <InputGroupAddon align="inline-end">
-          <Icon className="opacity-50" name={icon} />
-        </InputGroupAddon>
-      ) : null}
     </InputGroupRoot>
   );
 }
