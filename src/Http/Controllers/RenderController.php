@@ -7,6 +7,7 @@ namespace Narsil\Base\Http\Controllers;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
 use Inertia\Inertia;
+use Inertia\PropsResolver;
 use Inertia\Response;
 use Narsil\Base\Support\TranslationsBag;
 
@@ -95,6 +96,10 @@ abstract class RenderController
     {
         if (request()->boolean(self::MODAL))
         {
+            $resolver = new PropsResolver(request(), $component);
+
+            $props = $resolver->resolve([], $props)[0];
+
             $translations = app(TranslationsBag::class)
                 ->add('narsil::ui.cancel')
                 ->add('narsil::ui.close')
@@ -102,13 +107,12 @@ abstract class RenderController
 
             return response()->json([
                 self::COMPONENT => $component,
-                self::PROPS => [
+                self::PROPS => array_merge([
                     self::DESCRIPTION => $this->getDescription(),
                     self::MODAL => true,
                     self::TITLE => $this->getTitle(),
                     self::TRANSLATIONS => $translations,
-                    ...$props
-                ],
+                ], $props),
             ]);
         }
         else

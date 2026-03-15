@@ -7,6 +7,7 @@ return [
     'all'              => 'Tout',
     'apply'            => 'Appliquer',
     'back'             => 'Retour',
+    'browse'           => 'Rechercher',
     'cancel'           => 'Annuler',
     'close'            => 'Fermer',
     'collapse'         => 'Replier',

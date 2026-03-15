@@ -75,7 +75,7 @@ function Modal({ modal, onClose, ...props }: ModalProps) {
             <DialogTitle>{modal.props.title}</DialogTitle>
           </DialogHeader>
           <DialogDescription className="sr-only">{modal.props.description}</DialogDescription>
-          <DialogBody className="grow p-0">
+          <DialogBody className={cn("grow p-0", modal.variant !== "default" && "flex flex-col")}>
             {Component ? <Component modal={modal} {...modal.props} /> : null}
           </DialogBody>
         </DialogPopup>

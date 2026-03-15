@@ -1,5 +1,5 @@
 import { Button } from "@narsil-ui/components/button";
-import { DialogBody, DialogClose, DialogFooter } from "@narsil-ui/components/dialog";
+import { DialogClose, DialogFooter } from "@narsil-ui/components/dialog";
 import {
   FormBlame,
   FormElement,
@@ -92,86 +92,83 @@ function ResourceForm({ data, form, modal }: FormProps) {
       steps={steps}
       render={({ formLanguage, setFormLanguage }) => {
         return (
-          <FormRoot
-            className="relative w-full animate-in grid-cols-12 items-center fade-in-0 md:h-full md:max-h-full md:min-h-full md:overflow-hidden"
-            autoSave={autoSave}
-            options={{
-              preserveState: true,
-              onSuccess: (response) => {
-                if (modal) {
-                  modal.link?.onSuccess?.(response);
+          <>
+            <FormRoot
+              className={cn(
+                "relative w-full animate-in grid-cols-12 fade-in-0 md:overflow-hidden",
+                modal ? "grow" : "items-center md:h-full md:max-h-full md:min-h-full",
+              )}
+              autoSave={autoSave}
+              options={{
+                preserveState: true,
+                onSuccess: (response) => {
+                  if (modal) {
+                    modal.link?.onSuccess?.(response);
 
-                  closeTopModal();
-                }
-              },
-            }}
-          >
-            {modal ? (
-              <>
-                <DialogBody className="col-span-full h-full p-0">
+                    closeTopModal();
+                  }
+                },
+              }}
+            >
+              <SectionRoot
+                className={cn(
+                  "col-span-12 h-full max-h-full min-h-full flex-3",
+                  "md:col-span-7 md:overflow-y-auto",
+                  "lg:col-span-8",
+                  "2xl:col-span-9",
+                )}
+              >
+                <SectionContent>
                   <FormTabs steps={standardTabs} />
-                </DialogBody>
-                <DialogFooter className="col-span-full h-fit border-t">
-                  <DialogClose render={<Button variant="ghost">{trans("ui.cancel")}</Button>} />
-                  <Button form={`${id}_${modal.id}`} type="submit">
-                    {isEmpty(submitLabel) ? trans("ui.save") : submitLabel}
-                  </Button>
-                </DialogFooter>
-              </>
-            ) : (
-              <>
-                <SectionRoot
-                  className={cn(
-                    "col-span-12 h-full max-h-full min-h-full flex-3",
-                    "md:col-span-7 md:overflow-y-auto",
-                    "lg:col-span-8",
-                    "2xl:col-span-9",
-                  )}
-                >
-                  <SectionContent>
-                    <FormTabs steps={standardTabs} />
-                  </SectionContent>
-                </SectionRoot>
-                <SectionRoot
-                  className={cn(
-                    "col-span-12 h-full max-h-full min-h-full flex-1 overflow-y-auto border-t",
-                    "md:col-span-5 md:border-t-0 md:border-l",
-                    "lg:col-span-4",
-                    "2xl:col-span-3",
-                  )}
-                >
-                  <SectionContent className="flex flex-col">
-                    <div className="flex h-13 flex-row-reverse items-center justify-between gap-2 border-b px-4 py-2">
-                      <div className="flex items-center gap-2">
-                        <FormSave
-                          routes={routes}
-                          submitLabel={isEmpty(submitLabel) ? trans("ui.save") : submitLabel}
-                        />
-                        {routes?.destroy && method !== "post" ? <FormMenu routes={routes} /> : null}
-                      </div>
-                    </div>
-                    <FormBlame
-                      data={{
-                        created_at: data?.created_at,
-                        updated_at: data?.updated_at,
-                        creator: data?.creator,
-                        editor: data?.editor,
-                      }}
-                    />
-                    {languages?.length > 0 ? (
-                      <FormLanguage
-                        className="pr-2"
-                        value={formLanguage}
-                        onValueChange={setFormLanguage}
+                </SectionContent>
+              </SectionRoot>
+              <SectionRoot
+                className={cn(
+                  "col-span-12 h-full max-h-full min-h-full flex-1 overflow-y-auto border-t",
+                  "md:col-span-5 md:border-t-0 md:border-l",
+                  "lg:col-span-4",
+                  "2xl:col-span-3",
+                )}
+              >
+                <SectionContent className="flex flex-col">
+                  <div className="flex h-13 flex-row-reverse items-center justify-between gap-2 border-b px-4 py-2">
+                    <div className="flex items-center gap-2">
+                      <FormSave
+                        routes={routes}
+                        submitLabel={isEmpty(submitLabel) ? trans("ui.save") : submitLabel}
                       />
-                    ) : null}
+                      {routes?.destroy && method !== "post" ? <FormMenu routes={routes} /> : null}
+                    </div>
+                  </div>
+                  <FormBlame
+                    data={{
+                      created_at: data?.created_at,
+                      updated_at: data?.updated_at,
+                      creator: data?.creator,
+                      editor: data?.editor,
+                    }}
+                  />
+                  {languages?.length > 0 ? (
+                    <FormLanguage
+                      className="pr-2"
+                      value={formLanguage}
+                      onValueChange={setFormLanguage}
+                    />
+                  ) : null}
 
-                    <div className="grid gap-y-4 p-4 lg:col-span-4">{sidebarContent}</div>
-                  </SectionContent>
-                </SectionRoot>
-              </>
+                  <div className="grid gap-y-4 p-4 lg:col-span-4">{sidebarContent}</div>
+                </SectionContent>
+              </SectionRoot>
+            </FormRoot>
+            {modal && (
+              <DialogFooter className="col-span-full h-fit border-t">
+                <DialogClose render={<Button variant="ghost">{trans("ui.cancel")}</Button>} />
+                <Button form={`${id}_${modal.id}`} type="submit">
+                  {isEmpty(submitLabel) ? trans("ui.save") : submitLabel}
+                </Button>
+              </DialogFooter>
             )}
-          </FormRoot>
+          </>
         );
       }}
     />

@@ -8,6 +8,7 @@ return [
     'and'              => 'and',
     'apply'            => 'Apply',
     'back'             => 'Back',
+    'browse'           => 'Browse',
     'cancel'           => 'Cancel',
     'close'            => 'Close',
     'collapse'         => 'Collapse',

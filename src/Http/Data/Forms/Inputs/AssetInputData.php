@@ -54,7 +54,8 @@ class AssetInputData extends InputData
     {
         app(TranslationsBag::class)
             ->add('narsil::ui.browse')
-            ->add('narsil::ui.create');
+            ->add('narsil::ui.create')
+            ->add('narsil::ui.or');
     }
 
     #endregion

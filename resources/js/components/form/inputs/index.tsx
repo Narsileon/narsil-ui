@@ -12,6 +12,7 @@ export type Registry = {
 };
 
 const ArrayInput = dynamic(() => import("./array-input"));
+const AssetInput = dynamic(() => import("./asset-input"));
 const CheckboxInput = dynamic(() => import("./checkbox-input"));
 const Combobox = dynamic(() => import("@narsil-ui/components/combobox/combobox"));
 const FileInput = dynamic(() => import("./file-input"));
@@ -26,6 +27,9 @@ const TextInput = dynamic(() => import("./text-input"));
 const registry: Registry = {
   ["array"]: (props) => {
     return <ArrayInput {...props} />;
+  },
+  ["asset"]: (props) => {
+    return <AssetInput {...props} />;
   },
   ["checkbox"]: (props) => {
     return <CheckboxInput {...props} />;

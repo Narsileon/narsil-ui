@@ -31,7 +31,7 @@ function FormTabs({ steps }: FormTabsProps) {
       {steps.map((step, index) => {
         return (
           <TabsPanel
-            className="grid w-full max-w-5xl grid-cols-12 gap-x-4 gap-y-8 place-self-center"
+            className="grid w-full max-w-5xl grow-0 grid-cols-12 gap-x-4 gap-y-8 place-self-center"
             value={step.id}
             key={index}
           >
