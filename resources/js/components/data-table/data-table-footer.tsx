@@ -1,13 +1,13 @@
 import {
+  Pagination,
+  type PaginationLinks,
+  type PaginationMeta,
+} from "@narsil-ui/blocks/pagination";
+import {
   DataTablePageSize,
   DataTableResults,
   DataTableSelection,
 } from "@narsil-ui/components/data-table";
-import {
-  Pagination,
-  type PaginationLinks,
-  type PaginationMeta,
-} from "@narsil-ui/components/pagination";
 import { cn } from "@narsil-ui/lib/utils";
 import { type ComponentProps } from "react";
 

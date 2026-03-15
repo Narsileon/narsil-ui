@@ -1,5 +1,5 @@
+import { Select } from "@narsil-ui/blocks/select";
 import { useForm } from "@narsil-ui/components/form";
-import { Select } from "@narsil-ui/components/select";
 import { type ComponentProps } from "react";
 
 type FormFieldLanguageProps = Omit<ComponentProps<typeof Select>, "options">;

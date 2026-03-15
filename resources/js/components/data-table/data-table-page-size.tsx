@@ -1,5 +1,5 @@
+import { Select } from "@narsil-ui/blocks/select";
 import { useDataTable } from "@narsil-ui/components/data-table";
-import { Select } from "@narsil-ui/components/select";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { type ComponentProps, useState } from "react";
 

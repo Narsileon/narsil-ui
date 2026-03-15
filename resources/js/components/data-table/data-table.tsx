@@ -1,4 +1,5 @@
 import { router } from "@inertiajs/react";
+import { Pagination } from "@narsil-ui/blocks/pagination";
 import {
   DataTableColumns,
   DataTableFilters,
@@ -12,7 +13,6 @@ import {
   type DataTableCollection,
 } from "@narsil-ui/components/data-table";
 import { Icon } from "@narsil-ui/components/icon";
-import { Pagination } from "@narsil-ui/components/pagination";
 import {
   TableBody,
   TableCell,
