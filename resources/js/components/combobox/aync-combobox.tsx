@@ -241,6 +241,7 @@ function AsyncCombobox({
                 return (
                   <ComboboxListItem
                     displayValue={displayValue}
+                    icon={item.icon}
                     label={optionLabel}
                     value={optionValue}
                     key={optionValue}

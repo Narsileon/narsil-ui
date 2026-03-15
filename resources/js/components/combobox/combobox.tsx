@@ -18,6 +18,7 @@ import {
   ComboboxValue,
   ComboboxVirtualList,
 } from "@narsil-ui/components/combobox";
+import { Icon } from "@narsil-ui/components/icon";
 import { InputGroupInput } from "@narsil-ui/components/input-group";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { getTranslatableData, getUntranslatableData } from "@narsil-ui/lib/data";
@@ -135,6 +136,10 @@ function Combobox({
     return options.find((option) => getUntranslatableData(option, valuePath) === value);
   }
 
+  const selectedOption = selectedOptions[0];
+
+  const icon = selectedOption ? getUntranslatableData(selectedOption, "icon") : null;
+
   return (
     <ComboboxRoot
       filteredItems={filteredItems}
@@ -211,10 +216,17 @@ function Combobox({
       ) : (
         <ComboboxTrigger
           render={
-            <Button variant="input" className={cn("w-full justify-between font-normal", className)}>
-              {selectedOptions[0]
-                ? parse(getTranslatableData(selectedOptions[0], labelPath, locale))
-                : (placeholder ?? trans("placeholders.choose"))}
+            <Button className={cn("w-full justify-between font-normal", className)} variant="input">
+              {selectedOption ? (
+                <>
+                  {icon && <Icon className="size-4" name={icon} />}
+                  <span className="grow text-left">
+                    {parse(getTranslatableData(selectedOption, labelPath, locale))}
+                  </span>
+                </>
+              ) : (
+                (placeholder ?? trans("placeholders.choose"))
+              )}
             </Button>
           }
         />
@@ -241,6 +253,7 @@ function Combobox({
                     return (
                       <ComboboxListItem
                         displayValue={displayValue}
+                        icon={item.icon}
                         label={optionLabel}
                         value={optionValue}
                         {...props}
@@ -256,6 +269,7 @@ function Combobox({
                   return (
                     <ComboboxListItem
                       displayValue={displayValue}
+                      icon={item.icon}
                       label={optionLabel}
                       value={optionValue}
                       key={optionValue}

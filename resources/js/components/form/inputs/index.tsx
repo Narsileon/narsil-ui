@@ -15,6 +15,7 @@ const ArrayInput = dynamic(() => import("./array-input"));
 const CheckboxInput = dynamic(() => import("./checkbox-input"));
 const Combobox = dynamic(() => import("@narsil-ui/components/combobox/combobox"));
 const FileInput = dynamic(() => import("./file-input"));
+const IconInput = dynamic(() => import("./icon-input"));
 const PasswordInput = dynamic(() => import("./password-input"));
 const RichTextEditor = dynamic(() => import("./rich-text-editor"));
 const RangeInput = dynamic(() => import("./range-input"));
@@ -31,6 +32,9 @@ const registry: Registry = {
   },
   ["file"]: (props) => {
     return <FileInput {...props} />;
+  },
+  ["icon"]: (props) => {
+    return <IconInput {...props} />;
   },
   ["password"]: (props) => {
     return <PasswordInput {...props} />;

@@ -4,6 +4,7 @@ import LinkedinIcon from "@narsil-ui/components/icon/icons/linkedin-icon";
 import NarsilIcon from "@narsil-ui/components/icon/icons/narsil-icon";
 import TiktokIcon from "@narsil-ui/components/icon/icons/tiktok-icon";
 import YoutubeIcon from "@narsil-ui/components/icon/icons/youtube-icon";
+import { OptionData } from "@narsil-ui/types";
 import {
   ActivityIcon,
   AlignCenterIcon,
@@ -181,6 +182,7 @@ const defaultRegistry: Registry = {
   ["heading-6"]: Heading6Icon,
   ["heading"]: HeadingIcon,
   ["horizon"]: ActivityIcon,
+  ["icon"]: RabbitIcon,
   ["image"]: ImageIcon,
   ["info"]: InfoIcon,
   ["input"]: RectangleEllipsisIcon,
@@ -257,10 +259,18 @@ function getIcon(name: IconName): RegistryItem {
   return registry[name] ?? registry["default"];
 }
 
+function getOptions(): OptionData[] {
+  return Object.keys(defaultRegistry).map((key) => ({
+    icon: key,
+    label: key,
+    value: key,
+  }));
+}
+
 function setIcon(name: string, component: RegistryItem) {
   registry[name] = component;
 }
 
-export { getIcon, setIcon };
+export { getIcon, getOptions, setIcon };
 
 export type { IconName };

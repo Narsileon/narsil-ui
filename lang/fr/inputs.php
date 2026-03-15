@@ -10,6 +10,7 @@ use Narsil\Base\Http\Data\Forms\Inputs\DateInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\DatetimeInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\EmailInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\FileInputData;
+use Narsil\Base\Http\Data\Forms\Inputs\IconInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\NumberInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\PasswordInputData;
 use Narsil\Base\Http\Data\Forms\Inputs\RadioInputData;
@@ -33,6 +34,7 @@ return [
     DatetimeInputData::TYPE => 'Date et heure',
     EmailInputData::TYPE    => 'E-mail',
     FileInputData::TYPE     => 'Fichier',
+    IconInputData::TYPE     => 'Icône',
     NumberInputData::TYPE   => 'Nombre',
     PasswordInputData::TYPE => 'Mot de passe',
     RadioInputData::TYPE    => 'Bouton radio',

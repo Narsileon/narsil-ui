@@ -5,7 +5,6 @@ namespace Narsil\Base\Http\Data\Forms\Inputs;
 #region USE
 
 use Narsil\Base\Http\Data\Forms\InputData;
-use Narsil\Base\Support\TranslationsBag;
 
 #endregionx
 
@@ -14,7 +13,7 @@ use Narsil\Base\Support\TranslationsBag;
  *
  * @property string $defaultValue The value of the "default value" attribute.
  */
-class AssetInputData extends InputData
+class IconInputData extends InputData
 {
     #region CONSTRUCTOR
 
@@ -41,21 +40,7 @@ class AssetInputData extends InputData
      *
      * @var string
      */
-    final public const TYPE = 'asset';
-
-    #endregion
-
-    #region PUBLIC METHODS
-
-    /**
-     * {@inheritdoc}
-     */
-    public static function registerTranslations(): void
-    {
-        app(TranslationsBag::class)
-            ->add('narsil::ui.browse')
-            ->add('narsil::ui.create');
-    }
+    final public const TYPE = 'icon';
 
     #endregion
 }
