@@ -9,23 +9,18 @@ import {
   FormRoot,
   FormSave,
   FormTabs,
+  type FormBlameData,
 } from "@narsil-ui/components/form";
-import { Heading } from "@narsil-ui/components/heading";
-import { Icon } from "@narsil-ui/components/icon";
 import { SectionContent, SectionRoot } from "@narsil-ui/components/section";
 import { useTranslator } from "@narsil-ui/components/translator";
 import { cn } from "@narsil-ui/lib/utils";
 import { useModalStore, type ModalData } from "@narsil-ui/stores/modal-store";
-import type { FormData, FormStepData, OptionData, UserData } from "@narsil-ui/types";
+import type { FormData, FormStepData, OptionData } from "@narsil-ui/types";
 import { isEmpty } from "lodash-es";
 
 type FormProps = {
   countries?: OptionData[];
-  data?: {
-    created_at?: string;
-    creator?: UserData;
-    editor?: UserData;
-    updated_at?: string;
+  data?: FormBlameData & {
     [key: string]: unknown;
   };
   form: FormData;
@@ -36,8 +31,18 @@ function ResourceForm({ data, form, modal }: FormProps) {
   const { trans } = useTranslator();
   const { closeTopModal } = useModalStore();
 
-  const { action, autoSave, defaultLanguage, id, languages, method, routes, submitLabel, steps } =
-    form;
+  const {
+    action,
+    autoSave,
+    defaultLanguage,
+    id,
+    languages,
+    method,
+    options,
+    routes,
+    submitLabel,
+    steps,
+  } = form;
 
   const { sidebar, standardTabs } = steps.reduce(
     (acc, element) => {
@@ -83,6 +88,7 @@ function ResourceForm({ data, form, modal }: FormProps) {
       initialData={initialData}
       languages={languages}
       method={method}
+      options={options}
       steps={steps}
       render={({ formLanguage, setFormLanguage }) => {
         return (
@@ -144,42 +150,20 @@ function ResourceForm({ data, form, modal }: FormProps) {
                         {routes?.destroy && method !== "post" ? <FormMenu routes={routes} /> : null}
                       </div>
                     </div>
-                    {data?.created_at ? (
-                      <div className="grid items-start gap-4 border-b p-4">
-                        {data?.created_at ? (
-                          <div className="grid gap-2">
-                            {data?.created_at ? (
-                              <FormBlame
-                                label={trans("blame.created")}
-                                date={data.created_at}
-                                name={data.creator?.full_name}
-                              />
-                            ) : null}
-                            {data?.updated_at ? (
-                              <FormBlame
-                                label={trans("blame.updated")}
-                                date={data.updated_at}
-                                name={data.editor?.full_name ?? data.creator?.full_name}
-                              />
-                            ) : null}
-                          </div>
-                        ) : null}
-                      </div>
-                    ) : null}
+                    <FormBlame
+                      data={{
+                        created_at: data?.created_at,
+                        updated_at: data?.updated_at,
+                        creator: data?.creator,
+                        editor: data?.editor,
+                      }}
+                    />
                     {languages?.length > 0 ? (
-                      <div className="grid gap-1 border-b p-2">
-                        <div className="flex items-center justify-start gap-2 pl-2.5">
-                          <Icon className="size-4" name="globe" />
-                          <Heading level="h3" variant="discreet">
-                            {trans("ui.translations")}
-                          </Heading>
-                        </div>
-                        <FormLanguage
-                          className="pr-2"
-                          value={formLanguage}
-                          onValueChange={setFormLanguage}
-                        />
-                      </div>
+                      <FormLanguage
+                        className="pr-2"
+                        value={formLanguage}
+                        onValueChange={setFormLanguage}
+                      />
                     ) : null}
 
                     <div className="grid gap-y-4 p-4 lg:col-span-4">{sidebarContent}</div>
