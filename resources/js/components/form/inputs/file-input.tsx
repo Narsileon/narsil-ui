@@ -114,7 +114,7 @@ function FileInput({ icon, id, input, readOnly, required, value, setValue }: Fie
         <>
           {preview ? (
             <InputGroupAddon>
-              <img className="max-h-36 rounded-md object-contain" alt="preview" src={preview} />
+              <img className="size-36 rounded-md object-cover" alt="preview" src={preview} />
             </InputGroupAddon>
           ) : (
             <InputGroupAddon className="grow justify-start" align="inline-start">
