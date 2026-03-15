@@ -103,12 +103,22 @@ function FileInput({ icon, id, input, readOnly, required, value, setValue }: Fie
 
   return (
     <InputGroupRoot
-      className={cn(dragging && "border-primary bg-accent", (!value || preview) && "h-fit")}
+      className={cn(
+        "focus-within:border-primary focus-within:ring-primary",
+        dragging && "border-primary bg-accent ring-primary",
+        (!value || preview) && "h-fit",
+      )}
+      onClick={() => inputRef.current?.click()}
       onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}
       onDragOver={onDragOver}
       onDrop={onDrop}
-      onClick={() => inputRef.current?.click()}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
+          inputRef.current?.click();
+        }
+      }}
+      tabIndex={0}
     >
       {value ? (
         <>
