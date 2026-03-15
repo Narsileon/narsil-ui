@@ -193,6 +193,7 @@ class DataTableCollection extends ResourceCollection
             ->add('narsil::placeholders.search')
             ->add('narsil::ui.apply')
             ->add('narsil::ui.cancel')
+            ->add('narsil::ui.close')
             ->add('narsil::ui.confirm')
             ->add('narsil::ui.create')
             ->add('narsil::ui.delete')

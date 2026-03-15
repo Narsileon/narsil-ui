@@ -2,6 +2,7 @@
 // https://base-ui.com/react/components/popover
 
 import PopoverClose from "./popover-close";
+import PopoverCloseButton from "./popover-close-button";
 import PopoverDescription from "./popover-description";
 import PopoverHeader from "./popover-header";
 import PopoverPopup from "./popover-popup";
@@ -13,6 +14,7 @@ import PopoverTrigger from "./popover-trigger";
 
 export {
   PopoverClose,
+  PopoverCloseButton,
   PopoverDescription,
   PopoverHeader,
   PopoverPopup,

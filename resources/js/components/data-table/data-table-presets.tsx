@@ -1,6 +1,7 @@
 import { router } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
 import {
+  CardAction,
   CardContent,
   CardFooter,
   CardHeader,
@@ -9,6 +10,8 @@ import {
 } from "@narsil-ui/components/card";
 import { FormElement, FormProvider, FormRoot } from "@narsil-ui/components/form";
 import {
+  PopoverClose,
+  PopoverCloseButton,
   PopoverPopup,
   PopoverPortal,
   PopoverPositioner,
@@ -99,6 +102,11 @@ function DataTablePresets({ presets, ...props }: DataTablePresetsProps) {
                       <CardRoot>
                         <CardHeader className="border-b">
                           <CardTitle>{trans("data-table.preset")}</CardTitle>
+                          <CardAction>
+                            <PopoverClose>
+                              <PopoverCloseButton />
+                            </PopoverClose>
+                          </CardAction>
                         </CardHeader>
                         <CardContent>
                           <FormRoot className="grid-cols-12 gap-4">

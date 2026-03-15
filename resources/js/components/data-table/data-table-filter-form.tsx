@@ -2,6 +2,7 @@ import { Form } from "@base-ui/react";
 import { useForm } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
 import {
+  CardAction,
   CardContent,
   CardFooter,
   CardHeader,
@@ -14,6 +15,7 @@ import { FieldLabel, FieldRoot } from "@narsil-ui/components/field";
 import { Input } from "@narsil-ui/components/input";
 import {
   PopoverClose,
+  PopoverCloseButton,
   PopoverPopup,
   PopoverPortal,
   PopoverPositioner,
@@ -63,6 +65,11 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
             <CardRoot>
               <CardHeader className="border-b">
                 <CardTitle>{trans("data-table.filters")}</CardTitle>
+                <CardAction>
+                  <PopoverClose>
+                    <PopoverCloseButton />
+                  </PopoverClose>
+                </CardAction>
               </CardHeader>
               <CardContent className="gap-y-0">
                 <Form id={FORM_ID} className="flex flex-col gap-4" onSubmit={onSubmit}>
@@ -121,8 +128,7 @@ function DataTableFilterForm({ ...props }: ComponentProps<typeof PopoverTrigger>
                 </Form>
               </CardContent>
               <CardFooter className="justify-between border-t">
-                <PopoverClose render={<Button variant="secondary">{trans("ui.cancel")}</Button>} />
-                <Button form={FORM_ID} variant="primary" type="submit">
+                <Button className="w-full" form={FORM_ID} variant="primary" type="submit">
                   {trans("ui.apply")}
                 </Button>
               </CardFooter>

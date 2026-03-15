@@ -9,6 +9,7 @@ import { CSS } from "@dnd-kit/utilities";
 import { router } from "@inertiajs/react";
 import { Button } from "@narsil-ui/components/button";
 import {
+  CardAction,
   CardContent,
   CardFooter,
   CardHeader,
@@ -18,6 +19,8 @@ import {
 import { useDataTable, type DataTableData } from "@narsil-ui/components/data-table";
 import { Icon } from "@narsil-ui/components/icon";
 import {
+  PopoverClose,
+  PopoverCloseButton,
   PopoverPopup,
   PopoverPortal,
   PopoverPositioner,
@@ -102,6 +105,11 @@ function DataTableColumns({ ...props }: DataTableColumnsProps) {
             <CardRoot>
               <CardHeader className="border-b">
                 <CardTitle>{trans("data-table.columns")}</CardTitle>
+                <CardAction>
+                  <PopoverClose>
+                    <PopoverCloseButton />
+                  </PopoverClose>
+                </CardAction>
               </CardHeader>
               <CardContent className="gap-y-0">
                 <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
